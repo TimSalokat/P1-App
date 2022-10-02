@@ -1,0 +1,7 @@
+{
+    "name": "p1_dev_build",
+    "integrations": {
+      "capacitor": {}
+    },
+    "type": "react"
+  }
