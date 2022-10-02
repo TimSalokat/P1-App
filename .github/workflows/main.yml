@@ -51,9 +51,6 @@ jobs:
       - name: build npm
         working-directory: ./frontend/p1-app
         run: |
-          yarn install
-          yarn remove eslint-config-react-app
-          yarn add --dev eslint-config-react-app
           npm run build
       
       #yes
