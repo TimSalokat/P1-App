@@ -6,7 +6,7 @@ function Home(self) {
 
   const [text, setText] = useState([]);
   
-  useEffect(() => {
+  useEffect((fetchText) => {
     const fetch = async () =>{
       fetchText();
     }

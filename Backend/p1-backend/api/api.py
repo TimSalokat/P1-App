@@ -6,7 +6,7 @@ import wget
 
 Todos = []
 
-wget.download("https://github.com/TimSalokat/Main-Repositories/blob/main/React/p1-app/android/app/build/outputs/apk/debug/app-debug.apk", "file.apk")
+#wget.download("https://github.com/TimSalokat/Main-Repositories/blob/main/React/p1-app/android/app/build/outputs/apk/debug/app-debug.apk", "file.apk")
 
 app = FastAPI()
 origins = [
