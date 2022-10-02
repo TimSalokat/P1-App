@@ -48,17 +48,17 @@ jobs:
           npm install @capacitor/core
       
       - name: build npm
-        working-directory: ./React/p1-app
+        working-directory: ./Frontend/p1-app
         run: |
           npm run build
       
       - name: update capacitor
-        working-directory: ./React/p1-app
+        working-directory: ./Frontend/p1-app
         run: |
           npx ionic capacitor sync
 
       - name: build apk
-        working-directory: ./React/p1-app/android
+        working-directory: ./Frontend/p1-app/android
         run: |
           chmod +x ./gradlew
           sudo ./gradlew assembleDebug
