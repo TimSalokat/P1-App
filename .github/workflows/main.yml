@@ -65,13 +65,13 @@ jobs:
           chmod +x ./gradlew
           sudo ./gradlew assembleDebug
 
+      - name: Update version
+        working-directory: ./backend
+        run: python helper.py
+
       - name: Commit new APK
         run: |
           git config --global user.name 'Tim Salokat'
           git config --global user.email 'tim.salokat@protonmail.com'
           git commit -am "CI - Created APK"
           git push
-
-      - name: Update version
-        working-directory: ./backend
-        run: python helper.py
