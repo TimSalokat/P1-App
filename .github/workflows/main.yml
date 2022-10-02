@@ -41,6 +41,7 @@ jobs:
           npm install react-dom --force
           npm install web-vitals --force
           npm install react --force
+          npm install yarn --force
 
           npm install @ionic/cli
           npm install @capacitor/android
@@ -50,6 +51,8 @@ jobs:
       - name: build npm
         working-directory: ./frontend/p1-app
         run: |
+          yarn remove eslint-config-react-app
+          yarn add --dev eslint-config-react-app
           npm run build
       
       #yes
