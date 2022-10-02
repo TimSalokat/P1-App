@@ -2,11 +2,8 @@ from __future__ import annotations
 from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import git 
-
-repo = git.Repo('C:/Users/timsa/Desktop/Wokspace/P1-App')
-repo.remote().fetch()
-
+import git
+from git import Repo
 
 Todos = []
 
@@ -29,6 +26,10 @@ app.add_middleware(
 
 class Todo(BaseModel):
     heading: str
+
+def pull_repo():
+    repo = Repo('C:/Users/timsa/Desktop/Wokspace/P1-App')
+    repo.remotes.origin.pull()
 
 def update_index():
     for index in range(len(Todos)):

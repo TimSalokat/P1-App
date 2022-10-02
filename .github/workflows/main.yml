@@ -33,7 +33,7 @@ jobs:
           cache: gradle
 
       # Runs a set of commands using the runners shell
-      - name: install all the dependencies
+      - name: Install all the dependencies
         run: |
           npm install ionic --force
           npm install react-icons --force
@@ -48,27 +48,30 @@ jobs:
           npm install @capacitor/cli
           npm install @capacitor/core
       
-      - name: build npm
+      - name: Build npm site
         working-directory: ./frontend/p1-app
         run: |
           npm run build
       
       #yes
-      - name: update capacitor
+      - name: Update ionic capacitor
         working-directory: ./frontend/p1-app
         run: |
           npx ionic capacitor sync
 
-      - name: build apk
+      - name: Build APK
         working-directory: ./frontend/p1-app/android
         run: |
           chmod +x ./gradlew
           sudo ./gradlew assembleDebug
 
-      - name: Commit build apk
+      - name: Commit new APK
         run: |
           git config --global user.name 'Tim Salokat'
           git config --global user.email 'tim.salokat@protonmail.com'
           git commit -am "CI - Created APK"
           git push
 
+      - name: Update version
+        working-directory: ./backend
+        run: python helper.py
