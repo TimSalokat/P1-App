@@ -52,6 +52,7 @@ jobs:
         run: |
           npm run build
       
+      #yes
       - name: update capacitor
         working-directory: ./frontend/p1-app
         run: |
