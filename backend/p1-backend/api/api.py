@@ -2,11 +2,13 @@ from __future__ import annotations
 from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import wget
+import git 
+
+repo = git.Repo('C:/Users/timsa/Desktop/Wokspace/P1-App')
+repo.remote().fetch()
+
 
 Todos = []
-
-#wget.download("https://github.com/TimSalokat/Main-Repositories/blob/main/React/p1-app/android/app/build/outputs/apk/debug/app-debug.apk", "file.apk")
 
 app = FastAPI()
 origins = [
