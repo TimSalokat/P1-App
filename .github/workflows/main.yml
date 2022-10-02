@@ -57,7 +57,7 @@ jobs:
       - name: update capacitor
         working-directory: ./frontend/p1-app
         run: |
-          npx ionic capacitor add android
+          npx ionic capacitor sync
 
       - name: build apk
         working-directory: ./frontend/p1-app/android
@@ -69,6 +69,6 @@ jobs:
         run: |
           git config --global user.name 'Tim Salokat'
           git config --global user.email 'tim.salokat@protonmail.com'
-          git commit -am "New Version of app"
+          git commit -am "CI - Created APK"
           git push
 
