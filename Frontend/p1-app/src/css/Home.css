@@ -1,0 +1,45 @@
+
+:root {
+    --dark_blue: #1A2238;
+    --light_blue: #073F80;
+    --pink: #ff00d4;
+}
+
+.icon {
+    position: absolute;
+    top: calc(25% - 75px);;
+    left: calc(50% - 75px);
+    width: 150px;
+    height: 150px;
+}
+
+.homeContainer {
+    position: absolute;
+    width: calc(360px - 10%);
+    height: calc(50%);
+    bottom: 0;
+    border-radius: 50px 50px 0px 0px;
+    padding: calc(5%);
+    background: linear-gradient(216.23deg, var(--dark_blue) 24.64%, var(--light_blue) 102.46%);
+    justify-content: center;
+    align-content: center;
+} .homeContainer h1 {
+    color: white;
+    font-size: 38px;
+    line-height: 45px;
+    text-align: center;
+    text-transform: capitalize;
+} .homeContainer p {
+    color: white;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    left: calc(50%);
+    padding-left: calc(10%);
+    padding-right: calc(10%);
+}.homeContainer button {
+    position: absolute;
+    right: calc(50% - 60px);
+    width: 120px;
+    height: 40px;
+}
