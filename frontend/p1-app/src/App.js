@@ -12,7 +12,9 @@ function App() {
     const [menuOpen, setMenuOpen] = useState(true);
     const [activePage, setActivePage] = useState("Home");
 
-    const backend = "http://127.0.0.1:8000";
+    // const backend = "http://127.0.0.1:8000";
+
+    const backend = "https://1d43-2003-db-5725-2f4e-799e-2ce6-d72c-53dc.eu.ngrok.io";
 
     return (
     <div className='superContainer'>
