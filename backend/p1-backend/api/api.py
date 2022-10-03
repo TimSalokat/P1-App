@@ -1,9 +1,12 @@
 from __future__ import annotations
 from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import git
 from git import Repo
+
+from termcolor import colored
 
 Todos = []
 
@@ -24,12 +27,34 @@ app.add_middleware(
     allow_headers=["*"]    
 )
 
+def log(message, color="green"):
+    prefix = colored("[Back-Log]", color)
+    print(f"{prefix} - {message}")
+
+
+def Startup():
+    try:
+        Todos = eval(load_save())
+    except:
+        with open("saves/todos.txt", "w") as file:
+            file.write("[]")
+            file.close()
+            Todos=eval(load_save())
+
+    newest_version = pull_repo()
+
+    return Todos, newest_version
+
 class Todo(BaseModel):
     heading: str
 
 def pull_repo():
     repo = Repo('C:/Users/timsa/Desktop/Wokspace/P1-App')
     repo.remotes.origin.pull()
+    with open("../version.txt", "r") as file:
+        newest_version = int(file.read())
+        file.close()
+        return newest_version
 
 def update_index():
     for index in range(len(Todos)):
@@ -47,12 +72,21 @@ def load_save():
 
 @app.get("/get-main")
 async def get_stuff():
+    log("gottext")
     return {"text": "This is just some text for testing purposes"}
 
 @app.get("/get-todos")
 async def get_todos():
     Todos = eval(load_save())
     return {"todos": Todos}
+
+@app.get("/get-update")
+async def get_update(version: int):
+    log(f"Serverside version - {newest_version}", "yellow")
+    log(f"Passed version - {version}", "yellow")
+    # if version < newest_version:
+    return FileResponse("C:/Users/timsa/Desktop/Wokspace/P1-App/yes.txt", media_type="txt", filename="test.txt")
+    # return {"response": "Hello"}
 
 @app.post("/add-todo")
 async def add_todo(todo: Todo):
@@ -70,10 +104,4 @@ async def del_todo(index: int):
     save(Todos)
     return {"response": "Successful"}
 
-try:
-    Todos = eval(load_save())
-except:
-    with open("saves/todos.txt", "w") as file:
-        file.write("[]")
-        file.close()
-        Todos=eval(load_save())
+Todos, newest_version = Startup()

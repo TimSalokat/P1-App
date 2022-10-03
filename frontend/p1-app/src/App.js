@@ -12,7 +12,7 @@ function App() {
     const [menuOpen, setMenuOpen] = useState(true);
     const [activePage, setActivePage] = useState("Home");
 
-    const backend = "https://127.0.0.1:8000";
+    const backend = "http://127.0.0.1:8000";
 
     return (
     <div className='superContainer'>

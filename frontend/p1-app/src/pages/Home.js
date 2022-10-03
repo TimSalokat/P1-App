@@ -2,11 +2,15 @@ import React, {useState, useEffect} from 'react';
 import "../css/Global.css";
 import "../css/Home.css";
 
+import { saveAs } from 'file-saver';
+// const axios = require('axios');
+import axios from "axios"
+
 function Home(self) {
 
   const [text, setText] = useState([]);
   
-  useEffect((fetchText) => {
+  useEffect(() => {
     const fetch = async () =>{
       fetchText();
     }
@@ -19,6 +23,19 @@ function Home(self) {
 
     const data = response.text;
     setText(data);
+  }
+
+  const fetchUpdate = async () => {
+    console.log("fetching for update");
+    return await axios.get(self.backend + '/get-update?version=1', {
+        responseType: 'blob',
+    })
+    .then(response => response.data)
+    .then(blob => saveAs(blob, "test2.txt"))
+  }
+
+  const click = async () =>{
+    fetchUpdate();
   }
 
   function PageStatus() {
@@ -34,7 +51,7 @@ function Home(self) {
       <div className="homeContainer">
         <h1> Neue News </h1>
         <p> {text} </p>
-        <button onClick={fetchText}> Reload </button>
+        <button onClick={click}> Reload </button>
       </div>
     </div>
   )

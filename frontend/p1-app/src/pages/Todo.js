@@ -36,7 +36,7 @@ function Todo(self) {
     fetchTodos();
   }
 
-  useEffect((fetchTodos) => {
+  useEffect(() => {
     const fetch = async () =>{
       fetchTodos();
     }
