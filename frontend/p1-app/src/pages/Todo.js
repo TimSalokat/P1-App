@@ -22,7 +22,7 @@ function Todo(self) {
   }, [])
 
   //* runs every render
-  useEffect(() => {
+  useEffect((set_todos_local) => {
     set_todos_local(todos);
   })
 

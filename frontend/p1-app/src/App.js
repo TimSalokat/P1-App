@@ -13,7 +13,7 @@ import Changelog from './pages/Changelog';
 function App() {
     const [menuOpen, setMenuOpen] = useState(true);
     const [activePage, setActivePage] = useState("Home");
-    const [colorScheme, setColorScheme] = useState("defaultScheme");
+    const [colorScheme,] = useState("defaultScheme");
 
     return (
     <div className={'superContainer ' + colorScheme}>

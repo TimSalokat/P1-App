@@ -22,14 +22,14 @@ function Home(self) {
     asyncFunc();
   }, [])
 
-  const fetchUpdate = async () => {
-    console.log("fetching for update");
-    return await axios.get(self.backend + '/get-update?version=1', {
-      responseType: 'blob',
-    })
-      .then(response => response.data)
-      .then(blob => saveAs(blob, "test2.txt"))
-  }
+  // const fetchUpdate = async () => {
+  //   console.log("fetching for update");
+  //   return await axios.get(self.backend + '/get-update?version=1', {
+  //     responseType: 'blob',
+  //   })
+  //     .then(response => response.data)
+  //     .then(blob => saveAs(blob, "test2.txt"))
+  // }
 
   function PageStatus() {
     return (self.activePage === "Home" ? " SlideIn" : " SlideOut");
