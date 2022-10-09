@@ -5,11 +5,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(77, 77, 77);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  color: var(--text_color);
+}
+
+button {
+  background-color: var(--light_gray);
+  border: none;
+  color: var(--light_main);
 }
 
 .superContainer {
@@ -19,21 +30,9 @@ code {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  background: linear-gradient(192.26deg, #5E3AC5 8.42%, #1A2238 100%);
+  background: var(--gradient_second);
 }
 
 .relative {
   position: relative;
-}
-
-.shadow {
-  position: absolute;
-  background-color: lightblue;
-  min-height: 700px;
-  width: 360px;
-  transform: scale(.7);
-  border-radius: 60px;
-  left: calc(130px);
-  top: calc(10px);
-  opacity: .5;
 }

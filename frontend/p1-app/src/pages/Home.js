@@ -1,42 +1,34 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import "../css/Global.css";
 import "../css/Home.css";
 
+import { main_text, fetchText } from '../components/functions';
+
 import { saveAs } from 'file-saver';
-// const axios = require('axios');
 import axios from "axios"
 
 function Home(self) {
 
-  const [text, setText] = useState([]);
-  
-  useEffect((fetchText) => {
-    const fetch = async () =>{
-      fetchText();
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
+
+  const [displayed_text, set_displayed_text] = React.useState(main_text);
+
+  //* Runs on first render
+  React.useEffect(() => {
+    async function asyncFunc(){
+      set_displayed_text(await fetchText());
     }
-    fetch();
+    asyncFunc();
   }, [])
-
-  const fetchText = async () => {
-    const res = await fetch(self.backend + "/get-main");
-    const response = await res.json();
-
-    const data = response.text;
-    setText(data);
-  }
 
   const fetchUpdate = async () => {
     console.log("fetching for update");
     return await axios.get(self.backend + '/get-update?version=1', {
-        responseType: 'blob',
+      responseType: 'blob',
     })
-    .then(response => response.data)
-    .then(blob => saveAs(blob, "test2.txt"))
-  }
-
-  const click = async () =>{
-    fetchUpdate();
-    fetchText();
+      .then(response => response.data)
+      .then(blob => saveAs(blob, "test2.txt"))
   }
 
   function PageStatus() {
@@ -51,8 +43,11 @@ function Home(self) {
       <img className="icon" alt="" src="../icon1@2x.png" />
       <div className="homeContainer">
         <h1> Neue News </h1>
-        <p> {text} </p>
-        <button onClick={click}> Reload </button>
+        <p> {displayed_text} </p>
+        <button onClick={() => {
+          fetchText();
+          forceUpdate();
+        }}> Reload </button>
       </div>
     </div>
   )

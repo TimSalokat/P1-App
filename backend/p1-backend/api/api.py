@@ -41,7 +41,8 @@ def Startup():
             file.close()
             Todos=eval(load_save())
 
-    newest_version = pull_repo()
+    #newest_version = pull_repo()
+    newest_version = 1
 
     return Todos, newest_version
 
@@ -70,6 +71,10 @@ def load_save():
         newTodos = file.read()
         return newTodos
 
+@app.get("/ping")
+async def ping():
+    return None
+
 @app.get("/get-main")
 async def get_stuff():
     log("gottext")
@@ -90,8 +95,17 @@ async def get_update(version: int):
 
 @app.post("/add-todo")
 async def add_todo(todo: Todo):
-    Todos.append({"index": len(Todos)+1, "heading": todo.heading, "finished": False })
+    Todos.append({"index": len(Todos)+1,"heading": todo.heading, "finished": False })
     update_index()
+    save(Todos)
+    return {"response": "Successful"}
+
+@app.put("/set-finished")
+async def set_finished(index: int):
+    for todo in Todos:
+        if(todo["index"] == index):
+            todo["finished"] =  not todo["finished"]
+            log(f"Set {todo['heading']} to finished", "yellow")
     save(Todos)
     return {"response": "Successful"}
 

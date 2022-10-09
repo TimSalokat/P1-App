@@ -8,7 +8,7 @@
     width: calc(100% - 20px);
     bottom: 10px;
     border-radius: 30px;
-    background: rgba(255,255,255,.7);
+    background: var(--gray);
     justify-content: center;
 }
 
@@ -20,7 +20,7 @@
     height: 50px;
     border-radius: 30px;
     bottom: 10px;
-    background-color: white;
+    background-color: var(--lightest_gray);
     border: none;
     font-size: 17px;
 } .chatInput:focus {

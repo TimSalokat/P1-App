@@ -1,0 +1,11 @@
+
+
+.CLogContainer{
+    position: absolute;
+    background: var(--gray);
+    height: calc(100% - 100px);
+    width: calc(100% - 20px);
+    margin: 10px;
+    bottom: 0px;
+    border-radius: 30px;
+}

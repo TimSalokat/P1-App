@@ -1,15 +1,25 @@
 import React from 'react';
 import "../css/navbar.css";
 
-const Navbar = (self) => {
+import {fetchTodos, server_reachable} from "../components/functions";
+
+function Navbar(self){
+
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
+
+  setInterval(() => {
+    forceUpdate();
+  }, 10000)
 
   return (
     <div className='navbarContainer'>
+      <div className={server_reachable ? "server_bulb green" : "server_bulb red"}/>
       <h3>{self.activePage}</h3>
       <button 
         className={self.activePage === "Todo" ? "reload_BTN shown" : "reload_BTN hidden"}
-        onClick={() => console.log("think about reloadin")}>
-          R
+        onClick={fetchTodos}>
+          Refetch
         </button>
       <div 
         className={self.menuOpen ? "openMenu_BTN" : "openMenu_BTN active"} 
@@ -20,7 +30,6 @@ const Navbar = (self) => {
       </div>
     </div>
   )
-
 }
 
 export default Navbar

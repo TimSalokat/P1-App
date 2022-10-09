@@ -1,8 +1,36 @@
 
-:root {
-    --dark_blue: #1A2238;
-    --light_blue: #073F80;
-    --pink: #ff00d4;
+.defaultScheme {
+    --text_color: var(--lightest_gray);
+
+    --light_main: #073F80;
+    --dark_main: #1A2238;
+
+    --light_second: #ff00d4;
+    --dark_second: #5E3AC5;
+
+    --lightest_gray: rgb(255,255,255);
+    --light_gray: rgb(245, 245, 245);
+    --gray: rgb(225, 225, 225);
+
+    --gradient_main: linear-gradient(169.06deg, var(--dark_main) 26.78%, var(--dark_second) 132.23%);
+    --gradient_second: linear-gradient(192.26deg, var(--dark_second) 8.42%, var(--light_main) 100%);
+}
+
+.testScheme {
+    --text_color: var(--lightest_gray);
+
+    --light_main: var(--dark_second);
+    --dark_main: black;
+
+    --dark_second: #ff7700;
+    --light_second: #c5513a;
+
+    --lightest_gray: rgb(255,255,255);
+    --light_gray: rgb(245, 245, 245);
+    --gray: rgb(225, 225, 225);
+
+    --gradient_main: linear-gradient(169.06deg, rgb(180,180,180) 26.78%, rgb(220,220,220) 132.23%);
+    --gradient_second: linear-gradient(192.26deg, var(--dark_second) 8.42%, var(--light_second) 100%);
 }
 
 .PageContainer {
@@ -11,36 +39,89 @@
     height: 100%;
     width: 360px;
     margin-left: 0;
-    background: linear-gradient(169.06deg, var(--dark_blue) 26.78%, var(--pink) 132.23%);
+    background: var(--gradient_main);
     transform: scale(1);
     overflow: hidden;
-    /* opacity: 0%; */
     transition: 
-        opacity .5s,
-        transform 0.5s, 
         scale 0.5s,
         margin-left 0.5s,
         border-radius 0.5s ease-in-out;
+}
+
+.PageContainer.MenuOpen.Overlay {
+    opacity: 0%;
+    z-index: 5;
+} .PageContainer.MenuClosed.Overlay {
+    opacity: 0%;
+    z-index: -12;
+} 
+
+.PageContainer.Underlay{
+    background: whitesmoke;
+    opacity: .5;
+    scale: .7;
+} .PageContainer.MenuClosed.Underlay {
+    transform: translateX(4000px);
+    border-radius: 0px;
+    margin: 0;
+    transition: all .5s 1s ease-in-out;
+} .PageContainer.MenuOpen.Underlay {
+    transform: translateX(0px);
+    opacity: .5;
+    border-radius: 60px 0px 0px 60px;
+    margin-left: calc(40% - 20px);
+    margin-top: 10px;
 }
 
 .PageContainer.MenuClosed {
     scale: 1;
     border-radius: 0px;
     margin-left: calc(0%);
-}
-
-.PageContainer.MenuOpen {
+} .PageContainer.MenuOpen {
     scale: .7;
     border-radius: 60px 0px 0px 60px;
     margin-left: calc(40%);
 }
 
 .PageContainer.SlideOut {
-    transform: translateX(300px);
+    transition: 0s;
+    animation: Page_SlideOut_anim 2s ease-in-out;
+    transform: translateX(400px) scale(.7);
     opacity: 0%;
+} .PageContainer.SlideIn {
+    transform: translateX(0px) scale(1);
+    opacity: 100%;
+    animation: Page_SlideIn_anim 2s ease-in-out;
+} 
+
+@keyframes Page_SlideIn_anim {
+    0%{
+        transform: translateX(400px) scale(.7);
+        border-radius: 60px 60px 60px 60px;}
+    25% {
+        transform: translateX(400px) scale(.7);
+        margin-left: calc(40% + 10px);}
+    40% {
+        transform: translateX(0px) scale(.7);
+        margin-left: calc(40% + 10px);}
+    60% {
+        transform: translateX(0px) scale(.7);
+        border-radius: 60px 60px 60px 60px;}
 }
 
-.PageContainer.SlideIn {
-    transform: translateX(0px);
-    opacity: 100%;
+@keyframes Page_SlideOut_anim {
+    0% {
+        transform: translateX(0px) scale(.7);
+        margin-left: calc(40%);
+        border-radius: 60px;}
+    39% {
+        opacity: 100;}
+    40% {
+        transform: translateX(400px) scale(.7);
+        opacity: 0;
+        margin-left: calc(40%);}
+    50% {
+        transform: translateX(400px) scale(.7);
+        opacity: 0;
+        margin-left: calc(40%);}
 }
