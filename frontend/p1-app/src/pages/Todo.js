@@ -17,14 +17,14 @@ function Todo(self) {
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
   //* runs on the first render
-  useEffect((set_todos_local) => {
-    set_todos_local(todos);
-  }, [])
+  // useEffect((set_todos_local) => {
+  //   set_todos_local(todos);
+  // }, [])
 
   //* runs every render
-  useEffect((set_todos_local) => {
+  useEffect(() => {
     set_todos_local(todos);
-  })
+  }, [])
 
   setInterval(() => {
     // checkReachability();

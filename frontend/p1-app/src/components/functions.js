@@ -1,5 +1,6 @@
 
-const backend = "http://127.0.0.1:8000";
+// const backend = "http://127.0.0.1:8000";
+const backend = "0";
 
 var todos = [];
 var main_text = "";
