@@ -17,8 +17,8 @@ function Todo(self) {
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
   //* runs on the first render
-  useEffect(() => {
-    
+  useEffect((set_todos_local) => {
+    set_todos_local(todos);
   }, [])
 
   //* runs every render
@@ -30,6 +30,7 @@ function Todo(self) {
     // checkReachability();
     if(to_add.length !== 0 && server_reachable){
       addLocalTodos(to_add);
+      set_todos_local(todos);
 
       for(var i=to_add.length+1; i>to_add.length; i--){
         to_add.pop();}

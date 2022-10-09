@@ -4,8 +4,8 @@ import "../css/Home.css";
 
 import { main_text, fetchText } from '../components/functions';
 
-import { saveAs } from 'file-saver';
-import axios from "axios"
+// import { saveAs } from 'file-saver';
+// import axios from "axios"
 
 function Home(self) {
 
