@@ -4,7 +4,8 @@ import {BiSend} from "react-icons/bi";
 import "../css/Global.css";
 import "../css/Todo.css";
 
-import {todos, server_reachable, addLocalTodos, addTodo, checkReachability} from "../components/functions";
+import {todos, server_reachable, addLocalTodos, addTodo, finishTodo,
+    deleteTodo, checkReachability} from "../components/functions";
 
 function Todo(self) {
 
@@ -16,17 +17,14 @@ function Todo(self) {
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
-  //* runs on the first render
-  // useEffect((set_todos_local) => {
-  //   set_todos_local(todos);
-  // }, [])
-
   //* runs every render
+  //! Smth wrong here when buildin. Cant explain
   useEffect(() => {
     set_todos_local(todos);
   }, [])
 
   setInterval(() => {
+    // ! I need this one below. It's just a pain in development
     // checkReachability();
     if(to_add.length !== 0 && server_reachable){
       addLocalTodos(to_add);
@@ -38,8 +36,11 @@ function Todo(self) {
     forceUpdate();
   }, 20000)
 
+  function wait(delay) {
+    return new Promise( res => setTimeout(res, delay) );
+  }
+
   const addTodo_helper = async () => {
-    // !Check if this works in the mobile version
     if(heading !== ""){
       var tmp_heading = heading;
       setHeading("");
@@ -59,6 +60,13 @@ function Todo(self) {
     }
   }
 
+  const delTodo = async (index) => {
+    await finishTodo(index);
+    await wait(1000);
+    await deleteTodo(index);
+    forceUpdate();
+}
+
   return (
   <>
     <div className={"PageContainer" + MenuOpen() + PageStatus()}>
@@ -73,6 +81,7 @@ function Todo(self) {
             todo={todo}
             heading={todo.heading}
             index={todo.index}
+            delTodo={delTodo}
             />
         ))}
       </div>
@@ -96,7 +105,9 @@ function Todo(self) {
     return (self.activePage === "Todo" ? " SlideIn" : " SlideOut");
   }
   function MenuOpen() {
-    return (self.menuOpen ? " MenuClosed" : " MenuOpen")
+    if(self.activePage === "Todo"){
+      return (self.menuOpen ? " MenuClosed" : " MenuOpen")
+    } return " MenuClosed";
   }
 }
 

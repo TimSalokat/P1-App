@@ -4,24 +4,28 @@ import "../css/Home.css";
 
 import { main_text, fetchText } from '../components/functions';
 
+// ? dependencies for commented func later
 // import { saveAs } from 'file-saver';
 // import axios from "axios"
 
 function Home(self) {
-
-  const [, updateState] = React.useState();
-  const forceUpdate = React.useCallback(() => updateState({}), []);
 
   const [displayed_text, set_displayed_text] = React.useState(main_text);
 
   //* Runs on first render
   React.useEffect(() => {
     async function asyncFunc(){
-      set_displayed_text(await fetchText());
+      var text = await fetchText();
+      if(text !== undefined){
+        set_displayed_text(text);
+      } else {
+        set_displayed_text("Keine Serververbindung");
+      }
     }
     asyncFunc();
   }, [])
 
+  // ? dont know about this. idea was pushing newer apk from api
   // const fetchUpdate = async () => {
   //   console.log("fetching for update");
   //   return await axios.get(self.backend + '/get-update?version=1', {
@@ -35,7 +39,9 @@ function Home(self) {
     return (self.activePage === "Home" ? " SlideIn" : " SlideOut");
   }
   function MenuOpen() {
-    return (self.menuOpen ? " MenuClosed" : " MenuOpen")
+    if(self.activePage === "Home"){
+      return (self.menuOpen ? " MenuClosed" : " MenuOpen")
+    } return " MenuClosed";
   }
 
   return (
@@ -43,11 +49,7 @@ function Home(self) {
       <img className="icon" alt="" src="../icon1@2x.png" />
       <div className="homeContainer">
         <h1> Neue News </h1>
-        <p> {displayed_text} </p>
-        <button onClick={() => {
-          fetchText();
-          forceUpdate();
-        }}> Reload </button>
+        <h3> {displayed_text} </h3>
       </div>
     </div>
   )

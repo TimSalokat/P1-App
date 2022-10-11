@@ -2,8 +2,6 @@ import React from "react";
 import "../css/Todo.css";
 import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
 
-import {finishTodo} from "../components/functions";
-
 function TodoItem(self) {
 
     const [, updateState] = React.useState();
@@ -17,25 +15,19 @@ function TodoItem(self) {
         }
     }
 
-    const finishTodo_helper = async (index) => {
-        //client
-        forceUpdate();
+    function finishTodo_helper(index) {
         self.todo.finished = !self.todo.finished;
-
-        //server
-        await finishTodo(index)
+        forceUpdate();
+        self.delTodo(index);
     }
-    
+
     return (
-        <div className="todoItemContainer">
+        <div className={self.todo.finished ? "todoItemContainer taskFinished" : "todoItemContainer taskActive"}>
             <div onClick={() => finishTodo_helper(self.index)}>
                 {isFinished()}
             </div>
-            
             <div>
-                <p className={self.todo.finished ? "taskFinished" : "taskActive"}>
-                    {self.heading.substring(0, 50) + (self.heading.length >= 50 ? "..." : "")}
-                </p>
+                <p>{self.heading.substring(0, 50) + (self.heading.length >= 50 ? "..." : "")}</p>
             </div>
         </div>
     )

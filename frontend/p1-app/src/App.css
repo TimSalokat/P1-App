@@ -20,7 +20,7 @@ p, h1, h2, h3, h4, h5, h6 {
 button {
   background-color: var(--light_gray);
   border: none;
-  color: var(--light_main);
+  color: var(--main_accent);
 }
 
 .superContainer {

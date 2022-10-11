@@ -1,11 +1,10 @@
 
-
 .server_bulb {
     position: absolute;
     width: 12px;
     height: 12px;
     background-color: var(--gray);
-    top: calc(50% - 6px);
+    top: 27px;
     left: 15px;
     border-radius: 10px;
 } .red {
@@ -63,18 +62,4 @@
 } .active span:nth-child(3){
     /* transform: translateX(90px); */
     width: 0px;
-}
-
-.reload_BTN {
-    position: absolute;
-    height: 40px;
-    width: 70px;
-    border-radius: 25px;
-    top: 16px;
-    font-size: 12px;
-    left: calc(50% - 35px);
-} .reload_BTN.shown {
-    opacity: 100%;
-} .reload_BTN.hidden {
-    opacity: 0%;
 }

@@ -1,0 +1,32 @@
+
+
+.HistoryContainer{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background: var(--gray);
+    height: calc(100% - 100px);
+    width: calc(100% - 20px);
+    margin: 10px;
+    bottom: 0px;
+    border-radius: 30px;
+}
+
+.historyItemClient, .historyItemServer {
+    height: fit-content;
+    width: 80%;
+    margin: 5px;
+}
+
+.historyItemClient {
+    background-color: red;
+    border-radius: 40px 40px 40px 0px;
+} .historyItemClient:has(+ .historyItemClient){
+    background-color: yellow;
+}
+
+.historyItemServer {
+    background-color: blue;
+    border-radius: 40px 40px 0px 40px;
+    margin-left: calc(20% - 5px);
+}

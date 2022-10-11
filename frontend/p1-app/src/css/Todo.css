@@ -57,7 +57,7 @@
     right: 20px;
     cursor: pointer;
 } .todoPostIcon {
-    color: var(--light_main);
+    color: var(--main_accent);
     position: absolute;
     height: 50px;
     width: 40px;
@@ -80,7 +80,8 @@
     text-align: center;
     color: var(--light_main);
 } .todoPageEmpty h1 {
-    font-size: 25px;} 
+    font-size: 25px;
+    color: var(--main_accent);}
 .todoPageEmpty.hidden {
     opacity: 0%;}
 .todoPageEmpty.shown {
@@ -94,7 +95,6 @@
 }
 
 
-
 .todoItemContainer{
     display: flex;
     height: 50px;
@@ -104,11 +104,16 @@
     border-radius: 15px;
     align-items: center;
     background-color: var(--gray);
-    animation: init_todo_anim 1s ease-in-out;
+    animation: init_todo_anim .4s ease-in-out;
     transition: 
         all .5s,
+        transform 1s,
+        translateY 1s,
+        translateX .5s,
         scale .25s
         ease-in-out;
+} .todoItemContainer p {
+    color: var(--main_accent);
 } /* .todoItemContainer:hover {
     scale: 1.05;
 } */ .todoItemContainer div {
@@ -130,7 +135,7 @@
     rotate: 45deg;
 } */ .todoItemContainer div:nth-child(2){
     width: calc(100% - 50px);
-    border-left: 2px solid var(--light_main);
+    border-left: 2px solid var(--main_accent);
     border-radius: 2px;
     margin: 0 0 0 0;
     max-height: 50px;
@@ -148,7 +153,7 @@
 
 .todocheckbox, .todocheckbox_finished {
     position: absolute;
-    color: var(--light_main);
+    color: var(--main_accent);
     height: 20px;
     width: 20px;
     transition: 0.3s;
@@ -164,8 +169,8 @@
     100% {
         rotate: 0;}
 }
-
-.taskActive, .taskFinished{
-    color: var(--light_main);}
 .taskActive { text-decoration: none; } 
-.taskFinished { text-decoration:line-through; }
+.taskFinished { 
+    text-decoration:line-through;
+    opacity: 0;
+}

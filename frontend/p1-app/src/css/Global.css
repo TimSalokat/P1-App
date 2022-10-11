@@ -2,6 +2,8 @@
 .defaultScheme {
     --text_color: var(--lightest_gray);
 
+    --main_accent: var(--light_main);
+
     --light_main: #073F80;
     --dark_main: #1A2238;
 
@@ -19,8 +21,10 @@
 .testScheme {
     --text_color: var(--lightest_gray);
 
+    --main_accent: var(--dark_second);
+
     --light_main: var(--dark_second);
-    --dark_main: black;
+    --dark_main: rgb(190,190,190);
 
     --dark_second: #ff7700;
     --light_second: #c5513a;
@@ -51,9 +55,11 @@
 .PageContainer.MenuOpen.Overlay {
     opacity: 0%;
     z-index: 5;
+    scale: .7;
 } .PageContainer.MenuClosed.Overlay {
     opacity: 0%;
     z-index: -12;
+    scale: .7;
 } 
 
 .PageContainer.Underlay{

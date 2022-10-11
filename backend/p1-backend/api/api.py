@@ -77,7 +77,6 @@ async def ping():
 
 @app.get("/get-main")
 async def get_stuff():
-    log("gottext")
     return {"text": "This is just some text for testing purposes"}
 
 @app.get("/get-todos")
@@ -105,7 +104,6 @@ async def set_finished(index: int):
     for todo in Todos:
         if(todo["index"] == index):
             todo["finished"] =  not todo["finished"]
-            log(f"Set {todo['heading']} to finished", "yellow")
     save(Todos)
     return {"response": "Successful"}
 
@@ -113,6 +111,7 @@ async def set_finished(index: int):
 async def del_todo(index: int):
     for todo in Todos:
         if(todo["index"] == index):
+            log(("removed ", todo["heading"]), "red")
             Todos.remove(todo)
     update_index()
     save(Todos)

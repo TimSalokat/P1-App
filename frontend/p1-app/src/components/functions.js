@@ -1,10 +1,18 @@
 
-// const backend = "http://127.0.0.1:8000";
-const backend = "0";
+const backend = "http://127.0.0.1:8000";
 
 var todos = [];
 var main_text = "";
 var server_reachable = false;
+
+var history = [];
+
+const historyAdd = async ( text, fromServer = true) => {
+    history.push({
+        fromServer: fromServer,
+        text: text
+    })
+}
 
 const addLocalTodos = async (to_add) => {
     for(var index=0; index < to_add.length; index++){
@@ -101,7 +109,7 @@ const deleteTodo = async (index) => {
         mode: "cors",
         })
         await fetchTodos();
-    }finally {
+    }catch {
         console.error("Server Error");
     }
     checkReachability();
@@ -115,7 +123,12 @@ if(checkReachability()){
     console.error("Can't reach server");
 }
 
+historyAdd("Hello");
+historyAdd("Two");
+historyAdd("One", false);
+historyAdd("Four");
+
 export { fetchText, fetchTodos,
-    todos, main_text, server_reachable,
+    todos, main_text, server_reachable, history,
     checkReachability, addLocalTodos,
     addTodo, finishTodo, deleteTodo}

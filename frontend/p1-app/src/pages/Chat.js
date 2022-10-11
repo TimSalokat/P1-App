@@ -1,13 +1,15 @@
 import "../css/Global.css";
 import "../css/Chat.css";
 
-function Chat({ menuOpen, activePage }) {
+function Chat(self) {
 
   function PageStatus() {
-    return (activePage === "Chat" ? " SlideIn" : " SlideOut");
+    return (self.activePage === "Chat" ? " SlideIn" : " SlideOut");
   }
   function MenuOpen() {
-    return (menuOpen ? " MenuClosed" : " MenuOpen")
+    if(self.activePage === "Chat"){
+      return (self.menuOpen ? " MenuClosed" : " MenuOpen")
+    } return " MenuClosed";
   }
 
   return (

@@ -15,8 +15,8 @@ function SideMenu({ menuOpen, setMenuOpen, activePage, setActivePage }) {
         <div className={menuOpen ? "sideMenuContainer closed" : "sideMenuContainer" }>
             <ul>
                 <li onClick={() => link("Home")}><h2>Home</h2></li>
-                <li onClick={() => link("C-Log")}><h2>Changelog</h2></li>
-                <li onClick={() => link("Chat")}><h2>Chat</h2></li>
+                <li onClick={() => link("History")}><h2>History</h2></li>
+                {/* <li onClick={() => link("Chat")}><h2>Chat</h2></li> */}
                 <li onClick={() => link("Todo")}><h2>Todo's</h2></li>
             </ul>
             <button onClick={() => link("Dev")}> 

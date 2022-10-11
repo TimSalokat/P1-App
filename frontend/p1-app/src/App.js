@@ -8,7 +8,8 @@ import SideMenu from './components/sideMenu';
 import Home from './pages/Home';
 import Chat from './pages/Chat';
 import Todo from './pages/Todo';
-import Changelog from './pages/Changelog';
+import History from './pages/History';
+import DevPage from './pages/DevPage';
 
 function App() {
     const [menuOpen, setMenuOpen] = useState(true);
@@ -23,17 +24,16 @@ function App() {
             activePage={activePage}
             setActivePage={setActivePage}
         />
-
         
         <PageUnderlay menuOpen={menuOpen}/>
     
         <Home menuOpen={menuOpen} activePage={activePage}/>
         <Chat menuOpen={menuOpen} activePage={activePage}/>
         <Todo menuOpen={menuOpen} activePage={activePage}/>
-        <Changelog menuOpen={menuOpen} activePage={activePage}/>
+        <History menuOpen={menuOpen} activePage={activePage}/>
+        <DevPage menuOpen={menuOpen} activePage={activePage}/>
 
         <PageOverlay menuOpen={menuOpen}/>
-
 
         <Navbar 
             setMenu={setMenuOpen} 
