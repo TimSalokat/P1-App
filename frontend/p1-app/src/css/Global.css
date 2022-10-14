@@ -13,6 +13,7 @@
     --lightest_gray: rgb(255,255,255);
     --light_gray: rgb(245, 245, 245);
     --gray: rgb(225, 225, 225);
+    --dark_gray: rgb(180,180,180, .5);
 
     --gradient_main: linear-gradient(169.06deg, var(--dark_main) 26.78%, var(--dark_second) 132.23%);
     --gradient_second: linear-gradient(192.26deg, var(--dark_second) 8.42%, var(--light_main) 100%);
@@ -35,6 +36,28 @@
 
     --gradient_main: linear-gradient(169.06deg, rgb(180,180,180) 26.78%, rgb(220,220,220) 132.23%);
     --gradient_second: linear-gradient(192.26deg, var(--dark_second) 8.42%, var(--light_second) 100%);
+}
+
+.c_main_accent{
+    color: var(--main_accent);
+}
+
+.bg_main_accent{
+    background-color: var(--main_accent);
+}
+
+.bulb {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: var(--gray);
+    top: 27px;
+    left: 15px;
+    border-radius: 10px;
+} .red {
+    background-color: rgb(205, 28, 28);
+} .green {
+    background-color: rgb(21, 225, 48);
 }
 
 .PageContainer {

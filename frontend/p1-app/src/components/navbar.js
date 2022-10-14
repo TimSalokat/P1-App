@@ -12,16 +12,21 @@ function Navbar(self){
     forceUpdate();
   }, 10000)
 
+  function dev_active(){
+    if(self.activePage === "Dev" && self.menuOpen){return true}
+    else{return false}
+  }
+
   return (
     <div className='navbarContainer'>
-      <div className={server_reachable ? "server_bulb green" : "server_bulb red"}/>
-      <h3>{self.activePage}</h3>
+      <div className={server_reachable ? "bulb green" : "bulb red"}/>
+      <h3 className={dev_active() ? "c_main_accent" : ""}>{self.activePage}</h3>
       <div 
         className={self.menuOpen ? "openMenu_BTN" : "openMenu_BTN active"} 
         onClick={() => self.setMenu(!self.menuOpen)}>
-        <span/>
-        <span/>
-        <span/>
+        <span className={dev_active() ? "bg_main_accent" : ""}/>
+        <span className={dev_active() ? "bg_main_accent" : ""}/>
+        <span className={dev_active() ? "bg_main_accent" : ""}/>
       </div>
     </div>
   )

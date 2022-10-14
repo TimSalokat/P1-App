@@ -1,4 +1,6 @@
 
+import { displayed_history } from "../pages/History";
+
 const backend = "http://127.0.0.1:8000";
 
 var todos = [];
@@ -7,18 +9,20 @@ var server_reachable = false;
 
 var history = [];
 
-const historyAdd = async ( text, fromServer = true) => {
+const historyAdd = async ( text, fromServer = true, dev = false) => {
     history.push({
         fromServer: fromServer,
+        dev: dev,
         text: text
     })
+    displayed_history = history;
 }
 
 const addLocalTodos = async (to_add) => {
     for(var index=0; index < to_add.length; index++){
         addTodo(to_add[index]);
     }
-    console.warn("Synced Todos");
+    historyAdd("Successfully added local todos", false);
 }
 
 
@@ -82,6 +86,7 @@ const addTodo = async (heading) => {
             })
         }   
         await fetchTodos();
+        historyAdd("Successfully added todo", false);
     }catch {
         console.error("Server Error");
     }
@@ -109,6 +114,7 @@ const deleteTodo = async (index) => {
         mode: "cors",
         })
         await fetchTodos();
+        historyAdd("Successfully deleted Todo", false);
     }catch {
         console.error("Server Error");
     }
@@ -123,12 +129,7 @@ if(checkReachability()){
     console.error("Can't reach server");
 }
 
-historyAdd("Hello");
-historyAdd("Two");
-historyAdd("One", false);
-historyAdd("Four");
-
-export { fetchText, fetchTodos,
+export { fetchText, fetchTodos, historyAdd,
     todos, main_text, server_reachable, history,
     checkReachability, addLocalTodos,
     addTodo, finishTodo, deleteTodo}

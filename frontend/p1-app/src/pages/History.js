@@ -3,8 +3,28 @@ import "../css/Global.css";
 import "../css/History.css";
 
 import {history} from "../components/functions";
+import { show_dev_history } from './DevPage';
+
+var displayed_history = [];
 
 export default function History(self) {
+
+  // const [displayed_history, set_displayed_history] = React.useState(history);
+
+  // React.useEffect(() => {
+  //   if(show_dev_history){
+  //     set_displayed_history(history);
+  //   }else{
+  //     set_displayed_history(history.filter((item) => (
+  //       item.dev
+  //     )))
+  //     console.log(displayed_history);
+  //   }
+  // }, [history])
+
+  React.useEffect(() => {
+    console.log(displayed_history);
+  }, [displayed_history])
 
   function PageStatus() {
     return (self.activePage === "History" ? " SlideIn" : " SlideOut");
@@ -28,11 +48,10 @@ export default function History(self) {
   return (
     <div className={"PageContainer" + MenuOpen() + PageStatus()}>
       <div className="HistoryContainer">
-        <HistoryItem text={"Test"} fromServer={false}/>
-        {history.map((item) => (
+        {displayed_history.map((item) => (
             <HistoryItem 
-              key={item.text}
               text={item.text}
+              dev={item.dev}
               fromServer={item.fromServer}
             />
           ))}
@@ -40,3 +59,5 @@ export default function History(self) {
     </div>
   )
 }
+
+export {displayed_history}

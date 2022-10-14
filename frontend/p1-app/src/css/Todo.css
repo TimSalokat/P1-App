@@ -104,12 +104,14 @@
     border-radius: 15px;
     align-items: center;
     background-color: var(--gray);
-    animation: init_todo_anim .4s ease-in-out;
+    /* TODO see keyframes */
+    /* animation: init_todo_anim .4s ease-in-out forwards; */
     transition: 
         all .5s,
         transform 1s,
         translateY 1s,
         translateX .5s,
+        opacity .5s,
         scale .25s
         ease-in-out;
 } .todoItemContainer p {
@@ -144,12 +146,13 @@
     overflow: hidden;
 } 
 
-@keyframes init_todo_anim {
-    0%{transform: translateY(1000px);}
-} 
-@keyframes todo_slideOut_anim {
-    0%{}
-}
+/* TODO Not in use rn because buggy */
+/* @keyframes init_todo_anim {
+    0%{opacity: 0;
+    transform: translateY(50px);}
+    70%{opacity: 1;}
+    100%{transform: translateY(0px);}
+} */
 
 .todocheckbox, .todocheckbox_finished {
     position: absolute;
@@ -172,5 +175,12 @@
 .taskActive { text-decoration: none; } 
 .taskFinished { 
     text-decoration:line-through;
-    opacity: 0;
+    transform: translateY(0px);
+    animation: todoItem_slideOut .5s forwards ease-in-out;
+}
+
+@keyframes todoItem_slideOut {
+    100%{
+        opacity: 0;
+    }
 }

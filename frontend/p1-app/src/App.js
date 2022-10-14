@@ -13,7 +13,7 @@ import DevPage from './pages/DevPage';
 
 function App() {
     const [menuOpen, setMenuOpen] = useState(true);
-    const [activePage, setActivePage] = useState("Home");
+    const [activePage, setActivePage] = useState("Dev");
     const [colorScheme,] = useState("defaultScheme");
 
     return (

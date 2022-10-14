@@ -5,7 +5,7 @@ import "../css/Global.css";
 import "../css/Todo.css";
 
 import {todos, server_reachable, addLocalTodos, addTodo, finishTodo,
-    deleteTodo, checkReachability} from "../components/functions";
+    deleteTodo, checkReachability, historyAdd} from "../components/functions";
 
 function Todo(self) {
 
@@ -21,7 +21,7 @@ function Todo(self) {
   //! Smth wrong here when buildin. Cant explain
   useEffect(() => {
     set_todos_local(todos);
-  }, [])
+  })
 
   setInterval(() => {
     // ! I need this one below. It's just a pain in development
@@ -29,6 +29,7 @@ function Todo(self) {
     if(to_add.length !== 0 && server_reachable){
       addLocalTodos(to_add);
       set_todos_local(todos);
+      historyAdd("Adding locally stored todos to server todos");
 
       for(var i=to_add.length+1; i>to_add.length; i--){
         to_add.pop();}
@@ -53,16 +54,23 @@ function Todo(self) {
 
       checkReachability();
       if(server_reachable){
+        historyAdd("Adding server todo: " + tmp_heading);
         await addTodo(tmp_heading);
       }else {
+        historyAdd("Added local todo: " + tmp_heading);
         to_add.push(tmp_heading);}
       tmp_heading = "";
     }
   }
 
   const delTodo = async (index) => {
+    historyAdd("Deleting todo: " + todos_local[index]["heading"]);
     await finishTodo(index);
-    await wait(1000);
+    await wait(700);
+    todos_local.splice(index,1);
+    //* update indexes
+    for(var i=0; i<todos_local.length; i++){
+      todos_local[i]["index"] = i;}
     await deleteTodo(index);
     forceUpdate();
 }

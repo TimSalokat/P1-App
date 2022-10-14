@@ -1,18 +1,4 @@
 
-.server_bulb {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background-color: var(--gray);
-    top: 27px;
-    left: 15px;
-    border-radius: 10px;
-} .red {
-    background-color: rgb(205, 28, 28);
-} .green {
-    background-color: rgb(21, 225, 48);
-}
-
 .navbarContainer {
     position: fixed;
     height: 70px;
@@ -26,6 +12,7 @@
     top: 20px;
     left: 40px;
     margin: 0;
+    transition: .5s;
 }
 
 .openMenu_BTN, .reload_BTN{
@@ -48,8 +35,10 @@
     height: 2.1px;
     width: 30px;
     border-radius: 4px;
-    background-color: var(--lightest_gray);
-    transition: .7s ease-in-out;
+    transition: 
+        all .7s,
+        background-color .5s ease-in-out
+    ;
 } .openMenu_BTN span:nth-child(1) {
     transform: translateY(-9px);   
 } .openMenu_BTN span:nth-child(2) {
