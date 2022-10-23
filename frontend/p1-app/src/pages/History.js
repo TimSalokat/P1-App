@@ -30,8 +30,9 @@ export default function History(self) {
   //   }
   // }, [history])
 
-  React.useEffect((displayed_history) => {
+  React.useEffect(() => {
     //* This reloads the page on change of the given property
+    console.log(displayed_history);
   }, [displayed_history])
 
   function PageStatus() {
