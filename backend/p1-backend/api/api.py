@@ -3,8 +3,8 @@ from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
-import git
-from git import Repo
+# import git
+# from git import Repo
 
 from termcolor import colored
 

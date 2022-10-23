@@ -15,7 +15,25 @@ const historyAdd = async ( text, fromServer = true, dev = false) => {
         dev: dev,
         text: text
     })
-    displayed_history = history;
+    displayed_history.update = history;
+}
+
+const mergeArrays = (local, server) => {
+    const merged = server;
+    var strikes = 0;
+    for(var i=0; i<local.length; i++){
+        for(var y=0; y<server.length; y++){
+            if(local[i].heading === server[y].heading){
+                strikes++;
+            }
+        }
+
+        if(strikes === 0){
+            merged.push(local[i]);
+        }
+        strikes = 0;
+    }
+    return merged;
 }
 
 const addLocalTodos = async (to_add) => {
@@ -129,7 +147,7 @@ if(checkReachability()){
     console.error("Can't reach server");
 }
 
-export { fetchText, fetchTodos, historyAdd,
+export { fetchText, fetchTodos, historyAdd, mergeArrays,
     todos, main_text, server_reachable, history,
     checkReachability, addLocalTodos,
     addTodo, finishTodo, deleteTodo}

@@ -4,10 +4,12 @@ import {BiSend} from "react-icons/bi";
 import "../css/Global.css";
 import "../css/Todo.css";
 
-import {todos, server_reachable, addLocalTodos, addTodo, finishTodo,
+import {todos, server_reachable, addLocalTodos, addTodo, finishTodo, mergeArrays,
     deleteTodo, checkReachability, historyAdd} from "../components/functions";
 
 function Todo(self) {
+
+  const LOCAL_STORAGE_KEY = "todoApp.todos";
 
   const [heading, setHeading] = useState("");
   const [todos_local, set_todos_local] = useState(todos);
@@ -20,8 +22,17 @@ function Todo(self) {
   //* runs every render
   //! Smth wrong here when buildin. Cant explain
   useEffect(() => {
-    set_todos_local(todos);
-  })
+    // set_todos_local(todos);
+    if(server_reachable && todos_local !== todos) {
+      set_todos_local(mergeArrays(todos_local, todos));
+    }
+  }, [])
+
+  //* runs on first render
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if(storedTodos) set_todos_local(storedTodos);
+  }, [])
 
   setInterval(() => {
     // ! I need this one below. It's just a pain in development
@@ -41,6 +52,10 @@ function Todo(self) {
     return new Promise( res => setTimeout(res, delay) );
   }
 
+  function setLocalStorage() {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos_local));
+  }
+
   const addTodo_helper = async () => {
     if(heading !== ""){
       var tmp_heading = heading;
@@ -52,7 +67,7 @@ function Todo(self) {
         finished: false })
       forceUpdate();
 
-      checkReachability();
+      await checkReachability();
       if(server_reachable){
         historyAdd("Adding server todo: " + tmp_heading);
         await addTodo(tmp_heading);
@@ -60,6 +75,7 @@ function Todo(self) {
         historyAdd("Added local todo: " + tmp_heading);
         to_add.push(tmp_heading);}
       tmp_heading = "";
+      setLocalStorage();
     }
   }
 
@@ -68,11 +84,13 @@ function Todo(self) {
     await finishTodo(index);
     await wait(700);
     todos_local.splice(index,1);
+
     //* update indexes
     for(var i=0; i<todos_local.length; i++){
       todos_local[i]["index"] = i;}
     await deleteTodo(index);
     forceUpdate();
+    setLocalStorage();
 }
 
   return (

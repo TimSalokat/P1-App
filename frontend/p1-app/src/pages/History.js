@@ -5,7 +5,15 @@ import "../css/History.css";
 import {history} from "../components/functions";
 import { show_dev_history } from './DevPage';
 
-var displayed_history = [];
+// var displayed_history = [];
+
+const displayed_history = {
+  history: [],
+
+  set update(new_history){
+    this.history = new_history;
+  }
+};
 
 export default function History(self) {
 
@@ -23,8 +31,8 @@ export default function History(self) {
   // }, [history])
 
   React.useEffect(() => {
-    console.log(displayed_history);
-  }, [displayed_history])
+    //* This reloads the page on change of the given property
+  }, [displayed_history.history])
 
   function PageStatus() {
     return (self.activePage === "History" ? " SlideIn" : " SlideOut");
@@ -48,7 +56,7 @@ export default function History(self) {
   return (
     <div className={"PageContainer" + MenuOpen() + PageStatus()}>
       <div className="HistoryContainer">
-        {displayed_history.map((item) => (
+        {displayed_history.history.map((item) => (
             <HistoryItem 
               text={item.text}
               dev={item.dev}
