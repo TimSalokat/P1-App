@@ -21,7 +21,7 @@ function Todo(self) {
 
   //* runs every render
   //! Smth wrong here when buildin. Cant explain
-  useEffect(() => {
+  useEffect((todos_local) => {
     // set_todos_local(todos);
     if(server_reachable && todos_local !== todos) {
       set_todos_local(mergeArrays(todos_local, todos));

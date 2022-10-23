@@ -2,8 +2,8 @@ import React from 'react';
 import "../css/Global.css";
 import "../css/History.css";
 
-import {history} from "../components/functions";
-import { show_dev_history } from './DevPage';
+// import {history} from "../components/functions";
+// import { show_dev_history } from './DevPage';
 
 // var displayed_history = [];
 
@@ -30,7 +30,7 @@ export default function History(self) {
   //   }
   // }, [history])
 
-  React.useEffect(() => {
+  React.useEffect((displayed_history) => {
     //* This reloads the page on change of the given property
   }, [displayed_history.history])
 
