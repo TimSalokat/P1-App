@@ -32,7 +32,7 @@ export default function History(self) {
 
   React.useEffect((displayed_history) => {
     //* This reloads the page on change of the given property
-  }, [displayed_history.history])
+  }, [displayed_history])
 
   function PageStatus() {
     return (self.activePage === "History" ? " SlideIn" : " SlideOut");
