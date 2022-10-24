@@ -2,11 +2,14 @@ import React from 'react'
 import "../css/sideMenu.css";
 import {MdOutlineDeveloperMode} from "react-icons/md";
 
+import { Saving } from './functions';
+
 function SideMenu({ menuOpen, setMenuOpen, activePage, setActivePage }) {
 
     function link(page) {
         if(activePage !== page){
             setActivePage(page);
+            Saving.saveLocal("todoApp.last_page", page);
             setMenuOpen(true);
         }
     }

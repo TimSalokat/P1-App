@@ -1,7 +1,7 @@
 import React from 'react';
 import "../css/navbar.css";
 
-import {server_reachable} from "../components/functions";
+import {Server} from "../components/functions";
 
 function Navbar(self){
 
@@ -19,7 +19,7 @@ function Navbar(self){
 
   return (
     <div className='navbarContainer'>
-      <div className={server_reachable ? "bulb green" : "bulb red"}/>
+      <div className={Server.reachable ? "bulb green" : "bulb red"}/>
       <h3 className={dev_active() ? "c_main_accent" : ""}>{self.activePage}</h3>
       <div 
         className={self.menuOpen ? "openMenu_BTN" : "openMenu_BTN active"} 

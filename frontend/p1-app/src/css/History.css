@@ -6,10 +6,11 @@
     flex-direction: column;
     background: var(--dark_gray);
     height: calc(100% - 100px);
-    width: calc(100% - 20px);
+    width: calc(100% - 40px);
     margin: 10px;
+    padding: 10px;
     bottom: 0px;
-    border-radius: 30px;
+    border-radius: 10px;
     overflow-y: scroll;
 }.HistoryContainer::-webkit-scrollbar{
     width: 5px;
@@ -27,13 +28,14 @@
 
 .historyItemClient, .historyItemServer {
     height: fit-content;
-    max-width: 80%;
+    max-width: 70%;
     margin: 5px;
     padding: 5px;
     background: var(--gray);
 }.historyItemClient p, .historyItemServer p{
     color: var(--main_accent);
     text-align: center;
+    margin: 10px 0px;
 }
 
 .historyItemClient {
@@ -50,7 +52,7 @@
 
 .historyItemServer {
     border-radius: 20px 20px 5px 20px;
-    margin-left: calc(20% - 15px);
+    margin-left: calc(30% - 15px);
 } /*! :has only visible in chrome. Works in app */
 .historyItemServer + .historyItemServer{
     border-radius: 20px 5px 20px 20px;
@@ -59,4 +61,10 @@
     margin-bottom: 1px;
 } .historyItemServer + .historyItemServer:has(+ .historyItemServer){
     border-radius: 20px 5px 5px 20px;
+}
+
+.historyItemServer.fromDev p{
+    border-right: 1px solid red;
+}.historyItemClient.fromDev p{
+    border-left: 1px solid red;
 }

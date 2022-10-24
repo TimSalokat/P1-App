@@ -69,19 +69,22 @@
     padding: 0;
     margin: 10px;
     height: 150px;
+    margin-top: calc(50% - 20px);
     width: calc(100% - 20px);
     top: 100px;
     border-radius: 30px;
-    background: var(--light_gray);
+    /* background: var(--light_gray); */
+    background: none;
     opacity: .5;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: var(--light_main);
 } .todoPageEmpty h1 {
     font-size: 25px;
-    color: var(--main_accent);}
+    /* color: var(--main_accent); */
+    color: var(--light_gray);
+}
 .todoPageEmpty.hidden {
     opacity: 0%;}
 .todoPageEmpty.shown {

@@ -37,4 +37,50 @@
     border-radius: 10px;
     background-color: var(--lightest_gray);
     box-shadow: 0px 2px 5px var(--dark_main);
+    transition: .5s ease-in-out;
+} .DevBtnContainer button:hover {
+    background-color: var(--main_accent);
+    color: var(--lightest_gray);
+}
+
+.DevBackendContainer {
+    display: flex;
+    flex-direction: row;
+} 
+
+.DevBackendContainer button {
+    background-color: var(--lightest_gray);
+    box-shadow: 0px 1px 3px var(--dark_main);
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 0px 15px;
+}
+
+.DevBackendContainer input {
+    width: 65vw;
+    height: 25px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--lightest_gray);
+    box-shadow: 0px 1px 3px var(--dark_main);
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 14px;
+} .DevBackendContainer input:focus {
+    outline: none;
+}
+
+.lastActionField {
+    background-color: var(--gray);
+    /* height: 70px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px 20px 0px 00px;
+}
+.lastActionField p {
+    color: var(--main_accent);
+    text-align: center;
+    margin: 0;
+    opacity: .7;
 }

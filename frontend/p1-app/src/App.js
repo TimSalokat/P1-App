@@ -11,10 +11,17 @@ import Todo from './pages/Todo';
 import History from './pages/History';
 import DevPage from './pages/DevPage';
 
+import { Saving } from './components/functions';
+
 function App() {
     const [menuOpen, setMenuOpen] = useState(true);
     const [activePage, setActivePage] = useState("Dev");
     const [colorScheme,] = useState("defaultScheme");
+
+    React.useEffect(() => {
+        let last_page = Saving.loadSave("todoApp.last_page");
+        if (last_page !== undefined) setActivePage(last_page);
+    }, [])
 
     return (
     <div className={'superContainer ' + colorScheme}>

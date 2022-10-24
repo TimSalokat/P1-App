@@ -2,6 +2,9 @@ import React from 'react';
 import "../css/Global.css";
 import "../css/History.css";
 
+//TODO make history items with the dev tag only show when the show_dev in here is true
+// import { dev_variables } from './DevPage';
+
 // import {history} from "../components/functions";
 // import { show_dev_history } from './DevPage';
 
@@ -12,28 +15,19 @@ const displayed_history = {
 
   set update(new_history){
     this.history = new_history;
+    localStorage.setItem("todoApp.history", JSON.stringify(displayed_history.history))
   }
 };
 
 export default function History(self) {
 
-  // const [displayed_history, set_displayed_history] = React.useState(history);
+  const LOCAL_STORAGE_KEY = "todoApp.history";
 
-  // React.useEffect(() => {
-  //   if(show_dev_history){
-  //     set_displayed_history(history);
-  //   }else{
-  //     set_displayed_history(history.filter((item) => (
-  //       item.dev
-  //     )))
-  //     console.log(displayed_history);
-  //   }
-  // }, [history])
-
-  // React.useEffect(() => {
-  //   //* This reloads the page on change of the given property
-  //   console.log(displayed_history);
-  // }, [displayed_history])
+  //* runs on first render
+  React.useEffect(() => {
+    const storedHistory = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if(storedHistory) displayed_history.update = storedHistory;
+  }, [])
 
   function PageStatus() {
     return (self.activePage === "History" ? " SlideIn" : " SlideOut");
@@ -46,7 +40,8 @@ export default function History(self) {
 
   const HistoryItem = (self) => {
     return(
-      <div className={self.fromServer ? "historyItemClient" : "historyItemServer"}>
+      <div className={(self.fromServer ? "historyItemClient" : "historyItemServer") + 
+      (self.dev ? " fromDev" : "")}>
         <p>
           {self.text}
         </p>

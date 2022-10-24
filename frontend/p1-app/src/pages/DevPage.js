@@ -1,11 +1,27 @@
 import React from 'react';
 import "../css/Dev.css";
 
-import {} from "../components/functions";
+import { History, Server } from "../components/functions";
 
-var show_dev_history = false;
+const dev_variables = {
+  show_dev_history: false,
+  last_history_entry: "Init",
+
+  set setShowDev(newBool){
+    this.show_dev_history = newBool;
+  },
+
+  set setLastHistoryEntry(entryText){
+    this.last_history_entry = entryText;
+  }
+};
+
 
 export default function DevPage(self) {
+
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
+
   return (
     <div className={"PageContainer" + MenuOpen() + PageStatus()}>
       <div className="DevContainer">
@@ -14,13 +30,44 @@ export default function DevPage(self) {
         <span/>
 
         <div className='DevBtnContainer'>
-          {/* TODO add functionality to this */}
-          <button>Refetch <br/> Todo's</button>
-          <button>Refetch <br/> Text </button>
-          <button>Check <br/> Reachability </button>
-          <button>Clear <br/> History </button>
+
+          <button onClick={() => {
+            Server.fetchTodos()
+            History.add("Refetched Todos", false, true);
+            forceUpdate();
+          }}> Refetch <br/> Todo's</button>
+
+          <button onClick={() => {
+            Server.fetchText();
+            History.add("Refetched Text", false, true);
+            forceUpdate();
+          }}> Refetch <br/> Text </button>
+
+          <button onClick={() => {
+            Server.checkReachability();
+            History.add("Pinging server", false, true);
+            forceUpdate();          
+          }}> Check <br/> Reachability </button>
+
+          <button onClick={() => {
+            dev_variables.setShowDev = !dev_variables.show_dev_history;
+            History.add("Activated Dev History", true, true);
+            forceUpdate();
+          }}> Show Dev <br/> History </button>
         </div>
 
+        <span/>
+
+        <div className="DevBackendContainer">
+          <input placeholder="New backend address"></input>
+          <button className="DevCommit_BTN"> Submit </button>
+        </div>
+
+        <span/>
+
+      </div>
+      <div className="lastActionField sticky">
+          <p> {dev_variables.last_history_entry} </p>
       </div>
     </div>
   )
@@ -36,4 +83,4 @@ export default function DevPage(self) {
   }
 }
 
-export {show_dev_history}
+export {dev_variables}
