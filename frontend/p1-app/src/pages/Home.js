@@ -6,7 +6,7 @@ import { Server } from '../components/functions';
 
 function Home(self) {
 
-  const [displayed_text, set_displayed_text] = React.useState(Server.main_text);
+  const [displayed_text, set_displayed_text] = React.useState();
 
   //* Runs on first render
   React.useEffect(() => {

@@ -73,7 +73,7 @@ def load_save():
 
 @app.get("/ping")
 async def ping():
-    return None
+    return True
 
 @app.get("/get-main")
 async def get_stuff():

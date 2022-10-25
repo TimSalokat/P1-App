@@ -4,11 +4,11 @@ import {BiSend} from "react-icons/bi";
 import "../css/Global.css";
 import "../css/Todo.css";
 
-import {History, Local, Server, Saving} from "../components/functions";
+import {History, Local, Server, Saving, Global} from "../components/functions";
 
 function Todo(self) {
 
-  const LOCAL_STORAGE_KEY = "todoApp.todos";
+  const TODO_STORAGE_KEY = "todoApp.todos";
 
   const [heading, setHeading] = useState("");
   const [todos_local, set_todos_local] = useState([]);
@@ -20,30 +20,40 @@ function Todo(self) {
 
   //* runs every render
   useEffect((todos_local) => {
-    if(Server.reachable && todos_local !== Server.todos) {
-      set_todos_local(Local.mergeArrays(todos_local, Server.todos));
+    if(Server.reachable && todos_local !== Global.todos) {
+      set_todos_local(Local.mergeArrays(todos_local, Global.todos));
     }
   }, [])
 
   //* runs on first render
   useEffect(() => {
-    const storedTodos = Saving.loadSave(LOCAL_STORAGE_KEY);
+    const storedTodos = Saving.loadSave(TODO_STORAGE_KEY);
     if(storedTodos) set_todos_local(storedTodos);
   }, [])
 
-  setInterval(() => {
-    // ! I need this one below. It's just a pain in development
-    // Server.ping();
-    if(to_add.length !== 0 && Server.reachable){
-      Local.addLocalTodos(to_add);
-      set_todos_local(Server.todos);
-      History.add("Adding locally stored todos to server todos");
+  // setInterval(() => {
+  //   if(to_add.length !== 0 && Server.reachable){
+  //     Local.addLocalTodos(to_add);
+  //     set_todos_local(Global.todos);
+  //     History.add("Adding locally stored todos to server todos");
 
-      for(var i=to_add.length+1; i>to_add.length; i--){
-        to_add.pop();}
+  //     for(var i=to_add.length+1; i>to_add.length; i--){
+  //       to_add.pop();}
+  //   }
+  //   forceUpdate();
+  // }, 5000)
+
+   setInterval(() => {
+    if(Server.reachable && todos_local !== Global.todos) {
+      console.log("adding the stuff");
+      console.log(todos_local === Global.todos);
+      console.log(todos_local)
+      console.log(Global.todos);
+      Local.mergeArrays(todos_local, Global.todos) 
+      set_todos_local(Global.todos);
+      forceUpdate();
     }
-    forceUpdate();
-  }, 20000)
+  }, 5000)
 
   function wait(delay) {
     return new Promise( res => setTimeout(res, delay) );
@@ -58,17 +68,20 @@ function Todo(self) {
         index: todos_local.length,
         heading: tmp_heading,
         finished: false })
+
       forceUpdate();
 
       await Server.ping();
+
       if(Server.reachable){
         History.add("Adding server todo: " + tmp_heading);
         await Server.addTodo(tmp_heading);
       }else {
         History.add("Added local todo: " + tmp_heading);
         to_add.push(tmp_heading);}
+
       tmp_heading = "";
-      Saving.saveLocal(LOCAL_STORAGE_KEY, todos_local);
+      Saving.saveLocal(TODO_STORAGE_KEY, todos_local);
     }
   }
 
@@ -83,7 +96,7 @@ function Todo(self) {
       todos_local[i]["index"] = i;}
     await Server.deleteTodo(index);
     forceUpdate();
-    Saving.saveLocal(LOCAL_STORAGE_KEY, todos_local);
+    Saving.saveLocal(TODO_STORAGE_KEY, todos_local);
 }
 
   return (

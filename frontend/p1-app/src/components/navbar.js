@@ -10,7 +10,9 @@ function Navbar(self){
 
   setInterval(() => {
     forceUpdate();
-  }, 10000)
+    //! For final build uncomment this or maybe dont
+    // Server.ping();
+  }, 5000)
 
   function dev_active(){
     if(self.activePage === "Dev" && self.menuOpen){return true}
@@ -23,7 +25,8 @@ function Navbar(self){
       <h3 className={dev_active() ? "c_main_accent" : ""}>{self.activePage}</h3>
       <div 
         className={self.menuOpen ? "openMenu_BTN" : "openMenu_BTN active"} 
-        onClick={() => self.setMenu(!self.menuOpen)}>
+        onClick={() => self.setMenu(!self.menuOpen)}
+      >
         <span className={dev_active() ? "bg_main_accent" : ""}/>
         <span className={dev_active() ? "bg_main_accent" : ""}/>
         <span className={dev_active() ? "bg_main_accent" : ""}/>

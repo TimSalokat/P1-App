@@ -1,7 +1,7 @@
 import React from 'react';
 import "../css/Dev.css";
 
-import { History, Server } from "../components/functions";
+import { History, Saving, Server, Global } from "../components/functions";
 
 const dev_variables = {
   show_dev_history: false,
@@ -19,8 +19,17 @@ const dev_variables = {
 
 export default function DevPage(self) {
 
+  const BACKEND_STORAGE_KEY = "todoApp.backend"
+
+  const [newBackend, setNewBackend] = React.useState("");
+
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
+
+  React.useState(() => {
+    let lastBackend = Saving.loadSave(BACKEND_STORAGE_KEY);
+    if (lastBackend !== undefined) Global.setBackend = lastBackend;
+  }, [])
 
   return (
     <div className={"PageContainer" + MenuOpen() + PageStatus()}>
@@ -44,7 +53,7 @@ export default function DevPage(self) {
           }}> Refetch <br/> Text </button>
 
           <button onClick={() => {
-            Server.checkReachability();
+            Server.ping();
             History.add("Pinging server", false, true);
             forceUpdate();          
           }}> Check <br/> Reachability </button>
@@ -52,6 +61,7 @@ export default function DevPage(self) {
           <button onClick={() => {
             dev_variables.setShowDev = !dev_variables.show_dev_history;
             History.add("Activated Dev History", true, true);
+            console.log(Global.backend);
             forceUpdate();
           }}> Show Dev <br/> History </button>
         </div>
@@ -59,8 +69,17 @@ export default function DevPage(self) {
         <span/>
 
         <div className="DevBackendContainer">
-          <input placeholder="New backend address"></input>
-          <button className="DevCommit_BTN"> Submit </button>
+          <input 
+            onChange={(e) => setNewBackend(e.target.value)} 
+            value={newBackend}
+            placeholder="New backend address"
+          ></input>
+          <button className="DevCommit_BTN" onClick={() => {
+            if(newBackend !== "") Global.setBackend = newBackend;
+            History.add(("New Backend: " + newBackend));
+            Saving.saveLocal(BACKEND_STORAGE_KEY, newBackend);
+            setNewBackend("");
+          }}> Submit </button>
         </div>
 
         <span/>

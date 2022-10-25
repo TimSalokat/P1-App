@@ -2,30 +2,30 @@ import React from 'react';
 import "../css/Global.css";
 import "../css/History.css";
 
+import {Saving} from "../components/functions";
+
 //TODO make history items with the dev tag only show when the show_dev in here is true
 // import { dev_variables } from './DevPage';
 
-// import {history} from "../components/functions";
 // import { show_dev_history } from './DevPage';
 
-// var displayed_history = [];
+
+const HISTORY_STORAGE_KEY = "todoApp.history";
 
 const displayed_history = {
   history: [],
 
   set update(new_history){
     this.history = new_history;
-    localStorage.setItem("todoApp.history", JSON.stringify(displayed_history.history))
+    Saving.saveLocal(HISTORY_STORAGE_KEY, displayed_history.history);
   }
 };
 
 export default function History(self) {
 
-  const LOCAL_STORAGE_KEY = "todoApp.history";
-
   //* runs on first render
   React.useEffect(() => {
-    const storedHistory = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    const storedHistory = Saving.loadSave(HISTORY_STORAGE_KEY);
     if(storedHistory) displayed_history.update = storedHistory;
   }, [])
 
