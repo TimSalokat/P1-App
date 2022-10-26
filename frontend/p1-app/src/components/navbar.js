@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import "../css/navbar.css";
 
@@ -8,7 +10,9 @@ function Navbar(self){
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
-  // ? This shit works
+  const [displayedReachability, setDisplayedReachability] = React.useState(Global.testo);
+  
+  // ? This shit works but not in build
   React.useEffect(() => {
     console.log(Global.testo);
   }, [Global.testo])
