@@ -7,24 +7,19 @@ import React from 'react';
 import "../css/navbar.css";
 
 import {Server, Global, History} from "../components/functions";
+import { local_todos } from '../pages/Todo';
 
 function Navbar(self){
 
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
-  const [displayedReachability, setDisplayedReachability] = React.useState(Global.testo);
-  
-  // ? This shit works but not in build
+  // ? This throws a warning, look up top. But it works and it's real cool
   React.useEffect(() => {
-    History.add(Global.testo);
-  }, [Global.testo])
-
-  setInterval(() => {
+    console.log("server change to " + Server.reachable);
+    local_todos.setTodos = Server.fetchTodos();
     forceUpdate();
-    //! For final build uncomment this or maybe dont
-    // Server.ping();
-  }, 5000)
+  }, [Server.reachable])
 
   function dev_active(){
     if(self.activePage === "Dev" && self.menuOpen){return true}
