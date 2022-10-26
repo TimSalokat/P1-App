@@ -14,8 +14,6 @@ const Global = {
     todos: [],
     mainText: "",
 
-    testo: "",
-
     set setBackend(new_backend){
         this.backend = new_backend;
         if(Server.ping()){
@@ -28,9 +26,6 @@ const Global = {
     },
     set setMainText(new_main_text){
         this.mainText = new_main_text;
-    },
-    set setTesto(new_testo){
-        this.testo=new_testo;
     }
 
 }
@@ -79,10 +74,9 @@ class Local {
         }
         console.warn(global_strikes);
         Server.fetchTodos();
-        return global_strikes;
+        return Global.todos;
+
     }
-
-
     
     static mergeArrays = (local, server) => {
         const merged = [...local, ...server];
