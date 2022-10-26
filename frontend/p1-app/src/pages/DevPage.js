@@ -19,17 +19,10 @@ const dev_variables = {
 
 export default function DevPage(self) {
 
-  const BACKEND_STORAGE_KEY = "todoApp.backend"
-
   const [newBackend, setNewBackend] = React.useState("");
 
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
-
-  React.useState(() => {
-    let lastBackend = Saving.loadSave(BACKEND_STORAGE_KEY);
-    if (lastBackend !== undefined) Global.setBackend = lastBackend;
-  }, [])
 
   return (
     <div className={"PageContainer" + MenuOpen() + PageStatus()}>
@@ -77,7 +70,7 @@ export default function DevPage(self) {
           <button className="DevCommit_BTN" onClick={() => {
             if(newBackend !== "") Global.setBackend = newBackend;
             History.add(("New Backend: " + newBackend));
-            Saving.saveLocal(BACKEND_STORAGE_KEY, newBackend);
+            Saving.saveLocal(Global.BACKEND_KEY, newBackend);
             setNewBackend("");
           }}> Submit </button>
         </div>

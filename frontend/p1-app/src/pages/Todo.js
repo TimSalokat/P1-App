@@ -8,8 +8,6 @@ import {History, Local, Server, Saving, Global} from "../components/functions";
 
 function Todo(self) {
 
-  const TODO_STORAGE_KEY = "todoApp.todos";
-
   const [heading, setHeading] = useState("");
   const [todos_local, set_todos_local] = useState([]);
   const [to_add,] = useState([]);
@@ -20,6 +18,7 @@ function Todo(self) {
 
   //* runs every render
   useEffect((todos_local) => {
+    console.log("tryin other stuff");
     if(Server.reachable && todos_local !== Global.todos) {
       set_todos_local(Local.mergeArrays(todos_local, Global.todos));
     }
@@ -27,7 +26,7 @@ function Todo(self) {
 
   //* runs on first render
   useEffect(() => {
-    const storedTodos = Saving.loadSave(TODO_STORAGE_KEY);
+    const storedTodos = Saving.loadSave(Global.TODO_KEY);
     if(storedTodos) set_todos_local(storedTodos);
   }, [])
 
@@ -81,7 +80,7 @@ function Todo(self) {
         to_add.push(tmp_heading);}
 
       tmp_heading = "";
-      Saving.saveLocal(TODO_STORAGE_KEY, todos_local);
+      Saving.saveLocal(Global.TODO_KEY, todos_local);
     }
   }
 
@@ -96,7 +95,7 @@ function Todo(self) {
       todos_local[i]["index"] = i;}
     await Server.deleteTodo(index);
     forceUpdate();
-    Saving.saveLocal(TODO_STORAGE_KEY, todos_local);
+    Saving.saveLocal(Global.TODO_KEY, todos_local);
 }
 
   return (

@@ -11,16 +11,19 @@ import Todo from './pages/Todo';
 import History from './pages/History';
 import DevPage from './pages/DevPage';
 
-import { Saving } from './components/functions';
+import { Saving, Global } from './components/functions';
 
 function App() {
     const [menuOpen, setMenuOpen] = useState(true);
-    const [activePage, setActivePage] = useState("Dev");
+    const [activePage, setActivePage] = useState("");
     const [colorScheme,] = useState("defaultScheme");
 
     React.useEffect(() => {
-        let last_page = Saving.loadSave("todoApp.last_page");
+        let last_page = Saving.loadSave(Global.PAGE_KEY);
         if (last_page !== undefined) setActivePage(last_page);
+
+        let lastBackend = Saving.loadSave(Global.BACKEND_KEY);
+        if (lastBackend !== undefined) Global.setBackend = lastBackend;
     }, [])
 
     return (

@@ -5,6 +5,11 @@ import { dev_variables } from "../pages/DevPage";
 var history = [];
 
 const Global = {
+    BACKEND_KEY: "todoApp.backend",
+    HISTORY_KEY: "todoApp.history",
+    TODO_KEY: "todoApp.todos",
+    PAGE_KEY: "todoApp.last_page",
+
     backend: "http://127.0.0.1:8000",
     todos: [],
     mainText: "",
@@ -54,7 +59,7 @@ class Saving {
 }
 
 class Local {
-    static mergeArrays = (local=[], server=Server.todos) => {
+    static mergeArraysOld = (local=[], server=Server.todos) => {
         const merged = server;
         var strikes = 0;
         for(var i=0; i<local.length; i++){
@@ -71,6 +76,15 @@ class Local {
             strikes = 0;
         }
         Server.fetchTodos();
+    }
+
+
+    
+    static mergeArrays = (local, server) => {
+        const merged = [...local, ...server];
+        const mergedFiltered = [...new Set(merged)];
+
+        console.log(mergedFiltered);
     }
 
     static addLocalTodos = async (to_add) => {
@@ -94,6 +108,7 @@ class Server{
             const response = await res.json();
             if (response === true) {
                 this.reachable = true;
+                Server.fetchTodos();
                 return true;
             } else {
                 this.reachable = false;

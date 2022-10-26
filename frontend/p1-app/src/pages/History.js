@@ -2,22 +2,19 @@ import React from 'react';
 import "../css/Global.css";
 import "../css/History.css";
 
-import {Saving} from "../components/functions";
+import {Saving, Global} from "../components/functions";
 
-//TODO make history items with the dev tag only show when the show_dev in here is true
+//TODO make history only show if certain dev setting is true
 // import { dev_variables } from './DevPage';
 
 // import { show_dev_history } from './DevPage';
-
-
-const HISTORY_STORAGE_KEY = "todoApp.history";
 
 const displayed_history = {
   history: [],
 
   set update(new_history){
     this.history = new_history;
-    Saving.saveLocal(HISTORY_STORAGE_KEY, displayed_history.history);
+    Saving.saveLocal(Global.HISTORY_KEY, displayed_history.history);
   }
 };
 
@@ -25,7 +22,7 @@ export default function History(self) {
 
   //* runs on first render
   React.useEffect(() => {
-    const storedHistory = Saving.loadSave(HISTORY_STORAGE_KEY);
+    const storedHistory = Saving.loadSave(Global.HISTORY_KEY);
     if(storedHistory) displayed_history.update = storedHistory;
   }, [])
 
