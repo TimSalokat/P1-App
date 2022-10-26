@@ -57,6 +57,11 @@ export default function DevPage(self) {
             console.log(Global.backend);
             forceUpdate();
           }}> Show Dev <br/> History </button>
+
+          <button onClick={() => {
+            Global.setTesto = Global.testo += 1;
+            forceUpdate();
+          }}> testo </button>
         </div>
 
         <span/>

@@ -1,12 +1,17 @@
 import React from 'react';
 import "../css/navbar.css";
 
-import {Server} from "../components/functions";
+import {Server, Global} from "../components/functions";
 
 function Navbar(self){
 
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
+
+  // ? This shit works
+  React.useEffect(() => {
+    console.log(Global.testo);
+  }, [Global.testo])
 
   setInterval(() => {
     forceUpdate();

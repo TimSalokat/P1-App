@@ -20,7 +20,9 @@ function Todo(self) {
   useEffect((todos_local) => {
     console.log("tryin other stuff");
     if(Server.reachable && todos_local !== Global.todos) {
-      set_todos_local(Local.mergeArrays(todos_local, Global.todos));
+      let merged = Local.mergeArraysOld(todos_local, Global.todos);
+      console.log(merged);
+      set_todos_local(merged);
     }
   }, [])
 
@@ -42,14 +44,13 @@ function Todo(self) {
   //   forceUpdate();
   // }, 5000)
 
-   setInterval(() => {
+  // ! I need a switch function for getting and losing the server connection
+  setInterval(async () => {
     if(Server.reachable && todos_local !== Global.todos) {
       console.log("adding the stuff");
-      console.log(todos_local === Global.todos);
-      console.log(todos_local)
-      console.log(Global.todos);
-      Local.mergeArrays(todos_local, Global.todos) 
-      set_todos_local(Global.todos);
+      let strikes = await Local.mergeArraysOld(todos_local, Global.todos);
+      console.warn(strikes);
+      set_todos_local(await Server.fetchTodos);
       forceUpdate();
     }
   }, 5000)

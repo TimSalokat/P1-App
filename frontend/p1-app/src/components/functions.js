@@ -14,24 +14,24 @@ const Global = {
     todos: [],
     mainText: "",
 
+    testo: "",
+
     set setBackend(new_backend){
         this.backend = new_backend;
         if(Server.ping()){
             Server.fetchText();
             Server.fetchTodos();
-        }else{
-            console.error("Server not reachable");
-        };
-
+        }else{console.error("Server not reachable");};
     },
-
     set setTodos(new_todos){
         this.todos = new_todos;
     },
-
     set setMainText(new_main_text){
         this.mainText = new_main_text;
-    } 
+    },
+    set setTesto(new_testo){
+        this.testo=new_testo;
+    }
 
 }
 class History {
@@ -60,8 +60,9 @@ class Saving {
 
 class Local {
     static mergeArraysOld = (local=[], server=Server.todos) => {
-        const merged = server;
-        var strikes = 0;
+        let merged = server;
+        let strikes = 0;
+        let global_strikes = 0;
         for(var i=0; i<local.length; i++){
             for(var y=0; y<server.length; y++){
                 if(local[i].heading === server[y].heading){
@@ -73,9 +74,12 @@ class Local {
                 Server.addTodo(local[i].heading)
                 merged.push(local[i]);
             }
+            global_strikes += strikes;
             strikes = 0;
         }
+        console.warn(global_strikes);
         Server.fetchTodos();
+        return global_strikes;
     }
 
 
