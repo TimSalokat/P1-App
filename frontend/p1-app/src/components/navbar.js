@@ -1,9 +1,12 @@
+
+// !This one disables all errors and warnings. 
+// ! That shit scary
 /* eslint-disable */
 
 import React from 'react';
 import "../css/navbar.css";
 
-import {Server, Global} from "../components/functions";
+import {Server, Global, History} from "../components/functions";
 
 function Navbar(self){
 
@@ -14,7 +17,7 @@ function Navbar(self){
   
   // ? This shit works but not in build
   React.useEffect(() => {
-    console.log(Global.testo);
+    History.add(Global.testo);
   }, [Global.testo])
 
   setInterval(() => {
