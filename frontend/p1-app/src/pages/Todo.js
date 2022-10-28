@@ -1,3 +1,8 @@
+// !This one disables all errors and warnings. 
+// ! That shit scary
+/* eslint-disable */
+/* eslint-enable */
+
 import React, {useState, useEffect} from 'react';
 import TodoItem from '../components/todoItem';
 import {BiSend} from "react-icons/bi";
@@ -6,77 +11,35 @@ import "../css/Todo.css";
 
 import {History, Local, Server, Saving, Global} from "../components/functions";
 
-export const local_todos = {
-  todos: new Array,
-
-  set setTodos(new_todos){
-    this.todos = new_todos;
-  }
-}
-
 function Todo(self) {
 
   const [heading, setHeading] = useState("");
-  const [to_add,] = useState([]);
   // const [to_remove,] = useState([]);
-
-  const [displayedTodos, setDisplayedTodos] = useState([]);
 
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
-  //* runs every render
-  // useEffect((local_todos.todos) => {
-  //   console.log("tryin other stuff");
-  //   if(Server.reachable && local_todos.todos !== Global.todo) {
-  //     let merged = Local.mergeArraysOld(local_todos.todos, Global.todo);
-  //     console.log(merged);
-  //     local_todos.setTodos = merged;
-  //   }
-  // }, [])
-
   //* runs on first render
-  useEffect((todo) => {
+  useEffect(() => {
     const storedTodos = Saving.loadSave(Global.TODO_KEY);
-    if(storedTodos !== undefined) local_todos.setTodos = storedTodos;
-    setDisplayedTodos(local_todos.todos);
+    const storedTodosToAdd = Saving.loadSave(Global.TODO_TO_ADD_KEY, true)
+    if(storedTodos !== undefined) Global.setDisplayedTodos = storedTodos;
+    if(storedTodosToAdd !== undefined) Global.setTodosToAdd = storedTodosToAdd;
+    console.log(Global.todosToAdd);
   }, [])
 
-  // setInterval(() => {
-  //   if(to_add.length !== 0 && Server.reachable){
-  //     Local.addLocalTodos(to_add);
-  //     local_todos.setTodos = Global.todo;
-  //     History.add("Adding locally stored todos to server todos");
+  //! Eslint disable removes the warning and i think errors when runnin this part 
+  /* eslint-disable */
+  useEffect(() => {
+    if(Server.reachable) {
+      console.log(Global.todosToAdd);
+      Local.addLocalTodos();
+      History.add("Synced local and server todos");
 
-  //     for(var i=to_add.length+1; i>to_add.length; i--){
-  //       to_add.pop();}
-  //   }
-  //   forceUpdate();
-  // }, 5000)
-
-  // ! I need a switch function for getting and losing the server connection
-  // setInterval(async () => {
-  //   if(Server.reachable && local_todos.todos !== Global.todos) {
-  //     console.log("adding the stuff");
-  //     let strikes = await Local.mergeArraysOld(local_todos.todos, Global.todos);
-  //     console.warn(strikes);
-  //     todo.todoLocal = await Server.fetchTodos;
-  //     forceUpdate();
-  //   }
-  // }, 10000)
-
-  //! dun know why this doesnt update each time when server.reachable changes. 
-  useEffect((todo) => {
-    console.log("update todo");
-    if(Server.reachable && false) {
-      console.log("Adding local todos");
-      let merged = Local.mergeArrays(local_todos.todos, Global.todos);
-      console.log(merged);
-      todo.todoLocal = merged;
-      console.log(local_todos.todos);
-      console.log(Global.todos);
+      Global.setDisplayedTodos = Global.serverTodos;
     }
   }, [Server.reachable])
+  /*eslint-enable */
 
   function wait(delay) {
     return new Promise( res => setTimeout(res, delay) );
@@ -87,8 +50,8 @@ function Todo(self) {
       var tmp_heading = heading;
       setHeading("");
 
-      local_todos.todos.push({
-        index: local_todos.todos.length,
+      Global.displayedTodos.push({
+        index: Global.displayedTodos.length,
         heading: tmp_heading,
         finished: false })
 
@@ -101,36 +64,38 @@ function Todo(self) {
         await Server.addTodo(tmp_heading);
       }else {
         History.add("Added local todo: " + tmp_heading);
-        to_add.push(tmp_heading);}
+        Global.todosToAdd.push(tmp_heading);}
+        console.log(Global.todosToAdd);
+        Saving.saveLocal(Global.TODO_TO_ADD_KEY, Global.todosToAdd);
 
       tmp_heading = "";
-      Saving.saveLocal(Global.TODO_KEY, local_todos.todos);
+      Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
     }
   }
 
   const delTodo = async (index) => {
-    History.add("Deleting todo: " + local_todos.todos[index]["heading"]);
+    History.add("Deleting todo: " + Global.displayedTodos[index]["heading"]);
     await Server.finishTodo(index);
     await wait(700);
-    local_todos.todos.splice(index,1);
+    Global.displayedTodos.splice(index,1);
 
     //* update indexes
-    for(var i=0; i<local_todos.todos.length; i++){
-      local_todos.todos[i]["index"] = i;}
+    for(var i=0; i<Global.displayedTodos.length; i++){
+      Global.displayedTodos[i]["index"] = i;}
     await Server.deleteTodo(index);
     forceUpdate();
-    Saving.saveLocal(Global.TODO_KEY, local_todos.todos);
+    Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
 }
 
   return (
   <>
     <div className={"PageContainer" + MenuOpen() + PageStatus()}>
-      <div className={local_todos.todos.length === 0 ? "todoPageEmpty shown" : "todoPageEmpty hidden"}>
+      <div className={Global.displayedTodos.length === 0 ? "todoPageEmpty shown" : "todoPageEmpty hidden"}>
         <h1> Congrats! <br/> You're done for <br/> the moment </h1>
       </div>
 
       <div className="todoPageContainer">
-        {displayedTodos.map((todo) => (
+        {Global.displayedTodos.map((todo) => (
             <TodoItem 
             key={todo.index}
             todo={todo}

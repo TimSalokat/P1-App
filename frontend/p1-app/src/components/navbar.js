@@ -7,7 +7,6 @@ import React from 'react';
 import "../css/navbar.css";
 
 import {Server, Global, History} from "../components/functions";
-import { local_todos } from '../pages/Todo';
 
 function Navbar(self){
 
@@ -16,8 +15,7 @@ function Navbar(self){
 
   // ? This throws a warning, look up top. But it works and it's real cool
   React.useEffect(() => {
-    console.log("server change to " + Server.reachable);
-    local_todos.setTodos = Server.fetchTodos();
+    console.log("Server change to " + Server.reachable);
     forceUpdate();
   }, [Server.reachable])
 

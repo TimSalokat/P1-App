@@ -61,6 +61,7 @@ export default function DevPage(self) {
           <button onClick={() => {
             Global.setTesto = Global.testo += 1;
             forceUpdate();
+            Saving.saveLocal(Global.TODO_TO_ADD_KEY, Global.todosToAdd);
           }}> testo </button>
         </div>
 

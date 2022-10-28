@@ -8,10 +8,13 @@ const Global = {
     BACKEND_KEY: "todoApp.backend",
     HISTORY_KEY: "todoApp.history",
     TODO_KEY: "todoApp.todos",
+    TODO_TO_ADD_KEY: "todoApp.to_add",
     PAGE_KEY: "todoApp.last_page",
 
     backend: "http://127.0.0.1:8000",
-    todos: [],
+    serverTodos: [],
+    displayedTodos: [],
+    todosToAdd: [],
     mainText: "",
 
     set setBackend(new_backend){
@@ -21,12 +24,15 @@ const Global = {
             Server.fetchTodos();
         }else{console.error("Server not reachable");};
     },
-    set setTodos(new_todos){
-        this.todos = new_todos;
-    },
+    set setServerTodos(new_todos){
+        this.serverTodos = new_todos;},
+    set setDisplayedTodos(new_todos){
+        this.displayedTodos = new_todos;},
+    set setTodosToAdd(new_todos_to_add){
+        this.todosToAdd = new_todos_to_add;},
+
     set setMainText(new_main_text){
-        this.mainText = new_main_text;
-    }
+        this.mainText = new_main_text;}
 
 }
 class History {
@@ -46,50 +52,26 @@ class Saving {
         localStorage.setItem(KEY, JSON.stringify(toSave));
     }
     
-    static loadSave = ( KEY ) => {
+    static loadSave = ( KEY, raw = false) => {
         const stored = JSON.parse(localStorage.getItem(KEY));
-        if(stored) return stored;
+        if(raw) return stored
+        if(stored !== null) return stored;
     }
 
 }
 
 class Local {
-    static mergeArraysOld = (local=[], server=Server.todos) => {
-        let merged = server;
-        let strikes = 0;
-        let global_strikes = 0;
-        for(var i=0; i<local.length; i++){
-            for(var y=0; y<server.length; y++){
-                if(local[i].heading === server[y].heading){
-                    strikes++;
-                }
-            }
 
-            if(strikes === 0){
-                Server.addTodo(local[i].heading)
-                merged.push(local[i]);
-            }
-            global_strikes += strikes;
-            strikes = 0;
+    static addLocalTodos = async () => {
+        if(Global.todosToAdd === undefined) return;
+        for(var index=0; index < Global.todosToAdd.length; index++){
+            Server.addTodo(Global.todosToAdd[index]);
         }
-        console.warn(global_strikes);
-        Server.fetchTodos();
-        return Global.todos;
+        Global.setTodosToAdd = [];
+        Saving.saveLocal(Global.TODO_TO_ADD_KEY, Global.todosToAdd);
 
-    }
-    
-    static mergeArrays = (local, server) => {
-        const merged = [...local, ...server];
-        const mergedFiltered = [...new Set(merged)];
-
-        console.log(mergedFiltered);
-    }
-
-    static addLocalTodos = async (to_add) => {
-        for(var index=0; index < to_add.length; index++){
-            Server.addTodo(to_add[index]);
-        }
         History.add("Successfully added local todos", false);
+        Server.fetchTodos();
     }
 
 }
@@ -107,9 +89,11 @@ class Server{
             if (response === true) {
                 this.reachable = true;
                 Server.fetchTodos();
+                console.warn("Server reached");
                 return true;
             } else {
                 this.reachable = false;
+                console.warn("Server unreachable");
                 return false;
             }
         } catch {
@@ -133,8 +117,8 @@ class Server{
             const res = await fetch(Global.backend + "/get-todos");
             const response = await res.json();
 
-            Global.setTodos = await response.todos;
-            return Global.todos;
+            Global.setServerTodos = await response.todos;
+            return Global.serverTodos;
         }catch {}
     }
 
