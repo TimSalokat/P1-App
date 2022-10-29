@@ -1,8 +1,22 @@
-* {
-    font-size: 17px;
+
+.todoSeperator {
+    min-width: 1.5px;
+    height: 40px;
+    background-color: var(--main_accent);
+    margin: 5px;
 }
 
-.todoPageContainer {
+.todoPageContainer{
+    height: 100%;
+    width: 100%;
+    background-color: var(--main_background);
+}
+
+#superContainer:not([data-activepage="Todo"]) .todoPageContainer {
+    display: none;
+}
+
+.todoContainer {
     position: absolute;
     padding: 0;
     margin: 10px;
@@ -16,16 +30,16 @@
     align-items: center;
     overflow-x: hidden;
     overflow-y:scroll;
-} .todoPageContainer::-webkit-scrollbar{
+} .todoContainer::-webkit-scrollbar{
     width: 5px;
     border-radius: 3px;
-} .todoPageContainer::-webkit-scrollbar-track{
-    background: var(--dark_main);
+} .todoContainer::-webkit-scrollbar-track{
+    background: var(--secondary_background);
     border-radius: 3px;
     margin-top: 200px;
     margin-bottom: 200px;
-} .todoPageContainer::-webkit-scrollbar-thumb{
-    background: var(--light_main);
+} .todoContainer::-webkit-scrollbar-thumb{
+    background: var(--main_accent);
     border-radius: 3px;
     height: 60px;
 }
@@ -34,30 +48,35 @@
     position: absolute;
     margin: 0px;
     padding: 15px;
-    width: calc(100% - 30px);
-    height: 50px;
-    border-radius: 30px 30px 0px 0px;
-    bottom: 0px;
-    background-color: var(--light_gray);
+    width: calc(95%);
+    left: 2.5vw;
+    height: 60px;
+    border-radius: 30px;
+    bottom: 1.25vh;
+    background-color: var(--secondary_background);
+    color: var(--text_color);
     border: none;
 } .todoInput:focus {
     outline: none;
+} .todoInput::placeholder{
+    color: var(--text_color);
 }
 
 .todoPostButton{
+    aspect-ratio: 1 / 1;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--lightest_gray);
-    width: 70px;
-    height: 70px;
-    border-radius: 40px;
-    bottom: 30px;
-    right: 20px;
+    background-color: var(--text_color);
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    bottom: 1.25vh;
+    right: 2.5vw;
     cursor: pointer;
 } .todoPostIcon {
-    color: var(--main_accent);
+    color: var(--main_background);
     position: absolute;
     height: 50px;
     width: 40px;
@@ -67,23 +86,19 @@
 .todoPageEmpty {
     position: absolute;
     padding: 0;
-    margin: 10px;
-    height: 150px;
-    margin-top: calc(50% - 20px);
-    width: calc(100% - 20px);
+    margin-top: calc(50%);
+    width: calc(100%);
     top: 100px;
     border-radius: 30px;
-    /* background: var(--light_gray); */
     background: none;
-    opacity: .5;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 } .todoPageEmpty h1 {
-    font-size: 25px;
-    /* color: var(--main_accent); */
-    color: var(--light_gray);
+    font-size: 30px;
+    color: var(--text_color);
+    font-weight: 400;
 }
 .todoPageEmpty.hidden {
     opacity: 0%;}
@@ -97,87 +112,74 @@
     bottom: 0;
 }
 
-
 .todoItemContainer{
     display: flex;
-    height: 50px;
+    min-height: 60px;
     width: calc(100% - 30px); 
     margin: 10px;
     padding: 5px;
     border-radius: 15px;
     align-items: center;
-    background-color: var(--gray);
-    /* TODO see keyframes */
-    /* animation: init_todo_anim .4s ease-in-out forwards; */
+    background-color: var(--secondary_background);
     transition: 
         all .5s,
         transform 1s,
         translateY 1s,
         translateX .5s,
         opacity .5s,
-        scale .25s
+        scale .25s,
+        background-color 0s 
         ease-in-out;
-} .todoItemContainer p {
-    color: var(--main_accent);
-} /* .todoItemContainer:hover {
-    scale: 1.05;
-} */ .todoItemContainer div {
+} .todoItemContainer h4 {
+    color: var(--text_color);
+    text-transform: capitalize;
+    margin: 5px;
+    font-weight: 400;
+} .todoItemContainer div {
     height: 100%;
     display: flex;
-    transition: 1s ease-in-out;
     align-items: center;
     justify-content: center;
-} .todoItemContainer div:nth-child(1){
-    width: 40px;
-    height: 40px;
-    background-color: var(--lightest_gray);
-    border-radius: 25px;
-    margin: 5px;
-    transition: rotate .25s ease-in-out;
-} .todoItemContainer div:nth-child(1):hover{
-    cursor: pointer;
-} /* .todoItemContainer div .todocheckbox:hover {
-    rotate: 45deg;
-} */ .todoItemContainer div:nth-child(2){
-    width: calc(100% - 50px);
-    border-left: 2px solid var(--main_accent);
-    border-radius: 2px;
-    margin: 0 0 0 0;
-    max-height: 50px;
-    padding-left: 10px;
+} .todoItemContainer div:nth-child(2){
+    transition: 1s ease-in-out;
+    width: calc(100% - 40px);
     justify-content: left;
     overflow: hidden;
+    margin: 5px;
 } 
 
-/* TODO Not in use rn because buggy */
-/* @keyframes init_todo_anim {
-    0%{opacity: 0;
-    transform: translateY(50px);}
-    70%{opacity: 1;}
-    100%{transform: translateY(0px);}
-} */
-
-.todocheckbox, .todocheckbox_finished {
-    position: absolute;
-    color: var(--main_accent);
-    height: 20px;
-    width: 20px;
-    transition: 0.3s;
+.checkBox {
+    min-width: 20px;
+    min-height: 20px;
+    border-radius: 100%;
+    border: 3px solid var(--main_accent);
+    padding: 0px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.todocheckbox_finished {
-    animation: todoIcon_finish_anim .25s ease-in-out;
+.finished {
+    background-color: var(--main_accent);
+    color: var(--text_color);
 }
 
-@keyframes todoIcon_finish_anim {
-    0% {
-        rotate: 270deg;}
-    100% {
-        rotate: 0;}
+.icon.notFinished{
+    opacity: 0%;
 }
-.taskActive { text-decoration: none; } 
+
+.icon {
+    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+.taskActive { text-decoration: none var(--text_color); } 
 .taskFinished { 
-    text-decoration:line-through;
+    text-decoration:line-through var(--text_color);
     transform: translateY(0px);
     animation: todoItem_slideOut .5s forwards ease-in-out;
 }

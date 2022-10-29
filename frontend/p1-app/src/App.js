@@ -3,71 +3,47 @@ import './App.css';
 import "./css/Global.css";
 import { useState } from 'react';
 
+import Init from './init';
+
 import Navbar from './components/navbar';
 import SideMenu from './components/sideMenu';
+import History from './components/History';
+
 import Home from './pages/Home';
-import Chat from './pages/Chat';
 import Todo from './pages/Todo';
-import History from './pages/History';
 import DevPage from './pages/DevPage';
 
-import { Saving, Global } from './components/functions';
-
 function App() {
-    const [menuOpen, setMenuOpen] = useState(true);
-    const [activePage, setActivePage] = useState("");
-    const [colorScheme,] = useState("defaultScheme");
-
-    React.useEffect(() => {
-        let last_page = Saving.loadSave(Global.PAGE_KEY);
-        if (last_page !== undefined) setActivePage(last_page);
-
-        let lastBackend = Saving.loadSave(Global.BACKEND_KEY);
-        if (lastBackend !== undefined) Global.setBackend = lastBackend;
-    }, [])
+    const [displayedPage, setDisplayedPage] = useState("");
+    const [colorScheme,] = useState("testScheme2");
 
     return (
-    <div className={'superContainer ' + colorScheme}>
-        <SideMenu 
-            menuOpen={menuOpen} 
-            setMenuOpen={setMenuOpen}
-            activePage={activePage}
-            setActivePage={setActivePage}
-        />
-        
-        <PageUnderlay menuOpen={menuOpen}/>
-    
-        <Home menuOpen={menuOpen} activePage={activePage}/>
-        <Chat menuOpen={menuOpen} activePage={activePage}/>
-        <Todo menuOpen={menuOpen} activePage={activePage}/>
-        <History menuOpen={menuOpen} activePage={activePage}/>
-        <DevPage menuOpen={menuOpen} activePage={activePage}/>
+    <div 
+        id="superContainer"
+        className={'superContainer ' + colorScheme} 
+        data-menuopen="true"
+        data-activepage="Home" 
+    >
+        <Init setDisplayedPage={setDisplayedPage}/>
 
-        <PageOverlay menuOpen={menuOpen}/>
+        <SideMenu
+            setDisplayedPage={setDisplayedPage}
+        />
+
+        <div className='PageWrapper'>
+            <Home/>
+            <Todo/>
+            <DevPage />
+        </div>
+
+        <div id="PageOverlay"/>
+        <History/>
 
         <Navbar 
-            setMenu={setMenuOpen} 
-            menuOpen={menuOpen}
-            activePage={activePage}
+            displayedPage={displayedPage}
         />
     </div>
     )
 }
-
-function PageUnderlay(self) {
-    function MenuOpen() {
-        return (self.menuOpen ? " MenuClosed" : " MenuOpen") }
-    return (
-        <div className={"PageContainer Underlay" + MenuOpen()}/>
-    )
-}
-
-const PageOverlay = (self) => {
-    function MenuOpen() {
-        return (self.menuOpen ? " MenuClosed" : " MenuOpen")}
-    return (
-        <div className={'PageContainer Overlay' + MenuOpen()}/>
-    )
-} 
 
 export default App

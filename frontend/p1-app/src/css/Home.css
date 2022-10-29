@@ -1,38 +1,28 @@
 
-.icon {
+.HomeContainer {
     position: absolute;
-    top: calc(25% - 75px);;
-    left: calc(50% - 75px);
-    width: 150px;
-    height: 150px;
+    width: calc(100%);
+    height: calc(100%);
+    background-color: var(--main_background);
+    bottom: 0;
+    padding: 20px;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
 }
 
-.homeContainer {
-    position: absolute;
-    width: calc(360px - 10%);
-    height: calc(50%);
-    bottom: 0;
-    border-radius: 50px 50px 0px 0px;
-    padding: calc(5%);
-    background: var(--dark_main);
-    box-shadow: 0px -15px 90px var(--main_accent);
-    justify-content: center;
-    align-content: center;
-} .homeContainer h1 {
-    font-size: 45px;
-    line-height: 45px;
-    text-align: center;
-    text-transform: capitalize;
-    text-decoration: underline;
-} .homeContainer h3 {
-    font-size: 25px;
-    text-align: center;
-    left: calc(50%);
-    padding-left: calc(10%);
-    padding-right: calc(10%);
-}.homeContainer button {
-    position: absolute;
-    right: calc(50% - 60px);
-    width: 120px;
-    height: 40px;
+#superContainer:not([data-activepage="Home"]) .HomeContainer {
+    display: none;
+}
+
+.SectionContainer{
+    background-color: red;
+    border-radius: 10px;
+    width: 100%;
+    min-height: 15vh;
+    margin: 10px 0px;
+    padding: 10px;
+} .SectionContainer h2 {
+    font-size: 1.2rem;
+    border-bottom: 2px solid var(--text_color);
 }

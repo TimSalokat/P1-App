@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/Todo.css";
-import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
+import { MdCheckBoxOutlineBlank, MdCheckBox, MdDone} from "react-icons/md";
 
 function TodoItem(self) {
 
@@ -9,10 +9,9 @@ function TodoItem(self) {
 
     function isFinished() {
         if (self.todo.finished) {
-            return (<MdCheckBox className="todocheckbox_finished" />);
-        } else {
-            return (<MdCheckBoxOutlineBlank className="todocheckbox"/>);
-        }
+            // return (<MdCheckBox className="todocheckbox_finished" />);
+            return " finished"
+        } else return " notFinished"
     }
 
     function finishTodo_helper(index) {
@@ -23,11 +22,12 @@ function TodoItem(self) {
 
     return (
         <div className={self.todo.finished ? "todoItemContainer taskFinished" : "todoItemContainer taskActive"}>
-            <div onClick={() => finishTodo_helper(self.index)}>
-                {isFinished()}
+            <div className={"checkBox" + isFinished()} onClick={() => finishTodo_helper(self.index)}>
+                <MdDone className={"icon" + isFinished()}/>
             </div>
+            <span className="todoSeperator"/>
             <div>
-                <p>{self.heading.substring(0, 50) + (self.heading.length >= 50 ? "..." : "")}</p>
+                <h4>{self.heading.substring(0, 50) + (self.heading.length >= 50 ? "..." : "")}</h4>
             </div>
         </div>
     )

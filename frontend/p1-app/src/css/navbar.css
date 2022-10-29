@@ -6,13 +6,16 @@
     top: 0;
     justify-content: center;
     color: var(--lightest_gray);
-} .navbarContainer h3{
+    z-index: 15;
+} .navbarContainer h2{
     position: absolute;
-    font-size: 20px;
+    font-size: 22px;
+    font-weight: 300;
     top: 20px;
     left: 40px;
     margin: 0;
     transition: .5s;
+    text-shadow: 0px 3px 12px var(--shadow);
 }
 
 .openMenu_BTN, .reload_BTN{
@@ -44,11 +47,13 @@
 } .openMenu_BTN span:nth-child(2) {
     transform: translateY(9px);
 }
-.active span:nth-child(1){
+
+#superContainer:not([data-menuopen="true"])  .openMenu_BTN span:nth-child(1){
     transform: rotate(45deg);
-} .active span:nth-child(2){
+}
+#superContainer:not([data-menuopen="true"])  .openMenu_BTN span:nth-child(2){
     transform: rotate(315deg);
-} .active span:nth-child(3){
-    /* transform: translateX(90px); */
+}
+#superContainer:not([data-menuopen="true"])  .openMenu_BTN span:nth-child(3){
     width: 0px;
 }

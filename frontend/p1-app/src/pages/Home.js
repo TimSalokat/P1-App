@@ -2,7 +2,7 @@ import React from 'react';
 import "../css/Global.css";
 import "../css/Home.css";
 
-import { Server } from '../components/functions';
+import { Local, Server } from '../components/functions';
 
 function Home(self) {
 
@@ -21,22 +21,22 @@ function Home(self) {
     asyncFunc();
   }, [])
 
-  function PageStatus() {
-    return (self.activePage === "Home" ? " SlideIn" : " SlideOut");
-  }
-  function MenuOpen() {
-    if(self.activePage === "Home"){
-      return (self.menuOpen ? " MenuClosed" : " MenuOpen")
-    } return " MenuClosed";
-  }
-
   return (
-    <div className={"PageContainer" + MenuOpen() + PageStatus()}>
-      <img className="icon" alt="" src="../icon1@2x.png" />
-      <div className="homeContainer">
-        <h1> Neue News </h1>
-        <h3> {displayed_text} </h3>
+      
+      <div className={"HomeContainer"}>
+        <Section title="News">
+          <p>{displayed_text}</p>
+        </Section>
+        <Section title="Last Todos"/>
+        <Section title="Smth else"/>
       </div>
+  )
+}
+
+const Section = (self) => {
+  return (
+    <div className="SectionContainer">
+      <h2>{self.title}</h2>
     </div>
   )
 }

@@ -15,7 +15,7 @@
     --gray: rgb(225, 225, 225);
     --dark_gray: rgb(180,180,180, .5);
 
-    --gradient_main: linear-gradient(169.06deg, var(--dark_main) 26.78%, var(--dark_second) 132.23%);
+    --main_background: linear-gradient(169.06deg, var(--dark_main) 26.78%, var(--dark_second) 132.23%);
     --gradient_second: linear-gradient(192.26deg, var(--dark_second) 8.42%, var(--light_main) 100%);
 }
 
@@ -34,16 +34,36 @@
     --light_gray: rgb(245, 245, 245);
     --gray: rgb(225, 225, 225);
 
-    --gradient_main: linear-gradient(169.06deg, rgb(180,180,180) 26.78%, rgb(220,220,220) 132.23%);
+    --main_background: linear-gradient(169.06deg, rgb(180,180,180) 26.78%, rgb(220,220,220) 132.23%);
     --gradient_second: linear-gradient(192.26deg, var(--dark_second) 8.42%, var(--light_second) 100%);
 }
 
-.c_main_accent{
+.testScheme2 {
+    --text_color: rgb(235, 244, 252);
+
+    --main_accent: rgb(160, 35, 207);
+    --secondary_accent: rgb(49, 107, 211);
+
+    --lightest_gray: rgb(255,255,255);
+    --light_gray: rgb(245, 245, 245);
+    --gray: rgb(225, 225, 225);
+
+    --dark_shadow: rgb(80,80,80);
+
+    --main_background: rgb(52, 78, 161);
+    /* --main_background: rgb(95, 100, 187); */
+    --secondary_background: rgb(3, 25, 85);
+
+}
+
+.text_accent {
     color: var(--main_accent);
 }
 
-.bg_main_accent{
-    background-color: var(--main_accent);
+.text_inline {
+    font-size: inherit;
+    background: none;
+    display: inline;
 }
 
 .bulb {
@@ -60,97 +80,59 @@
     background-color: rgb(21, 225, 48);
 }
 
-.PageContainer {
+.imageContainer {
+    border: 3px solid var(--main_accent);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 100%;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    margin: 20px 0px;
+}
+
+.midIcon {
+    aspect-ratio: 1/1;
+    width: 90px;
+    height: 90px;
+    margin: 0px 0px 0px 0px;
+}
+
+.PageWrapper {
+    z-index: 0;
     position: fixed;
     max-width: 360px;
-    height: 100%;
+    height: calc(100%);
     width: 360px;
-    margin-left: 0;
-    background: var(--gradient_main);
-    transform: scale(1);
     overflow: hidden;
-    transition: 
-        scale 0.5s,
-        margin-left 0.5s,
-        border-radius 0.5s ease-in-out;
+    transition: .2s ease-in-out;
 }
 
-.PageContainer.MenuOpen.Overlay {
+#superContainer:not([data-menuopen="true"]) > .PageWrapper{
+    margin-left: calc(70%);;
+    border-radius: 40px;
+    scale: .95;
+}
+
+#PageOverlay {
+    background-color: black;
+    height: calc(100%);
+    width: calc(100%);
+    transition: .5s ease-in-out;
+    display: none;
     opacity: 0%;
+    margin-left: calc(70%);
+    border-radius: 40px 40px 40px 40px;
+    scale: .95;
+}
+
+#superContainer:not([data-menuopen="true"]) > #PageOverlay {
     z-index: 5;
-    scale: .7;
-} .PageContainer.MenuClosed.Overlay {
-    opacity: 0%;
-    z-index: -12;
-    scale: .7;
-} 
+    display: block;
+}
 
-.PageContainer.Underlay{
-    background: whitesmoke;
-    opacity: .5;
-    scale: .7;
-} .PageContainer.MenuClosed.Underlay {
-    transform: translateX(4000px);
-    border-radius: 0px;
-    margin: 0;
-    transition: all .5s 1s ease-in-out;
-} .PageContainer.MenuOpen.Underlay {
+.deactivated {
+    transform: translateX(400px);
+}
+.active{
     transform: translateX(0px);
-    opacity: .5;
-    border-radius: 60px 0px 0px 60px;
-    margin-left: calc(40% - 20px);
-    margin-top: 10px;
-}
-
-.PageContainer.MenuClosed {
-    scale: 1;
-    border-radius: 0px;
-    margin-left: calc(0%);
-} .PageContainer.MenuOpen {
-    scale: .7;
-    border-radius: 60px 0px 0px 60px;
-    margin-left: calc(40%);
-}
-
-.PageContainer.SlideOut {
-    transition: 0s;
-    animation: Page_SlideOut_anim 2s ease-in-out;
-    transform: translateX(400px) scale(.7);
-    opacity: 0%;
-} .PageContainer.SlideIn {
-    transform: translateX(0px) scale(1);
-    opacity: 100%;
-    animation: Page_SlideIn_anim 2s ease-in-out;
-} 
-
-@keyframes Page_SlideIn_anim {
-    0%{
-        transform: translateX(400px) scale(.7);
-        border-radius: 60px 60px 60px 60px;}
-    25% {
-        transform: translateX(400px) scale(.7);
-        margin-left: calc(40% + 10px);}
-    40% {
-        transform: translateX(0px) scale(.7);
-        margin-left: calc(40% + 10px);}
-    60% {
-        transform: translateX(0px) scale(.7);
-        border-radius: 60px 60px 60px 60px;}
-}
-
-@keyframes Page_SlideOut_anim {
-    0% {
-        transform: translateX(0px) scale(.7);
-        margin-left: calc(40%);
-        border-radius: 60px;}
-    39% {
-        opacity: 100;}
-    40% {
-        transform: translateX(400px) scale(.7);
-        opacity: 0;
-        margin-left: calc(40%);}
-    50% {
-        transform: translateX(400px) scale(.7);
-        opacity: 0;
-        margin-left: calc(40%);}
 }

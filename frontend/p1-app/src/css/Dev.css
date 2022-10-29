@@ -1,26 +1,32 @@
 
 .DevContainer {
+    position: absolute;
     height: 100%;
-    width: 360px;
-    background-color: var(--light_gray);
+    width: 100%;
+    top: 0;
+    background-color: var(--main_background);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 50px;
 } 
 
+#superContainer:not([data-activepage="Dev"]) .DevContainer {
+    display: none;
+}
+
 .DevContainer h2 {
     text-align: center;
     font-size: 28px;
     margin: 0;
-    color: var(--main_accent);
+    color: var(--text_color);
 }
 
 .DevContainer span {
     height: 2px;
     width: calc(100% - 70px);
     border-radius: 4px;
-    background-color: var(--main_accent);
+    background-color: var(--secondary_background);
     margin: 15px 0px;
 } 
 
@@ -35,12 +41,9 @@
     min-height: 50px;
     height: fit-content;
     border-radius: 10px;
-    background-color: var(--lightest_gray);
-    box-shadow: 0px 2px 5px var(--dark_main);
+    background-color: var(--secondary_background);
+    color: var(--text_color);
     transition: .5s ease-in-out;
-} .DevBtnContainer button:hover {
-    background-color: var(--main_accent);
-    color: var(--lightest_gray);
 }
 
 .DevBackendContainer {
@@ -49,8 +52,9 @@
 } 
 
 .DevBackendContainer button {
-    background-color: var(--lightest_gray);
-    box-shadow: 0px 1px 3px var(--dark_main);
+    background-color: var(--secondary_background);
+    color: var(--text_color);
+    height: 35px;
     border-radius: 5px;
     font-size: 14px;
     padding: 0px 15px;
@@ -58,11 +62,11 @@
 
 .DevBackendContainer input {
     width: 65vw;
-    height: 25px;
+    height: 35px;
     border-radius: 5px;
     border: none;
     background-color: var(--lightest_gray);
-    box-shadow: 0px 1px 3px var(--dark_main);
+    box-shadow: 0px 1px 3px var(--dark_shadow);
     margin-right: 10px;
     padding: 5px;
     font-size: 14px;
@@ -71,15 +75,15 @@
 }
 
 .lastActionField {
-    background-color: var(--gray);
-    /* height: 70px; */
+    background-color: var(--secondary_background);
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 20px 20px 0px 00px;
 }
 .lastActionField p {
-    color: var(--main_accent);
+    color: var(--text_color);
     text-align: center;
     margin: 0;
     opacity: .7;

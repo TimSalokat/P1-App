@@ -22,23 +22,24 @@ function Todo(self) {
   //* runs on first render
   useEffect(() => {
     const storedTodos = Saving.loadSave(Global.TODO_KEY);
-    const storedTodosToAdd = Saving.loadSave(Global.TODO_TO_ADD_KEY, true)
+    const storedTodosToAdd = Saving.loadSave(Global.TODO_TO_ADD_KEY, false)
     if(storedTodos !== undefined) Global.setDisplayedTodos = storedTodos;
     if(storedTodosToAdd !== undefined) Global.setTodosToAdd = storedTodosToAdd;
-    console.log(Global.todosToAdd);
   }, [])
 
   //! Eslint disable removes the warning and i think errors when runnin this part 
   /* eslint-disable */
   useEffect(() => {
     if(Server.reachable) {
-      console.log(Global.todosToAdd);
       Local.addLocalTodos();
       History.add("Synced local and server todos");
-
-      Global.setDisplayedTodos = Global.serverTodos;
+      Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
     }
   }, [Server.reachable])
+
+  useEffect(() => {
+    forceUpdate();
+  }, [Global.displayedTodos])
   /*eslint-enable */
 
   function wait(delay) {
@@ -64,8 +65,8 @@ function Todo(self) {
         await Server.addTodo(tmp_heading);
       }else {
         History.add("Added local todo: " + tmp_heading);
-        Global.todosToAdd.push(tmp_heading);}
-        console.log(Global.todosToAdd);
+        Global.todosToAdd.push(tmp_heading);
+      }
         Saving.saveLocal(Global.TODO_TO_ADD_KEY, Global.todosToAdd);
 
       tmp_heading = "";
@@ -89,12 +90,12 @@ function Todo(self) {
 
   return (
   <>
-    <div className={"PageContainer" + MenuOpen() + PageStatus()}>
+    <div className={"todoPageContainer"}>
       <div className={Global.displayedTodos.length === 0 ? "todoPageEmpty shown" : "todoPageEmpty hidden"}>
         <h1> Congrats! <br/> You're done for <br/> the moment </h1>
       </div>
 
-      <div className="todoPageContainer">
+      <div className="todoContainer">
         {Global.displayedTodos.map((todo) => (
             <TodoItem 
             key={todo.index}
@@ -105,10 +106,12 @@ function Todo(self) {
             />
         ))}
       </div>
+
       <div className='sticky'>
-        <textarea 
+        <input 
           className='todoInput' 
           placeholder='New Todo' 
+          type="text"
           value={heading}
           onChange={(e) => setHeading(e.target.value)
         }/>
@@ -116,19 +119,11 @@ function Todo(self) {
         <div className='todoPostButton' onClick={addTodo_helper}>
           <BiSend className='todoPostIcon'/>
         </div>
+
       </div>
     </div>
   </>
   )
-  
-  function PageStatus() {
-    return (self.activePage === "Todo" ? " SlideIn" : " SlideOut");
-  }
-  function MenuOpen() {
-    if(self.activePage === "Todo"){
-      return (self.menuOpen ? " MenuClosed" : " MenuOpen")
-    } return " MenuClosed";
-  }
 }
 
 export default Todo

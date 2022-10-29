@@ -1,5 +1,5 @@
 
-import { displayed_history } from "../pages/History";
+import { displayed_history } from "./History";
 import { dev_variables } from "../pages/DevPage";
 
 var history = [];
@@ -7,15 +7,21 @@ var history = [];
 const Global = {
     BACKEND_KEY: "todoApp.backend",
     HISTORY_KEY: "todoApp.history",
-    TODO_KEY: "todoApp.todos",
+    TODO_KEY: "todoApp.local_todos",
     TODO_TO_ADD_KEY: "todoApp.to_add",
     PAGE_KEY: "todoApp.last_page",
+
+    showHistory: false,
 
     backend: "http://127.0.0.1:8000",
     serverTodos: [],
     displayedTodos: [],
     todosToAdd: [],
     mainText: "",
+
+    set setShowHistory(new_showHistory){
+        this.showHistory = new_showHistory;
+    },
 
     set setBackend(new_backend){
         this.backend = new_backend;
@@ -24,6 +30,7 @@ const Global = {
             Server.fetchTodos();
         }else{console.error("Server not reachable");};
     },
+
     set setServerTodos(new_todos){
         this.serverTodos = new_todos;},
     set setDisplayedTodos(new_todos){
@@ -32,7 +39,24 @@ const Global = {
         this.todosToAdd = new_todos_to_add;},
 
     set setMainText(new_main_text){
-        this.mainText = new_main_text;}
+        this.mainText = new_main_text;},
+
+    superContainer: undefined,
+    set setSuperContainer(new_supercontainer){
+        this.superContainer = new_supercontainer;
+    },    
+
+    menuOpen: undefined,
+    set setMenuOpen(new_state){
+        this.menuOpen = new_state;
+        this.superContainer.menuopen = new_state;
+    },
+
+    activePage: undefined,
+    set setActivePage(new_page){
+        this.activePage = new_page;
+        this.superContainer.activepage = new_page;
+    }
 
 }
 class History {
@@ -55,7 +79,7 @@ class Saving {
     static loadSave = ( KEY, raw = false) => {
         const stored = JSON.parse(localStorage.getItem(KEY));
         if(raw) return stored
-        if(stored !== null) return stored;
+        else if(stored !== null) return stored;
     }
 
 }
@@ -71,9 +95,8 @@ class Local {
         Saving.saveLocal(Global.TODO_TO_ADD_KEY, Global.todosToAdd);
 
         History.add("Successfully added local todos", false);
-        Server.fetchTodos();
+        await Server.fetchTodos(true);
     }
-
 }
 
 //! --- Server Functions ---
@@ -112,12 +135,15 @@ class Server{
         }catch {}
     }
 
-    static fetchTodos = async () => {
+    static fetchTodos = async (update_displayed = false) => {
         try {
             const res = await fetch(Global.backend + "/get-todos");
             const response = await res.json();
 
             Global.setServerTodos = await response.todos;
+
+            if(update_displayed) Global.displayedTodos = Global.serverTodos;
+
             return Global.serverTodos;
         }catch {}
     }

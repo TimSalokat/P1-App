@@ -6,7 +6,7 @@
 import React from 'react';
 import "../css/navbar.css";
 
-import {Server, Global, History} from "../components/functions";
+import {Server, Global} from "../components/functions";
 
 function Navbar(self){
 
@@ -19,22 +19,19 @@ function Navbar(self){
     forceUpdate();
   }, [Server.reachable])
 
-  function dev_active(){
-    if(self.activePage === "Dev" && self.menuOpen){return true}
-    else{return false}
-  }
-
   return (
     <div className='navbarContainer'>
       <div className={Server.reachable ? "bulb green" : "bulb red"}/>
-      <h3 className={dev_active() ? "c_main_accent" : ""}>{self.activePage}</h3>
+      <h2>{self.displayedPage}</h2>
       <div 
-        className={self.menuOpen ? "openMenu_BTN" : "openMenu_BTN active"} 
-        onClick={() => self.setMenu(!self.menuOpen)}
+        className="openMenu_BTN" 
+        onClick={() => {
+          Global.setMenuOpen = !Global.menuOpen;
+        }}
       >
-        <span className={dev_active() ? "bg_main_accent" : ""}/>
-        <span className={dev_active() ? "bg_main_accent" : ""}/>
-        <span className={dev_active() ? "bg_main_accent" : ""}/>
+        <span/>
+        <span/>
+        <span/>
       </div>
     </div>
   )

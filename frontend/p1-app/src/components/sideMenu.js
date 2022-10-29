@@ -1,31 +1,47 @@
 import React from 'react'
 import "../css/sideMenu.css";
-import {MdOutlineDeveloperMode} from "react-icons/md";
+// import {MdOutlineDeveloperMode} from "react-icons/md";
 
 import { Saving, Global } from './functions';
 
-function SideMenu({ menuOpen, setMenuOpen, activePage, setActivePage }) {
+function SideMenu(self) {
 
     function link(page) {
-        if(activePage !== page){
-            setActivePage(page);
+        if(Global.activePage !== page){
+            Global.setActivePage = page;
+            self.setDisplayedPage(page);
             Saving.saveLocal(Global.PAGE_KEY, page);
-            setMenuOpen(true);
+            Global.setMenuOpen = true;
         }
     }
 
     return (
-        <div className={menuOpen ? "sideMenuContainer closed" : "sideMenuContainer" }>
+        <div className="sideMenuContainer">
+            <div className="selfSection">
+                <div className="imageContainer">
+                    <img className="midIcon" alt="" src="../nyancat.png" /> 
+                </div>
+                <h1 className="text_inline">Hello, <br/> Admin <span className="text_accent text_inline">User</span></h1>
+            </div>
+
             <ul>
-                <li onClick={() => link("Home")}><h2>Home</h2></li>
-                <li onClick={() => link("History")}><h2>History</h2></li>
-                {/* <li onClick={() => link("Chat")}><h2>Chat</h2></li> */}
-                <li onClick={() => link("Todo")}><h2>Todo's</h2></li>
+                <li onClick={() => link("Home")}><h2>Dashboard</h2></li>
+                <li onClick={() => link("Todo")}><h2>Projects</h2></li>
             </ul>
-            <button onClick={() => link("Dev")}> 
-                <MdOutlineDeveloperMode className="devIcon"/>
-                <h2>Dev-env</h2>
-            </button>
+
+            <div className="chartContainer">
+                
+            </div>
+
+            <div className="sideButtonContainer">
+                <button onClick={() => link("Dev")}> 
+                    <h2>Settings</h2>
+                </button>
+
+                <button onClick={() => {
+                    Global.setShowHistory = !Global.showHistory;
+                }}>O</button>
+            </div>
         </div>
     )
 }
