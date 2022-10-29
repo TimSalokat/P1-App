@@ -4,7 +4,7 @@ import { Global, Saving} from "./components/functions"
 
 const Init = (self) => {
 
-    useEffect((self) => {
+    useEffect(() => {
         console.warn("Initialization");
 
         Global.setSuperContainer = document.getElementById("superContainer").dataset;
@@ -17,7 +17,7 @@ const Init = (self) => {
         let lastBackend = Saving.loadSave(Global.BACKEND_KEY);
         if (lastBackend !== undefined) Global.setBackend = lastBackend;
 
-
+        /* eslint-disable */
         self.setDisplayedPage(Global.activePage);
     }, []) 
 
