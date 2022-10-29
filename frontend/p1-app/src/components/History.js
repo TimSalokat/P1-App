@@ -28,9 +28,12 @@ export default function History() {
     if(storedHistory) displayed_history.update = storedHistory;
   }, [])
 
+  // eslint-disable
   React.useEffect(() => {
     forceUpdate();
+    //eslint-disable-next-line
   }, [Global.showHistory])
+  // eslint-enable 
 
   const HistoryItem = (self) => {
 

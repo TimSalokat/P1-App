@@ -1,7 +1,7 @@
 import React from 'react';
 import "../css/Dev.css";
 
-import { History, Saving, Server, Global, Local } from "../components/functions";
+import { History, Saving, Server, Global } from "../components/functions";
 
 const dev_variables = {
   last_history_entry: "Init",

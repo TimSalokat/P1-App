@@ -2,7 +2,7 @@ import React from 'react';
 import "../css/Global.css";
 import "../css/Home.css";
 
-import { Local, Server } from '../components/functions';
+import {Server } from '../components/functions';
 
 function Home(self) {
 

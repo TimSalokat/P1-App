@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/Todo.css";
-import { MdCheckBoxOutlineBlank, MdCheckBox, MdDone} from "react-icons/md";
+import { MdDone} from "react-icons/md";
 
 function TodoItem(self) {
 

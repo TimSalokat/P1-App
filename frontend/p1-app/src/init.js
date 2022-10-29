@@ -4,7 +4,7 @@ import { Global, Saving} from "./components/functions"
 
 const Init = (self) => {
 
-    useEffect(() => {
+    useEffect((self) => {
         console.warn("Initialization");
 
         Global.setSuperContainer = document.getElementById("superContainer").dataset;
@@ -18,7 +18,6 @@ const Init = (self) => {
         if (lastBackend !== undefined) Global.setBackend = lastBackend;
 
 
-        
         self.setDisplayedPage(Global.activePage);
     }, []) 
 
