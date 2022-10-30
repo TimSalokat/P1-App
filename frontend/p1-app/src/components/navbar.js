@@ -21,11 +21,14 @@ function Navbar(self){
 
   return (
     <div className='navbarContainer'>
-      <div className={Server.reachable ? "bulb green" : "bulb red"}/>
-      <h2>{self.displayedPage}</h2>
+      <div style={{display: "flex", justifyContent:"center", alignItems:"center", height:"50px"}}>
+        <div className={Server.reachable ? "bulb green" : "bulb red"}/>
+        <h2 className="font-normalBold">{self.displayedPage}</h2>
+      </div>
       <div 
         className="openMenu_BTN" 
         onClick={() => {
+          Global.setOverlayActive = false;
           Global.setMenuOpen = !Global.menuOpen;
         }}
       >

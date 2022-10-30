@@ -1,4 +1,35 @@
 
+@font-face {
+    font-family: defaultFont;
+    src: url("font/Solomon-Trial-Book.ttf");
+}
+@font-face {
+    font-family: defaultFontBold;
+    src: url("font/Solomon-Trial-Normal.ttf");
+}
+
+@font-face {
+    font-family: heading;
+    src: url("font/Track-Regular.ttf");
+}
+
+@font-face {
+    font-family: section;
+    src: url("font/Arkhip-Regular.ttf");
+}
+
+@font-face {
+    font-family: pixel;
+    src: url("font/Pixer-Regular.ttf");
+}
+
+.font-normal{font-family:defaultFont;}
+.font-normalBold{font-family:defaultFontBold;}
+
+.font-heading{font-family: heading;}
+.font-section{font-family: section;}
+.font-pixel{font-family: pixel;}
+
 .defaultScheme {
     --text_color: var(--lightest_gray);
 
@@ -51,29 +82,26 @@
     --dark_shadow: rgb(80,80,80);
 
     --main_background: rgb(52, 78, 161);
-    /* --main_background: rgb(95, 100, 187); */
     --secondary_background: rgb(3, 25, 85);
 
 }
 
 .text_accent {
+    font-size: inherit;
     color: var(--main_accent);
 }
 
 .text_inline {
-    font-size: inherit;
     background: none;
     display: inline;
 }
 
 .bulb {
-    position: absolute;
     width: 12px;
     height: 12px;
     background-color: var(--gray);
-    top: 27px;
-    left: 15px;
     border-radius: 10px;
+    margin: 10px;
 } .red {
     background-color: rgb(205, 28, 28);
 } .green {
@@ -135,4 +163,52 @@
 }
 .active{
     transform: translateX(0px);
+}
+
+.triangle {
+    /* position: relative; */
+    height: 130px;
+    width: 150px;
+    background: none;
+    scale: .5;
+    transform-origin: 50% 50%;
+}
+
+.triangle span{
+    position: absolute;
+    width: 8px;
+    height: 150px;
+    background-color: var(--main_accent);
+    box-shadow: 0px 0px 30px 3px var(--main_accent);
+    border-radius: 8px;
+    rotate: 180deg;
+}
+
+.triangle span:nth-child(1){
+    height: 150px;
+    rotate: 90deg;
+    left: calc(50%);
+    top: -75px;
+}
+.triangle span:nth-child(2){
+    top: -12px;
+    left: 26%;
+    rotate: -30deg;
+}
+.triangle span:nth-child(3){
+    top: -12px;
+    right: 21%;
+    rotate: 30deg;
+}
+
+.overlay {
+    background-color: rgb(50,50,50, .75);
+    position: absolute;
+    width: calc(100%);
+    height: calc(100%);
+    display: none;
+    z-index: 110;
+}
+#superContainer:not([data-overlayActive="false"]) .overlay {
+    display: block;
 }

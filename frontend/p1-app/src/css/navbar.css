@@ -5,22 +5,17 @@
     width: 360px;
     top: 0;
     justify-content: center;
-    color: var(--lightest_gray);
-    z-index: 15;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
 } .navbarContainer h2{
-    position: absolute;
-    font-size: 22px;
-    font-weight: 300;
-    top: 20px;
-    left: 40px;
-    margin: 0;
+    /* font-size: 22px; */
     transition: .5s;
-    text-shadow: 0px 3px 12px var(--shadow);
 }
 
 .openMenu_BTN, .reload_BTN{
-    top: 10px;
-    left: calc(100% - 70px);
     position: relative;
     display: flex;
     height: 50px;
@@ -34,6 +29,7 @@
 } .openMenu_BTN:hover{
     animation: menu-open_BTN .7s ease-in-out forwards;
 } .openMenu_BTN span {
+    background-color: var(--text_color);
     position: absolute;
     height: 2.1px;
     width: 30px;

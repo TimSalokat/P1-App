@@ -29,6 +29,7 @@ function Home(self) {
         </Section>
         <Section title="Last Todos"/>
         <Section title="Smth else"/>
+
       </div>
   )
 }

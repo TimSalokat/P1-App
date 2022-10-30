@@ -1,6 +1,6 @@
 import React from 'react'
 import "../css/sideMenu.css";
-// import {MdOutlineDeveloperMode} from "react-icons/md";
+import {MdHistory, MdSettings} from "react-icons/md";
 
 import { Saving, Global } from './functions';
 
@@ -21,12 +21,18 @@ function SideMenu(self) {
                 <div className="imageContainer">
                     <img className="midIcon" alt="" src="../nyancat.png" /> 
                 </div>
-                <h1 className="text_inline">Hello, <br/> Admin <span className="text_accent text_inline">User</span></h1>
+                <h1 className="text_inline">Hello, 
+                	<span className="text_accent text_inline font-heading"> Admin</span>
+                </h1>
             </div>
 
             <ul>
-                <li onClick={() => link("Home")}><h2>Dashboard</h2></li>
-                <li onClick={() => link("Todo")}><h2>Projects</h2></li>
+                <li onClick={() => link("Home")}>
+                    <h2 className="font-section">Dashboard</h2>
+                </li>
+                <li onClick={() => link("Todo")}>
+                    <h2 className="font-section">Projects</h2>
+                </li>
             </ul>
 
             <div className="chartContainer">
@@ -35,12 +41,16 @@ function SideMenu(self) {
 
             <div className="sideButtonContainer">
                 <button onClick={() => link("Dev")}> 
-                    <h2>Settings</h2>
+                    <MdSettings id="settingsIcon"/>
+                    <h2 className="font-section">Settings</h2>
                 </button>
 
                 <button onClick={() => {
                     Global.setShowHistory = !Global.showHistory;
-                }}>O</button>
+                    self.reRenderHistory();
+                }}>
+                    <MdHistory id="historyIcon"/>
+                </button>
             </div>
         </div>
     )

@@ -7,15 +7,20 @@ import Init from './init';
 
 import Navbar from './components/navbar';
 import SideMenu from './components/sideMenu';
-import History from './components/History';
 
 import Home from './pages/Home';
 import Todo from './pages/Todo';
 import DevPage from './pages/DevPage';
+import HistoryPage from './components/History';
 
 function App() {
     const [displayedPage, setDisplayedPage] = useState("");
     const [colorScheme,] = useState("testScheme2");
+
+    const [historyUpdate, setHistoryUpdate] = useState(false);
+    const reRenderHistory = () => {
+        setHistoryUpdate(!historyUpdate);
+    }
 
     return (
     <div 
@@ -23,21 +28,25 @@ function App() {
         className={'superContainer ' + colorScheme} 
         data-menuopen="true"
         data-activepage="Home" 
+        data-overlayactive="false"
+
+        data-todopagemounted="false"
     >
         <Init setDisplayedPage={setDisplayedPage}/>
 
         <SideMenu
             setDisplayedPage={setDisplayedPage}
+            reRenderHistory={reRenderHistory}
         />
 
         <div className='PageWrapper'>
             <Home/>
             <Todo/>
-            <DevPage />
+            <DevPage reRenderHistory={reRenderHistory}/>
         </div>
 
         <div id="PageOverlay"/>
-        <History/>
+        <HistoryPage historyUpdate={historyUpdate}/>
 
         <Navbar 
             displayedPage={displayedPage}
@@ -46,4 +55,4 @@ function App() {
     )
 }
 
-export default App
+export default App;

@@ -12,6 +12,7 @@ const Global = {
     PAGE_KEY: "todoApp.last_page",
 
     showHistory: false,
+    lastShowHistory: false,
 
     backend: "http://127.0.0.1:8000",
     serverTodos: [],
@@ -21,6 +22,9 @@ const Global = {
 
     set setShowHistory(new_showHistory){
         this.showHistory = new_showHistory;
+    },
+    set setLastShowHistory(new_lastShowHistory){
+        this.lastShowHistory = new_lastShowHistory;
     },
 
     set setBackend(new_backend){
@@ -56,6 +60,18 @@ const Global = {
     set setActivePage(new_page){
         this.activePage = new_page;
         this.superContainer.activepage = new_page;
+    },
+
+    overlayActive: undefined,
+    set setOverlayActive(new_state){
+        this.overlayActive = new_state;
+        this.superContainer.overlayactive = new_state;
+    },
+
+    todoPageMounted: false,
+    set setTodoPageMounted(new_state){
+        this.todoPageMounted = new_state;
+        this.superContainer.todopagemounted = new_state;
     }
 
 }
@@ -81,7 +97,6 @@ class Saving {
         if(raw) return stored
         else if(stored !== null) return stored;
     }
-
 }
 
 class Local {

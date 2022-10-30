@@ -9,10 +9,12 @@ const Init = (self) => {
 
         Global.setSuperContainer = document.getElementById("superContainer").dataset;
         Global.setMenuOpen = Global.superContainer.menuopen;
-        Global.setActivePage = Global.superContainer.activepage;
+        Global.setOverlayActive = Global.superContainer.overlayactive;
+        Global.setTodoPageMounted = false;
 
         let last_page = Saving.loadSave(Global.PAGE_KEY);
         if (last_page !== undefined) Global.setActivePage = last_page;
+        else{Global.setActivePage = Global.superContainer.activepage;}
 
         let lastBackend = Saving.loadSave(Global.BACKEND_KEY);
         if (lastBackend !== undefined) Global.setBackend = lastBackend;

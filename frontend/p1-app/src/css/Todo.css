@@ -26,10 +26,12 @@
     border-radius: 0px;
     justify-content: center;
     overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    overflow-x: hidden;
-    overflow-y:scroll;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 0px;
+    flex-direction: column;
+    overflow-y: scroll;
 } .todoContainer::-webkit-scrollbar{
     width: 5px;
     border-radius: 3px;
@@ -42,24 +44,6 @@
     background: var(--main_accent);
     border-radius: 3px;
     height: 60px;
-}
-
-.todoInput {
-    position: absolute;
-    margin: 0px;
-    padding: 15px;
-    width: calc(95%);
-    left: 2.5vw;
-    height: 60px;
-    border-radius: 30px;
-    bottom: 1.25vh;
-    background-color: var(--secondary_background);
-    color: var(--text_color);
-    border: none;
-} .todoInput:focus {
-    outline: none;
-} .todoInput::placeholder{
-    color: var(--text_color);
 }
 
 .todoPostButton{
@@ -83,40 +67,54 @@
     rotate: 270deg;
 }
 
+#allDoneSvg{
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+}
+
 .todoPageEmpty {
     position: absolute;
     padding: 0;
-    margin-top: calc(50%);
-    width: calc(100%);
-    top: 100px;
-    border-radius: 30px;
-    background: none;
+    width: 90vw;
+    aspect-ratio: 1/1;
+    margin: 0px 5vw;
+    margin-top: calc(50% + 20px);
+    border-radius: 100%;
+    overflow: hidden;
+    /* background: none; */
+
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: var(--secondary_background);
 } .todoPageEmpty h1 {
-    font-size: 30px;
+    /* font-size: 30px; */
     color: var(--text_color);
     font-weight: 400;
 }
 .todoPageEmpty.hidden {
+    transition: opacity .5s ease-in-out;
     opacity: 0%;}
 .todoPageEmpty.shown {
-    opacity: 100%;}
+    opacity: 80%;}
 
 .sticky {
     width: 360px;
-    height: fit-content;
+    /* height: fit-content; */
+    z-index: 50;
+    height: 100px;
     position: fixed;
     bottom: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .todoItemContainer{
     display: flex;
     min-height: 60px;
-    width: calc(100% - 30px); 
-    margin: 10px;
+    margin: 5px;
     padding: 5px;
     border-radius: 15px;
     align-items: center;
@@ -134,7 +132,7 @@
     color: var(--text_color);
     text-transform: capitalize;
     margin: 5px;
-    font-weight: 400;
+    font-size: defaultFontBold;
 } .todoItemContainer div {
     height: 100%;
     display: flex;
@@ -151,6 +149,8 @@
 .checkBox {
     min-width: 20px;
     min-height: 20px;
+    max-height: 22px;
+    aspect-ratio: 1/1;
     border-radius: 100%;
     border: 3px solid var(--main_accent);
     padding: 0px;
@@ -177,15 +177,177 @@
     margin: 0;
 }
 
-.taskActive { text-decoration: none var(--text_color); } 
+.taskActive { text-decoration: none var(--text_color); }
+
+
 .taskFinished { 
     text-decoration:line-through var(--text_color);
     transform: translateY(0px);
-    animation: todoItem_slideOut .5s forwards ease-in-out;
 }
 
-@keyframes todoItem_slideOut {
-    100%{
-        opacity: 0;
-    }
+.todoButton {
+    position: fixed;
+    z-index: 120;
+    left: 27.7%;
+    scale: .95;
+    transition: 1s ease-in-out;
 }
+
+#superContainer:not([data-overlayActive="false"]) .todoButton {
+    animation: openCreateTodo .75s ease-in-out forwards;}
+
+@keyframes openCreateTodo {
+    0%{transform: translateY(517%);}
+    100% {transform: rotate(240deg) translateY(-80%);
+        left: 56.5%;}}
+
+#superContainer:not([data-overlayActive="true"]) .todoButton {
+    animation: closeCreateTodo .75s ease-in-out forwards;}
+
+@keyframes closeCreateTodo {
+    0% {transform: rotate(240deg) translateY(-80%);
+        left: 56.5%;}
+    100%{transform: translateY(517%);}}
+
+
+.todoButtonBar {
+    position: absolute;
+    width: calc(80%);
+    height: calc(45%);
+    top: 25%;
+    background-color: var(--secondary_background);
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: .75s;
+}
+
+#superContainer:not([data-overlayActive="false"]) .todoButtonBar {
+    opacity: 0%;
+}
+
+#addTodoIcon {
+    font-size: 30px;
+    color: var(--text_color);
+    display: block;
+}
+
+.createTodoFormContainer {
+    position: absolute;
+    z-index: 115;
+    height: 70%;
+    width: 80%;
+    top: 15%;
+    left: 10%;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+#superContainer:not([data-overlayActive="true"]) .createTodoFormContainer {
+    transition: .01s 1s ease-in-out;
+    height: 0%;}
+
+.createTodoForm {
+    opacity: 1;
+    height: 70vh;
+    width: 100%;
+    background-color: rgb(30,30,30);
+    border-radius: 40px;
+    transition: .75s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+#superContainer:not([data-overlayActive="true"]) .createTodoForm {
+    height: 0%;
+    border-radius: 0;
+    padding: 0px;
+}
+
+.createTodoFormHeading{
+    display: flex;
+    justify-content: space-around;
+}
+
+.createTodoForm form {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.createTodoForm input, .createTodoForm textarea{
+    margin: 0px;
+    padding: 5px;
+    width: calc(100%);
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid var(--dark_shadow);
+    background: none;
+    color: var(--text_color);
+    transition: .4s;
+} 
+
+.createTodoForm textarea{
+    resize: none;
+    height: 120px;
+    border: 1px solid var(--dark_shadow);
+    border-radius: 5px;
+    
+}
+
+.createTodoForm input:focus, .createTodoForm textarea:focus {
+    outline: none;
+    border-bottom: 1px solid var(--text_color);
+} .createTodoForm input::placeholder, .createTodoForm textarea::placeholder{
+    color: var(--dark_shadow);
+}
+
+
+#superContainer:not([data-overlayActive="false"]) .createTodoForm form {
+    animation: fade-in 1.5s ease-in-out forwards;
+}
+@keyframes fade-in {
+    0%{opacity: 0}
+    50%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+#superContainer:not([data-overlayActive="true"]) .createTodoForm form {
+    animation: fade-out .25s ease-in-out forwards;}
+@keyframes fade-out {
+    0%{opacity: 1;}
+    100%{opacity: 0;}   
+}
+
+.createTodoBtnContainer {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    gap: 5px;
+}
+
+.createTodoBtnContainer button{
+    width: 50%;
+    height: 100%;
+    border-radius: 10px;
+    background: none;
+    border: 2px solid var(--dark_shadow);
+    color: var(--dark_shadow);
+}
+
+.createTodoBtnContainer button:nth-child(2) {
+    border: 2px solid var(--main_accent);
+    box-shadow: 0px 0px 10px 1px var(--main_accent);
+    color: var(--main_accent);
+}
+#superContainer:not([data-overlayActive="false"]) .createTodoBtnContainer {
+    animation: fade-in 1.5s ease-in-out forwards;
+}
+
+#superContainer:not([data-overlayActive="true"]) .createTodoBtnContainer {
+    animation: fade-out .25s ease-in-out forwards;}

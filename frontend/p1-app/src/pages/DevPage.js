@@ -11,7 +11,7 @@ const dev_variables = {
   }
 };
 
-export default function DevPage() {
+export default function DevPage(self) {
 
   const [newBackend, setNewBackend] = React.useState("");
 
@@ -21,40 +21,33 @@ export default function DevPage() {
   return (
     <div className={"DevContainer"}>
       <span/>
-      <h2> Development <br/> Settings </h2>
+      <h1 className="font-section"> Development <br/> Settings </h1>
       <span/>
 
       <div className='DevBtnContainer'>
 
-        <button onClick={() => {
-          Server.fetchTodos()
-          History.add("Refetched Todos", false, true);
-          forceUpdate();
-        }}> Refetch <br/> Todo's</button>
+        <DevButton 
+          text={"Refetch Todos"}
+          function={() => {
+            Server.fetchTodos();
+            forceUpdate();}}/>
 
-        <button onClick={() => {
-          Server.fetchText();
-          History.add("Refetched Text", false, true);
-          forceUpdate();
-        }}> Refetch <br/> Text </button>
+        <DevButton 
+          text={"Refetch Text"}
+          function={() => {
+            Server.fetchText();
+            forceUpdate();}}/>
 
-        <button onClick={() => {
-          Server.ping();
-          History.add("Pinging server", false, true);
-          forceUpdate();          
-        }}> Check <br/> Reachability </button>
+        <DevButton 
+          text={"Ping Server"}
+          function={() => {
+            Server.ping();
+            forceUpdate();}}/>
 
-        <button onClick={() => {
-          Global.setShowHistory = !Global.showHistory;
-          History.add("Activated History", true, true);
-          forceUpdate();
-        }}> Show <br/> History </button>
+        <DevButton 
+          text={"Update History"}
+          function={() => self.reRenderHistory()}/>
 
-        <button onClick={() => {
-          Global.setMenuOpen = !Global.setMenuOpen;
-          console.log("MenuOpen: " + Global.menuOpen);
-          forceUpdate();
-        }}> State MenuOpen </button>
       </div>
 
       <span/>
@@ -65,6 +58,7 @@ export default function DevPage() {
           value={newBackend}
           placeholder="New backend address"
         ></input>
+
         <button className="DevCommit_BTN" onClick={() => {
           if(newBackend !== "") Global.setBackend = newBackend;
           History.add(("New Backend: " + newBackend));
@@ -79,6 +73,17 @@ export default function DevPage() {
           <p> {dev_variables.last_history_entry} </p>
       </div>
     </div>
+  )
+}
+
+const DevButton = (self) => {
+  return(
+    <button onClick={() => {
+      self.function();
+      History.add(("Pressed and ran: " + self.text), false, true);
+    }}>
+      {self.text}
+    </button>
   )
 }
 
