@@ -187,36 +187,29 @@
 
 .todoButton {
     position: fixed;
+    /* width: 100%; */
     z-index: 120;
-    left: 27.7%;
-    scale: .95;
-    transition: 1s ease-in-out;
+    background-color: aquamarine;
+    box-sizing: border-box;
+    transition: .75s ease-in-out;
+    background: none;
+    display: flex;
+    justify-content: center;
+    bottom: 15px;
+    left: calc(50% - 40px);
 }
 
 #superContainer:not([data-overlayActive="false"]) .todoButton {
-    animation: openCreateTodo .75s ease-in-out forwards;}
-
-@keyframes openCreateTodo {
-    /* 0%{transform: translateY(517%);} */
-    0%{transform: translateY(675px);}
-    100% {transform: rotate(240deg) translateY(-80%);
-        left: 56.5%;}}
-
-#superContainer:not([data-overlayActive="true"]) .todoButton {
-    animation: closeCreateTodo .75s ease-in-out forwards;}
-
-@keyframes closeCreateTodo {
-    0% {transform: rotate(240deg) translateY(-80%);
-        left: 56.5%;}
-    /* 100%{transform: translateY(517%);}} */
-    100%{transform: translateY(675px);}}
-
+    rotate: 240deg;
+    bottom: 78%;
+    left: calc(52.5% - 40px);
+}
 
 .todoButtonBar {
     position: absolute;
     width: calc(80%);
     height: calc(45%);
-    top: 25%;
+    bottom: 30%;
     background-color: var(--secondary_background);
     border-radius: 30px;
     display: flex;
@@ -225,14 +218,24 @@
     transition: .75s;
 }
 
+.todoButtonBar h3 {min-width: 40%; text-align: center;}
+
 #superContainer:not([data-overlayActive="false"]) .todoButtonBar {
     opacity: 0%;
 }
 
 #addTodoIcon {
+    position: absolute;
+    top: calc(15%);
     font-size: 30px;
     color: var(--text_color);
     display: block;
+    transition: .75 ease-in-out;
+    rotate: 0deg;
+}
+
+#superContainer:not([data-overlayActive="false"]) #addTodoIcon {
+    rotate: -105deg;
 }
 
 .createTodoFormContainer {

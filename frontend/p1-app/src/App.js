@@ -51,6 +51,10 @@ function App() {
         <Navbar 
             displayedPage={displayedPage}
         />
+
+        <div id="page-center-vertical"/>
+        <div id="page-center-horizontal"/>
+
     </div>
     )
 }

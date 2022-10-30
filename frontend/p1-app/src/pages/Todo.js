@@ -130,7 +130,6 @@ function Todo(self) {
       <div className="sticky">
         <div className="todoButtonBar">
           <h3>Add</h3>
-          <HiPlus id="addTodoIcon"/>
           <h3>Todo</h3>
         </div>
       </div>
@@ -182,6 +181,7 @@ function Todo(self) {
           <span/>
           <span/>
           <span/>
+          <HiPlus id="addTodoIcon"/>
         </div>
       </div>
       
