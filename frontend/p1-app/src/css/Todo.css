@@ -197,7 +197,8 @@
     animation: openCreateTodo .75s ease-in-out forwards;}
 
 @keyframes openCreateTodo {
-    0%{transform: translateY(517%);}
+    /* 0%{transform: translateY(517%);} */
+    0%{transform: translateY(675px);}
     100% {transform: rotate(240deg) translateY(-80%);
         left: 56.5%;}}
 
@@ -207,7 +208,8 @@
 @keyframes closeCreateTodo {
     0% {transform: rotate(240deg) translateY(-80%);
         left: 56.5%;}
-    100%{transform: translateY(517%);}}
+    /* 100%{transform: translateY(517%);}} */
+    100%{transform: translateY(675px);}}
 
 
 .todoButtonBar {
@@ -256,7 +258,7 @@
     width: 100%;
     background-color: rgb(30,30,30);
     border-radius: 40px;
-    transition: .75s ease-in-out;
+    transition: opacity .5s, height .75s, border-radius .75s, padding .75s ease-in-out;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -309,7 +311,7 @@
 
 
 #superContainer:not([data-overlayActive="false"]) .createTodoForm form {
-    animation: fade-in 1.5s ease-in-out forwards;
+    animation: fade-in 1.25s ease-in-out forwards;
 }
 @keyframes fade-in {
     0%{opacity: 0}
