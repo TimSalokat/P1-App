@@ -52,8 +52,8 @@ function App() {
             displayedPage={displayedPage}
         />
 
-        <div id="page-center-vertical"/>
-        <div id="page-center-horizontal"/>
+        {/* <div id="page-center-vertical"/>
+        <div id="page-center-horizontal"/> */}
 
     </div>
     )
