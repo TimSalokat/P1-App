@@ -14,7 +14,6 @@ const dev_variables = {
 export default function DevPage(self) {
 
   const [newBackend, setNewBackend] = React.useState("");
-  const [newScheme, setNewScheme] = React.useState("");
 
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -24,7 +23,8 @@ export default function DevPage(self) {
       <span id="DevSeperator"/>
       <h1 className="font-section"> Development </h1>
       <h1 className="font-section" style={{color: "var(--main_accent)"}}> Settings </h1>
-      <span id="DevSeperator"/>
+      
+      <DevSection colored={"Mixed "} uncolored={"Debugging"}/>
 
       <div className='DevBtnContainer'>
 
@@ -52,13 +52,13 @@ export default function DevPage(self) {
 
       </div>
 
-      <span id="DevSeperator"/>
+      <DevSection colored={"Change "} uncolored={"Backend"}/>
 
       <div className="DevBackendContainer">
         <input 
           onChange={(e) => setNewBackend(e.target.value)} 
           value={newBackend}
-          placeholder="New backend address"
+          placeholder="New address"
         ></input>
 
         <button className="DevCommit_BTN" onClick={() => {
@@ -69,11 +69,8 @@ export default function DevPage(self) {
         }}> Submit </button>
       </div>
 
-      <span id="DevSeperator"/>
+      <DevSection colored={"Color "} uncolored={"Schemes"}/>
 
-      <label className="DevLabel">
-        <span style={{color:"var(--main_accent)"}}>Color </span> 
-        Scheme </label>
       <select className="DevSelect" onChange={(e) =>{
         Global.setColorScheme = e.target.value;
         History.add(("Applied Color Scheme: " + e.target.value));
@@ -93,6 +90,22 @@ export default function DevPage(self) {
           <p> {dev_variables.last_history_entry} </p>
       </div>
     </div>
+  )
+}
+
+const DevSection = (self) => {
+  return (
+    <>
+      <span id="DevSeperator"/>
+
+      <label className="DevLabel">
+        <span style={{color:"var(--main_accent)"}}>
+          {self.colored} 
+        </span> 
+
+        {self.uncolored}
+      </label>
+    </>    
   )
 }
 

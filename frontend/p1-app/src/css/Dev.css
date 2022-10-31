@@ -21,7 +21,7 @@
 
 #DevSeperator {
     height: 2px;
-    width: calc(100% - 70px);
+    width: 90%;
     border-radius: 4px;
     background-color: var(--secondary_background);
     margin: 15px 0px;
@@ -83,6 +83,10 @@
 .DevSelect {
     height: 40px;
     width: 90%;
+}
+
+.DevSelect option{
+    font-size: .8rem;
 }
 
 .lastActionField {

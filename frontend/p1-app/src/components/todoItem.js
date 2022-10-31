@@ -29,9 +29,12 @@ function TodoItem(self) {
             <div className={"checkBox" + isFinished()} onClick={() => finishTodo_helper(self.index)}>
                 <MdDone className={"icon" + isFinished()}/>
             </div>
+
             <span className="todoSeperator"/>
-            <div>
+
+            <div onClick={() => console.log(self)}>
                 <h4>{self.heading.substring(0, 50) + (self.heading.length >= 50 ? "..." : "")}</h4>
+                <p>{self.description}</p>
             </div>
         </motion.div>
     )

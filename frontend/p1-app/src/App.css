@@ -1,7 +1,7 @@
 
 * {
   font-size: 1rem;
-  /* letter-spacing: .1rem; */
+  transition: .5s ease-in-out;
   box-sizing: border-box;
   font-family: defaultFont;
 }

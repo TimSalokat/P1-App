@@ -49,7 +49,6 @@
 .font-section{font-family: defaultFont;}
 .font-pixel{font-family: pixel;}
 
-
 .DefaultDark {
     --text_color: rgb(235, 244, 252);
 
@@ -243,6 +242,7 @@
 .overlay {
     background-color: rgb(50,50,50, .75);
     position: absolute;
+    top: 0;
     width: calc(100%);
     height: calc(100%);
     display: none;
