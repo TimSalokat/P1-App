@@ -7,30 +7,36 @@ import Init from './init';
 
 import Navbar from './components/navbar';
 import SideMenu from './components/sideMenu';
+import HistoryPage from './components/History';
 
 import Home from './pages/Home';
 import Todo from './pages/Todo';
 import DevPage from './pages/DevPage';
-import HistoryPage from './components/History';
+
+import { Global } from './components/functions';
 
 function App() {
     const [displayedPage, setDisplayedPage] = useState("");
-    const [colorScheme, setColorScheme] = useState("CopperBased");
 
     const [historyUpdate, setHistoryUpdate] = useState(false);
     const reRenderHistory = () => {
-        setHistoryUpdate(!historyUpdate);
-    }
+        setHistoryUpdate(!historyUpdate);}
+    
+    const [all, updateAll] = useState(false);
+    const reRenderAll = () => {
+        updateAll(!all);}
 
     return (
     <div 
         id="superContainer"
-        className={'superContainer ' + colorScheme} 
+        className={'superContainer ' + Global.colorScheme} 
+
+        data-serverreachable=""
+
         data-menuopen="true"
         data-activepage="Home" 
+        data-colorscheme=""
         data-overlayactive="false"
-
-        data-todopagemounted="false"
     >
         <Init setDisplayedPage={setDisplayedPage}/>
 
@@ -42,7 +48,7 @@ function App() {
         <div className='PageWrapper'>
             <Home/>
             <Todo/>
-            <DevPage reRenderHistory={reRenderHistory} setColorScheme={setColorScheme}/>
+            <DevPage reRenderHistory={reRenderHistory} reRenderAll={reRenderAll}/>
         </div>
 
         <div id="PageOverlay"/>

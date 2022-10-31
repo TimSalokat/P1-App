@@ -10,10 +10,8 @@ function TodoItem(self) {
     const forceUpdate = React.useCallback(() => updateState({}), []);
 
     function isFinished() {
-        if (self.todo.finished) {
-            // return (<MdCheckBox className="todocheckbox_finished" />);
-            return " finished"
-        } else return " notFinished"
+        if (self.todo.finished) {return " finished"}
+        else return " notFinished"
     }
 
     function finishTodo_helper(index) {

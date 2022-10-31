@@ -19,7 +19,7 @@
     text-align: center;
 }
 
-.DevContainer span {
+#DevSeperator {
     height: 2px;
     width: calc(100% - 70px);
     border-radius: 4px;
@@ -56,7 +56,7 @@
     padding: 0px 15px;
 }
 
-.DevBackendContainer input {
+.DevBackendContainer input, .DevSelect{
     width: 65vw;
     height: 35px;
     border-radius: 5px;
@@ -72,6 +72,17 @@
 } .DevBackendContainer input::placeholder{
     color: var(--text_color);
     opacity: .7;
+}
+
+.DevLabel {
+    color: var(--text_color);
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+.DevSelect {
+    height: 40px;
+    width: 90%;
 }
 
 .lastActionField {

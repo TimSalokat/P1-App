@@ -10,7 +10,9 @@ const Init = (self) => {
         Global.setSuperContainer = document.getElementById("superContainer").dataset;
         Global.setMenuOpen = Global.superContainer.menuopen;
         Global.setOverlayActive = Global.superContainer.overlayactive;
-        Global.setTodoPageMounted = false;
+
+        let last_colorScheme = Saving.loadSave(Global.COLOR_SCHEME_KEY);
+        if(last_colorScheme !== undefined) Global.setColorScheme = last_colorScheme;
 
         let last_page = Saving.loadSave(Global.PAGE_KEY);
         if (last_page !== undefined) Global.setActivePage = last_page;

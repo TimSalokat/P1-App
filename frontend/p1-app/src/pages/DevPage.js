@@ -21,9 +21,10 @@ export default function DevPage(self) {
 
   return (
     <div className={"DevContainer"}>
-      <span/>
-      <h1 className="font-section"> Development <br/> Settings </h1>
-      <span/>
+      <span id="DevSeperator"/>
+      <h1 className="font-section"> Development </h1>
+      <h1 className="font-section" style={{color: "var(--main_accent)"}}> Settings </h1>
+      <span id="DevSeperator"/>
 
       <div className='DevBtnContainer'>
 
@@ -51,7 +52,7 @@ export default function DevPage(self) {
 
       </div>
 
-      <span/>
+      <span id="DevSeperator"/>
 
       <div className="DevBackendContainer">
         <input 
@@ -68,23 +69,25 @@ export default function DevPage(self) {
         }}> Submit </button>
       </div>
 
-      <span/>
+      <span id="DevSeperator"/>
 
-      <div className="DevBackendContainer">
-        <input 
-          onChange={(e) => setNewScheme(e.target.value)} 
-          value={newScheme}
-          placeholder="New Color Scheme"
-        ></input>
+      <label className="DevLabel">
+        <span style={{color:"var(--main_accent)"}}>Color </span> 
+        Scheme </label>
+      <select className="DevSelect" onChange={(e) =>{
+        Global.setColorScheme = e.target.value;
+        History.add(("Applied Color Scheme: " + e.target.value));
+        self.reRenderAll();    
+      }}>
+        <option value="DefaultDark">Default</option>
+        <option value="Copper">Copper</option>
+        <option value="RottenCopper">RottenCopper</option>
+        <option value="Birch">Birch</option>
+        <option value="Bamboo">Bamboo</option>
+        <option value="Sunrise">[Experimental] Sunrise</option>
+      </select>
 
-        <button className="DevCommit_BTN" onClick={() => {
-          if(newScheme !== "") self.setColorScheme(newScheme);
-          History.add(("New Color Scheme: " + newScheme));
-          setNewScheme("");
-        }}> Submit </button>
-      </div>
-
-      <span/>
+      <span id="DevSeperator"/>
 
       <div className="lastActionField" >
           <p> {dev_variables.last_history_entry} </p>

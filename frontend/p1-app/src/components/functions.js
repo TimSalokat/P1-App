@@ -10,6 +10,7 @@ const Global = {
     TODO_KEY: "todoApp.local_todos",
     TODO_TO_ADD_KEY: "todoApp.to_add",
     PAGE_KEY: "todoApp.last_page",
+    COLOR_SCHEME_KEY: "todoApp.color_scheme",
 
     showHistory: false,
     lastShowHistory: false,
@@ -48,7 +49,13 @@ const Global = {
     superContainer: undefined,
     set setSuperContainer(new_supercontainer){
         this.superContainer = new_supercontainer;
-    },    
+    }, 
+    
+    serverReachable: undefined,
+    set setServerReachable(new_bool){
+        this.serverReachable = new_bool;
+        this.superContainer.serverreachable = new_bool;
+    }, 
 
     menuOpen: undefined,
     set setMenuOpen(new_state){
@@ -62,16 +69,17 @@ const Global = {
         this.superContainer.activepage = new_page;
     },
 
+    colorScheme: "RottenCopper",
+    set setColorScheme(new_scheme){
+        this.colorScheme = new_scheme;
+        this.superContainer.colorscheme = new_scheme;
+        Saving.saveLocal(this.COLOR_SCHEME_KEY, this.colorScheme);
+    },
+
     overlayActive: undefined,
     set setOverlayActive(new_state){
         this.overlayActive = new_state;
         this.superContainer.overlayactive = new_state;
-    },
-
-    todoPageMounted: false,
-    set setTodoPageMounted(new_state){
-        this.todoPageMounted = new_state;
-        this.superContainer.todopagemounted = new_state;
     }
 
 }
