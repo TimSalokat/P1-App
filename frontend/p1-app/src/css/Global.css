@@ -33,7 +33,8 @@
 
 @font-face {
     font-family: section;
-    src: url("font/Arkhip-Regular.ttf");
+    /* src: url("font/Arkhip-Regular.ttf"); */
+    src: url("font/Solomon-Trial-Book.ttf");
 }
 
 @font-face {
@@ -42,67 +43,87 @@
 }
 
 .font-normal{font-family:defaultFont;}
-.font-normalBold{font-family:defaultFontBold;}
+.font-normalBold{font-family:defaultFontBold; letter-spacing: .07rem;}
 
 .font-heading{font-family: heading;}
-.font-section{font-family: section;}
+.font-section{font-family: defaultFont;}
 .font-pixel{font-family: pixel;}
 
-.defaultScheme {
-    --text_color: var(--lightest_gray);
 
-    --main_accent: var(--light_main);
-
-    --light_main: #073F80;
-    --dark_main: #1A2238;
-
-    --light_second: #ff00d4;
-    --dark_second: #5E3AC5;
-
-    --lightest_gray: rgb(255,255,255);
-    --light_gray: rgb(245, 245, 245);
-    --gray: rgb(225, 225, 225);
-    --dark_gray: rgb(180,180,180, .5);
-
-    --main_background: linear-gradient(169.06deg, var(--dark_main) 26.78%, var(--dark_second) 132.23%);
-    --gradient_second: linear-gradient(192.26deg, var(--dark_second) 8.42%, var(--light_main) 100%);
-}
-
-.testScheme {
-    --text_color: var(--lightest_gray);
-
-    --main_accent: var(--dark_second);
-
-    --light_main: var(--dark_second);
-    --dark_main: rgb(190,190,190);
-
-    --dark_second: #ff7700;
-    --light_second: #c5513a;
-
-    --lightest_gray: rgb(255,255,255);
-    --light_gray: rgb(245, 245, 245);
-    --gray: rgb(225, 225, 225);
-
-    --main_background: linear-gradient(169.06deg, rgb(180,180,180) 26.78%, rgb(220,220,220) 132.23%);
-    --gradient_second: linear-gradient(192.26deg, var(--dark_second) 8.42%, var(--light_second) 100%);
-}
-
-.testScheme2 {
+.DefaultDark {
     --text_color: rgb(235, 244, 252);
 
     --main_accent: rgb(160, 35, 207);
-    --secondary_accent: rgb(49, 107, 211);
+    /* --secondary_accent: rgb(49, 107, 211); */
 
-    --lightest_gray: rgb(255,255,255);
-    --light_gray: rgb(245, 245, 245);
-    --gray: rgb(225, 225, 225);
+    --dark_shadow: rgb(130,130,130);
+
+    --main_background: rgb(42, 62, 131);
+    --secondary_background: rgb(4, 3, 70);
+}
+
+.Birch {
+    --text_color: #eef2e6;
+
+    --main_accent: #fdd584;
+    /* --secondary_accent: rgb(49, 107, 211); */
+
+    --dark_shadow: rgb(150,150,150);
+
+    --main_background: #6f8c64;
+    --secondary_background: #2a4731;   
+}
+
+.Bamboo {
+    --text_color: #eef2e6;
+
+    --main_accent: #d6cda4;
+    /* --secondary_accent: rgb(49, 107, 211); */
+
+    --dark_shadow: rgb(150,150,150);
+
+    --main_background: #3d8361;
+    --secondary_background: #1c6758;   
+}
+
+.Copper {
+    --text_color: #eeeeee;
+
+    --main_accent: #e4640f;
+    /* --secondary_accent: rgb(49, 107, 211); */
+
+    --dark_shadow: rgb(120,120,120);
+
+    --main_background: #393e46;
+    --secondary_background: #222831;   
+}
+
+.RottenCopper {
+    --text_color: #eeeeee;
+
+    --main_accent: #1d977d;
+    /* --secondary_accent: rgb(49, 107, 211); */
+
+    --dark_shadow: rgb(120,120,120);
+
+    --main_background: #393e46;
+    --secondary_background: #222831;   
+}
+
+.Sunrise {
+    /* ! This is a concept */
+    --text_color: #eef2e6;
+
+    --main_accent: #ff4701;
+    /* --secondary_accent: rgb(49, 107, 211); */
 
     --dark_shadow: rgb(80,80,80);
 
-    --main_background: rgb(52, 78, 161);
-    --secondary_background: rgb(3, 25, 85);
-
+    /* ? Interesting Todo page due to the swapped colors here */
+    --main_background: #1d4851;
+    --secondary_background: #ff9001;   
 }
+
 
 .text_accent {
     font-size: inherit;
@@ -134,9 +155,10 @@
     overflow: hidden;
     aspect-ratio: 1 / 1;
     margin: 20px 0px;
+    box-shadow: 0px 0px 20px 2px var(--main_accent);
 }
 
-.midIcon {
+.midImage {
     aspect-ratio: 1/1;
     width: 90px;
     height: 90px;
@@ -186,12 +208,10 @@
 .triangle {
     position: relative;
     aspect-ratio: 1 / 0.8666;
-    /* height: 130px; */
     width: 80px;
     background: none;
     transform-origin: 50% 50%;
     opacity: 1;
-    /* overflow: hidden; */
     display: flex;
     justify-content: center;
 }
@@ -201,27 +221,10 @@
     width: inherit;
     height: 6px;
     background-color: var(--main_accent);
-    box-shadow: 0px 0px 30px 3px var(--main_accent);
+    box-shadow: 0px 0px 20px 2px var(--main_accent);
     border-radius: 18px;
     rotate: 180deg;
 }
-
-/* .triangle span:nth-child(1){
-    height: 150px;
-    rotate: 90deg;
-    left: calc(50%);
-    top: -75px;
-}
-.triangle span:nth-child(2){
-    top: -12px;
-    left: 26%;
-    rotate: -30deg;
-}
-.triangle span:nth-child(3){
-    top: -12px;
-    right: 21%;
-    rotate: 30deg;
-} */
 
 .triangle span:nth-child(1){
     top: 0px;
@@ -230,13 +233,11 @@
     left: 23.5%;
     top: calc(50% - 2px);
     rotate: -60deg;
-    /* background-color:coral; */
 }
 .triangle span:nth-child(3){
     right: 23.5%;
     top: calc(50% - 2px);
     rotate: 60deg;
-    /* background-color: fuchsia; */
 }
 
 .overlay {

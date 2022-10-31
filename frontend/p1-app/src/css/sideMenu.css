@@ -29,9 +29,6 @@
     margin: 0;
     padding: 20px;
 } 
-.sideMenuContainer h2{
-    text-shadow: 0px 3px 12px var(--shadow);
-} 
 
 .sideButtonContainer{
     width: 100%;
@@ -48,7 +45,7 @@
     margin: calc(4%);
     transition: .5s ease-in-out;
     padding: 7px;
-    background-color: var(--light_gray);
+    background-color: var(--text_color);
     border-radius: 10px;
     display: flex;
     justify-content: center;

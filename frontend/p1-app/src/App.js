@@ -15,7 +15,7 @@ import HistoryPage from './components/History';
 
 function App() {
     const [displayedPage, setDisplayedPage] = useState("");
-    const [colorScheme,] = useState("testScheme2");
+    const [colorScheme, setColorScheme] = useState("CopperBased");
 
     const [historyUpdate, setHistoryUpdate] = useState(false);
     const reRenderHistory = () => {
@@ -42,7 +42,7 @@ function App() {
         <div className='PageWrapper'>
             <Home/>
             <Todo/>
-            <DevPage reRenderHistory={reRenderHistory}/>
+            <DevPage reRenderHistory={reRenderHistory} setColorScheme={setColorScheme}/>
         </div>
 
         <div id="PageOverlay"/>

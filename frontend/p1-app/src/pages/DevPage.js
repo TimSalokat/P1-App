@@ -14,6 +14,7 @@ const dev_variables = {
 export default function DevPage(self) {
 
   const [newBackend, setNewBackend] = React.useState("");
+  const [newScheme, setNewScheme] = React.useState("");
 
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -69,7 +70,23 @@ export default function DevPage(self) {
 
       <span/>
 
-      <div className="lastActionField sticky">
+      <div className="DevBackendContainer">
+        <input 
+          onChange={(e) => setNewScheme(e.target.value)} 
+          value={newScheme}
+          placeholder="New Color Scheme"
+        ></input>
+
+        <button className="DevCommit_BTN" onClick={() => {
+          if(newScheme !== "") self.setColorScheme(newScheme);
+          History.add(("New Color Scheme: " + newScheme));
+          setNewScheme("");
+        }}> Submit </button>
+      </div>
+
+      <span/>
+
+      <div className="lastActionField" >
           <p> {dev_variables.last_history_entry} </p>
       </div>
     </div>

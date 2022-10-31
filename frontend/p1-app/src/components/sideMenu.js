@@ -19,7 +19,7 @@ function SideMenu(self) {
         <div className="sideMenuContainer">
             <div className="selfSection">
                 <div className="imageContainer">
-                    <img className="midIcon" alt="" src="../nyancat.png" /> 
+                    <img className="midImage" alt="" src="../nyancat.png" /> 
                 </div>
                 <h1 className="text_inline">Hello, 
                 	<span className="text_accent text_inline font-heading"> Admin</span>

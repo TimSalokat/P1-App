@@ -102,7 +102,6 @@
 
 .sticky {
     width: 360px;
-    /* height: fit-content; */
     z-index: 50;
     height: 100px;
     position: fixed;
@@ -187,9 +186,7 @@
 
 .todoButton {
     position: fixed;
-    /* width: 100%; */
     z-index: 120;
-    background-color: aquamarine;
     box-sizing: border-box;
     transition: .75s ease-in-out;
     background: none;
@@ -241,9 +238,9 @@
 .createTodoFormContainer {
     position: absolute;
     z-index: 115;
-    height: 70%;
+    height: 80vh;
     width: 80%;
-    top: 15%;
+    bottom: 30px;
     left: 10%;
     overflow: hidden;
     display: flex;
@@ -257,11 +254,11 @@
 
 .createTodoForm {
     opacity: 1;
-    height: 70vh;
+    height: inherit;
     width: 100%;
-    background-color: rgb(30,30,30);
+    background-color: var(--secondary_background);
     border-radius: 40px;
-    transition: opacity .5s, height .75s, border-radius .75s, padding .75s ease-in-out;
+    transition: opacity .5s, all .75s ease-in-out;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -307,7 +304,7 @@
 
 .createTodoForm input:focus, .createTodoForm textarea:focus {
     outline: none;
-    border-bottom: 1px solid var(--text_color);
+    border-bottom: 1px solid var(--main_accent);
 } .createTodoForm input::placeholder, .createTodoForm textarea::placeholder{
     color: var(--dark_shadow);
 }
