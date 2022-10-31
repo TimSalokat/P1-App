@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.b12333ff.css",
-    "main.js": "/static/js/main.c15b4f36.js",
+    "main.css": "/static/css/main.14513a25.css",
+    "main.js": "/static/js/main.41e517cb.js",
     "static/js/750.b54f4888.chunk.js": "/static/js/750.b54f4888.chunk.js",
     "static/media/Solomon-Trial-Normal.ttf": "/static/media/Solomon-Trial-Normal.13c317b0d482017d1be7.ttf",
     "static/media/Solomon-Trial-Book.ttf": "/static/media/Solomon-Trial-Book.5e4a428de31fb41b98d7.ttf",
     "static/media/Track-Regular.ttf": "/static/media/Track-Regular.84fb7ef2ff057553f284.ttf",
     "static/media/Pixer-Regular.ttf": "/static/media/Pixer-Regular.ce9fb238a0eaf0c4e749.ttf",
     "index.html": "/index.html",
-    "main.b12333ff.css.map": "/static/css/main.b12333ff.css.map",
-    "main.c15b4f36.js.map": "/static/js/main.c15b4f36.js.map",
+    "main.14513a25.css.map": "/static/css/main.14513a25.css.map",
+    "main.41e517cb.js.map": "/static/js/main.41e517cb.js.map",
     "750.b54f4888.chunk.js.map": "/static/js/750.b54f4888.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b12333ff.css",
-    "static/js/main.c15b4f36.js"
+    "static/css/main.14513a25.css",
+    "static/js/main.41e517cb.js"
   ]
 }
