@@ -1,5 +1,4 @@
 import React from "react";
-import SvgMorning from "../components/svg/SvgMorning";
 
 const TestingPage = () => {
     return (
