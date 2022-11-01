@@ -20,6 +20,12 @@ function TodoItem(self) {
         self.delTodo(index);
     }
 
+    const displayDescription = () => {
+        if(self.description === ""){
+            return({display:"none"})
+        }
+    }
+
     return (
         <motion.div 
             layout
@@ -32,9 +38,9 @@ function TodoItem(self) {
 
             <span className="todoSeperator"/>
 
-            <div onClick={() => console.log(self)}>
-                <h4>{self.heading.substring(0, 50) + (self.heading.length >= 50 ? "..." : "")}</h4>
-                <p>{self.description}</p>
+            <div onClick={() => displayDescription()}>
+                <h4>{self.heading}</h4>
+                <p style={displayDescription()}>{self.description}</p>
             </div>
         </motion.div>
     )

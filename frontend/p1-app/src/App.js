@@ -51,7 +51,7 @@ function App() {
             <DevPage reRenderHistory={reRenderHistory} reRenderAll={reRenderAll}/>
         </div>
 
-        <div id="PageOverlay"/>
+        <div id="PageOverlay" onClick={() => Global.setMenuOpen = true}/>
         <HistoryPage historyUpdate={historyUpdate}/>
 
         <Navbar 

@@ -20,7 +20,7 @@
 .todoContainer {
     padding: 0;
     margin: 2.5%;
-    height: 80%;
+    height: 52%;
     width: 95%;
     border-radius: 0px;
     justify-content: center;
@@ -37,8 +37,7 @@
 } .todoContainer::-webkit-scrollbar-track{
     background: var(--secondary_background);
     border-radius: 3px;
-    margin-top: 200px;
-    margin-bottom: 200px;
+    margin: 15vh 0px;
 } .todoContainer::-webkit-scrollbar-thumb{
     background: var(--main_accent);
     border-radius: 3px;
@@ -132,8 +131,6 @@
     color: var(--text_color);
     width: 100%;
     text-transform: capitalize;
-    margin: 5px;
-    margin-bottom: 0px;
     font-size: defaultFontBold;
 } 
 
@@ -151,12 +148,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-} .todoItemContainer div:nth-child(2){
-    transition: 1s ease-in-out;
-    width: calc(100% - 40px);
-    justify-content: left;
-    overflow: hidden;
-    margin: 5px;
+} .todoItemContainer div:nth-child(3){
+    width: stretch;
 } 
 
 .checkBox {
@@ -323,7 +316,7 @@
 }
 
 #superContainer:not([data-overlayActive="false"]) .createTodoForm form {
-    animation: fade-in 1.25s ease-in-out forwards;
+    animation: fade-in 1s ease-in-out forwards;
 }
 @keyframes fade-in {
     0%{opacity: 0}
@@ -368,21 +361,17 @@
 
 .projectContainer {
     width: 95%;
-    height: 20%;
+    max-height: 20%;
+    min-height: 130px;
     position: relative;
     margin: 2.5%;
     display: flex;
-    flex-direction: row;
-    overflow-x: scroll;
+    flex: none;
+    flex-flow: row nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
 }
-
-.scroll-body {
-    height: 100%;
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    overflow-x: scroll
-}.projectContainer::-webkit-scrollbar{
+.projectContainer::-webkit-scrollbar{
     height: 4px;
     border-radius: 3px;
 } .projectContainer::-webkit-scrollbar-track{
@@ -395,15 +384,18 @@
 }
 
 .projectCard {
-    height: 90%;
-    width: 160px;
+    flex: none;
+    height: inherit;
+    width: calc(45vw);
     border-radius: 20px;
     background-color: var(--secondary_background);
+    /* position: absolute; */
     padding: 10px;
     margin: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    scroll-snap-align: start;
 }
 
 .projectCard h2 {
@@ -427,7 +419,7 @@
     font-size: 1.2rem;
 }
 
-#todoSection span{
+#todoSeperator {
     position: absolute;
     width: 100%;
     height: 2px;

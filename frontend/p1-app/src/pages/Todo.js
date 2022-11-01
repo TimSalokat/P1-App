@@ -92,7 +92,6 @@ function Todo(self) {
   const delTodo = async (index) => {
     History.add("Deleting todo: " + Global.displayedTodos[index]["heading"]);
     Global.displayedTodos.splice(index,1);
-    console.log(Global.displayedTodos.length);
     forceUpdate();
 
     //* update indexes
@@ -111,29 +110,27 @@ function Todo(self) {
       <TodoSectionSeperator label={"Projects"}/>
 
       <div className="projectContainer">
-        <div className="scroll-body">
           <Project 
-            title="General"
-            todoCount="15"
-            unfinishedCount="4"
-            setActiveProject={setActiveProject}
-          />
-          <Project 
-            title="Development"
-            todoCount="12"
-            unfinishedCount="2"
-            setActiveProject={setActiveProject}
-          />
-          <Project 
-            title="Testing"
-            todoCount="3"
-            unfinishedCount="3"
-            setActiveProject={setActiveProject}
-          />
-        </div>
+          title="All"
+          todoCount="15"
+          unfinishedCount="4"
+          setActiveProject={setActiveProject}
+        />
+        <Project 
+          title="Development"
+          todoCount="12"
+          unfinishedCount="2"
+          setActiveProject={setActiveProject}
+        />
+        <Project 
+          title="Testing"
+          todoCount="3"
+          unfinishedCount="3"
+          setActiveProject={setActiveProject}
+        />
       </div>
 
-      <TodoSectionSeperator label={"Todo's of " + activeProject}/>
+      <TodoSectionSeperator label={"Todo's of "} colored={activeProject}/>
 
       <motion.div layout className="todoContainer">
         <div className={Global.displayedTodos.length === 0 ? "todoPageEmpty shown" : "todoPageEmpty hidden"}>
@@ -227,10 +224,17 @@ const Project = (self) => {
 }
 
 const TodoSectionSeperator = (self) => {
+  let displayed_colored = self.colored;
+  let displayed_label = self.label;
+  if(self.colored === "All")displayed_label = "All";displayed_colored = " Todos";
   return(
     <div id="todoSection">
-      <span /> 
-      <label id=""> {self.label}</label>
+      <span id="todoSeperator"/> 
+      <label> {displayed_label} 
+        <span style={{color:"var(--main_accent)", fontSize:"inherit"}}> 
+          {displayed_colored} 
+        </span>
+      </label>
     </div>
   )
 }

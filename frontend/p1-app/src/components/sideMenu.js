@@ -7,12 +7,10 @@ import { Saving, Global } from './functions';
 function SideMenu(self) {
 
     function link(page) {
-        if(Global.activePage !== page){
-            Global.setActivePage = page;
-            self.setDisplayedPage(page);
-            Saving.saveLocal(Global.PAGE_KEY, page);
-            Global.setMenuOpen = true;
-        }
+        Global.setActivePage = page;
+        self.setDisplayedPage(page);
+        Saving.saveLocal(Global.PAGE_KEY, page);
+        Global.setMenuOpen = true;
     }
 
     return (

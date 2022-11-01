@@ -50,6 +50,23 @@ export default function DevPage(self) {
           text={"Update History"}
           function={() => self.reRenderHistory()}/>
 
+        <DevButton 
+          text={"Add testing Todos"}
+          function={() => {
+            Global.displayedTodos = [
+              {"index":0,"heading":"Testing todo1","description":"","finished":false},
+              {"index":0,"heading":"Testing todo2","description":"","finished":false},
+              {"index":0,"heading":"Testing todo3","description":"","finished":false},
+              {"index":0,"heading":"Testing todo4","description":"","finished":false},
+              {"index":0,"heading":"Testing todo5","description":"","finished":false},
+              {"index":0,"heading":"Testing todo6","description":"","finished":false},
+              {"index":0,"heading":"Testing todo7","description":"","finished":false},
+              {"index":0,"heading":"Testing todo8","description":"","finished":false},
+              {"index":0,"heading":"Testing todo9","description":"","finished":false}
+          ]
+          forceUpdate();
+        }}/>
+
       </div>
 
       <DevSection colored={"Change "} uncolored={"Backend"}/>
