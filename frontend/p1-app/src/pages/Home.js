@@ -4,6 +4,8 @@ import "../css/Home.css";
 
 import {Server } from '../components/functions';
 
+import {ProjectContainer, SectionSeperator, TodoContainer} from "../components/components";
+
 function Home(self) {
 
   const [displayed_text, set_displayed_text] = React.useState();
@@ -24,21 +26,18 @@ function Home(self) {
   return (
       
       <div className={"HomeContainer"}>
-        <Section title="News">
-          <p>{displayed_text}</p>
-        </Section>
-        <Section title="Last Todos"/>
-        <Section title="Smth else"/>
+
+        <SectionSeperator label="Smth else"/>
+
+        <SectionSeperator label="Last Todos"/>
+        <section id="HomeSection">
+          <TodoContainer/>
+        </section>
+
+        <SectionSeperator label="Projects"/>
+        <ProjectContainer/>
 
       </div>
-  )
-}
-
-const Section = (self) => {
-  return (
-    <div className="SectionContainer">
-      <h2>{self.title}</h2>
-    </div>
   )
 }
 

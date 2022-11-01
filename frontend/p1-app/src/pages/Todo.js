@@ -4,22 +4,20 @@
 /* eslint-enable */
 
 import React, {useState, useEffect} from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-import TodoItem from '../components/todoItem';
 import {HiPlus} from "react-icons/hi";
+
+import {ProjectContainer, TodoContainer, SectionSeperator} from "../components/components";
 import "../css/Global.css";
 import "../css/Todo.css";
 
 import {History, Local, Server, Saving, Global} from "../components/functions";
-import SvgAllDone from '../components/SvgAllDone';
 
 function Todo(self) {
 
   const [heading, setHeading] = useState("");
   const [description, setDescription] = useState("");
 
-  const [activeProject, setActiveProject] = useState("General");
+  const [activeProject, setActiveProject] = useState("All");
 
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -107,48 +105,14 @@ function Todo(self) {
   <>
     <div className={"todoPageContainer"} >
 
-      <TodoSectionSeperator label={"Projects"}/>
+      <SectionSeperator label={"Projects"}/>
 
-      <div className="projectContainer">
-          <Project 
-          title="All"
-          todoCount="15"
-          unfinishedCount="4"
-          setActiveProject={setActiveProject}
-        />
-        <Project 
-          title="Development"
-          todoCount="12"
-          unfinishedCount="2"
-          setActiveProject={setActiveProject}
-        />
-        <Project 
-          title="Testing"
-          todoCount="3"
-          unfinishedCount="3"
-          setActiveProject={setActiveProject}
-        />
-      </div>
+      <ProjectContainer setActiveProject={setActiveProject}/>
 
-      <TodoSectionSeperator label={"Todo's of "} colored={activeProject}/>
-
-      <motion.div layout className="todoContainer">
-        <div className={Global.displayedTodos.length === 0 ? "todoPageEmpty shown" : "todoPageEmpty hidden"}>
-          <SvgAllDone/>
-        </div>
-        <AnimatePresence>
-          {Global.displayedTodos.map((todo) => (
-              <TodoItem 
-              key={todo.index}
-              todo={todo}
-              heading={todo.heading}
-              description={todo.description}
-              index={todo.index}
-              delTodo={delTodo}
-              />
-          ))}
-        </AnimatePresence>
-      </motion.div>
+      <SectionSeperator label={"Todo's of "} colored={activeProject}/>
+      <section style={{height:"52vh"}}>
+        <TodoContainer delTodo={delTodo}/>
+      </section>
 
       <div className="sticky">
         <div className="todoButtonBar">
@@ -207,35 +171,8 @@ function Todo(self) {
           <HiPlus id="addTodoIcon"/>
         </div>
       </div>
-
     </div>
   </>
-  )
-}
-
-const Project = (self) => {
-  return(
-    <div className="projectCard" onClick={() => self.setActiveProject(self.title)}>
-      <h2>{self.title}</h2>
-      <p>Total Todos: {self.todoCount} 
-        <br/>Unfinished Todos: {self.unfinishedCount}</p>
-    </div>
-  )
-}
-
-const TodoSectionSeperator = (self) => {
-  let displayed_colored = self.colored;
-  let displayed_label = self.label;
-  if(self.colored === "All")displayed_label = "All";displayed_colored = " Todos";
-  return(
-    <div id="todoSection">
-      <span id="todoSeperator"/> 
-      <label> {displayed_label} 
-        <span style={{color:"var(--main_accent)", fontSize:"inherit"}}> 
-          {displayed_colored} 
-        </span>
-      </label>
-    </div>
   )
 }
 

@@ -1,11 +1,10 @@
 
 .HomeContainer {
     position: absolute;
-    width: calc(100%);
+    width: 100%;
     height: calc(100%);
     background-color: var(--main_background);
     bottom: 0;
-    padding: 20px;
     padding-top: 60px;
     display: flex;
     flex-direction: column;
@@ -15,15 +14,6 @@
     display: none;
 }
 
-.SectionContainer{
-    background-color: red;
-    border-radius: 10px;
-    width: 100%;
-    min-height: 15vh;
-    margin: 10px 0px;
-    padding: 10px;
-} .SectionContainer h2 {
-    /* font-size: 1.2rem; */
-    border-bottom: 2px solid var(--text_color);
+#HomeSection{
+    height: 30vh;
 }
-
