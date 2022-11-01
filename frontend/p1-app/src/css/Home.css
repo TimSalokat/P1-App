@@ -15,5 +15,39 @@
 }
 
 #HomeSection{
-    height: 30vh;
+    max-height: 30vh;
+}
+
+#DailySection {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#DailyOverlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main_background);
+    opacity: .25;
+}
+
+#svg_daily{
+    width: inherit;
+    margin-bottom: 20px;
+}
+
+#HomeHeading {
+    position: absolute;
+    font-size: 1.9rem;
+    margin: 0px 9px;
+    text-shadow: 3px 3px 8px black;
+}
+
+#HomeHeadingColored {
+    font-size: inherit;
+    color: var(--main_accent);
+    text-shadow: 3px 3px 8px var(--main_accent);
 }

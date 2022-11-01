@@ -31,6 +31,9 @@ function SideMenu(self) {
                 <li onClick={() => link("Todo")}>
                     <h2 className="font-section">Projects</h2>
                 </li>
+                <li onClick={() => link("Testing")}>
+                    <h2 className="font-section">Testing</h2>
+                </li>
             </ul>
 
             <div className="chartContainer">

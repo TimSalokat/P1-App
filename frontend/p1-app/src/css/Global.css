@@ -123,6 +123,9 @@
     --secondary_background: #ff9001;   
 }
 
+.svg {
+    height: inherit;
+}
 
 .text_accent {
     font-size: inherit;
@@ -250,4 +253,10 @@
 }
 #superContainer:not([data-overlayActive="false"]) .overlay {
     display: block;
+}
+
+#TestingPage {
+    background-color: var(--main_background);
+    height: 100%;
+    width: 100%;;
 }

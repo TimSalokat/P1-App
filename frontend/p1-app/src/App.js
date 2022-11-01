@@ -11,6 +11,7 @@ import HistoryPage from './components/History';
 
 import Home from './pages/Home';
 import Todo from './pages/Todo';
+import TestingPage from "./pages/TestingPage";
 import DevPage from './pages/DevPage';
 
 import { Global } from './components/functions';
@@ -48,6 +49,7 @@ function App() {
         <div className='PageWrapper'>
             <Home/>
             <Todo/>
+            <TestingPage/>
             <DevPage reRenderHistory={reRenderHistory} reRenderAll={reRenderAll}/>
         </div>
 

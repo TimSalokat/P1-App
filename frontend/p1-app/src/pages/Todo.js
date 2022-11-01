@@ -110,7 +110,7 @@ function Todo(self) {
       <ProjectContainer setActiveProject={setActiveProject}/>
 
       <SectionSeperator label={"Todo's of "} colored={activeProject}/>
-      <section style={{height:"52vh"}}>
+      <section style={{height:"50vh"}}>
         <TodoContainer delTodo={delTodo}/>
       </section>
 

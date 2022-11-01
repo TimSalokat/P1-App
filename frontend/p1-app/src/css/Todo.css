@@ -10,7 +10,7 @@
     height: 100%;
     width: 100%;
     background-color: var(--main_background);
-    padding-top: 50px;
+    padding-top: 60px;
 }
 
 #superContainer:not([data-activepage="Todo"]) .todoPageContainer {
@@ -21,7 +21,6 @@
     display: block;
     padding: 0;
     margin: 2.5%;
-    /* height: 52vh; */
     height: inherit;
     width: 95%;
     border-radius: 0px;
@@ -45,8 +44,7 @@
     height: 60px;
 }
 
-/* ! Every child after 3 */
-#superContainer[data-activePage="Home"] .todoPageEmpty:nth-child() {
+#superContainer[data-activePage="Home"] .todoItemContainer:nth-child(n+5) {
     display: none;
 }
 
@@ -92,6 +90,10 @@
     opacity: 0%;}
 .todoPageEmpty.shown {
     opacity: 80%;
+}
+
+.todoPageEmpty h2 {
+    color: var(--main_accent);
 }
 
 #superContainer[data-activePage="Todo"] .todoPageEmpty h2 {
@@ -386,9 +388,13 @@
 
 #superContainer[data-activePage="Home"] .projectContainer {
     display: grid;
-    grid-template-columns: 1fr stretch;
+    grid-template-columns: 160px 160px;
+    grid-template-rows: 115px;
+    gap: 2.5%;
     max-height: 100%;
     height: 320px;
+    height: fit-content;
+    overflow: hidden;
 }
 
 .projectContainer::-webkit-scrollbar{
@@ -429,7 +435,7 @@
 #todoSection {
     position: relative;
     width: 95%;
-    margin: 2.5%;
+    margin: 0px 2.5%;
     color: var(--text_color);
     display:flex;
 }

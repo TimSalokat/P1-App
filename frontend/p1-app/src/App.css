@@ -21,7 +21,7 @@ code {
     monospace;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p, h1, h2, h3, h4, h5, h6, label {
   color: var(--text_color);
   padding: 0;
   margin: 0;

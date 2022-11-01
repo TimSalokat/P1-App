@@ -5,12 +5,12 @@ import "../css/Home.css";
 import {Server } from '../components/functions';
 
 import {ProjectContainer, SectionSeperator, TodoContainer} from "../components/components";
+import SvgMorning from '../components/svg/SvgMorning';
 
 function Home(self) {
 
   const [displayed_text, set_displayed_text] = React.useState();
 
-  //* Runs on first render
   React.useEffect(() => {
     async function asyncFunc(){
       var text = await Server.fetchText();
@@ -24,10 +24,13 @@ function Home(self) {
   }, [])
 
   return (
-      
       <div className={"HomeContainer"}>
 
-        <SectionSeperator label="Smth else"/>
+        <section id="DailySection" style={{height: "200px"}}>
+          <div id="DailyOverlay"/>
+          <label id="HomeHeading"> Good Morning <span id="HomeHeadingColored"> Admin </span></label>
+          <SvgMorning/>
+        </section>
 
         <SectionSeperator label="Last Todos"/>
         <section id="HomeSection">

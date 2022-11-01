@@ -5,7 +5,7 @@ import { Global } from "./functions";
 import {motion, AnimatePresence} from "framer-motion";
 
 import TodoItem from "./todoItem";
-import SvgAllDone from '../components/SvgAllDone';
+import SvgAllDone from '../components/svg/SvgAllDone';
 
 const ProjectContainer = (self) => {
     return (
