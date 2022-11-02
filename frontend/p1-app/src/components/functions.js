@@ -69,7 +69,7 @@ const Global = {
         this.superContainer.activepage = new_page;
     },
 
-    colorScheme: "RottenCopper",
+    colorScheme: "DefaultDark",
     set setColorScheme(new_scheme){
         this.colorScheme = new_scheme;
         this.superContainer.colorscheme = new_scheme;

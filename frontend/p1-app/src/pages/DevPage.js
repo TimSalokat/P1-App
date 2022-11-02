@@ -54,15 +54,15 @@ export default function DevPage(self) {
           text={"Add testing Todos"}
           function={() => {
             Global.displayedTodos = [
-              {"index":0,"heading":"Testing todo1","description":"","finished":false},
-              {"index":0,"heading":"Testing todo2","description":"","finished":false},
-              {"index":0,"heading":"Testing todo3","description":"","finished":false},
-              {"index":0,"heading":"Testing todo4","description":"","finished":false},
-              {"index":0,"heading":"Testing todo5","description":"","finished":false},
-              {"index":0,"heading":"Testing todo6","description":"","finished":false},
-              {"index":0,"heading":"Testing todo7","description":"","finished":false},
-              {"index":0,"heading":"Testing todo8","description":"","finished":false},
-              {"index":0,"heading":"Testing todo9","description":"","finished":false}
+              {"index":10,"heading":"Testing todo1","description":"","finished":false},
+              {"index":11,"heading":"Testing todo2","description":"","finished":false},
+              {"index":22,"heading":"Testing todo3","description":"","finished":false},
+              {"index":33,"heading":"Testing todo4","description":"","finished":false},
+              {"index":44,"heading":"Testing todo5","description":"","finished":false},
+              {"index":55,"heading":"Testing todo6","description":"","finished":false},
+              {"index":66,"heading":"Testing todo7","description":"","finished":false},
+              {"index":77,"heading":"Testing todo8","description":"","finished":false},
+              {"index":88,"heading":"Testing todo9","description":"","finished":false}
           ]
           forceUpdate();
         }}/>
@@ -93,13 +93,17 @@ export default function DevPage(self) {
         History.add(("Applied Color Scheme: " + e.target.value));
         self.reRenderAll();    
       }}>
-        <option value="DefaultLight">Default Light</option>
-        <option value="DefaultDark">Default Dark</option>
-        <option value="Copper">Copper</option>
-        <option value="RottenCopper">RottenCopper</option>
-        <option value="Birch">Birch</option>
-        <option value="Prismarine">Prismarine</option>
-        <option value="Sunrise">[Experimental] Sunrise</option>
+        <option value="DefaultLight">[Light] Default</option>
+        <option value="CopperLight">[Light] Copper</option>
+        <option value="RottenCopperLight">[Light] Oxidised</option>
+
+        <option value="DefaultDark">[Dark] Default</option>
+        <option value="CopperDark">[Dark] Copper</option>
+        <option value="RottenCopperDark">[Dark] Oxidised</option>
+
+        <option value="Sunrise">[Concept] Sunrise</option>
+        <option value="Birch">[Concept] Birch</option>
+        <option value="OldBase">[Outdated] Old Default</option>
       </select>
 
       <span id="DevSeperator"/>

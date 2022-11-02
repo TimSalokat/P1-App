@@ -68,7 +68,86 @@
                             var(--main_accent-light-l));
 }
 
+
+.DefaultLight {
+    --main_accent-h: 284;
+    --main_accent-s: 71%;
+    --main_accent-l: 47%;
+
+    --text_color: rgb(40, 40, 40);
+    --dark_shadow: rgb(44, 44, 44);
+
+    --secondary_background: rgb(230, 230, 230);
+    --main_background: rgb(200, 200, 200);
+}
+
 .DefaultDark {
+    /* --main_accent: #e4640f; */
+    --main_accent-h: 284;
+    --main_accent-s: 71%;
+    --main_accent-l: 47%;
+
+    --text_color: #eeeeee;
+    --dark_shadow: rgb(120,120,120);
+
+    --main_background: #393e46;
+    --secondary_background: #222831;   
+}
+
+.CopperDark {
+    /* --main_accent: #e4640f; */
+    --main_accent-h: 24;
+    --main_accent-s: 88%;
+    --main_accent-l: 48%;
+
+    --text_color: #eeeeee;
+    --dark_shadow: rgb(120,120,120);
+
+    --main_background: #393e46;
+    --secondary_background: #222831;   
+}
+
+.CopperLight {
+    /* --main_accent: #e4640f; */
+    --main_accent-h: 24;
+    --main_accent-s: 88%;
+    --main_accent-l: 48%;
+
+    --text_color: rgb(40,40,40);
+    --dark_shadow: rgb(44, 44, 44);
+
+    --secondary_background: rgb(230, 230, 230);
+    --main_background: rgb(200, 200, 200);
+}
+
+.RottenCopperDark {
+    /* --main_accent: #1d977d; */
+    --main_accent-h: 167;
+    --main_accent-s: 68%;
+    --main_accent-l: 35%;
+
+    --text_color: #eeeeee;
+    --dark_shadow: rgb(120,120,120);
+
+    --main_background: #393e46;
+    --secondary_background: #222831;   
+}
+
+.RottenCopperLight {
+    /* --main_accent: #1d977d; */
+    --main_accent-h: 167;
+    --main_accent-s: 68%;
+    --main_accent-l: 35%;
+
+    --text_color: rgb(40,40,40);
+    --dark_shadow: rgb(44, 44, 44);
+
+    --secondary_background: rgb(230, 230, 230);
+    --main_background: rgb(200, 200, 200); 
+}
+
+.OldBase {
+    /* ? Just here for the memories */
     --text_color: rgb(235, 244, 252);
 
     /* --main_accent: rgb(160, 35, 207); */
@@ -80,75 +159,6 @@
 
     --main_background: rgb(42, 62, 131);
     --secondary_background: rgb(4, 3, 70);
-}
-
-.DefaultLight {
-    --text_color: rgb(40, 40, 40);
-
-    --main_accent-h: 284;
-    --main_accent-s: 71%;
-    --main_accent-l: 47%;
-
-    --dark_shadow: rgb(44, 44, 44);
-
-    --secondary_background: rgb(230, 230, 230);
-    --main_background: rgb(200, 200, 200);
-}
-
-.Birch {
-    --text_color: #eef2e6;
-
-    /* --main_accent: #fdd584; */
-    --main_accent-h: 33;
-    --main_accent-s: 97%;
-    --main_accent-l: 80%;
-
-    --dark_shadow: rgb(150,150,150);
-
-    --main_background: #6f8c64;
-    --secondary_background: #2a4731;   
-}
-
-.Prismarine {
-    --text_color: #eef2e6;
-
-    /* --main_accent: #d6cda4; */
-    --main_accent-h: 49;
-    --main_accent-s: 38%;
-    --main_accent-l: 74%;
-
-    --dark_shadow: rgb(150,150,150);
-
-    --main_background: #3d8361;
-    --secondary_background: #1c6758;   
-}
-
-.Copper {
-    --text_color: #eeeeee;
-
-    /* --main_accent: #e4640f; */
-    --main_accent-h: 24;
-    --main_accent-s: 88%;
-    --main_accent-l: 48%;
-
-    --dark_shadow: rgb(120,120,120);
-
-    --main_background: #393e46;
-    --secondary_background: #222831;   
-}
-
-.RottenCopper {
-    --text_color: #eeeeee;
-
-    /* --main_accent: #1d977d; */
-    --main_accent-h: 167;
-    --main_accent-s: 68%;
-    --main_accent-l: 35%;
-
-    --dark_shadow: rgb(120,120,120);
-
-    --main_background: #393e46;
-    --secondary_background: #222831;   
 }
 
 .Sunrise {
@@ -165,6 +175,21 @@
     /* ? Interesting Todo page due to the swapped colors here */
     --main_background: #1d4851;
     --secondary_background: #ff9001;   
+}
+
+.Birch {
+    /* ! Experimental concept theme */
+    --text_color: #eef2e6;
+
+    /* --main_accent: #fdd584; */
+    --main_accent-h: 33;
+    --main_accent-s: 97%;
+    --main_accent-l: 80%;
+
+    --dark_shadow: rgb(150,150,150);
+
+    --main_background: #6f8c64;
+    --secondary_background: #2a4731;   
 }
 
 .svg {
