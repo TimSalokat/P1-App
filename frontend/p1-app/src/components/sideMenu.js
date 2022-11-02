@@ -2,16 +2,9 @@ import React from 'react'
 import "../css/sideMenu.css";
 import {MdHistory, MdSettings} from "react-icons/md";
 
-import { Saving, Global } from './functions';
+import { Local, Global } from './functions';
 
 function SideMenu(self) {
-
-    function link(page) {
-        Global.setActivePage = page;
-        self.setDisplayedPage(page);
-        Saving.saveLocal(Global.PAGE_KEY, page);
-        Global.setMenuOpen = true;
-    }
 
     return (
         <div className="sideMenuContainer">
@@ -25,13 +18,13 @@ function SideMenu(self) {
             </div>
 
             <ul>
-                <li onClick={() => link("Home")}>
+                <li onClick={() => Local.link("Home")}>
                     <h2 className="font-section">Dashboard</h2>
                 </li>
-                <li onClick={() => link("Todo")}>
+                <li onClick={() => Local.link("Todo")}>
                     <h2 className="font-section">Projects</h2>
                 </li>
-                <li onClick={() => link("Testing")}>
+                <li onClick={() => Local.link("Testing")}>
                     <h2 className="font-section">Testing</h2>
                 </li>
             </ul>
@@ -41,7 +34,7 @@ function SideMenu(self) {
             </div>
 
             <div className="sideButtonContainer">
-                <button onClick={() => link("Dev")}> 
+                <button onClick={() => Local.link("Dev")}> 
                     <MdSettings id="settingsIcon"/>
                     <h2 className="font-section">Settings</h2>
                 </button>

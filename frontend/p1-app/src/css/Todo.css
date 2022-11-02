@@ -93,13 +93,12 @@
 }
 
 .todoPageEmpty h2 {
-    color: var(--main_accent);
+    color: var(--text_color);
 }
 
-#superContainer[data-activePage="Todo"] .todoPageEmpty h2 {
-    display: none;
-}
+#superContainer[data-activePage="Todo"] .todoPageEmpty h2 {display: none;}
 
+#superContainer[data-activePage="Home"] .todoPageEmpty {background: none; margin: 0}
 #superContainer[data-activePage="Home"] .todoPageEmpty #allDoneSvg {
     display: none;
 }
@@ -375,8 +374,7 @@
 
 .projectContainer {
     width: 95%;
-    max-height: 20%;
-    min-height: 130px;
+    min-height: 90px;
     position: relative;
     margin: 2.5%;
     display: flex;
@@ -387,14 +385,13 @@
 }
 
 #superContainer[data-activePage="Home"] .projectContainer {
-    display: grid;
-    grid-template-columns: 160px 160px;
-    grid-template-rows: 115px;
-    gap: 2.5%;
-    max-height: 100%;
-    height: 320px;
     height: fit-content;
     overflow: hidden;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 120px 120px;
+    row-gap: 10px;
 }
 
 .projectContainer::-webkit-scrollbar{
@@ -412,7 +409,7 @@
 
 .projectCard {
     flex: none;
-    height: 115px;
+    height: 90px;
     width: calc(45vw);
     border-radius: 20px;
     background-color: var(--secondary_background);
@@ -430,6 +427,14 @@
 
 .projectCard p {
     text-align: left;
+}
+
+#superContainer[data-activePage="Home"] .projectCard {
+    height: 100%;
+}
+
+#superContainer[data-activePage="Home"] .projectCard:nth-child(n+5) {
+    display: none;
 }
 
 #todoSection {

@@ -18,15 +18,16 @@
     max-height: 30vh;
 }
 
-#DailySection {
+#DailyImgSection {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    max-height: 20vh;
 }
 
-#DailyOverlay{
+#DailyImgOverlay{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -34,20 +35,24 @@
     opacity: .25;
 }
 
-#svg_daily{
-    width: inherit;
-    margin-bottom: 20px;
-}
-
 #HomeHeading {
     position: absolute;
     font-size: 1.9rem;
     margin: 0px 9px;
-    text-shadow: 3px 3px 8px black;
+    text-shadow: 3px 3px 8px var(--dark_shadow);
 }
 
 #HomeHeadingColored {
     font-size: inherit;
     color: var(--main_accent);
-    text-shadow: 3px 3px 8px var(--main_accent);
+    text-shadow: 2px 2px 4px black;
+}
+
+#DailySection {
+    flex:auto;
+}
+
+#svg_daily{
+    width: inherit;
+    margin-bottom: 20px;
 }

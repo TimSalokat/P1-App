@@ -93,11 +93,12 @@ export default function DevPage(self) {
         History.add(("Applied Color Scheme: " + e.target.value));
         self.reRenderAll();    
       }}>
-        <option value="DefaultDark">Default</option>
+        <option value="DefaultLight">Default Light</option>
+        <option value="DefaultDark">Default Dark</option>
         <option value="Copper">Copper</option>
         <option value="RottenCopper">RottenCopper</option>
         <option value="Birch">Birch</option>
-        <option value="Bamboo">Bamboo</option>
+        <option value="Prismarine">Prismarine</option>
         <option value="Sunrise">[Experimental] Sunrise</option>
       </select>
 

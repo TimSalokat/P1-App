@@ -49,11 +49,32 @@
 .font-section{font-family: defaultFont;}
 .font-pixel{font-family: pixel;}
 
+* {
+    --color_variation: 15%;
+
+    --main_accent-light-l: calc(var(--main_accent-l) + var(--color_variation));
+    --main_accent-dark-l: calc(var(--main_accent-l) - var(--color_variation));
+
+    --main_accent: hsl( var(--main_accent-h),
+                        var(--main_accent-s),
+                        var(--main_accent-l));
+
+    --main_accent-dark: hsl(var(--main_accent-h),
+                            var(--main_accent-s),
+                            var(--main_accent-dark-l));
+
+    --main_accent-light: hsl(var(--main_accent-h),
+                            var(--main_accent-s),
+                            var(--main_accent-light-l));
+}
+
 .DefaultDark {
     --text_color: rgb(235, 244, 252);
 
-    --main_accent: rgb(160, 35, 207);
-    /* --secondary_accent: rgb(49, 107, 211); */
+    /* --main_accent: rgb(160, 35, 207); */
+    --main_accent-h: 284;
+    --main_accent-s: 71%;
+    --main_accent-l: 47%;
 
     --dark_shadow: rgb(130,130,130);
 
@@ -61,11 +82,26 @@
     --secondary_background: rgb(4, 3, 70);
 }
 
+.DefaultLight {
+    --text_color: rgb(40, 40, 40);
+
+    --main_accent-h: 284;
+    --main_accent-s: 71%;
+    --main_accent-l: 47%;
+
+    --dark_shadow: rgb(44, 44, 44);
+
+    --secondary_background: rgb(230, 230, 230);
+    --main_background: rgb(200, 200, 200);
+}
+
 .Birch {
     --text_color: #eef2e6;
 
-    --main_accent: #fdd584;
-    /* --secondary_accent: rgb(49, 107, 211); */
+    /* --main_accent: #fdd584; */
+    --main_accent-h: 48;
+    --main_accent-s: 100%;
+    --main_accent-l: 67%;
 
     --dark_shadow: rgb(150,150,150);
 
@@ -73,11 +109,13 @@
     --secondary_background: #2a4731;   
 }
 
-.Bamboo {
+.Prismarine {
     --text_color: #eef2e6;
 
-    --main_accent: #d6cda4;
-    /* --secondary_accent: rgb(49, 107, 211); */
+    /* --main_accent: #d6cda4; */
+    --main_accent-h: 49;
+    --main_accent-s: 38%;
+    --main_accent-l: 74%;
 
     --dark_shadow: rgb(150,150,150);
 
@@ -88,8 +126,10 @@
 .Copper {
     --text_color: #eeeeee;
 
-    --main_accent: #e4640f;
-    /* --secondary_accent: rgb(49, 107, 211); */
+    /* --main_accent: #e4640f; */
+    --main_accent-h: 24;
+    --main_accent-s: 88%;
+    --main_accent-l: 48%;
 
     --dark_shadow: rgb(120,120,120);
 
@@ -100,8 +140,10 @@
 .RottenCopper {
     --text_color: #eeeeee;
 
-    --main_accent: #1d977d;
-    /* --secondary_accent: rgb(49, 107, 211); */
+    /* --main_accent: #1d977d; */
+    --main_accent-h: 167;
+    --main_accent-s: 68%;
+    --main_accent-l: 35%;
 
     --dark_shadow: rgb(120,120,120);
 
@@ -113,8 +155,10 @@
     /* ! This is a concept */
     --text_color: #eef2e6;
 
-    --main_accent: #ff4701;
-    /* --secondary_accent: rgb(49, 107, 211); */
+    /* --main_accent: #ff4701; */
+    --main_accent-h: 17;
+    --main_accent-s: 100%;
+    --main_accent-l: 50%;
 
     --dark_shadow: rgb(80,80,80);
 
@@ -259,4 +303,20 @@
     background-color: var(--main_background);
     height: 100%;
     width: 100%;;
+}
+
+#ColorContainer {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+#ColorContainer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    width: 110px;
+    border: 2px solid black;
 }

@@ -26,19 +26,24 @@ function Home(self) {
   return (
       <div className={"HomeContainer"}>
 
-        <section id="DailySection" style={{height: "200px"}}>
-          <div id="DailyOverlay"/>
+        <section id="DailyImgSection" style={{height: "200px"}}>
+          <div id="DailyImgOverlay"/>
           <label id="HomeHeading"> Good Morning <span id="HomeHeadingColored"> Admin </span></label>
           <SvgMorning/>
         </section>
 
-        <SectionSeperator label="Last Todos"/>
-        <section id="HomeSection">
-          <TodoContainer/>
+        <SectionSeperator label="Your day"/> 
+        <section id="DailySection">
+
         </section>
 
-        <SectionSeperator label="Projects"/>
+        <SectionSeperator label="Categories"/>
         <ProjectContainer/>
+
+        {/* <SectionSeperator label="Last Todos"/>
+        <section id="HomeSection">
+          <TodoContainer/>
+        </section> */}
 
       </div>
   )

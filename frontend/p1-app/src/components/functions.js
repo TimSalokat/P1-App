@@ -120,6 +120,12 @@ class Local {
         History.add("Successfully added local todos", false);
         await Server.fetchTodos(true);
     }
+
+    static link = async (page) => {
+        Global.setActivePage = page;
+        Saving.saveLocal(Global.PAGE_KEY, page);
+        Global.setMenuOpen = true;
+    }
 }
 
 //! --- Server Functions ---

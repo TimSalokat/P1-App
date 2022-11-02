@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Global } from "./functions";
+import { Global, Local } from "./functions";
 
 import {motion, AnimatePresence} from "framer-motion";
 
@@ -34,7 +34,11 @@ const ProjectContainer = (self) => {
 
 const Project = (self) => {
     return(
-      <div className="projectCard" onClick={() => self.setActiveProject(self.title)}>
+      <div className="projectCard" onClick={() => {
+        // self.setActiveProject(self.title);
+        if(Global.activePage !== "Todo") Local.link("Todo");
+        }}>
+
         <h2>{self.title}</h2>
         <p>Total Todos: {self.todoCount} 
           <br/>Unfinished Todos: {self.unfinishedCount}</p>
