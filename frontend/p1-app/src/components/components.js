@@ -17,7 +17,7 @@ const ProjectContainer = (self) => {
             setActiveProject={self.setActiveProject}
         />
         <Project 
-            title="Development"
+            title="Ideas"
             todoCount="12"
             unfinishedCount="2"
             setActiveProject={self.setActiveProject}
@@ -36,12 +36,23 @@ const Project = (self) => {
     return(
       <div className="projectCard" onClick={() => {
         // self.setActiveProject(self.title);
-        if(Global.activePage !== "Todo") Local.link("Todo");
-        }}>
+        if(Global.activePage !== "Todo") Local.link("Todo");}}
+        >
+
+        <span id="projectCardDecorator"/>
 
         <h2>{self.title}</h2>
-        <p>Total Todos: {self.todoCount} 
-          <br/>Unfinished Todos: {self.unfinishedCount}</p>
+        <h3>{self.todoCount}</h3>
+
+        <p>Finished</p>
+        <p></p>
+
+        <div id="projectProgressBar">
+            <span id="projectProgressBarFill"/>
+        </div>
+        <p>{self.unfinishedCount}%</p>
+
+
       </div>
     )
 }

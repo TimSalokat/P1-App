@@ -21,9 +21,8 @@ function TodoItem(self) {
     }
 
     const displayDescription = () => {
-        if(self.description === ""){
-            return({display:"none"})
-        }
+        if(self.description === ""){return("No description")}
+        return(self.description);
     }
 
     return (
@@ -36,11 +35,15 @@ function TodoItem(self) {
                 <MdDone className={"icon" + isFinished()}/>
             </div>
 
-            <span className="todoSeperator"/>
+            <span id="todoItemSeperator"/>
 
-            <div onClick={() => displayDescription()}>
+            <div onClick={() => displayDescription()} className="todoItemTextContainer">
                 <h4>{self.heading}</h4>
-                <p style={displayDescription()}>{self.description}</p>
+                <p style={{gridArea:"Project", alignSelf:"center",
+                 color:"var(--main_accent)", textAlign:"right"}}>
+                    Project
+                </p>
+                <p>{displayDescription()}</p>
             </div>
         </motion.div>
     )

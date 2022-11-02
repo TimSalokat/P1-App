@@ -4,7 +4,7 @@ import "../css/Home.css";
 
 // import {Server } from '../components/functions';
 
-import {ProjectContainer, SectionSeperator, TodoContainer} from "../components/components";
+import {ProjectContainer, SectionSeperator} from "../components/components";
 import SvgMorning from '../components/svg/SvgMorning';
 
 function Home(self) {
