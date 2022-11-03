@@ -26,19 +26,21 @@ function Todo(self) {
   useEffect(() => {
     const storedTodos = Saving.loadSave(Global.TODO_KEY);
     const storedTodosToAdd = Saving.loadSave(Global.TODO_TO_ADD_KEY, false)
+    const storedProjects = Saving.loadSave(Global.PROJECT_KEY);
     if(storedTodos !== undefined) Global.setDisplayedTodos = storedTodos;
     if(storedTodosToAdd !== undefined) Global.setTodosToAdd = storedTodosToAdd;
+    if(storedProjects !== undefined) Global.setProjects = storedProjects;
   }, [])
 
   //! Eslint disable removes the warning and i think errors when runnin this part 
   /* eslint-disable */
   useEffect(() => {
-    if(Server.reachable) {
+    if(Global.serverReachable) {
       Local.addLocalTodos();
       History.add("Synced local and server todos");
       Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
     }
-  }, [Server.reachable])
+  }, [Global.serverReachable])
 
   useEffect(() => {
     forceUpdate();

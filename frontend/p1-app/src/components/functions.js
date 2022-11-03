@@ -8,6 +8,7 @@ const Global = {
     BACKEND_KEY: "todoApp.backend",
     HISTORY_KEY: "todoApp.history",
     TODO_KEY: "todoApp.local_todos",
+    PROJECT_KEY: "todoApp.projects",
     TODO_TO_ADD_KEY: "todoApp.to_add",
     PAGE_KEY: "todoApp.last_page",
     COLOR_SCHEME_KEY: "todoApp.color_scheme",
@@ -16,6 +17,7 @@ const Global = {
     lastShowHistory: false,
 
     backend: "http://127.0.0.1:8000",
+    projects: [],
     serverTodos: [],
     displayedTodos: [],
     todosToAdd: [],
@@ -34,6 +36,10 @@ const Global = {
             Server.fetchText();
             Server.fetchTodos();
         }else{console.error("Server not reachable");};
+    },
+
+    set setProjects(new_projects){
+        this.projects = new_projects;
     },
 
     set setServerTodos(new_todos){
@@ -139,6 +145,7 @@ class Server{
                 if(Global.serverReachable){return true}
                 Global.setServerReachable = true;
                 Server.fetchTodos();
+                Server.fetchProjects();
                 console.warn("Server reached");
                 return true;
             } else {
@@ -175,26 +182,57 @@ class Server{
         }catch {}
     }
 
+    static fetchProjects = async () => {
+        try {
+            const res = await fetch(Global.backend + "/get-projects");
+            const response = await res.json();
+            Global.setProjects = await response.projects;
+            
+            Saving.saveLocal(Global.PROJECT_KEY, Global.projects);
+            return Global.projects;
+        }catch {}
+    }
+
     static addTodo = async (heading, description, project) => {
         try {
             if(heading){
-                var jsonData = {
+                let json_data = {
                     "heading": heading,
                     "description": description,
                     "project": project
                 }
 
+                console.log(json_data)
+
                 await fetch(Global.backend + "/add-todo", {  
                 method: 'POST', 
                 mode: 'cors', 
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(jsonData)
+                body: JSON.stringify(json_data)
                 })
             }   
             await this.fetchTodos();
             History.add("Successfully added todo", false);
-        }catch {}
-        
+        }catch {}   
+    }
+
+    static addProject = async (title) => {
+        try {
+            if(title){
+                let json_data = {
+                    "title": title
+                }
+
+                await fetch(Global.backend + "/add-project", {
+                    method: "POST",
+                    mode: "cors",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify(json_data)
+                })
+            }
+            await this.fetchProjects();
+            History.add("Successfully added Project", false);
+        }catch{}
     }
 
     static finishTodo = async (index) => {

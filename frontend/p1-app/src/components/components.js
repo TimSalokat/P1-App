@@ -1,6 +1,7 @@
 import React from "react";
+import {HiPlus} from "react-icons/hi";
 
-import { Global, Local } from "./functions";
+import { Global, Local, Server} from "./functions";
 
 import {motion, AnimatePresence} from "framer-motion";
 
@@ -12,22 +13,30 @@ const ProjectContainer = (self) => {
     <div className="projectContainer">
         <Project 
             title="All"
-            todoCount="15"
+            todoCount={Global.displayedTodos.length}
             unfinishedCount="4"
             setActiveProject={self.setActiveProject}
         />
-        <Project 
-            title="Ideas"
-            todoCount="12"
-            unfinishedCount="2"
-            setActiveProject={self.setActiveProject}
-        />
-        <Project 
-            title="Testing"
-            todoCount="3"
-            unfinishedCount="3"
-            setActiveProject={self.setActiveProject}
-        />
+
+        {Global.projects.map((project) => (
+            <Project
+                key={project.index}
+                title={project.title}
+            />
+        ))}
+
+        <div className="projectCard" style={{
+            width:"90px", margin:"0px 35px",
+            display:"flex", justifyContent:"center",
+            alignItems:"center"
+        }} onClick={() => {
+            Server.addProject("Test")
+        }}>
+            <HiPlus id="addTodoIcon" style={{
+                top:"20px", fontSize:"3rem"
+            }}/>
+
+        </div>
     </div>
     )
 }

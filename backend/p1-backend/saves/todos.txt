@@ -1,1 +1,1 @@
-[]
+[{'index': 0, 'heading': 'A new todo', 'description': '', 'project': 'testing', 'finished': False}]

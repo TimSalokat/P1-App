@@ -51,7 +51,7 @@ def Startup():
     #newest_version = pull_repo()
     newest_version = 1
 
-    return Todos, newest_version
+    return Todos, newest_version, Projects
 
 class Todo(BaseModel):
     heading: str
@@ -111,6 +111,7 @@ async def add_todo(todo: Todo):
         "project": todo.project,
          "finished": False })
     update_index()
+    log(("Added Todo: ", todo.heading))
     save(Todos, "todos.txt")
     return {"response": "Successful"}
 
@@ -118,9 +119,10 @@ async def add_todo(todo: Todo):
 async def add_project(project: Project):
     Projects.append({
         "index": len(Projects)+1,
-        "title": Project.title 
+        "title": project.title 
     })
     save(Projects, "projects.txt")
+    log(("Added Project: ", project.title))
     return {"response": "Successful"}
 
 @app.put("/set-finished")
@@ -138,7 +140,7 @@ async def del_todo(index: int):
             log(("removed ", todo["heading"]), "red")
             Todos.remove(todo)
     update_index()
-    save(Todos, "toods.txt")
+    save(Todos, "todos.txt")
     return {"response": "Successful"}
 
-Todos, newest_version = Startup()
+Todos, newest_version, Projects = Startup()
