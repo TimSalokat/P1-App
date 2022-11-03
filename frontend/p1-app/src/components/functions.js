@@ -131,25 +131,23 @@ class Local {
 //! --- Server Functions ---
 class Server{
 
-    reachable = false;
-
     static ping = async () => {
-        console.warn("Pinging: " + Global.backend);
         try {
             const res = await fetch(Global.backend + "/ping");
             const response = await res.json();
             if (response === true) {
-                this.reachable = true;
+                if(Global.serverReachable){return true}
+                Global.setServerReachable = true;
                 Server.fetchTodos();
                 console.warn("Server reached");
                 return true;
             } else {
-                this.reachable = false;
+                Global.setServerReachable = false;
                 console.warn("Server unreachable");
                 return false;
             }
         } catch {
-            this.reachable = false;
+            Global.setServerReachable = false;
             return false;
         }
     }
@@ -164,7 +162,7 @@ class Server{
         }catch {}
     }
 
-    static fetchTodos = async (update_displayed = false) => {
+    static fetchTodos = async (update_displayed = true) => {
         try {
             const res = await fetch(Global.backend + "/get-todos");
             const response = await res.json();
@@ -177,10 +175,14 @@ class Server{
         }catch {}
     }
 
-    static addTodo = async (heading) => {
+    static addTodo = async (heading, description, project) => {
         try {
             if(heading){
-                var jsonData = {"heading": heading}
+                var jsonData = {
+                    "heading": heading,
+                    "description": description,
+                    "project": project
+                }
 
                 await fetch(Global.backend + "/add-todo", {  
                 method: 'POST', 

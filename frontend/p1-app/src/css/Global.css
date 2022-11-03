@@ -206,15 +206,14 @@
     display: inline;
 }
 
-.bulb {
+#ServerBulb {
     width: 12px;
     height: 12px;
-    background-color: var(--gray);
+    background-color: rgb(205,28,28);
     border-radius: 10px;
     margin: 10px;
-} .red {
-    background-color: rgb(205, 28, 28);
-} .green {
+}
+#superContainer[data-serverreachable="true"] #ServerBulb {
     background-color: rgb(21, 225, 48);
 }
 

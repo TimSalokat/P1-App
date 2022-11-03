@@ -66,18 +66,23 @@ function Todo(self) {
         index: Global.displayedTodos.length,
         heading: tmp_heading,
         description: tmp_desc,
+        project: "testing",
         finished: false })
 
       forceUpdate();
 
       await Server.ping();
 
-      if(Server.reachable){
+      if(Global.serverReachable){
         History.add("Adding server todo: " + tmp_heading);
-        await Server.addTodo(tmp_heading);
+        await Server.addTodo(tmp_heading, tmp_desc, "testing");
       }else {
         History.add("Added local todo: " + tmp_heading);
-        Global.todosToAdd.push(tmp_heading);
+        Global.todosToAdd.push({
+          "heading": tmp_heading,
+          "description": tmp_desc,
+          "project": "testing"
+        });
       }
         Saving.saveLocal(Global.TODO_TO_ADD_KEY, Global.todosToAdd);
 
@@ -95,7 +100,7 @@ function Todo(self) {
     //* update indexes
     for(var i=0; i<Global.displayedTodos.length; i++){
       Global.displayedTodos[i]["index"] = i;}
-    if(Server.reachable)(
+    if(Global.serverReachable)(
       await Server.deleteTodo(index)
     )
     Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
@@ -105,12 +110,13 @@ function Todo(self) {
   <>
     <div className={"todoPageContainer"} >
 
+      
       <SectionSeperator label={"Projects"}/>
+      <section id="todoMainSection">
+        <ProjectContainer setActiveProject={setActiveProject}/>
 
-      <ProjectContainer setActiveProject={setActiveProject}/>
+        <SectionSeperator label={"Todo's of "} colored={activeProject}/>
 
-      <SectionSeperator label={"Todo's of "} colored={activeProject}/>
-      <section style={{height:"50vh"}}>
         <TodoContainer delTodo={delTodo}/>
       </section>
 

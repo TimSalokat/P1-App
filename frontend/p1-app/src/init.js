@@ -1,6 +1,6 @@
 
 import { useEffect } from "react"
-import { Global, Saving} from "./components/functions"
+import { Global, Saving, Server} from "./components/functions"
 
 const Init = (self) => {
 
@@ -21,9 +21,16 @@ const Init = (self) => {
         let lastBackend = Saving.loadSave(Global.BACKEND_KEY);
         if (lastBackend !== undefined) Global.setBackend = lastBackend;
 
+        Server.ping();
+
         /* eslint-disable */
         self.setDisplayedPage(Global.activePage);
     }, []) 
+
+    setInterval(() => {
+        // ! Commented just for dev
+        // Server.ping();
+    }, 10000)
 
 
     return (null)

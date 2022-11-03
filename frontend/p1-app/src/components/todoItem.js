@@ -37,11 +37,11 @@ function TodoItem(self) {
 
             <span id="todoItemSeperator"/>
 
-            <div onClick={() => displayDescription()} className="todoItemTextContainer">
+            <div onClick={() => console.log(self.todo)} className="todoItemTextContainer">
                 <h4>{self.heading}</h4>
                 <p style={{gridArea:"Project", alignSelf:"center",
                  color:"var(--main_accent)", textAlign:"right"}}>
-                    Project
+                    {self.todo.project}
                 </p>
                 <p>{displayDescription()}</p>
             </div>

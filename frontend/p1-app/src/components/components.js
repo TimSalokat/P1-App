@@ -90,8 +90,8 @@ const SectionSeperator = (self) => {
     }
 
     return (
-        <div id="todoSection">
-            <span id="todoSeperator"/> 
+        <div id="SectionSeperator">
+            <span id="SectionSpan"/> 
             <label> {displayed_label} 
                 <span style={{color:"var(--main_accent)", fontSize:"inherit"}}> 
                 {displayed_colored} 

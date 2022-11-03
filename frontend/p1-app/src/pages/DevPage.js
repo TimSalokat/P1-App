@@ -65,6 +65,7 @@ export default function DevPage(self) {
               {"index":88,"heading":"Testing todo9","description":"","finished":false}
           ]
           forceUpdate();
+          self.reRenderAll();
         }}/>
 
       </div>

@@ -1,7 +1,8 @@
 from __future__ import annotations
+from fileinput import filename
+from tkinter import PROJECTING
 from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
 from pydantic import BaseModel
 # import git
 # from git import Repo
@@ -9,6 +10,7 @@ from pydantic import BaseModel
 from termcolor import colored
 
 Todos = []
+Projects = []
 
 app = FastAPI()
 origins = [
@@ -34,12 +36,17 @@ def log(message, color="green"):
 
 def Startup():
     try:
-        Todos = eval(load_save())
+        Todos = eval(load_save("todos.txt"))
+        Projects = eval(load_save("projects.txt"))
     except:
         with open("saves/todos.txt", "w") as file:
             file.write("[]")
             file.close()
-            Todos=eval(load_save())
+            Todos=eval(load_save("todos.txt"))
+        with open("saves/projects.txt", "w") as file:
+            file.write("[]")
+            file.close()
+            Projects=eval(load_save("projects.txt"))
 
     #newest_version = pull_repo()
     newest_version = 1
@@ -48,6 +55,11 @@ def Startup():
 
 class Todo(BaseModel):
     heading: str
+    description: str
+    project: str
+
+class Project(BaseModel):
+    title: str
 
 def pull_repo():
     repo = Repo('C:/Users/timsa/Desktop/Wokspace/P1-App')
@@ -61,15 +73,16 @@ def update_index():
     for index in range(len(Todos)):
         Todos[index]["index"] = index;
 
-def save(Todos):
-    with open("saves/todos.txt", "w") as file:
-        file.write(str(Todos))
+def save(toSave,fileName):
+    path = "saves/" + fileName
+    with open(path, "w") as file:
+        file.write(str(toSave))
         file.close()
 
-def load_save():
-    with open("saves/todos.txt", "r") as file:
-        newTodos = file.read()
-        return newTodos
+def load_save(fileName):
+    path = "saves/" + fileName
+    with open(path, "r") as file:
+        return file.read() 
 
 @app.get("/ping")
 async def ping():
@@ -81,22 +94,33 @@ async def get_stuff():
 
 @app.get("/get-todos")
 async def get_todos():
-    Todos = eval(load_save())
+    Todos = eval(load_save("todos.txt"))
     return {"todos": Todos}
 
-@app.get("/get-update")
-async def get_update(version: int):
-    log(f"Serverside version - {newest_version}", "yellow")
-    log(f"Passed version - {version}", "yellow")
-    # if version < newest_version:
-    return FileResponse("C:/Users/timsa/Desktop/Wokspace/P1-App/yes.txt", media_type="txt", filename="test.txt")
-    # return {"response": "Hello"}
+@app.get("/get-projects")
+async def get_projects():
+    Projects = eval(load_save("projects.txt"))
+    return {"projects": Projects}
 
 @app.post("/add-todo")
 async def add_todo(todo: Todo):
-    Todos.append({"index": len(Todos)+1,"heading": todo.heading, "finished": False })
+    Todos.append({
+        "index": len(Todos)+1,
+        "heading": todo.heading,
+        "description": todo.description,
+        "project": todo.project,
+         "finished": False })
     update_index()
-    save(Todos)
+    save(Todos, "todos.txt")
+    return {"response": "Successful"}
+
+@app.post("/add-project")
+async def add_project(project: Project):
+    Projects.append({
+        "index": len(Projects)+1,
+        "title": Project.title 
+    })
+    save(Projects, "projects.txt")
     return {"response": "Successful"}
 
 @app.put("/set-finished")
@@ -104,7 +128,7 @@ async def set_finished(index: int):
     for todo in Todos:
         if(todo["index"] == index):
             todo["finished"] =  not todo["finished"]
-    save(Todos)
+    save(Todos, "todos.txt")
     return {"response": "Successful"}
 
 @app.delete("/del-todo")
@@ -114,7 +138,7 @@ async def del_todo(index: int):
             log(("removed ", todo["heading"]), "red")
             Todos.remove(todo)
     update_index()
-    save(Todos)
+    save(Todos, "toods.txt")
     return {"response": "Successful"}
 
 Todos, newest_version = Startup()

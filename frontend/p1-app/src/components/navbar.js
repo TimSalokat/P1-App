@@ -9,7 +9,6 @@ import "../css/navbar.css";
 import {Server, Global} from "../components/functions";
 
 function Navbar(self){
-
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
@@ -22,7 +21,7 @@ function Navbar(self){
   return (
     <div className='navbarContainer'>
       <div style={{display: "flex", justifyContent:"center", alignItems:"center", height:"50px"}}>
-        <div className={Server.reachable ? "bulb green" : "bulb red"}/>
+        <div id="ServerBulb"/>
         <h2 className="font-normalBold">{self.displayedPage}</h2>
       </div>
       <div 
