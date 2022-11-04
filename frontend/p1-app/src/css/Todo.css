@@ -183,8 +183,17 @@
     grid-template-columns: 75% 25%;
     grid-template-areas: 
         "Title Project"
-        "Desc Desc";
+        "Desc DeleteIcon";
 } 
+
+#todoDeleteIcon {
+    grid-area: DeleteIcon;
+    color: var(--text_color);
+    align-self: flex-end;
+    justify-self: flex-end;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
 
 .checkBox {
     max-width: 22px;
@@ -238,7 +247,7 @@
 
 #superContainer:not([data-overlayActive="false"]) .todoButton {
     rotate: 240deg;
-    bottom: 78%;
+    bottom: 79.5%;
     left: calc(52.5% - 40px);
 }
 
@@ -444,7 +453,7 @@
     padding: 10px;
     margin: 5px;
     display: grid;
-    grid-template-columns: 80% 10%;
+    grid-template-columns: 75% 15%;
     grid-template-rows: 60% 10% 20%;
     column-gap: 10px;
     row-gap: 5px;
@@ -463,6 +472,7 @@
 .projectCard h3 {
     z-index: 1;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .projectCard p {
@@ -500,7 +510,7 @@
 
 #projectProgressBar{
     position: relative;
-    width: 100%;
+    width: 100px;
     height: 2px;
     background-color: rgb(100, 100, 100);
     align-self: center;
@@ -546,10 +556,14 @@
 }
 
 #addProjectButton{
-    width: 90px;
+    width: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#superContainer[data-activepage="Home"] #addProjectButton{
+    display: none;
 }
 
 #superContainer[data-serverreachable="false"] #addProjectButton{

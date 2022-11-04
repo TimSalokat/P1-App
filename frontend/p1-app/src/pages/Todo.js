@@ -1,9 +1,10 @@
 // !This one disables all errors and warnings. 
 // ! That shit scary
-/* eslint-disable */
-/* eslint-enable */
 
-import React, {useState, useEffect} from 'react';
+/* eslint-enable */
+/* eslint-disable */
+
+import React, {useEffect} from 'react';
 import {HiPlus} from "react-icons/hi";
 
 import {ProjectContainer, TodoContainer, SectionSeperator, Form} from "../components/components";
@@ -29,7 +30,6 @@ function Todo(self) {
   }, [])
 
   //! Eslint disable removes the warning and i think errors when runnin this part 
-  /* eslint-disable */
   useEffect(() => {
     if(Global.serverReachable) {
       Local.addLocalTodos();
@@ -37,7 +37,6 @@ function Todo(self) {
       Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
     }
   }, [Global.serverReachable])
-  /*eslint-enable */
 
   // ? Wait function might be useful
   // function wait(delay) {
@@ -58,7 +57,7 @@ function Todo(self) {
     Global.setOverlayActive = true;
   }
 
-  const addTodoHelper = async (heading, description) => {
+  const addTodoHelper = async (heading, description, project) => {
     if(heading !== ""){
       let tmp_heading = heading;
       let tmp_desc = description;
@@ -69,7 +68,7 @@ function Todo(self) {
         index: Global.displayedTodos.length,
         heading: tmp_heading,
         description: tmp_desc,
-        project: "testing",
+        project: project,
         finished: false }
 
       Global.displayedTodos.push(new_todo)
@@ -80,13 +79,13 @@ function Todo(self) {
 
       if(Global.serverReachable){
         History.add("Adding server todo: " + tmp_heading);
-        await Server.addTodo(tmp_heading, tmp_desc, "testing");
+        await Server.addTodo(tmp_heading, tmp_desc, project);
       }else {
         History.add("Added local todo: " + tmp_heading);
         Global.todosToAdd.push({
           "heading": tmp_heading,
           "description": tmp_desc,
-          "project": "testing"
+          "project": project
         });
       }
         Saving.saveLocal(Global.TODO_TO_ADD_KEY, Global.todosToAdd);
@@ -99,15 +98,15 @@ function Todo(self) {
 
   const delTodo = async (index) => {
     History.add("Deleting todo: " + Global.displayedTodos[index]["heading"]);
-    // Global.displayedTodos.splice(index,1);
+    Global.displayedTodos.splice(index,1);
     forceUpdate();
 
     // //* update indexes
-    // for(var i=0; i<Global.displayedTodos.length; i++){
-    //   Global.displayedTodos[i]["index"] = i;}
-    // if(Global.serverReachable)(
-    //   await Server.deleteTodo(index)
-    // )
+    for(var i=0; i<Global.displayedTodos.length; i++){
+      Global.displayedTodos[i]["index"] = i;}
+    if(Global.serverReachable)(
+      await Server.deleteTodo(index)
+    )
     Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
   }
 
@@ -132,7 +131,11 @@ function Todo(self) {
         </div>
       </div>
 
-      <div className="overlay" onClick={() => {Global.setOverlayActive = false}}/>
+      <div className="overlay" onClick={() => {
+        Global.setOverlayActive = false;
+        Global.overlay = {};
+        Global.formRerender();
+        }}/>
       <Form/>
 
       <div className="todoButton">

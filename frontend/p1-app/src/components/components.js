@@ -8,6 +8,8 @@ import {motion, AnimatePresence} from "framer-motion";
 import TodoItem from "./todoItem";
 import SvgAllDone from '../components/svg/SvgAllDone';
 
+/* eslint-disable */
+
 const ProjectContainer = (self) => {
 
     return (
@@ -77,7 +79,7 @@ const Project = (self) => {
         <div id="projectProgressBar">
             <span id="projectProgressBarFill" style={{width: finishedTodos()}}/>
         </div>
-        <p>{finishedTodos()}%</p>
+        <p>{finishedTodos().toFixed(0)}%</p>
 
 
       </div>
@@ -92,6 +94,16 @@ const TodoContainer = (self) => {
         return filtered
     }
 
+    let unfinishedTodos = () => {
+        let unfinished = filteredTodos().filter((todo)=>todo.finished === false);
+        return unfinished;
+    }
+
+    let finishedTodos = () => {
+        let finished = filteredTodos().filter((todo)=>todo.finished === true);
+        return finished;
+    }
+
     return (
         <motion.div layout className="todoContainer">
             <div className={Global.displayedTodos.length === 0 ? "todoPageEmpty shown" : "todoPageEmpty hidden"}>
@@ -99,7 +111,7 @@ const TodoContainer = (self) => {
                 <h2> No Todos </h2>
             </div>
             <AnimatePresence>
-                {filteredTodos().map((todo) => (
+                {unfinishedTodos().map((todo) => (
                     <TodoItem 
                     key={todo.index}
                     todo={todo}
@@ -109,7 +121,8 @@ const TodoContainer = (self) => {
                     delTodo={self.delTodo}
                     />
                 ))}
-                {/* {Global.displayedTodos.map((todo) => (
+
+                {finishedTodos().map((todo) => (
                     <TodoItem 
                     key={todo.index}
                     todo={todo}
@@ -118,7 +131,7 @@ const TodoContainer = (self) => {
                     index={todo.index}
                     delTodo={self.delTodo}
                     />
-                ))} */}
+                ))}
             </AnimatePresence>
         </motion.div>
     )
@@ -150,6 +163,9 @@ const Form = () => {
 
     const [mainTitle, setMainTitle] = React.useState("");
     const [description, setDescription] = React.useState("");
+    const [project, setProject] = React.useState("");
+
+    let index = Global.overlay.index;
 
     const [, updateState] = React.useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -157,6 +173,11 @@ const Form = () => {
     React.useEffect(() => {
         Global.setFormRerender = forceUpdate;
     }, [])
+
+    React.useEffect(() => {
+        setMainTitle(Global.overlay.main)
+        setDescription(Global.overlay.desc)
+    }, [Global.overlay])
 
     function showDesc(){
         if(!Global.overlay.show_desc){
@@ -188,19 +209,30 @@ const Form = () => {
                 onChange={(e) => setDescription(e.target.value)}
                 />
 
+                <select className="DevSelect" onChange={(e) => setProject(e.target.value)}>
+                    <option>General</option>
+                    {
+                        Global.projects.map((project) => (
+                            <option>{project.title}</option>
+                        ))                        
+                    }
+                </select>
+
             </form>
 
             <div className="createTodoBtnContainer">
                 <button onClick={() => {
                     setMainTitle("");
                     setDescription("");
+                    // Global.setOverlayProps = {};
                     Global.setOverlayActive = false;
                 }}>Cancel</button>
 
                 <button onClick={() => {
                     setMainTitle("");
                     setDescription("");
-                    Global.overlay.on_commit(mainTitle, description);
+                    // Global.setOverlayProps = {};
+                    Global.overlay.on_commit(mainTitle, description, project, index);
                     Global.setOverlayActive = false;
                 }}>Submit</button>
                 </div>

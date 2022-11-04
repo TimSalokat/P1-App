@@ -104,12 +104,13 @@ async def get_projects():
 
 @app.post("/add-todo")
 async def add_todo(todo: Todo):
+    print(todo)
     Todos.append({
         "index": len(Todos)+1,
         "heading": todo.heading,
         "description": todo.description,
         "project": todo.project,
-         "finished": False })
+        "finished": False })
     update_index()
     log(("Added Todo: ", todo.heading))
     save(Todos, "todos.txt")
@@ -133,6 +134,17 @@ async def set_finished(index: int):
     save(Todos, "todos.txt")
     return {"response": "Successful"}
 
+@app.put("/edit-todo/{index}")
+async def edit_todo(index:int, todo: Todo):
+    for todo_item in Todos:
+        if(todo_item["index"] == index):
+            todo_item["heading"] = todo.heading
+            todo_item["description"] = todo.description
+            todo_item["project"] = todo.project
+    save(Todos, "todos.txt")
+    log(("Changed todo: " + todo.heading))
+    return {"response": "Successful"}
+
 @app.delete("/del-todo")
 async def del_todo(index: int):
     for todo in Todos:
@@ -141,6 +153,15 @@ async def del_todo(index: int):
             Todos.remove(todo)
     update_index()
     save(Todos, "todos.txt")
+    return {"response": "Successful"}
+
+@app.delete("/del-project")
+async def del_project(title: str):
+    for project in Projects:
+        if(project["title"] == title):
+            log(("removed ", title), "red")
+            Projects.remove(project)
+    save(Projects, "projects.txt")
     return {"response": "Successful"}
 
 Todos, newest_version, Projects = Startup()

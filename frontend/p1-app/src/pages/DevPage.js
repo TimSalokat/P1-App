@@ -14,6 +14,7 @@ const dev_variables = {
 export default function DevPage(self) {
 
   const [newBackend, setNewBackend] = React.useState("");
+  const [projectToDelete, setProjectToDelete] = React.useState("");
 
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -85,6 +86,23 @@ export default function DevPage(self) {
           Saving.saveLocal(Global.BACKEND_KEY, newBackend);
           setNewBackend("");
         }}> Submit </button>
+      </div>
+
+      <DevSection colored={"Delete "} uncolored={"Project"}/>
+
+      <div className="DevBackendContainer">
+        <input 
+          onChange={(e) => setProjectToDelete(e.target.value)} 
+          value={projectToDelete}
+          placeholder="Project to delete"
+        ></input>
+
+        <button className="DevCommit_BTN" onClick={() => {
+          if(projectToDelete !== "") Server.deleteProject(projectToDelete);
+          History.add(("Deleting project: " + projectToDelete));
+          Saving.saveLocal(Global.PROJECT_KEY, Global.projects);
+          setProjectToDelete("");
+        }}> Delete </button>
       </div>
 
       <DevSection colored={"Color "} uncolored={"Schemes"}/>

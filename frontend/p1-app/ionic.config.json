@@ -1,5 +1,5 @@
 {
-    "name": "p1_dev_build",
+    "name": "production_build",
     "integrations": {
       "capacitor": {}
     },

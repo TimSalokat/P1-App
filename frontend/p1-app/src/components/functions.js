@@ -214,7 +214,7 @@ class Server{
             Global.setServerTodos = await response.todos;
 
             if(update_displayed) Global.displayedTodos = Global.serverTodos;
-
+            Global.todosRerender();
             return Global.serverTodos;
         }catch {}
     }
@@ -233,23 +233,44 @@ class Server{
     static addTodo = async (heading, description, project) => {
         try {
             if(heading){
+                if(description === undefined) description = ""
+                if(project === "") project = "General"
                 let json_data = {
                     "heading": heading,
                     "description": description,
                     "project": project
                 }
 
-                console.log(json_data)
-
                 await fetch(Global.backend + "/add-todo", {  
-                method: 'POST', 
+                    method: 'POST', 
+                    mode: 'cors', 
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(json_data)
+                })
+            }   
+            await this.fetchTodos();
+            History.add("Successfully added todo", false);
+        }catch {}   
+    }
+
+    static editTodo = async (heading, description, project, index) => {
+        try {
+            if(heading){
+                let json_data = {
+                    "heading": heading,
+                    "description": description,
+                    "project": project
+                }
+
+                await fetch(Global.backend + "/edit-todo/" + index, {  
+                method: 'PUT', 
                 mode: 'cors', 
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(json_data)
                 })
             }   
             await this.fetchTodos();
-            History.add("Successfully added todo", false);
+            History.add("Successfully changed todo", false);
         }catch {}   
     }
 
@@ -290,6 +311,17 @@ class Server{
             })
             await this.fetchTodos();
             History.add("Successfully deleted Todo", false);
+        }catch {}
+    }
+
+    static deleteProject = async (title) => {
+        try {
+            await fetch(Global.backend + `/del-project?title=${title}`, {
+            method: "DELETE",
+            mode: "cors",
+            })
+            await this.fetchProjects();
+            History.add(("Successfully deleted " + title), false);
         }catch {}
     }
 
