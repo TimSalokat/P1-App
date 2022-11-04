@@ -22,11 +22,6 @@ function App() {
     const [historyUpdate, setHistoryUpdate] = useState(false);
     const reRenderHistory = () => {
         setHistoryUpdate(!historyUpdate);}
-    
-    const [all, updateAll] = useState(false);
-    const reRenderAll = () => {
-        updateAll(!all);}
-
 
     const [, updateState] = React.useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
