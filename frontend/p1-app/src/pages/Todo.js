@@ -6,18 +6,13 @@
 import React, {useState, useEffect} from 'react';
 import {HiPlus} from "react-icons/hi";
 
-import {ProjectContainer, TodoContainer, SectionSeperator} from "../components/components";
+import {ProjectContainer, TodoContainer, SectionSeperator, Form} from "../components/components";
 import "../css/Global.css";
 import "../css/Todo.css";
 
 import {History, Local, Server, Saving, Global} from "../components/functions";
 
 function Todo(self) {
-
-  const [heading, setHeading] = useState("");
-  const [description, setDescription] = useState("");
-
-  const [activeProject, setActiveProject] = useState("All");
 
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -30,6 +25,7 @@ function Todo(self) {
     if(storedTodos !== undefined) Global.setDisplayedTodos = storedTodos;
     if(storedTodosToAdd !== undefined) Global.setTodosToAdd = storedTodosToAdd;
     if(storedProjects !== undefined) Global.setProjects = storedProjects;
+    Global.setTodosRerender = forceUpdate;
   }, [])
 
   //! Eslint disable removes the warning and i think errors when runnin this part 
@@ -41,10 +37,6 @@ function Todo(self) {
       Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
     }
   }, [Global.serverReachable])
-
-  useEffect(() => {
-    forceUpdate();
-  }, [Global.displayedTodos])
   /*eslint-enable */
 
   // ? Wait function might be useful
@@ -53,23 +45,34 @@ function Todo(self) {
   // }
 
   const createNewTodo = async () => {
-    if(Global.overlayActive){Global.setOverlayActive = false}
-    else{Global.setOverlayActive = true;}
+    if(Global.overlayActive = false){return}
+    Global.setOverlayProps = {
+      heading_one: "Add",
+      heading_two: "Todo",
+      main_placeholder: "Todo Heading",
+      desc_placeholder: "Description",
+      show_desc: true,
+      on_commit: addTodoHelper,
+    }
+    Global.formRerender();
+    Global.setOverlayActive = true;
   }
 
-  const addTodo_helper = async () => {
+  const addTodoHelper = async (heading, description) => {
     if(heading !== ""){
-      var tmp_heading = heading;
-      var tmp_desc = description;
-      setDescription("");
-      setHeading("");
+      let tmp_heading = heading;
+      let tmp_desc = description;
+      // setDescription("");
+      // setHeading("");
 
-      Global.displayedTodos.push({
+      let new_todo = {
         index: Global.displayedTodos.length,
         heading: tmp_heading,
         description: tmp_desc,
         project: "testing",
-        finished: false })
+        finished: false }
+
+      Global.displayedTodos.push(new_todo)
 
       forceUpdate();
 
@@ -96,15 +99,15 @@ function Todo(self) {
 
   const delTodo = async (index) => {
     History.add("Deleting todo: " + Global.displayedTodos[index]["heading"]);
-    Global.displayedTodos.splice(index,1);
+    // Global.displayedTodos.splice(index,1);
     forceUpdate();
 
-    //* update indexes
-    for(var i=0; i<Global.displayedTodos.length; i++){
-      Global.displayedTodos[i]["index"] = i;}
-    if(Global.serverReachable)(
-      await Server.deleteTodo(index)
-    )
+    // //* update indexes
+    // for(var i=0; i<Global.displayedTodos.length; i++){
+    //   Global.displayedTodos[i]["index"] = i;}
+    // if(Global.serverReachable)(
+    //   await Server.deleteTodo(index)
+    // )
     Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
   }
 
@@ -115,9 +118,9 @@ function Todo(self) {
       
       <SectionSeperator label={"Projects"}/>
       <section id="todoMainSection">
-        <ProjectContainer setActiveProject={setActiveProject}/>
+        <ProjectContainer/>
 
-        <SectionSeperator label={"Todo's of "} colored={activeProject}/>
+        <SectionSeperator label={"Todo's of "} colored={Global.activeFilter}/>
 
         <TodoContainer delTodo={delTodo}/>
       </section>
@@ -130,46 +133,7 @@ function Todo(self) {
       </div>
 
       <div className="overlay" onClick={() => {Global.setOverlayActive = false}}/>
-
-      <div className="createTodoFormContainer">
-        <div className="createTodoForm">
-          <form>
-
-            <div className="createTodoFormHeading">
-              <h2> New </h2>
-              <h2> Todo </h2>
-            </div>
-
-            <input 
-              placeholder="Heading"
-              type="text"
-              value={heading}
-              onChange={(e) => setHeading(e.target.value)}
-            />
-
-            <textarea 
-              placeholder="Description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-
-          </form>
-
-          <div className="createTodoBtnContainer">
-              <button onClick={() => {
-                setHeading("");
-                setDescription("");
-                Global.setOverlayActive = false;
-              }}>Cancel</button>
-
-              <button onClick={() => {
-                addTodo_helper();
-                Global.setOverlayActive = false;
-              }}>Add Todo</button>
-            </div>
-
-        </div>
-      </div>
+      <Form/>
 
       <div className="todoButton">
         <div className="triangle" onClick={createNewTodo}>

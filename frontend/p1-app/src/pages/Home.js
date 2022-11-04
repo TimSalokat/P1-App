@@ -7,21 +7,7 @@ import "../css/Home.css";
 import {ProjectContainer, SectionSeperator} from "../components/components";
 import SvgMorning from '../components/svg/SvgMorning';
 
-function Home(self) {
-
-  // const [displayed_text, set_displayed_text] = React.useState();
-
-  // React.useEffect(() => {
-  //   async function asyncFunc(){
-  //     var text = await Server.fetchText();
-  //     if(text !== undefined){
-  //       set_displayed_text(text);
-  //     } else {
-  //       set_displayed_text("Keine Serververbindung");
-  //     }
-  //   }
-  //   asyncFunc();
-  // }, [])
+function Home() {
 
   return (
       <div className={"HomeContainer"}>
@@ -39,11 +25,6 @@ function Home(self) {
 
         <SectionSeperator label="Categories"/>
         <ProjectContainer/>
-
-        {/* <SectionSeperator label="Last Todos"/>
-        <section id="HomeSection">
-          <TodoContainer/>
-        </section> */}
 
       </div>
   )

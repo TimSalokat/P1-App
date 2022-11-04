@@ -4,6 +4,10 @@ import { dev_variables } from "../pages/DevPage";
 
 var history = [];
 
+function placeholder_func() {
+    return 
+}
+
 const Global = {
     BACKEND_KEY: "todoApp.backend",
     HISTORY_KEY: "todoApp.history",
@@ -17,11 +21,34 @@ const Global = {
     lastShowHistory: false,
 
     backend: "http://127.0.0.1:8000",
+
+    activeFilter: "All",
     projects: [],
     serverTodos: [],
     displayedTodos: [],
+
     todosToAdd: [],
     mainText: "",
+
+    overlay: {},
+    set setOverlayProps(new_props){
+        this.overlay = new_props;
+    },
+
+    appRerender: placeholder_func,
+    set setAppRerender(new_func){
+        this.appRerender = new_func;
+    },
+
+    todosRerender: placeholder_func,
+    set setTodosRerender(new_func){
+        this.todosRerender = new_func;
+    },
+
+    formRerender: placeholder_func,
+    set setFormRerender(new_func){
+        this.formRerender = new_func;
+    },
 
     set setShowHistory(new_showHistory){
         this.showHistory = new_showHistory;
@@ -38,14 +65,22 @@ const Global = {
         }else{console.error("Server not reachable");};
     },
 
+    set setFilter(new_filter){
+        this.activeFilter = new_filter;
+        Global.todosRerender();
+    },
+
     set setProjects(new_projects){
         this.projects = new_projects;
+        Global.todosRerender();
     },
 
     set setServerTodos(new_todos){
         this.serverTodos = new_todos;},
     set setDisplayedTodos(new_todos){
-        this.displayedTodos = new_todos;},
+        this.displayedTodos = new_todos;
+        Global.todosRerender();
+    },
     set setTodosToAdd(new_todos_to_add){
         this.todosToAdd = new_todos_to_add;},
 
@@ -128,6 +163,7 @@ class Local {
     }
 
     static link = async (page) => {
+        Global.appRerender();
         Global.setActivePage = page;
         Saving.saveLocal(Global.PAGE_KEY, page);
         Global.setMenuOpen = true;
@@ -154,6 +190,7 @@ class Server{
                 return false;
             }
         } catch {
+            console.warn("Server unreachable");
             Global.setServerReachable = false;
             return false;
         }

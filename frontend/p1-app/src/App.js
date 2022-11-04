@@ -27,6 +27,14 @@ function App() {
     const reRenderAll = () => {
         updateAll(!all);}
 
+
+    const [, updateState] = React.useState();
+    const forceUpdate = React.useCallback(() => updateState({}), []);
+
+    React.useState(() => {
+        Global.setAppRerender = forceUpdate;
+    }, [])
+
     return (
     <div 
         id="superContainer"
@@ -50,7 +58,7 @@ function App() {
             <Home/>
             <Todo/>
             <TestingPage/>
-            <DevPage reRenderHistory={reRenderHistory} reRenderAll={reRenderAll}/>
+            <DevPage reRenderHistory={reRenderHistory}/>
         </div>
 
         <div id="PageOverlay" onClick={() => Global.setMenuOpen = true}/>

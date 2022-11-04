@@ -1,5 +1,4 @@
 import React from "react";
-import {motion} from "framer-motion";
 
 import "../css/Todo.css";
 import { MdDone} from "react-icons/md";
@@ -26,9 +25,7 @@ function TodoItem(self) {
     }
 
     return (
-        <motion.div 
-            layout
-
+        <div
             className={self.todo.finished ? "todoItemContainer taskFinished" : "todoItemContainer taskActive"}
         >
             <div className={"checkBox" + isFinished()} onClick={() => finishTodo_helper(self.index)}>
@@ -45,7 +42,7 @@ function TodoItem(self) {
                 </p>
                 <p>{displayDescription()}</p>
             </div>
-        </motion.div>
+        </div>
     )
 }
 

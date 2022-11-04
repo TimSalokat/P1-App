@@ -65,7 +65,7 @@ export default function DevPage(self) {
               {"index":88,"heading":"Testing todo9","description":"","finished":false}
           ]
           forceUpdate();
-          self.reRenderAll();
+          Global.appRerender();
         }}/>
 
       </div>
@@ -92,7 +92,7 @@ export default function DevPage(self) {
       <select className="DevSelect" onChange={(e) =>{
         Global.setColorScheme = e.target.value;
         History.add(("Applied Color Scheme: " + e.target.value));
-        self.reRenderAll();    
+        Global.appRerender();    
       }}>
         <option value="DefaultLight">[Light] Default</option>
         <option value="CopperLight">[Light] Copper</option>
