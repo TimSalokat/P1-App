@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.p1_dev_build",
-	"appName": "p1_dev_build",
+	"appId": "io.ionic.production_build",
+	"appName": "production_build",
 	"bundledWebRuntime": false,
 	"npmClient": "npm",
 	"webDir": "build",
