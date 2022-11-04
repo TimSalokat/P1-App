@@ -24,9 +24,9 @@ function SideMenu(self) {
                 <li onClick={() => Local.link("Todo")}>
                     <h2 className="font-section">Projects</h2>
                 </li>
-                <li onClick={() => Local.link("Testing")}>
+                {/* <li onClick={() => Local.link("Testing")}>
                     <h2 className="font-section">Testing</h2>
-                </li>
+                </li> */}
             </ul>
 
             <div className="chartContainer">
