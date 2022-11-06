@@ -3,7 +3,7 @@ import {HiPlus} from "react-icons/hi";
 
 import { Global, Local, Server} from "./functions";
 
-import {motion, AnimatePresence} from "framer-motion";
+// import {motion, AnimatePresence} from "framer-motion";
 
 import TodoItem from "./todoItem";
 import SvgAllDone from '../components/svg/SvgAllDone';
