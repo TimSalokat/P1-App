@@ -13,7 +13,7 @@ const Global = {
     HISTORY_KEY: "todoApp.history",
     TODO_KEY: "todoApp.local_todos",
     PROJECT_KEY: "todoApp.projects",
-    TODO_TO_ADD_KEY: "todoApp.to_add",
+    LOCAL_ACTIONS_KEY: "todoApp.local_actions",
     PAGE_KEY: "todoApp.last_page",
     COLOR_SCHEME_KEY: "todoApp.color_scheme",
 
@@ -27,7 +27,7 @@ const Global = {
     serverTodos: [],
     displayedTodos: [],
 
-    todosToAdd: [],
+    localActions: [],
     mainText: "",
 
     overlay: {},
@@ -81,8 +81,8 @@ const Global = {
         this.displayedTodos = new_todos;
         Global.todosRerender();
     },
-    set setTodosToAdd(new_todos_to_add){
-        this.todosToAdd = new_todos_to_add;},
+    set setLocalActions(new_action){
+        this.localActions = new_action;},
 
     set setMainText(new_main_text){
         this.mainText = new_main_text;},
@@ -150,16 +150,40 @@ class Saving {
 
 class Local {
 
-    static addLocalTodos = async () => {
-        if(Global.todosToAdd === undefined) return;
-        for(var index=0; index < Global.todosToAdd.length; index++){
-            Server.addTodo(Global.todosToAdd[index]);
-        }
-        Global.setTodosToAdd = [];
-        Saving.saveLocal(Global.TODO_TO_ADD_KEY, Global.todosToAdd);
+    // TODO This is fucked
+    // static addLocalTodos = async () => {
+    //     if(Global.todosToAdd === undefined) return;
+    //     for(var index=0; index < Global.todosToAdd.length; index++){
+    //         Server.addTodo(Global.todosToAdd[index]);
+    //     }
+    //     Global.setTodosToAdd = [];
+    //     Saving.saveLocal(Global.TODO_TO_ADD_KEY, Global.todosToAdd);
 
-        History.add("Successfully added local todos", false);
-        await Server.fetchTodos(true);
+    //     History.add("Successfully added local todos", false);
+    //     await Server.fetchTodos(true);
+    // }
+
+    static editTodo = async (new_heading, new_description, new_project, uuid) => {
+        if(new_project === "") new_project = "General";
+        Global.displayedTodos.forEach(todo => {
+            if(todo["uuid"] === uuid){
+                todo["heading"] = new_heading;
+                todo["description"] = new_description;
+                todo["project"] = new_project;
+            }
+        });
+
+        Global.localActions.push({
+            "action": "todo_edited",
+            "uuid": uuid,
+            "heading": new_heading,
+            "description": new_description,
+            "project": new_project,
+        })
+
+        Global.appRerender();
+        Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
+        Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
     }
 
     static link = async (page) => {
@@ -230,12 +254,11 @@ class Server{
         }catch {}
     }
 
-    static addTodo = async (heading, description, project) => {
+    static addTodo = async (uuid, heading, description, project) => {
         try {
             if(heading){
-                if(description === undefined) description = ""
-                if(project === "") project = "General"
                 let json_data = {
+                    "uuid": uuid,
                     "heading": heading,
                     "description": description,
                     "project": project
@@ -253,16 +276,17 @@ class Server{
         }catch {}   
     }
 
-    static editTodo = async (heading, description, project, index) => {
+    static editTodo = async (heading, description, project, uuid) => {
         try {
             if(heading){
                 let json_data = {
+                    "uuid": uuid,
                     "heading": heading,
                     "description": description,
                     "project": project
                 }
 
-                await fetch(Global.backend + "/edit-todo/" + index, {  
+                await fetch(Global.backend + "/edit-todo/" + uuid, {  
                 method: 'PUT', 
                 mode: 'cors', 
                 headers: { 'Content-Type': 'application/json' },
@@ -293,9 +317,9 @@ class Server{
         }catch{}
     }
 
-    static finishTodo = async (index) => {
+    static finishTodo = async (uuid) => {
         try {
-            await fetch(Global.backend + `/set-finished?index=${index}`, {
+            await fetch(Global.backend + `/set-finished?uuid=${uuid}`, {
             method: "PUT",
             mode: "cors",
             })
@@ -303,9 +327,9 @@ class Server{
         }catch {}
     }
 
-    static deleteTodo = async (index) => {
+    static deleteTodo = async (uuid) => {
         try {
-            await fetch(Global.backend + `/del-todo?index=${index}`, {
+            await fetch(Global.backend + `/del-todo?uuid=${uuid}`, {
             method: "DELETE",
             mode: "cors",
             })

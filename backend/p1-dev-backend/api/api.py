@@ -54,6 +54,7 @@ def Startup():
     return Todos, newest_version, Projects
 
 class Todo(BaseModel):
+    uuid: str
     heading: str
     description: str
     project: str
@@ -68,10 +69,6 @@ def pull_repo():
         newest_version = int(file.read())
         file.close()
         return newest_version
-
-def update_index():
-    for index in range(len(Todos)):
-        Todos[index]["index"] = index;
 
 def save(toSave,fileName):
     path = "saves/" + fileName
@@ -106,12 +103,12 @@ async def get_projects():
 async def add_todo(todo: Todo):
     print(todo)
     Todos.append({
-        "index": len(Todos)+1,
+        "uuid": todo.uuid,
         "heading": todo.heading,
         "description": todo.description,
         "project": todo.project,
         "finished": False })
-    update_index()
+    # update_index()
     log(("Added Todo: ", todo.heading))
     save(Todos, "todos.txt")
     return {"response": "Successful"}
@@ -120,24 +117,24 @@ async def add_todo(todo: Todo):
 async def add_project(project: Project):
     Projects.append({
         "index": len(Projects)+1,
-        "title": project.title 
+        "title": project.title.title()
     })
     save(Projects, "projects.txt")
     log(("Added Project: ", project.title))
     return {"response": "Successful"}
 
 @app.put("/set-finished")
-async def set_finished(index: int):
+async def set_finished(uuid: str):
     for todo in Todos:
-        if(todo["index"] == index):
-            todo["finished"] =  not todo["finished"]
+        if(todo["uuid"] == uuid):
+            todo["finished"] = not todo["finished"]
     save(Todos, "todos.txt")
     return {"response": "Successful"}
 
-@app.put("/edit-todo/{index}")
-async def edit_todo(index:int, todo: Todo):
+@app.put("/edit-todo/{uuid}")
+async def edit_todo(uuid:str, todo: Todo):
     for todo_item in Todos:
-        if(todo_item["index"] == index):
+        if(todo_item["uuid"] == uuid):
             todo_item["heading"] = todo.heading
             todo_item["description"] = todo.description
             todo_item["project"] = todo.project
@@ -146,17 +143,17 @@ async def edit_todo(index:int, todo: Todo):
     return {"response": "Successful"}
 
 @app.delete("/del-todo")
-async def del_todo(index: int):
+async def del_todo(uuid: str):
     for todo in Todos:
-        if(todo["index"] == index):
+        if(todo["uuid"] == uuid):
             log(("removed ", todo["heading"]), "red")
             Todos.remove(todo)
-    update_index()
     save(Todos, "todos.txt")
     return {"response": "Successful"}
 
 @app.delete("/del-project")
 async def del_project(title: str):
+    title = title.title()
     for project in Projects:
         if(project["title"] == title):
             log(("removed ", title), "red")

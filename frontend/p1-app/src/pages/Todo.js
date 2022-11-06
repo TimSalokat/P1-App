@@ -6,6 +6,7 @@
 
 import React, {useEffect} from 'react';
 import {HiPlus} from "react-icons/hi";
+import { v4 as uuidv4 } from 'uuid';
 
 import {ProjectContainer, TodoContainer, SectionSeperator, Form} from "../components/components";
 import "../css/Global.css";
@@ -21,10 +22,10 @@ function Todo(self) {
   //* runs on first render
   useEffect(() => {
     const storedTodos = Saving.loadSave(Global.TODO_KEY);
-    const storedTodosToAdd = Saving.loadSave(Global.TODO_TO_ADD_KEY, false)
+    const storedLocalActions = Saving.loadSave(Global.LOCAL_ACTIONS_KEY, false)
     const storedProjects = Saving.loadSave(Global.PROJECT_KEY);
     if(storedTodos !== undefined) Global.setDisplayedTodos = storedTodos;
-    if(storedTodosToAdd !== undefined) Global.setTodosToAdd = storedTodosToAdd;
+    if(storedLocalActions !== undefined) Global.setLocalActions = storedLocalActions;
     if(storedProjects !== undefined) Global.setProjects = storedProjects;
     Global.setTodosRerender = forceUpdate;
   }, [])
@@ -32,7 +33,7 @@ function Todo(self) {
   //! Eslint disable removes the warning and i think errors when runnin this part 
   useEffect(() => {
     if(Global.serverReachable) {
-      Local.addLocalTodos();
+      // Local.addLocalTodos();
       History.add("Synced local and server todos");
       Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
     }
@@ -58,16 +59,15 @@ function Todo(self) {
   }
 
   const addTodoHelper = async (heading, description, project) => {
+    let new_uuid = uuidv4();
     if(heading !== ""){
-      let tmp_heading = heading;
-      let tmp_desc = description;
-      // setDescription("");
-      // setHeading("");
+      if(description === undefined) description = "";
+      if(project === "") project = "General";
 
       let new_todo = {
-        index: Global.displayedTodos.length,
-        heading: tmp_heading,
-        description: tmp_desc,
+        uuid: new_uuid,
+        heading: heading,
+        description: description,
         project: project,
         finished: false }
 
@@ -78,35 +78,42 @@ function Todo(self) {
       await Server.ping();
 
       if(Global.serverReachable){
-        History.add("Adding server todo: " + tmp_heading);
-        await Server.addTodo(tmp_heading, tmp_desc, project);
+        History.add("Adding server todo: " + heading);
+        await Server.addTodo(new_uuid, heading, description, project);
       }else {
-        History.add("Added local todo: " + tmp_heading);
-        Global.todosToAdd.push({
-          "heading": tmp_heading,
-          "description": tmp_desc,
-          "project": project
+        History.add("Added local todo: " + heading);
+        Global.localActions.push({
+          "action": "todo_add",
+          "uuid": new_uuid,
+          "heading": heading,
+          "description": description,
+          "project": project,
         });
+        Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
       }
-        Saving.saveLocal(Global.TODO_TO_ADD_KEY, Global.todosToAdd);
-
-      tmp_heading = "";
-      tmp_desc = "";
       Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
     }
   }
 
-  const delTodo = async (index) => {
-    History.add("Deleting todo: " + Global.displayedTodos[index]["heading"]);
-    Global.displayedTodos.splice(index,1);
+  const delTodo = async (uuid) => {
+    History.add("Deleting todo with uuid: " + uuid);
+    if(!Global.serverReachable){
+      Global.localActions.push({
+        "action": "todo_delete",
+        "uuid": uuid,
+      })
+      Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
+    }
+
+    Global.displayedTodos.forEach(element => {
+      if(element["uuid"] === uuid){
+        Global.displayedTodos.splice(element,1);
+      }
+      
+    });
     forceUpdate();
 
-    // //* update indexes
-    for(var i=0; i<Global.displayedTodos.length; i++){
-      Global.displayedTodos[i]["index"] = i;}
-    if(Global.serverReachable)(
-      await Server.deleteTodo(index)
-    )
+    if(Global.serverReachable)(await Server.deleteTodo(uuid))
     Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
   }
 

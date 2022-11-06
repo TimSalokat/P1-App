@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Global, Server } from "./functions";
+import { Global, Local, Saving, Server } from "./functions";
 import "../css/Todo.css";
 import { MdDone, MdDeleteForever } from "react-icons/md";
 
@@ -17,30 +17,48 @@ function TodoItem(self) {
     function finishTodo_helper() {
         self.todo.finished = !self.todo.finished;
         forceUpdate();
+
+        if(Global.serverReachable){
+            Server.finishTodo(self.uuid); 
+        }else{
+            Global.localActions.push({
+                "action": "todo_changeFinished",
+                "uuid": self.uuid,
+                "state": self.todo.finished,
+            });
+            Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
+        }
+        
+        Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
     }
 
-    function delTodo_helper(index) {
-        self.delTodo(index);
+    function delTodo_helper(uuid) {
+        self.delTodo(uuid);
     }
 
     function editTodo_helper() {
         Global.setOverlayProps = {
+            uuid: self.uuid,
             heading_one: "Edit",
             heading_two: "Todo",
             main_placeholder: "Title",
             desc_placeholder: "Description",
             main: self.heading,
             desc: self.description,
-            index: self.index,
             show_desc: true,
-            on_commit: Server.editTodo,
+            on_commit: Local.editTodo,
         }
+
+        if(Global.serverReachable){
+            Global.overlay.on_commit = Server.editTodo
+        }
+
         Global.formRerender();
         Global.setOverlayActive = true;        
     }
 
     const displayDescription = () => {
-        if(self.description === ""){return("No description")}
+        if(self.description === "" || self.description === undefined){return("No description")}
         return(self.description);
     }
 
@@ -49,7 +67,7 @@ function TodoItem(self) {
             className={self.todo.finished ? "todoItemContainer taskFinished" : "todoItemContainer taskActive"}
         >
             <div className={"checkBox" + isFinished()} onClick={() => {
-                finishTodo_helper(self.index);
+                finishTodo_helper();
                 Global.todosRerender();
                 }}>
                 <MdDone className={"icon" + isFinished()}/>
@@ -66,7 +84,7 @@ function TodoItem(self) {
                 </p>
                 <p>{displayDescription()}</p>
                 <div>
-                    <MdDeleteForever id="todoDeleteIcon" onClick={() => delTodo_helper(self.index)} />
+                    <MdDeleteForever id="todoDeleteIcon" onClick={() => delTodo_helper(self.uuid)} />
                 </div>
             </div>
         </div>

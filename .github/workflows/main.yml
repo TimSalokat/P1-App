@@ -43,7 +43,7 @@ jobs:
           npm install react --force
           npm install yarn --force
           npm install axios --force
-          npm install framer-motion --force
+          npm install uuid --force
 
           npm install file-saver --save
 

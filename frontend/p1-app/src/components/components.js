@@ -113,23 +113,25 @@ const TodoContainer = (self) => {
             <AnimatePresence>
                 {unfinishedTodos().map((todo) => (
                     <TodoItem 
-                    key={todo.index}
+                    key={todo.uuid}
+                    uuid={todo.uuid}
                     todo={todo}
                     heading={todo.heading}
                     description={todo.description}
-                    index={todo.index}
                     delTodo={self.delTodo}
+                    project={self.project}
                     />
                 ))}
 
                 {finishedTodos().map((todo) => (
                     <TodoItem 
-                    key={todo.index}
+                    key={todo.uuid}
+                    uuid={todo.uuid}
                     todo={todo}
                     heading={todo.heading}
                     description={todo.description}
-                    index={todo.index}
                     delTodo={self.delTodo}
+                    project={self.project}
                     />
                 ))}
             </AnimatePresence>
@@ -165,7 +167,7 @@ const Form = () => {
     const [description, setDescription] = React.useState("");
     const [project, setProject] = React.useState("");
 
-    let index = Global.overlay.index;
+    let uuid = Global.overlay.uuid;
 
     const [, updateState] = React.useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -232,7 +234,7 @@ const Form = () => {
                     setMainTitle("");
                     setDescription("");
                     // Global.setOverlayProps = {};
-                    Global.overlay.on_commit(mainTitle, description, project, index);
+                    Global.overlay.on_commit(mainTitle, description, project, uuid);
                     Global.setOverlayActive = false;
                 }}>Submit</button>
                 </div>
