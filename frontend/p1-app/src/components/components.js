@@ -105,12 +105,12 @@ const TodoContainer = (self) => {
     }
 
     return (
-        <motion.div layout className="todoContainer">
+        <div className="todoContainer">
             <div className={Global.displayedTodos.length === 0 ? "todoPageEmpty shown" : "todoPageEmpty hidden"}>
                 <SvgAllDone/>
                 <h2> No Todos </h2>
             </div>
-            <AnimatePresence>
+            <div>
                 {unfinishedTodos().map((todo) => (
                     <TodoItem 
                     key={todo.uuid}
@@ -134,8 +134,8 @@ const TodoContainer = (self) => {
                     project={self.project}
                     />
                 ))}
-            </AnimatePresence>
-        </motion.div>
+            </div>
+        </div>
     )
 }
 
