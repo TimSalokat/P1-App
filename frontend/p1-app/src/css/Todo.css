@@ -315,6 +315,11 @@
     padding: 20px;
 }
 
+.createTodoForm:has(.projectCard.small) {
+    justify-content: flex-start;
+    padding-top: 60px;
+}
+
 #superContainer:not([data-overlayActive="true"]) .createTodoForm {
     height: 0%;
     border-radius: 0;
@@ -461,6 +466,14 @@
     align-items: center;
 }
 
+.projectCard.small {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    width: 95%;
+    background-color: greenyellow;
+}
+
 .projectCard h2 {
     color: var(--main_accent);
     z-index: 1;
@@ -562,14 +575,15 @@
 #addProjectButton{
     width: 45%;
     justify-content: center;
-    align-items: center;
-    display: none;
+    /* align-items: center */
+    /* display: none; */
+    display: flex;
 }
-
+/* 
 #superContainer[data-activepage="Home"] #addProjectButton{
     display: none;
 }
 
 #superContainer[data-serverreachable="true"] #addProjectButton{
     display: flex;
-}
+} */

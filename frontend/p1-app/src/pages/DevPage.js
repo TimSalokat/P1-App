@@ -52,21 +52,10 @@ export default function DevPage(self) {
           function={() => self.reRenderHistory()}/>
 
         <DevButton 
-          text={"Add testing Todos"}
+          text={"Restart Request"}
           function={() => {
-            Global.displayedTodos = [
-              {"index":10,"heading":"Testing todo1","description":"","finished":false},
-              {"index":11,"heading":"Testing todo2","description":"","finished":false},
-              {"index":22,"heading":"Testing todo3","description":"","finished":false},
-              {"index":33,"heading":"Testing todo4","description":"","finished":false},
-              {"index":44,"heading":"Testing todo5","description":"","finished":false},
-              {"index":55,"heading":"Testing todo6","description":"","finished":false},
-              {"index":66,"heading":"Testing todo7","description":"","finished":false},
-              {"index":77,"heading":"Testing todo8","description":"","finished":false},
-              {"index":88,"heading":"Testing todo9","description":"","finished":false}
-          ]
-          forceUpdate();
-          Global.appRerender();
+            Server.restart();
+            Global.appRerender();
         }}/>
 
       </div>

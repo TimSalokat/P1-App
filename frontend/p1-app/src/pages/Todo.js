@@ -56,6 +56,7 @@ function Todo(self) {
       main_placeholder: "Todo Heading",
       desc_placeholder: "Description",
       show_desc: true,
+      show_project: true,
       on_commit: addTodoHelper,
     }
     Global.formRerender();

@@ -46,6 +46,7 @@ function TodoItem(self) {
             main: self.heading,
             desc: self.description,
             show_desc: true,
+            show_project: true,
             on_commit: Local.editTodo,
         }
 

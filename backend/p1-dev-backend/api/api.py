@@ -4,6 +4,7 @@ from tkinter import PROJECTING
 from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import os, sys
 # import git
 # from git import Repo
 
@@ -83,6 +84,11 @@ def load_save(fileName):
 
 @app.get("/ping")
 async def ping():
+    return True
+
+@app.get("/restart")
+async def restart():
+    os.execv(__file__, sys.argv)
     return True
 
 @app.get("/get-main")

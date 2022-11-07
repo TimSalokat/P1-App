@@ -197,6 +197,12 @@ class Local {
 //! --- Server Functions ---
 class Server{
 
+    static restart = async () => {
+        const res = await fetch(Global.backend + "/restart");
+        const response = await res.json();
+        console.log(response);
+    }
+
     static ping = async () => {
         try {
             const res = await fetch(Global.backend + "/ping");

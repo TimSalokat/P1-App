@@ -33,11 +33,14 @@ const ProjectContainer = (self) => {
                     main_placeholder: "Project Title",
                     desc_placeholder: "none",
                     show_desc: false,
+                    show_project: false,
                     on_commit: Server.addProject,
-                }
-                Global.formRerender();
-                Global.setOverlayActive = true;
-            }            
+            }}else {
+                Global.setOverlayProps = {
+                    type: "display_projects",
+            }}
+            Global.formRerender();
+            Global.setOverlayActive = true;
         }}>
             <HiPlus id="addTodoIcon" style={{
                 top:"20px", fontSize:"3rem"
@@ -82,6 +85,14 @@ const Project = (self) => {
         <p>{finishedTodos().toFixed(0)}%</p>
 
 
+      </div>
+    )
+}
+const SmallProject = (self) => {
+
+    return(
+      <div className="projectCard small">
+        <h2>{self.title}</h2>
       </div>
     )
 }
@@ -180,9 +191,48 @@ const Form = () => {
     }, [Global.overlay])
 
     function showDesc(){
-        if(!Global.overlay.show_desc){
-            return({display:"none"})
-        }
+        if(!Global.overlay.show_desc){return({display:"none"})}
+    }
+
+    function showProject(){
+        if(!Global.overlay.show_project){return({display:"none"})}
+    }
+
+    if(Global.overlay.type === "display_projects"){
+        return (
+            <div className="createTodoFormContainer">
+                <div className="createTodoForm">
+
+                {Global.projects.map((project) => (
+                    <SmallProject
+                        key={project.index}
+                        title={project.title}
+                    />
+                ))}
+
+                    <form>
+
+                        <input 
+                        placeholder={Global.overlay.main_placeholder}
+                        type="text"
+                        value={mainTitle}
+                        onChange={(e) => setMainTitle(e.target.value)}
+                        />
+
+                    </form>
+
+                    <div className="createTodoBtnContainer">
+                        <button onClick={() => {
+                            setMainTitle("");
+                            setDescription("");
+                            // Global.setOverlayProps = {};
+                            Global.setOverlayActive = false;
+                        }}>Close</button>
+
+                    </div>
+                </div>
+            </div>
+        )
     }
 
     return (
@@ -209,7 +259,12 @@ const Form = () => {
                 onChange={(e) => setDescription(e.target.value)}
                 />
 
-                <select className="DevSelect" onChange={(e) => setProject(e.target.value)}>
+                <select 
+                className="DevSelect" 
+                style={showProject()}
+                onChange={(e) => setProject(e.target.value)}
+                >
+
                     <option>General</option>
                     {
                         Global.projects.map((project) => (
