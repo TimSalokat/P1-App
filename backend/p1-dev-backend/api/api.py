@@ -86,16 +86,20 @@ def load_save(fileName):
 
 @app.get("/ping")
 async def ping():
-    log("this test workin", "red")
+    log("Ping", "green")
     return True
 
 @app.get("/restart")
 async def restart():
-    # pull_repo()
-    restart_helper.restart()
-    # sys.exit(1)
-    
+    restart_helper.restart()    
     return True
+
+@app.get("/get-version")
+async def get_version():
+    with open("../version.txt", "r") as file:
+        newest_version = int(file.read())
+        file.close()
+        return newest_version
 
 @app.get("/get-main")
 async def get_stuff():

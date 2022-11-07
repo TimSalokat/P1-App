@@ -98,6 +98,11 @@ const Global = {
         this.superContainer.serverreachable = new_bool;
     }, 
 
+    serverVersion: 0,
+    set setServerVersion(new_version){
+        this.serverVersion = new_version;
+    }, 
+
     menuOpen: undefined,
     set setMenuOpen(new_state){
         this.menuOpen = new_state;
@@ -224,6 +229,16 @@ class Server{
             Global.setServerReachable = false;
             return false;
         }
+    }
+
+    static getVersion = async () => {
+        try {
+            const res = await fetch(Global.backend + "/get-version");
+            const response = await res.json();
+            
+            Global.setServerVersion = response;
+            Global.appRerender();
+        } catch {}
     }
 
     static fetchText = async () => {

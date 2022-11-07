@@ -52,11 +52,20 @@ export default function DevPage(self) {
           function={() => self.reRenderHistory()}/>
 
         <DevButton 
-          text={"Restart Request"}
+          text={"Update Api"}
           function={() => {
             Server.restart();
             Global.appRerender();
         }}/>
+
+        <DevButton 
+          text={"Get Server Version"}
+          function={() => {
+            Server.getVersion();
+            Global.appRerender();
+        }}/>
+
+        <h4> Server Version: {Global.serverVersion}</h4>
 
       </div>
 
