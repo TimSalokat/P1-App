@@ -91,8 +91,8 @@ async def ping():
 @app.get("/restart")
 async def restart():
     # pull_repo()
-    sys.exit()
     restart_helper.restart()
+    sys.exit(1)
     
     return True
 
