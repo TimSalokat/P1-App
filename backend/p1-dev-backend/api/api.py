@@ -92,7 +92,7 @@ async def ping():
 async def restart():
     # pull_repo()
     restart_helper.restart()
-    sys.exit(1)
+    # sys.exit(1)
     
     return True
 
