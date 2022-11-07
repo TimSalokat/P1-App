@@ -101,6 +101,7 @@ const Global = {
     serverVersion: 0,
     set setServerVersion(new_version){
         this.serverVersion = new_version;
+        Global.appRerender();
     }, 
 
     menuOpen: undefined,
@@ -237,7 +238,6 @@ class Server{
             const response = await res.json();
             
             Global.setServerVersion = response;
-            Global.appRerender();
         } catch {}
     }
 
