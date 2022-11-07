@@ -5,6 +5,8 @@ from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import os, sys
+
+import restart_helper
 # import git
 # from git import Repo
 
@@ -63,13 +65,13 @@ class Todo(BaseModel):
 class Project(BaseModel):
     title: str
 
-def pull_repo():
-    repo = Repo('C:/Users/timsa/Desktop/Wokspace/P1-App')
-    repo.remotes.origin.pull()
-    with open("../version.txt", "r") as file:
-        newest_version = int(file.read())
-        file.close()
-        return newest_version
+# def pull_repo():
+#     repo = Repo('C:/Users/timsa/Desktop/Wokspace/P1-App')
+#     repo.remotes.origin.pull()
+#     with open("../version.txt", "r") as file:
+#         newest_version = int(file.read())
+#         file.close()
+#         return newest_version
 
 def save(toSave,fileName):
     path = "saves/" + fileName
@@ -88,7 +90,10 @@ async def ping():
 
 @app.get("/restart")
 async def restart():
-    os.execv(__file__, sys.argv)
+    # pull_repo()
+    sys.exit()
+    restart_helper.restart()
+    
     return True
 
 @app.get("/get-main")
