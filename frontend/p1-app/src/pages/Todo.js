@@ -39,6 +39,10 @@ function Todo(self) {
     }
   }, [Global.serverReachable])
 
+  useEffect(() => {
+    console.log(Global.localActions);
+  }, [Global.localActions])
+
   // ? Wait function might be useful
   // function wait(delay) {
   //   return new Promise( res => setTimeout(res, delay) );

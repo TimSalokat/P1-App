@@ -110,31 +110,29 @@ const TodoContainer = (self) => {
                 <SvgAllDone/>
                 <h2> No Todos </h2>
             </div>
-            <div>
-                {unfinishedTodos().map((todo) => (
-                    <TodoItem 
-                    key={todo.uuid}
-                    uuid={todo.uuid}
-                    todo={todo}
-                    heading={todo.heading}
-                    description={todo.description}
-                    delTodo={self.delTodo}
-                    project={self.project}
-                    />
-                ))}
+            {unfinishedTodos().map((todo) => (
+                <TodoItem 
+                key={todo.uuid}
+                uuid={todo.uuid}
+                todo={todo}
+                heading={todo.heading}
+                description={todo.description}
+                delTodo={self.delTodo}
+                project={self.project}
+                />
+            ))}
 
-                {finishedTodos().map((todo) => (
-                    <TodoItem 
-                    key={todo.uuid}
-                    uuid={todo.uuid}
-                    todo={todo}
-                    heading={todo.heading}
-                    description={todo.description}
-                    delTodo={self.delTodo}
-                    project={self.project}
-                    />
-                ))}
-            </div>
+            {finishedTodos().map((todo) => (
+                <TodoItem 
+                key={todo.uuid}
+                uuid={todo.uuid}
+                todo={todo}
+                heading={todo.heading}
+                description={todo.description}
+                delTodo={self.delTodo}
+                project={self.project}
+                />
+            ))}
         </div>
     )
 }

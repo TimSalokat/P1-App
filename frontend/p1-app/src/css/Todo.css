@@ -467,6 +467,10 @@
     align-self: center;
     margin-bottom: 20px;
     text-transform: capitalize;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .projectCard h3 {
@@ -557,15 +561,15 @@
 
 #addProjectButton{
     width: 45%;
-    display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 #superContainer[data-activepage="Home"] #addProjectButton{
     display: none;
 }
 
-#superContainer[data-serverreachable="false"] #addProjectButton{
-    display: none;
+#superContainer[data-serverreachable="true"] #addProjectButton{
+    display: flex;
 }
