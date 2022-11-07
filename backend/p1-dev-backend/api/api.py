@@ -86,7 +86,7 @@ def load_save(fileName):
 
 @app.get("/ping")
 async def ping():
-    log("this test workin", "purple")
+    log("this test workin", "red")
     return True
 
 @app.get("/restart")
