@@ -1,4 +1,4 @@
-package io.ionic.DevBuild;
+package io.ionic.p1_dev_build;
 
 import com.getcapacitor.BridgeActivity;
 
