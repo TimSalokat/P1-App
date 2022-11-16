@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.392b4551.css",
-    "main.js": "/static/js/main.b0567b1b.js",
-    "static/js/787.2f3e3de8.chunk.js": "/static/js/787.2f3e3de8.chunk.js",
+    "main.js": "/static/js/main.1e8f80d1.js",
+    "static/js/750.16fb6618.chunk.js": "/static/js/750.16fb6618.chunk.js",
     "static/media/QuattrocentoSans-Bold.ttf": "/static/media/QuattrocentoSans-Bold.7b057d60a5d6d316ce3b.ttf",
     "static/media/QuattrocentoSans-Regular.ttf": "/static/media/QuattrocentoSans-Regular.c2e444fd4e26b791b257.ttf",
     "index.html": "/index.html",
     "main.392b4551.css.map": "/static/css/main.392b4551.css.map",
-    "main.b0567b1b.js.map": "/static/js/main.b0567b1b.js.map",
-    "787.2f3e3de8.chunk.js.map": "/static/js/787.2f3e3de8.chunk.js.map"
+    "main.1e8f80d1.js.map": "/static/js/main.1e8f80d1.js.map",
+    "750.16fb6618.chunk.js.map": "/static/js/750.16fb6618.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.392b4551.css",
-    "static/js/main.b0567b1b.js"
+    "static/js/main.1e8f80d1.js"
   ]
 }
