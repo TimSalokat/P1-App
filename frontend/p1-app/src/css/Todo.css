@@ -392,7 +392,7 @@
 }
 
 .createTodoBtnContainer button{
-    width: 50%;
+    width: stretch;
     height: 100%;
     border-radius: 10px;
     background: none;
@@ -466,14 +466,6 @@
     align-items: center;
 }
 
-.projectCard.small {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    width: 95%;
-    background-color: greenyellow;
-}
-
 .projectCard h2 {
     color: var(--main_accent);
     z-index: 1;
@@ -504,6 +496,24 @@
 
 #superContainer[data-activePage="Home"] .projectCard:nth-child(n+5) {
     display: none;
+}
+
+.projectCard.small {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0px;
+    width: 95%;
+    border-bottom: .1rem solid var(--dark_shadow);
+}
+
+.projectCard.small h2 {
+    margin-bottom: 0;
+}
+
+.projectCard.small #todoDeleteIcon {
+    margin-top: 5px;
 }
 
 #projectCardDecorator {

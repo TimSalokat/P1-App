@@ -67,8 +67,9 @@
     --text_color: rgb(40, 40, 40);
     --dark_shadow: rgb(44, 44, 44);
 
-    --secondary_background: rgb(230, 230, 230);
-    --main_background: rgb(200, 200, 200);
+    /* *This is swapped */
+    --main_background: rgb(230, 230, 230);
+    --secondary_background: rgb(210, 210, 210);
 }
 
 .DefaultDark {

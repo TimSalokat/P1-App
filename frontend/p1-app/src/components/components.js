@@ -1,5 +1,6 @@
 import React from "react";
 import {HiPlus} from "react-icons/hi";
+import { MdArrowCircleUp, MdDeleteForever } from "react-icons/md";
 
 import { Global, Local, Server} from "./functions";
 
@@ -93,6 +94,9 @@ const SmallProject = (self) => {
     return(
       <div className="projectCard small">
         <h2>{self.title}</h2>
+        <div>
+            <MdDeleteForever id="todoDeleteIcon" onClick={() => delTodo_helper(self.uuid)} />
+        </div>
       </div>
     )
 }
@@ -203,20 +207,29 @@ const Form = () => {
             <div className="createTodoFormContainer">
                 <div className="createTodoForm">
 
-                {Global.projects.map((project) => (
-                    <SmallProject
-                        key={project.index}
-                        title={project.title}
-                    />
-                ))}
+                    {Global.projects.map((project) => (
+                        <SmallProject
+                            key={project.index}
+                            title={project.title}
+                        />
+                    ))}
 
-                    <form>
+                    <form style={{display:"flex",flexDirection:"row", marginTop:"10px"}}>
 
                         <input 
-                        placeholder={Global.overlay.main_placeholder}
+                        placeholder="New Project"
                         type="text"
                         value={mainTitle}
                         onChange={(e) => setMainTitle(e.target.value)}
+                        />
+
+                        <MdArrowCircleUp 
+                        id="todoDeleteIcon" 
+                        style={{fontSize:"2rem"}}
+                        onClick={() => {
+                            Server.addProject(mainTitle);
+                            setMainTitle("");
+                        }}
                         />
 
                     </form>

@@ -1,0 +1,110 @@
+
+.ProjectContainer {
+    gap: .75rem;
+    padding: .5rem;
+    overflow: scroll;
+    max-height: 25vh;
+}
+
+.Project {
+    position: relative;
+    width: 42vw;
+    max-width: 200px;
+    height: 17vh;
+    min-height: 130px;
+    background-color: var(--base);
+    box-shadow: var(--base_shadow);
+}
+
+.Project label {
+    color: var(--text_color-light);
+    font-size: 1.7rem;
+    margin-top: 1rem;
+    z-index: 1;
+}
+
+.Project > div{
+    overflow: hidden;
+    padding: .5rem;
+}
+
+.Project > div:nth-child(1){
+    position: relative;
+    background-color: var(--accent);
+    height: calc(90% - 1.5rem);
+    border-radius: .5rem .5rem 0 0;
+    overflow: hidden;
+}
+
+.Project > div:nth-child(2){
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+#PCounter {
+    position: absolute;
+    right: 15px;
+}
+#PCounter::before{
+    content: "";
+    background-color: var(--text_color-light);
+    opacity: .25;
+    position: absolute;
+    height: 2.2rem;
+    width: 2.2rem;
+    left: -27%;
+    top: -10%;
+    border-radius: .4rem;
+    z-index: -1;
+}
+
+#ProjectGraphic {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    scale: 1.6;
+}
+
+#ProgressBar {
+    position: relative;
+    height: .2rem;
+    flex-grow: 1;
+    background-color: rgba(0,0,0,.3);
+    margin: 0 .3rem;
+    margin-bottom: 2.5px;
+}
+
+#ProgressBar::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background-color: var(--accent-light);
+}
+
+
+
+
+#AppContainer[data-activepage="Home"] .ProjectContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-height: inherit;
+}
+
+#AppContainer[data-activepage="Home"] .Project{
+    max-width: 150px;
+    width: stretch;
+    min-height: 100px;
+    flex: initial;
+}
+
+#AppContainer[data-activepage="Home"] #PCounter{
+    right: 10px;
+}

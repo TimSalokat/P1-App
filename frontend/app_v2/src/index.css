@@ -1,0 +1,319 @@
+@font-face {
+  font-family: defaultFont;
+  src: url("/public/font/QuattrocentoSans-Regular.ttf");
+}
+@font-face {
+  font-family: defaultBold;
+  src: url("/public/font/QuattrocentoSans-Bold.ttf");
+}
+
+* {
+  margin: 0rem;
+  padding: 0rem;
+  font-size: 3.5vw;
+  color: var(--text_color);
+  box-sizing: border-box;
+  border-radius: .5rem;
+  font-family: defaultFont;
+}
+
+* {
+  --accent-h: 227;
+  --accent-s: 53%;
+  --accent-l: 41%;
+}
+
+* {
+  --text_color: black;
+  --text_color-light: var(--base);
+  --base: #e4e4e4;
+  --base_shadow: 0px .1rem .3rem .1rem rgba(0,0,0,.25);
+
+  --color_variation: 10%;
+
+  --accent-light-l: calc(var(--accent-l) + 5%);
+  --accent-dark-l: calc(var(--accent-l) - var(--color_variation));
+
+  --accent: hsl( var(--accent-h),
+                  var(--accent-s),
+                  var(--accent-l));
+
+  --accent-dark: hsl(var(--accent-h),
+                      var(--accent-s),
+                      var(--accent-dark-l));
+
+  --accent-light: hsl(var(--accent-h),
+                      var(--accent-s),
+                      var(--accent-light-l));
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+#PagesContainer {
+  display: flex;
+  flex-flow: column-reverse wrap;
+  margin: 0 0 0 0;
+}
+
+html, #root {
+  padding: 0;
+  margin: 0;
+}
+
+p, button, textarea, input, select, option, a {
+  font-size: 1.15rem;
+  padding: .2rem;
+  resize: none;
+}
+
+textarea:focus, input:focus, select:focus, option:focus {
+  box-sizing: border-box;
+  outline: none;
+  border-bottom: 2px solid var(--accent);
+}
+
+div {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+h1 {font-size: 3.5rem;}
+h2 {font-size: 2.5rem;}
+h3 {font-size: 2rem;}
+h4 {font-size: 1.5rem;}
+h5 {font-size: 1.1rem; font-weight: 100;}
+
+label {font-size: 1.5rem;}
+
+a{
+  text-decoration: none;
+}
+
+button {
+  background-color: var(--accent);
+  color: var(--text_color-light);
+  text-transform: capitalize;
+  width: 10rem;
+  height: 3.5rem;
+  border: 0;
+  box-shadow: var(--base_shadow);
+  margin: .2rem;
+}
+
+button.small {
+  width: 6rem;
+  height: 3.5rem;
+}
+button.large {
+  width: 13rem;
+  height: 4.5rem;
+}
+
+.button_secondary {
+  background-color: var(--base);
+  color: var(--accent);
+}
+
+input, textarea {
+  width: 100%;
+  height: 2.8rem;
+  border: 0;
+  background-color: var(--base);
+  padding: 0 .5rem;
+  box-shadow: var(--base_shadow);
+  margin: .2rem 0;
+}
+
+textarea {
+  height: 15vh;
+  padding: .5rem;
+}
+
+select {
+  width: 100vw;
+  height: 2.5rem;
+  background-color: var(--base);
+  border: 0;
+  box-shadow: var(--base_shadow);
+  margin: .2rem 0;
+}
+
+.Section {
+  flex: 1;
+  position: relative;
+  background-color: var(--base);
+  min-height: 10rem;
+  min-width: 100vw;
+  margin: 0;
+  padding: 1rem;
+  border-radius: 0;
+  box-shadow: 0rem .1rem .9rem .7rem rgba(0,0,0,.25);
+}
+
+.Section > label:nth-child(1) {
+  font-size: 1.7rem;
+  font-family: defaultBold;
+}
+
+.Section:has(.TodoContainer) {
+  flex: 1;
+  overflow: hidden;
+  flex-wrap: nowrap;
+}
+
+#Overlay {
+  height: 100vh;
+  width: 100vw;
+  z-index: 90;
+  position: fixed;
+  background-color: rgba(40, 40, 40, .6);
+  border-radius: 0;
+  display: none;
+}
+
+#AppContainer[data-overlayActive="true"] #Overlay{
+  display: block;
+}
+
+.seperator {
+  height: 2px;
+  width: 60vw;
+  margin: .5rem 0px;
+  background-color: var(--accent);
+  align-self: center;
+}
+.seperator.small {
+  width: 25vw;
+}
+.seperator.large {
+  width: 95vw;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.nowrap {
+  flex-wrap: nowrap;
+}
+
+.stretch {
+  flex-grow: 1;
+}
+
+.text_light {
+  color: var(--text_color-light);
+}
+
+.bg_light {
+  background-color: var(--text_color-light);
+}
+
+#Icon{
+  position: relative;
+  font-size: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+#Icon > path {
+  color: var(--text_color-light);
+}
+
+#test{
+  width: 50px;
+  height: 50px;
+  background-color: var(--accent-light);
+}
+
+#test::before{
+  content:"";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin-left: 60px;
+  border-radius: .5rem;
+  background-color: var(--accent);
+}
+#test::after{
+  content:"";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  /* left: 30px; */
+  margin-left: 120px;
+  border-radius: .5rem;
+  background-color: var(--accent-dark);
+}
+
+#BotBar, #BotButton {
+  position: fixed;
+  align-self: flex-end;
+  border-radius: 100%;
+}
+
+#BotButton {
+  z-index: 100;
+  bottom: 1rem;
+  right: 1rem;
+  min-height: 65px;
+  min-width: 65px;
+  padding: .1rem;
+  background-color: rgb(52, 52, 52);
+}
+
+#BotBar {
+  align-items: flex-start;
+  flex-direction: row;
+  z-index: 101;
+  bottom: calc(-40vw);
+  right: calc(-40vw);
+  /* background-color: red; */
+  min-height: 80vw;
+  min-width: 80vw;
+  rotate: 0deg;
+}
+
+.IconContainer {
+  background-color: var(--accent-dark);
+  padding: .75rem;
+  border-radius: 100%;
+  shape-outside: circle();
+  box-shadow: var(--base_shadow);
+}
+
+#BotBar > .IconContainer {
+  position: absolute;
+}
+#BotBar > .IconContainer:nth-child(1) {
+  top: 30%;
+}
+#BotBar > .IconContainer:nth-child(2) {
+  top: 9%;
+  left: 9%;
+}
+#BotBar > .IconContainer:nth-child(3) {
+  left: 30%;
+}
+#AppContainer[data-menuopen="false"] #BotBar{ pointer-events: none; }
+#AppContainer[data-menuopen="false"] #BotBar .IconContainer{ display: none;}
+#AppContainer[data-activepage="Home"][data-menuopen="false"] #BotBar .IconContainer:nth-child(2),
+#AppContainer[data-activepage="Todos"][data-menuopen="false"] #BotBar .IconContainer:nth-child(1),
+#AppContainer[data-activepage="Dev"][data-menuopen="false"] #BotBar .IconContainer:nth-child(3)
+{
+  top: calc(25.5%);
+  left: calc(25.5%);
+  pointer-events: none;
+  background: none;
+  display:block;
+}
