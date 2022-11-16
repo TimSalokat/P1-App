@@ -1,6 +1,6 @@
 
 import { useEffect } from "react"
-import { Global, Saving, Server} from "./functions"
+import { Global, Saving} from "./functions"
 
 const Init = (self) => {
 
@@ -14,7 +14,7 @@ const Init = (self) => {
         let last_colorScheme = Saving.loadSave(Global.COLOR_SCHEME_KEY);
         if(last_colorScheme !== undefined) Global.setColorScheme = last_colorScheme;
 
-        let last_page = Saving.loadSave(Global.PAGE_KEY);
+        // let last_page = Saving.loadSave(Global.PAGE_KEY);
         // if (last_page !== undefined) Global.setActivePage = last_page;
         // else{Global.setActivePage = Global.superContainer.activepage;}
 

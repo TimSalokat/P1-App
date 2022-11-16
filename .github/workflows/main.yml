@@ -53,18 +53,18 @@ jobs:
           npm install @capacitor/core
       
       - name: Build npm site
-        working-directory: ./frontend/p1-app
+        working-directory: ./frontend/app_v2
         run: |
           npm run build
       
       #yes
       - name: Update ionic capacitor
-        working-directory: ./frontend/p1-app
+        working-directory: ./frontend/app_v2
         run: |
           npx ionic capacitor sync
 
       - name: Build APK
-        working-directory: ./frontend/p1-app/android
+        working-directory: ./frontend/app_v2/android
         run: |
           chmod +x ./gradlew
           sudo ./gradlew assembleDebug

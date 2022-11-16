@@ -1,8 +1,4 @@
 
-import Projects from "../modules/Projects";
-import Todos from "../modules/Todos";
-
-
 import '../css/Pages.css';
 
 export default function ComponentsPage() {
@@ -16,7 +12,7 @@ export default function ComponentsPage() {
             <h4> This is an h4</h4>
             <label> This is a label</label>
             <p>This is a paragraph</p>
-            <a href="#"> And this is a link </a>
+            {/* <a href=""> And this is a link </a> */}
 
             <span className="seperator small"/>
         </div>

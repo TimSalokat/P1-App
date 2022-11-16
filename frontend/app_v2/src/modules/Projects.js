@@ -1,10 +1,12 @@
 
 import "../css/Projects.css";
+import { Global } from "../functionality/functions";
 
 export default function Projects() {
+
     return (
         <div className="Section column nowrap">
-            <label>Projects</label>
+            <label onClick={() => Global.setShowProjects = !Global.showprojects}>Projects</label>
             <div className="ProjectContainer stretch">
                 <Project/>
                 <Project/>

@@ -36,6 +36,7 @@ export default function Todos() {
 function TodoItem() {
     return (
         <div className="Todo">
+            {/* <p>Project</p> */}
             <div>
                 <label> todo title </label>
                 <p> Todo Description </p>

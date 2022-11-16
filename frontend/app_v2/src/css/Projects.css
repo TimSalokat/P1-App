@@ -6,6 +6,19 @@
     max-height: 25vh;
 }
 
+#AppContainer[data-activepage="Home"] .Project:nth-child(n+5){
+    display: none;
+}
+
+#AppContainer[data-activepage="Todos"][data-showprojects="false"] .ProjectContainer{
+    display: none;
+}
+#AppContainer[data-activepage="Todos"][data-showprojects="false"] .Section:has(.ProjectContainer){
+    min-height: initial;
+    box-shadow: none;
+    border-bottom: 1px solid var(--text_color);
+}
+
 .Project {
     position: relative;
     width: 42vw;

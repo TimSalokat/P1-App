@@ -107,6 +107,7 @@ const Global = {
     menuopen: undefined,
     set setMenuOpen(new_state){
         this.menuopen = new_state;
+        // eslint-disable-next-line
         if(new_state == true) this.setOverlayActive = true;
         else this.setOverlayActive = false;
         this.superContainer.menuopen = new_state;
@@ -129,6 +130,12 @@ const Global = {
     set setOverlayActive(new_state){
         this.overlayactive = new_state;
         this.superContainer.overlayactive = new_state;
+    },
+
+    showprojects: undefined,
+    set setShowProjects(new_state){
+        this.showprojects = new_state;
+        this.superContainer.showprojects = new_state;
     }
 
 }

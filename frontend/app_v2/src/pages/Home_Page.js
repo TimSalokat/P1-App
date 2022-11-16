@@ -1,6 +1,5 @@
 
 import Projects from "../modules/Projects";
-import Todos from "../modules/Todos";
 
 import '../css/Pages.css';
 

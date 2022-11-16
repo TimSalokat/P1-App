@@ -1,0 +1,7 @@
+{
+    "name": "DevBuild",
+    "integrations": {
+      "capacitor": {}
+    },
+    "type": "react"
+  }
