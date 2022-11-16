@@ -1,22 +1,22 @@
 -- Merging decision tree log ---
 provider#androidx.core.content.FileProvider
-INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:28:9-36:20
+INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:28:9-36:20
 	android:grantUriPermissions
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:32:13-47
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:32:13-47
 	android:authorities
-		INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:30:13-64
+		INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:30:13-64
 	android:exported
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:31:13-37
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:31:13-37
 	android:name
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:29:13-62
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:29:13-62
 manifest
-ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:2:1-42:12
-INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:2:1-42:12
-INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:2:1-42:12
-INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:2:1-42:12
+ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:2:1-42:12
+INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:2:1-42:12
+INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:2:1-42:12
+INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:2:1-42:12
 MERGED from [:capacitor-android] /home/runner/work/P1-App/P1-App/node_modules/@capacitor/android/capacitor/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
-MERGED from [:capacitor-cordova-android-plugins] /home/runner/work/P1-App/P1-App/frontend/p1-app/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-13:12
+MERGED from [:capacitor-cordova-android-plugins] /home/runner/work/P1-App/P1-App/frontend/app_v2/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.appcompat:appcompat:1.4.2] /root/.gradle/caches/transforms-3/a8e52a507448d4b845688b4ff42bab35/transformed/appcompat-1.4.2/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] /root/.gradle/caches/transforms-3/96bfe7ff07b49e78a3a68f6b88db966e/transformed/coordinatorlayout-1.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.core:core-splashscreen:1.0.0-rc01] /root/.gradle/caches/transforms-3/86f2c94e123f7d631ee33b23bd175149/transformed/jetified-core-splashscreen-1.0.0-rc01/AndroidManifest.xml:17:1-24:12
@@ -49,27 +49,27 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /root/.gradle/cac
 MERGED from [androidx.arch.core:core-runtime:2.1.0] /root/.gradle/caches/transforms-3/50164032edb9f678c1f5e79c6c6889d6/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [org.apache.cordova:framework:10.1.1] /root/.gradle/caches/transforms-3/b294c7b79e70a99f26ef48fae3bee632/transformed/jetified-framework-10.1.1/AndroidManifest.xml:20:1-27:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] /root/.gradle/caches/transforms-3/b2ffb75c7ede1f78772b204cf32e7af2/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
-INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:2:1-42:12
-INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:2:1-42:12
-INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:2:1-42:12
+INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:2:1-42:12
+INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:2:1-42:12
+INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:2:1-42:12
 	package
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:3:5-36
-		INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
-		INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:3:5-36
+		INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:2:1-42:12
-		INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:2:1-42:12
+		INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
 	android:versionCode
-		INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:2:1-42:12
-		INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:2:1-42:12
+		INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:2:11-69
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:2:11-69
 application
-ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:5:5-37:19
-MERGED from [:capacitor-cordova-android-plugins] /home/runner/work/P1-App/P1-App/frontend/p1-app/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-11:19
-MERGED from [:capacitor-cordova-android-plugins] /home/runner/work/P1-App/P1-App/frontend/p1-app/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-11:19
+ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:5:5-37:19
+MERGED from [:capacitor-cordova-android-plugins] /home/runner/work/P1-App/P1-App/frontend/app_v2/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-11:19
+MERGED from [:capacitor-cordova-android-plugins] /home/runner/work/P1-App/P1-App/frontend/app_v2/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-11:19
 MERGED from [androidx.emoji2:emoji2:1.0.0] /root/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:25:5-35:19
 MERGED from [androidx.emoji2:emoji2:1.0.0] /root/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:25:5-35:19
 MERGED from [androidx.core:core:1.8.0] /root/.gradle/caches/transforms-3/fe0dba67bfac75aa58e7b93d33808165/transformed/core-1.8.0/AndroidManifest.xml:24:5-89
@@ -83,53 +83,53 @@ MERGED from [androidx.startup:startup-runtime:1.0.0] /root/.gradle/caches/transf
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.8.0] /root/.gradle/caches/transforms-3/fe0dba67bfac75aa58e7b93d33808165/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:10:9-35
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:10:9-35
 	android:label
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:8:9-41
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:8:9-41
 	android:roundIcon
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:9:9-54
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:9:9-54
 	android:icon
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:7:9-43
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:7:9-43
 	android:allowBackup
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:6:9-35
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:6:9-35
 	android:theme
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:11:9-40
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:11:9-40
 activity#io.ionic.p1_dev_build.MainActivity
-ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:13:9-26:20
+ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:13:9-26:20
 	android:label
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:16:13-56
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:16:13-56
 	android:launchMode
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:18:13-44
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:18:13-44
 	android:exported
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:19:13-36
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:19:13-36
 	android:configChanges
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:14:13-129
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:14:13-129
 	android:theme
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:17:13-62
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:17:13-62
 	android:name
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:15:13-62
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:15:13-62
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:21:13-24:29
+ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:21:13-24:29
 action#android.intent.action.MAIN
-ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:22:17-69
+ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:22:17-69
 	android:name
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:22:25-66
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:22:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:23:17-77
+ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:23:17-77
 	android:name
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:23:27-74
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:23:27-74
 uses-permission#android.permission.INTERNET
-ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:41:5-67
+ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:41:5-67
 	android:name
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:41:22-64
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:41:22-64
 uses-sdk
-INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
-INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
+INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
+INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
 MERGED from [:capacitor-android] /home/runner/work/P1-App/P1-App/node_modules/@capacitor/android/capacitor/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:capacitor-android] /home/runner/work/P1-App/P1-App/node_modules/@capacitor/android/capacitor/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:capacitor-cordova-android-plugins] /home/runner/work/P1-App/P1-App/frontend/p1-app/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-8:41
-MERGED from [:capacitor-cordova-android-plugins] /home/runner/work/P1-App/P1-App/frontend/p1-app/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-8:41
+MERGED from [:capacitor-cordova-android-plugins] /home/runner/work/P1-App/P1-App/frontend/app_v2/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-8:41
+MERGED from [:capacitor-cordova-android-plugins] /home/runner/work/P1-App/P1-App/frontend/app_v2/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-8:41
 MERGED from [androidx.appcompat:appcompat:1.4.2] /root/.gradle/caches/transforms-3/a8e52a507448d4b845688b4ff42bab35/transformed/appcompat-1.4.2/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.4.2] /root/.gradle/caches/transforms-3/a8e52a507448d4b845688b4ff42bab35/transformed/appcompat-1.4.2/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] /root/.gradle/caches/transforms-3/96bfe7ff07b49e78a3a68f6b88db966e/transformed/coordinatorlayout-1.2.0/AndroidManifest.xml:20:5-22:41
@@ -194,22 +194,22 @@ MERGED from [org.apache.cordova:framework:10.1.1] /root/.gradle/caches/transform
 MERGED from [org.apache.cordova:framework:10.1.1] /root/.gradle/caches/transforms-3/b294c7b79e70a99f26ef48fae3bee632/transformed/jetified-framework-10.1.1/AndroidManifest.xml:25:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] /root/.gradle/caches/transforms-3/b2ffb75c7ede1f78772b204cf32e7af2/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] /root/.gradle/caches/transforms-3/b2ffb75c7ede1f78772b204cf32e7af2/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
-INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
-INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
+INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
+INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
-		INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
-		INJECTED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:33:13-35:64
+ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:33:13-35:64
 	android:resource
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:35:17-51
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:35:17-51
 	android:name
-		ADDED from /home/runner/work/P1-App/P1-App/frontend/p1-app/android/app/src/main/AndroidManifest.xml:34:17-67
+		ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:34:17-67
 provider#androidx.startup.InitializationProvider
 ADDED from [androidx.emoji2:emoji2:1.0.0] /root/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
 MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /root/.gradle/caches/transforms-3/31fc96d9881c54f9b47ddec530ec8052/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:26:9-34:20
