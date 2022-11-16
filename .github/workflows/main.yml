@@ -57,11 +57,11 @@ jobs:
         run: |
           npm run build
       
-      #yes
+      #update the capacitor npx ionic capacitor sync
       - name: Update ionic capacitor
         working-directory: ./frontend/app_v2
         run: |
-          npx ionic capacitor sync
+          npx ionic capacitor add android
 
       - name: Build APK
         working-directory: ./frontend/app_v2/android
