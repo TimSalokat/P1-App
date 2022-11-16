@@ -61,7 +61,7 @@ jobs:
       - name: Update ionic capacitor
         working-directory: ./frontend/app_v2
         run: |
-          npx ionic capacitor add android
+          npx ionic capacitor sync
 
       - name: Build APK
         working-directory: ./frontend/app_v2/android
