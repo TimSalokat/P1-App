@@ -55,7 +55,8 @@
 #PagesContainer {
   display: flex;
   flex-flow: column-reverse wrap;
-  margin: 0 0 0 0;
+  margin: 0;
+  margin-bottom: 60px;
 }
 
 html, #root {
@@ -184,6 +185,66 @@ select {
   display: block;
 }
 
+#MenuBar {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  bottom: 0;
+  background-color: var(--base);
+}
+#MenuBar::after {
+  content: "";
+  width: 70%;
+  height: 2px;
+  background-color: var(--accent-dark);
+  align-self: center;
+}
+#MenuBar .decoration .decorator{
+  position: absolute;
+  background-color: red;
+  height: 100%;
+  width: 30%;
+  right: 0;
+  border-radius: 0;
+  clip-path: polygon(60% 0%, 100% 0%, 100% 100%, 0% 100%)
+}
+#MenuBar .decoration .decorator:nth-child(2){background-color: var(--accent-dark);}
+#MenuBar .decoration .decorator:nth-child(1){
+  background-color: var(--accent-light);
+  right: 2%;
+  width: 50%;
+  clip-path: polygon(35% 0%, 100% 0%, 70% 100%, 0% 100%)
+}
+#MenuBar #Icon, #MenuBar label {
+  position: absolute;
+  color: var(--base);
+  right: 0;
+  top: 10px;
+  right: 6%;
+  pointer-events: none;
+}
+#MenuBar #Icon:nth-child(2){
+  right: 29%;
+  top: 10px;
+}
+#MenuBar label {
+  font-size: 12px;
+  bottom: 7%;
+  right: 5.5%;
+  top: initial;
+}
+#MenuBar label:nth-child(3){right: 29%;}
+
+#MenuIcon > path {
+  color: var(--accent);
+}
+#MenuIcon {
+  position: absolute;
+  font-size: 2.5rem;
+  left: 4%;
+  bottom: 20%;
+}
+
 .seperator {
   height: 2px;
   width: 60vw;
@@ -227,7 +288,7 @@ select {
 
 #Icon{
   position: relative;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   margin: 0;
   padding: 0;
 }
@@ -300,39 +361,4 @@ select {
   bottom: initial;
   top: calc(-20vh);
   bottom: initial;
-}
-
-.IconContainer {
-  background-color: var(--accent-dark);
-  padding: .75rem;
-  border-radius: 100%;
-  shape-outside: circle();
-  box-shadow: var(--base_shadow);
-  position: absolute;
-}
-
-#BotBar > .IconContainer:nth-child(1) {top: 30%;}
-#BotBar > .IconContainer:nth-child(2) {top: 9%; left: 9%;}
-#BotBar > .IconContainer:nth-child(3) {left: 30%;}
-
-#AppContainer[data-activepage="Todos"] #BotBar > .IconContainer:nth-child(1) {bottom: 30%; top: initial;}
-#AppContainer[data-activepage="Todos"] #BotBar > .IconContainer:nth-child(2) {bottom: 9%; left: 9%; top:initial;}
-#AppContainer[data-activepage="Todos"] #BotBar > .IconContainer:nth-child(3) {bottom: 0%;}
-
-#AppContainer[data-menuopen="false"] #BotBar{ pointer-events: none; }
-#AppContainer[data-menuopen="false"] #BotBar .IconContainer{ display: none;}
-#AppContainer[data-activepage="Home"][data-menuopen="false"] #BotBar .IconContainer:nth-child(2),
-#AppContainer[data-activepage="Todos"][data-menuopen="false"] #BotBar .IconContainer:nth-child(1),
-#AppContainer[data-activepage="Dev"][data-menuopen="false"] #BotBar .IconContainer:nth-child(3)
-{
-  top: calc(25.5%);
-  left: calc(25.5%);
-  pointer-events: none;
-  background: none;
-  display:block;
-}
-#AppContainer[data-activepage="Todos"][data-menuopen="false"] #BotBar .IconContainer:nth-child(1){
-  top: initial;
-  bottom: 25.5%;
-  box-shadow: none;
 }
