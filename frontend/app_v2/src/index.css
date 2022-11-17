@@ -151,7 +151,17 @@ select {
   margin: 0;
   padding: 1rem;
   border-radius: 0;
-  box-shadow: 0rem .1rem .9rem .7rem rgba(0,0,0,.25);
+  /* box-shadow: 0rem .1rem .9rem .7rem rgba(0,0,0,.25); */
+}
+
+#PagesContainer .Section::after{
+  content: '';
+  height: 2px;
+  width: 80vw;
+  background-color: var(--accent-light);
+  border-radius: 2px;
+  align-self: center;
+  justify-self: flex-end;
 }
 
 .Section > label:nth-child(1) {
