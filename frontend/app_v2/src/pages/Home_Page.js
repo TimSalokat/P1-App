@@ -11,13 +11,11 @@ export default function ComponentsPage() {
 
         <div className="Section">
             <label> The Way </label>
-            <span className="seperator" style={{alignSelf: "flex-start"}}/>
         </div>
 
         
         <div className="Section">
             <label> Your Day </label>
-            <span className="seperator" style={{alignSelf: "flex-start"}}/>
         </div>
         
 

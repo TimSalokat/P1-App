@@ -1,20 +1,26 @@
 
 #Home_Page, #Components_Page, #Todo_Page {
     max-width: 100vw;
-    min-height: 100vh;
+    min-height: calc(100vh - 50px);
     flex-direction: column-reverse;
 }
 
-#Todo_Page {
-    max-height: 100vh;
-}
+#AppContainer:not([data-activepage="Home"]) #PagesContainer #Home_Page {display: none;}
+#AppContainer:not([data-activepage="Dev"]) #PagesContainer #Components_Page {display: none;}
+#AppContainer:not([data-activepage="Todos"]) #PagesContainer #Todo_Page {display: none;}
 
-#AppContainer:not([data-activepage="Home"]) #PagesContainer #Home_Page {
-    display: none;
+#AddTodoButton{
+    position: fixed;
+    height: 70px;
+    width: 70px;
+    background-color: rgb(52, 52, 52);
+    bottom: 65px;
+    right: 20px;
+    z-index: 100;
+    clip-path: circle(50%);
+    align-items: center;
+    justify-content: center;
 }
-#AppContainer:not([data-activepage="Dev"]) #PagesContainer #Components_Page {
-    display: none;
-}
-#AppContainer:not([data-activepage="Todos"]) #PagesContainer #Todo_Page {
-    display: none;
+#AddTodoButton #Icon {
+    font-size: 3.5rem;
 }

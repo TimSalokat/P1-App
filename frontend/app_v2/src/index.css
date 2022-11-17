@@ -52,11 +52,15 @@
   height: 100vh;
 }
 
+#AppContainer {
+  max-height: 100vh;
+}
+
 #PagesContainer {
   display: flex;
-  flex-flow: column-reverse wrap;
+  flex-flow: column wrap;
   margin: 0;
-  margin-bottom: 60px;
+  height: calc(100% - 50px);
 }
 
 html, #root {
@@ -158,10 +162,11 @@ select {
   content: '';
   height: 2px;
   width: 80vw;
-  background-color: var(--accent-light);
+  background-color: var(--accent-dark);
   border-radius: 2px;
-  align-self: center;
-  justify-self: flex-end;
+  position: absolute;
+  bottom: 0;
+  left: 10vw;
 }
 
 .Section > label:nth-child(1) {
@@ -198,8 +203,9 @@ select {
 #MenuBar {
   position: fixed;
   width: 100%;
-  height: 50px;
+  height: 55px;
   bottom: 0;
+  z-index: 100;
   background-color: var(--base);
 }
 #MenuBar::after {
@@ -213,7 +219,7 @@ select {
   position: absolute;
   display: flex;
   align-content: center;
-  justify-content: flex-end;
+  justify-content: center;
   background-color: red;
   height: 100%;
   width: 27%;
@@ -238,29 +244,8 @@ select {
   left: 10px;
 }
 .MainMenuItem:nth-child(1) #Icon, .MainMenuItem:nth-child(1) label {
-  right: 23px;
+  right: 20px;
 }
-
-
-/* #MenuBar #Icon, #MenuBar label {
-  position: absolute;
-  color: var(--base);
-  right: 0;
-  top: 10px;
-  right: 10%;
-  pointer-events: none;
-}
-#MenuBar #Icon:nth-child(2){
-  right: 29%;
-  top: 10px;
-}
-#MenuBar label {
-  font-size: 12px;
-  bottom: 7%;
-  right: 5.5%;
-  top: initial;
-}
-#MenuBar label:nth-child(3){right: 29%;} */
 
 #MenuIcon > path {
   color: var(--accent);
@@ -348,44 +333,4 @@ select {
   margin-left: 120px;
   border-radius: .5rem;
   background-color: var(--accent-dark);
-}
-
-#BotBar, #BotButton {
-  position: fixed;
-  align-self: flex-end;
-  border-radius: 100%;
-}
-
-#BotButton {
-  z-index: 100;
-  bottom: 1rem;
-  right: 1rem;
-  min-height: 65px;
-  min-width: 65px;
-  padding: .1rem;
-  background-color: rgb(52, 52, 52);
-}
-
-#AppContainer[data-activepage="Todos"] #BotButton{
-  bottom: initial;
-  top: 1rem;
-  opacity: .75;
-}
-
-#BotBar {
-  align-items: flex-start;
-  flex-direction: row;
-  z-index: 101;
-  bottom: calc(-40vw);
-  right: calc(-40vw);
-  /* background-color: red; */
-  min-height: 80vw;
-  min-width: 80vw;
-  rotate: 0deg;
-}
-
-#AppContainer[data-activepage="Todos"] #BotBar{
-  bottom: initial;
-  top: calc(-20vh);
-  bottom: initial;
 }
