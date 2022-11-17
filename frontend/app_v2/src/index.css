@@ -209,28 +209,45 @@ select {
   background-color: var(--accent-dark);
   align-self: center;
 }
-#MenuBar .decoration .decorator{
+#MenuBar .MainMenuItem{
   position: absolute;
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
   background-color: red;
   height: 100%;
-  width: 30%;
+  width: 27%;
   right: 0;
   border-radius: 0;
-  clip-path: polygon(60% 0%, 100% 0%, 100% 100%, 0% 100%)
+  clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%)
 }
-#MenuBar .decoration .decorator:nth-child(2){background-color: var(--accent-dark);}
-#MenuBar .decoration .decorator:nth-child(1){
+#MenuBar .MainMenuItem:nth-child(2){background-color: var(--accent-dark);}
+#MenuBar .MainMenuItem:nth-child(1){
   background-color: var(--accent-light);
   right: 2%;
-  width: 50%;
-  clip-path: polygon(35% 0%, 100% 0%, 70% 100%, 0% 100%)
+  width: 45%;
+  clip-path: polygon(32% 0%, 100% 0%, 70% 100%, 0% 100%)
 }
-#MenuBar #Icon, #MenuBar label {
+
+.MainMenuItem label {
+  position: relative;
+  font-size: 11px;
+  color: var(--base);
+}
+.MainMenuItem:nth-child(2) #Icon, .MainMenuItem:nth-child(2) label {
+  left: 10px;
+}
+.MainMenuItem:nth-child(1) #Icon, .MainMenuItem:nth-child(1) label {
+  right: 23px;
+}
+
+
+/* #MenuBar #Icon, #MenuBar label {
   position: absolute;
   color: var(--base);
   right: 0;
   top: 10px;
-  right: 6%;
+  right: 10%;
   pointer-events: none;
 }
 #MenuBar #Icon:nth-child(2){
@@ -243,7 +260,7 @@ select {
   right: 5.5%;
   top: initial;
 }
-#MenuBar label:nth-child(3){right: 29%;}
+#MenuBar label:nth-child(3){right: 29%;} */
 
 #MenuIcon > path {
   color: var(--accent);

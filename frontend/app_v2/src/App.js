@@ -56,15 +56,20 @@ function App() {
     <Overlay click={() => {Global.setMenuOpen = false; Global.setOverlayActive = false;}}/>
     <div id="MenuBar">
 
-      <div className="decoration">
+      {/* <div className="decoration">
         <div className="decorator" onClick={() => Local.link("Todos")}/>
         <div className="decorator" onClick={() => Local.link("Home")}/>
+      </div> */}
+
+      <div className="MainMenuItem" onClick={() => Local.link("Todos")}>
+        <MdArticle id="Icon"/>
+        <label>Todos</label>
       </div>
 
-      <MdArticle id="Icon"/>
-      <label>Todos</label>
-      <MdHome id="Icon"/>
-      <label>Home</label>
+      <div className="MainMenuItem" onClick={() => Local.link("Home")}>
+        <MdHome id="Icon"/>
+        <label>Home</label>
+      </div>
 
       <CgMenuLeft id="MenuIcon"/>
 
