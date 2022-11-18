@@ -10,6 +10,7 @@ const Init = (self) => {
         Global.setSuperContainer = document.getElementById("AppContainer").dataset;
         Global.setMenuOpen = Global.superContainer.menuopen;
         Global.setOverlayActive = Global.superContainer.overlayactive;
+        Global.setActiveProject = Global.superContainer.activeproject;
 
         let last_colorScheme = Saving.loadSave(Global.COLOR_SCHEME_KEY);
         if(last_colorScheme !== undefined) Global.setColorScheme = last_colorScheme;

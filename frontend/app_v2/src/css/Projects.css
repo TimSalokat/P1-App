@@ -127,20 +127,21 @@
     right: 10px;
 }
 
-
 #ProjectChip {
     height: fit-content;
     width: fit-content;
     min-width: 50px;
     align-content: center;
-    background-color: var(--accent-lightest);
+    /* background-color: var(--accent-lightest); */
+    border: 1px solid var(--accent-lightest);
     box-shadow: var(--base_shadow);
     padding: 7px;
     border-radius: 1rem;
 }
 #ProjectChip > label {
     font-size: 1.2rem;
-    color: var(--base);
+    font-family: defaultBold;
+    color: inherit;
 }
 #ProjectChip:last-of-type {
     background-color: var(--base-dark);
@@ -149,6 +150,10 @@
 }
 #ProjectChip:last-of-type label {
     color: var(--text_color)
+}
+#ProjectChip.active{
+    background-color: var(--accent-light);
+    color: var(--text_color-light);
 }
 
 .ProjectContainer:has(#ProjectChip) {

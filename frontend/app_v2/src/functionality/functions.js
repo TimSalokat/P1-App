@@ -136,6 +136,12 @@ const Global = {
     set setShowProjects(new_state){
         this.showprojects = new_state;
         this.superContainer.showprojects = new_state;
+    },
+
+    activeproject: undefined,
+    set setActiveProject(new_project){
+        this.activeproject = new_project;
+        this.superContainer.activeproject = new_project;
     }
 
 }

@@ -26,8 +26,12 @@ export default function Projects() {
 }
 
 const Project = (self) => {
-    if(Global.activepage === "Home"){
 
+    function active(){
+        return Global.activeproject == self.title ? "active" : ""
+    }
+
+    if(Global.activepage === "Home"){
         return (
             <div className="Project">
     
@@ -45,7 +49,7 @@ const Project = (self) => {
         )
     }
     return(
-        <div id="ProjectChip">
+        <div id="ProjectChip" className={active()}>
             <label>{self.title}</label>
         </div>
     )

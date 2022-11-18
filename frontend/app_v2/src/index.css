@@ -20,7 +20,7 @@
 * {
   --text_color: black;
   --text_color-light: var(--base);
-  --base_shadow: 0px .1rem .3rem .1rem rgba(0,0,0,.25);
+  --base_shadow: 0px .1rem .3rem .1rem var(--base-darker);
 
   --color_variation: 10%;
 
@@ -121,6 +121,10 @@ button {
   box-shadow: var(--base_shadow);
   margin: .2rem;
 }
+button:disabled, button[disabled] {
+  background-color: var(--accent-dark);
+  text-decoration: line-through;
+}
 
 button.small {
   width: 6rem;
@@ -134,6 +138,11 @@ button.large {
 .button_secondary {
   background-color: var(--base);
   color: var(--accent);
+  font-family: defaultBold;
+}
+button:disabled.button_secondary, button[disabled].button_secondary {
+  text-decoration: line-through;
+  background-color: var(--base-dark);
 }
 
 input, textarea {
@@ -336,6 +345,9 @@ select {
 
 .text_light {
   color: var(--text_color-light);
+}
+.text_accent {
+  color: var(--accent);
 }
 
 .bg_light {
