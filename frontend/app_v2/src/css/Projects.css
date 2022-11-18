@@ -110,7 +110,6 @@
     background-color: var(--accent-light);
 }
 
-
 #AppContainer[data-activepage="Home"] .ProjectContainer{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -144,8 +143,9 @@
     color: var(--base);
 }
 #ProjectChip:last-of-type {
-    background-color: var(--base);
-    border: 2px solid var(--accent-lightest);
+    background-color: var(--base-dark);
+    border: 1px solid var(--base-darker);
+    box-shadow: none;
 }
 #ProjectChip:last-of-type label {
     color: var(--text_color)

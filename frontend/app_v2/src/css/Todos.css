@@ -1,4 +1,14 @@
 
+.Section:has(.TodoContainer) > label::after{
+    content:"";
+    position: absolute;
+    top: 3.3rem;
+    left: 10%;
+    background-color: var(--base-dark);
+    width: 80%;
+    height: 2px;    
+}
+
 .TodoContainer {
     max-height: 90vh;
     overflow-y: scroll;

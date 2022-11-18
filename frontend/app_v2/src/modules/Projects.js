@@ -19,7 +19,7 @@ export default function Projects() {
                 <Project title={"Some more Testing"}/>
                 <Project title={"More Testing"}/>
 
-                <Project title={"Add Project"}/>
+                <Project title={"New Project"}/>
             </div>
         </div>
     )
