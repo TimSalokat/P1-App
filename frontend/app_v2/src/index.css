@@ -32,6 +32,7 @@
   --color_variation: 10%;
 
   --accent-light-l: calc(var(--accent-l) + 5%);
+  --accent-lightest-l: calc(var(--accent-l) + 15%);
   --accent-dark-l: calc(var(--accent-l) - var(--color_variation));
 
   --accent: hsl( var(--accent-h),
@@ -45,6 +46,10 @@
   --accent-light: hsl(var(--accent-h),
                       var(--accent-s),
                       var(--accent-light-l));
+
+  --accent-lightest: hsl(var(--accent-h),
+                      var(--accent-s),
+                      var(--accent-lightest-l));
 }
 
 #root {
@@ -169,7 +174,7 @@ select {
   left: 10vw;
 }
 
-.Section > label:nth-child(1) {
+.Section > label:nth-of-type(1), .ProjectHeader > label {
   font-size: 1.7rem;
   font-family: defaultBold;
 }
@@ -184,6 +189,7 @@ select {
 }
 .Section:has(.ProjectContainer) {
   flex: inherit;
+  min-height: fit-content;
 }
 
 #Overlay {
@@ -214,6 +220,26 @@ select {
   height: 2px;
   background-color: var(--accent-dark);
   align-self: center;
+}
+#MenuBar button {
+  position: absolute;
+  left: 55px;
+  bottom: 5px;
+  box-shadow: none;
+  border: 1px solid grey;
+  height: 40px;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+#MenuBar button #Icon{
+  color: var(--accent);
+  font-size: 2rem;
+}
+#MenuBar label{
+  margin-top: 1px;
+  font-size: 1.3rem;
 }
 #MenuBar .MainMenuItem{
   position: absolute;
@@ -290,6 +316,14 @@ select {
   flex-grow: 1;
 }
 
+.grid{
+  display: grid;
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
 .text_light {
   color: var(--text_color-light);
 }
@@ -303,10 +337,11 @@ select {
   font-size: 2.2rem;
   margin: 0;
   padding: 0;
+  color: var(--text_color-light);
 }
 
 #Icon > path {
-  color: var(--text_color-light);
+  color: inherit;
 }
 
 #test{

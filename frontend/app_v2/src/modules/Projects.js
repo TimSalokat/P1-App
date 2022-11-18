@@ -2,34 +2,51 @@
 import "../css/Projects.css";
 import { Global } from "../functionality/functions";
 
+import {BiDownArrow} from "react-icons/bi";
+
 export default function Projects() {
 
     return (
         <div className="Section column nowrap">
-            <label onClick={() => Global.setShowProjects = !Global.showprojects}>Projects</label>
+            <div className="ProjectHeader" onClick={() => Global.setShowProjects = !Global.showprojects}>
+                <label>Projects</label>
+                <BiDownArrow id="Icon" style={{color:"var(--text_color)"}}/>
+            </div>
             <div className="ProjectContainer stretch">
-                <Project/>
-                <Project/>
-                <Project/>
+                <Project title={"All"}/>
+
+                <Project title={"Testing"}/>
+                <Project title={"Some more Testing"}/>
+                <Project title={"More Testing"}/>
+
+                <Project title={"Add Project"}/>
             </div>
         </div>
     )
 }
 
-const Project = () => {
-    return (
-        <div className="Project">
+const Project = (self) => {
+    if(Global.activepage === "Home"){
 
-            <div>
-                <label> Project XY</label>
-                <label id="PCounter">15</label>
-                <Graphic/>
+        return (
+            <div className="Project">
+    
+                <div>
+                    <label>{self.title}</label>
+                    <label id="PCounter">15</label>
+                    <Graphic/>
+                </div>
+    
+                <div className="row">
+                    <span id="ProgressBar"/>
+                    <h5>50%</h5>
+                </div>
             </div>
-
-            <div className="row">
-                <span id="ProgressBar"/>
-                <h5>50%</h5>
-            </div>
+        )
+    }
+    return(
+        <div id="ProjectChip">
+            <label>{self.title}</label>
         </div>
     )
 }

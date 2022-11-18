@@ -1,4 +1,17 @@
 
+.ProjectHeader {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+.ProjectHeader #Icon {
+    display: none;
+    font-size: 1.6rem;
+    rotate: 0deg;
+}
+#AppContainer[data-activepage="Todos"] .ProjectHeader #Icon {display: block}
+#AppContainer[data-showprojects="false"] .ProjectHeader #Icon {rotate: 90deg}
+
 .ProjectContainer {
     gap: .75rem;
     padding: .5rem;
@@ -98,8 +111,6 @@
 }
 
 
-
-
 #AppContainer[data-activepage="Home"] .ProjectContainer{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -115,4 +126,31 @@
 
 #AppContainer[data-activepage="Home"] #PCounter{
     right: 10px;
+}
+
+
+#ProjectChip {
+    height: fit-content;
+    width: fit-content;
+    min-width: 50px;
+    align-content: center;
+    background-color: var(--accent-lightest);
+    box-shadow: var(--base_shadow);
+    padding: 7px;
+    border-radius: 1rem;
+}
+#ProjectChip > label {
+    font-size: 1.2rem;
+    color: var(--base);
+}
+#ProjectChip:last-of-type {
+    background-color: var(--base);
+    border: 2px solid var(--accent-lightest);
+}
+#ProjectChip:last-of-type label {
+    color: var(--text_color)
+}
+
+.ProjectContainer:has(#ProjectChip) {
+    flex-flow: row wrap;
 }

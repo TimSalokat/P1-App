@@ -5,12 +5,11 @@ import Init from "./functionality/init";
 import Overlay from "./modules/Overlay";
 import { Global, Local } from "./functionality/functions";
 
-import ComponentsPage from "./pages/Components_Page";
-
 import Home_Page from "./pages/Home_Page";
 import Todo_Page from "./pages/Todo_Page";
 
-import {MdArticle, MdHome, MdSettings} from "react-icons/md";
+import {MdArticle, MdHome, MdSettings, MdAdd} from "react-icons/md";
+import Settings_Page from "./pages/Settings_Page";
 // import {CgMenuLeft} from "react-icons/cg";
 
 function App() {
@@ -39,9 +38,9 @@ function App() {
         {/* eslint-disable */}
         <Todo_Page/>
         <Home_Page/>
+        <Settings_Page/>
         
         {/* eslint-enable */}
-        <ComponentsPage/>
       </div>
 
     <Overlay click={() => {Global.setMenuOpen = false; Global.setOverlayActive = false;}}/>
@@ -54,8 +53,13 @@ function App() {
       <div className="MainMenuItem" onClick={() => Local.link("Home")}>
         <MdHome id="Icon"/>
       </div>
+      
+      <button className="button_secondary">
+        <MdAdd id="Icon" style={{color:"var(--text_color)"}}/>
+        <label>Add Todo</label>
+      </button>
 
-      <MdSettings id="MenuIcon"/>
+      <MdSettings id="MenuIcon" onClick={() => Local.link("Settings")}/>
 
     </div>
     </div>
