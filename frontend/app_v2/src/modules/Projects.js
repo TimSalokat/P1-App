@@ -28,7 +28,7 @@ export default function Projects() {
 const Project = (self) => {
 
     function active(){
-        return Global.activeproject == self.title ? "active" : ""
+        return Global.activeproject === self.title ? "active" : ""
     }
 
     if(Global.activepage === "Home"){

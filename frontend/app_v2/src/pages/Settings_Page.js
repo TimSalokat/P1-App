@@ -1,5 +1,5 @@
 
-import { Local, Server } from "../functionality/functions";
+import { Server } from "../functionality/functions";
 
 import "../css/Settings.css";
 
