@@ -18,7 +18,7 @@
 }
 
 * {
-  --text_color: black;
+  --text_color: rgb(50,50,50);
   --text_color-light: var(--base);
   --base_shadow: 0px .1rem .3rem .1rem var(--base-darker);
 
@@ -156,19 +156,26 @@ textarea {
   padding: .5rem;
 }
 
-textarea:focus, input:focus, select:focus, option:focus {
+textarea:focus, input:focus, option:focus {
   box-sizing: border-box;
   outline: none;
   border-bottom: 2px solid var(--accent-light);
 }
 
+select:focus {
+  outline: none;
+  box-sizing: border-box;
+}
+
 select {
   width: 100vw;
-  height: 2.5rem;
+  height: 2.8rem;
   background-color: var(--base);
   border: 0;
-  box-shadow: var(--base_shadow);
-  margin: .2rem 0;
+  border: 2px solid var(--base-dark);
+  margin-top: .2rem;
+  margin-left: .5rem;
+  flex: .7;
 }
 
 .Section {
@@ -238,7 +245,7 @@ select {
   content: "";
   width: 70%;
   height: 2px;
-  background-color: var(--accent-dark);
+  background-color: var(--base-dark);
   align-self: center;
 }
 #MenuBar button {
@@ -246,7 +253,7 @@ select {
   left: 55px;
   bottom: 5px;
   box-shadow: none;
-  border: 1px solid grey;
+  border: 2px solid var(--base-dark);
   height: 40px;
   border-radius: 30px;
   justify-content: center;
@@ -254,10 +261,11 @@ select {
   display: flex;
 }
 #MenuBar button #Icon{
-  color: var(--accent);
+  color: var(--base-darker);
   font-size: 2rem;
 }
 #MenuBar label{
+  color: var(--base-darkest);
   margin-top: 1px;
   font-size: 1.3rem;
 }
@@ -266,42 +274,44 @@ select {
   display: flex;
   align-content: center;
   justify-content: center;
-  background-color: red;
+  background-color: var(--base-dark);
   height: 100%;
   width: 27%;
   right: 0;
   border-radius: 0;
   clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%)
 }
-#MenuBar .MainMenuItem:nth-child(2){background-color: var(--accent-dark);}
-#MenuBar .MainMenuItem:nth-child(1){
-  background-color: var(--accent-light);
+#MenuBar .MainMenuItem:nth-of-type(1){
   right: 2%;
   width: 45%;
   clip-path: polygon(32% 0%, 100% 0%, 70% 100%, 0% 100%)
 }
+#AppContainer[data-activePage="Todos"] #MenuBar .MainMenuItem:nth-of-type(1) {background-color: var(--accent-light);}
+#AppContainer[data-activePage="Home"] #MenuBar .MainMenuItem:nth-of-type(2) {background-color: var(--accent-dark);}
+
+#AppContainer[data-activePage="Todos"] #MenuBar .MainMenuItem:nth-of-type(1) #Icon {color: var(--base);}
+#AppContainer[data-activePage="Home"] #MenuBar .MainMenuItem:nth-of-type(2) #Icon {color: var(--base);}
 
 .MainMenuItem label {
   position: relative;
   font-size: 11px;
   color: var(--base);
 }
-.MainMenuItem:nth-child(2) #Icon, .MainMenuItem:nth-child(2) label {
-  left: 10px;
-}
-.MainMenuItem:nth-child(1) #Icon, .MainMenuItem:nth-child(1) label {
-  right: 20px;
-}
+.MainMenuItem #Icon{color: var(--base-darker);}
+.MainMenuItem:nth-child(1) #Icon{right: 20px;}
+.MainMenuItem:nth-child(2) #Icon {left: 10px;}
 
-#MenuIcon > path {
-  color: var(--accent);
+#SettingsIcon > path {
+  color: inherit;
 }
-#MenuIcon {
+#SettingsIcon {
   position: absolute;
   font-size: 2.5rem;
   left: 4%;
   bottom: 20%;
+  color: var(--base-darker);
 }
+#AppContainer[data-activePage="Settings"] #SettingsIcon{color: var(--accent);}
 
 .Header {
   display: flex;
@@ -370,6 +380,10 @@ select {
 }
 .text_accent {
   color: var(--accent);
+  font-size: inherit;
+}
+.text_bold {
+  font-family: defaultBold;
 }
 
 .bg_light {

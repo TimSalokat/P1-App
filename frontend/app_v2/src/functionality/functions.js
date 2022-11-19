@@ -27,11 +27,20 @@ const Global = {
     displayedTodos: [],
 
     localActions: [],
-    mainText: "",
 
     form: "",
     set setForm(new_form){
         this.form = new_form;
+    },
+
+    formInputs: {},
+    set setFormInputs(new_thing){
+        this.formInput = new_thing;
+    },
+
+    formPlaceholder: {},
+    set setFormPlaceholder(new_placeholder){
+        this.formPlaceholder = new_placeholder;
     },
 
     appRerender: placeholder_func,
@@ -72,9 +81,6 @@ const Global = {
     },
     set setLocalActions(new_action){
         this.localActions = new_action;},
-
-    set setMainText(new_main_text){
-        this.mainText = new_main_text;},
 
     superContainer: undefined,
     set setSuperContainer(new_supercontainer){
@@ -207,7 +213,7 @@ class Local {
         Global.setMenuOpen = false;
     }
 
-    static openForm = async (formName) => {
+    static openForm = async (formName, ...args) => {
         Global.setOverlayActive = true;
         Global.setForm = formName;
         Global.formRerender();

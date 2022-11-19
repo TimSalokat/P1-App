@@ -21,6 +21,11 @@ function App() {
     Global.setAppRerender = forceUpdate;
   }, [])
 
+  function openForm_helper (title){
+    // Todo fix the fuckin clear of the Global.forminputs. It doesnt clear the value smh. 
+    Local.openForm(title);
+  }
+
   return (
     <>
     <div 
@@ -54,20 +59,23 @@ function App() {
       }}/>
 
     <div id="MenuBar">
-      <div className="MainMenuItem" onClick={() => Local.link("Todos")}>
+      <div className={"MainMenuItem "} onClick={() => Local.link("Todos")}>
         <MdArticle id="Icon"/>
       </div>
 
-      <div className="MainMenuItem" onClick={() => Local.link("Home")}>
+      <div className={"MainMenuItem "} onClick={() => Local.link("Home")}>
         <MdHome id="Icon"/>
       </div>
       
-      <button className="button_secondary" onClick={() => Local.openForm("AddTodo")}>
-        <MdAdd id="Icon" style={{color:"var(--text_color)"}}/>
+      <button className="button_secondary" onClick={() => openForm_helper("AddTodo")}>
+        <MdAdd id="Icon"/>
         <label>Add Todo</label>
       </button>
 
-      <MdSettings id="MenuIcon" onClick={() => Local.link("Settings")}/>
+      <MdSettings 
+        id="SettingsIcon"  
+        onClick={() => Local.link("Settings")}
+        />
     </div>
     </div>
 

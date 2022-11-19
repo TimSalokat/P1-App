@@ -132,9 +132,7 @@
     width: fit-content;
     min-width: 50px;
     align-content: center;
-    /* background-color: var(--accent-lightest); */
-    border: 1px solid var(--accent-lightest);
-    box-shadow: var(--base_shadow);
+    background-color: var(--base-dark);
     padding: 7px;
     border-radius: 1rem;
 }
@@ -142,11 +140,6 @@
     font-size: 1.2rem;
     font-family: defaultBold;
     color: inherit;
-}
-#ProjectChip:last-of-type {
-    background-color: var(--base-dark);
-    border: 1px solid var(--base-darker);
-    box-shadow: none;
 }
 #ProjectChip:last-of-type label {
     color: var(--text_color)

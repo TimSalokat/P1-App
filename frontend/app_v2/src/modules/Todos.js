@@ -1,27 +1,13 @@
 
 import "../css/Todos.css";
 import {BsCircle} from "react-icons/bs"
+import { Global } from "../functionality/functions";
 
 export default function Todos() {
     return (
         <div className="Section">
-            <label>Todos</label>
+            <label>Todos in <span className="text_accent text_bold">{Global.activeproject}</span></label>
             <div className="TodoContainer">
-                <TodoItem/>
-                <TodoItem/>
-                <TodoItem/>
-                <TodoItem/>
-                <TodoItem/>
-                <TodoItem/>
-                <TodoItem/>
-                <TodoItem/>
-                <TodoItem/>
-                <TodoItem/>
-                <TodoItem/>
-                <TodoItem/>
-                <TodoItem/>
-                <TodoItem/>
-                <TodoItem/>
                 <TodoItem/>
                 <TodoItem/>
                 <TodoItem/>

@@ -3,6 +3,7 @@ import "../css/Projects.css";
 import { Global, Local } from "../functionality/functions";
 
 import {BiDownArrow} from "react-icons/bi";
+import { MdAdd } from "react-icons/md";
 
 export default function Projects() {
 
@@ -19,7 +20,9 @@ export default function Projects() {
                 <Project title={"Some more Testing"}/>
                 <Project title={"More Testing"}/>
 
-                <Project title={"New Project"}/>
+                <div id="ProjectChip" style={{height: "2.4rem"}} onClick={() => Local.openForm("AddProject")}> 
+                    <MdAdd id="Icon" style={{color: "var(--text_color)"}}/>
+                </div>
             </div>
         </div>
     )
@@ -50,7 +53,6 @@ const Project = (self) => {
     }
     return(
         <div id="ProjectChip" className={active()} onClick={() => {
-            if(self.title === "New Project") {Local.openForm("AddProject"); return}
             Global.setActiveProject = self.title;
             Global.appRerender();
             }}>

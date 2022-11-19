@@ -7,6 +7,26 @@
     display: none;
 }
 
+.ProjectSelect {
+    flex-flow: row;
+    /* position: relative; */
+    overflow-y: scroll;
+    padding: .5rem;
+    gap: .5rem;
+    width: 100%;
+}
+.ProjectSelect #ProjectChip {
+    border: none;
+    background-color: var(--base-dark);
+    box-shadow: none;
+    font-size: 1.2rem;
+    font-family: defaultBold;
+    min-width: max-content;
+}
+.ProjectSelect #ProjectChip.active {
+    background-color: var(--accent-light);
+}
+
 .bottomForm {
     position: fixed;
     height: fit-content;
