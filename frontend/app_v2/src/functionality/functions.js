@@ -22,7 +22,6 @@ const Global = {
 
     backend: "http://127.0.0.1:8000",
 
-    activeFilter: "All",
     projects: [],
     serverTodos: [],
     displayedTodos: [],
@@ -30,19 +29,14 @@ const Global = {
     localActions: [],
     mainText: "",
 
-    overlay: {},
-    set setOverlayProps(new_props){
-        this.overlay = new_props;
+    form: "",
+    set setForm(new_form){
+        this.form = new_form;
     },
 
     appRerender: placeholder_func,
     set setAppRerender(new_func){
         this.appRerender = new_func;
-    },
-
-    todosRerender: placeholder_func,
-    set setTodosRerender(new_func){
-        this.todosRerender = new_func;
     },
 
     formRerender: placeholder_func,
@@ -63,11 +57,6 @@ const Global = {
             Server.fetchText();
             Server.fetchTodos();
         }else{console.error("Server not reachable");};
-    },
-
-    set setFilter(new_filter){
-        this.activeFilter = new_filter;
-        Global.todosRerender();
     },
 
     set setProjects(new_projects){
@@ -91,6 +80,10 @@ const Global = {
     set setSuperContainer(new_supercontainer){
         this.superContainer = new_supercontainer;
     }, 
+    formContainer: undefined,
+    set setFormContainer(new_instance){
+        this.formContainer = new_instance;
+    },
     
     serverReachable: undefined,
     set setServerReachable(new_bool){
@@ -138,7 +131,7 @@ const Global = {
         this.superContainer.showprojects = new_state;
     },
 
-    activeproject: undefined,
+    activeproject: "All",
     set setActiveProject(new_project){
         this.activeproject = new_project;
         this.superContainer.activeproject = new_project;
@@ -212,6 +205,17 @@ class Local {
         Global.setActivePage = page;
         Saving.saveLocal(Global.PAGE_KEY, page);
         Global.setMenuOpen = false;
+    }
+
+    static openForm = async (formName) => {
+        Global.setOverlayActive = true;
+        Global.setForm = formName;
+        Global.formRerender();
+        Global.formContainer.style.display = "block";
+    }
+    static closeForm = async () => {
+        Global.formContainer.style.display = "none";
+        Global.setOverlayActive = "false";
     }
 }
 

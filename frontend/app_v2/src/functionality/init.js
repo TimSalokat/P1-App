@@ -8,6 +8,7 @@ const Init = (self) => {
         console.warn("Initialization");
 
         Global.setSuperContainer = document.getElementById("AppContainer").dataset;
+        Global.setFormContainer = document.getElementById("FormContainer");
         Global.setMenuOpen = Global.superContainer.menuopen;
         Global.setOverlayActive = Global.superContainer.overlayactive;
         Global.setActiveProject = Global.superContainer.activeproject;

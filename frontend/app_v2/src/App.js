@@ -10,6 +10,7 @@ import Todo_Page from "./pages/Todo_Page";
 
 import {MdArticle, MdHome, MdSettings, MdAdd} from "react-icons/md";
 import Settings_Page from "./pages/Settings_Page";
+import { FormHandler } from "./modules/FormHandler";
 // import {CgMenuLeft} from "react-icons/cg";
 
 function App() {
@@ -44,9 +45,15 @@ function App() {
         {/* eslint-enable */}
       </div>
 
-    <Overlay click={() => {Global.setMenuOpen = false; Global.setOverlayActive = false;}}/>
-    <div id="MenuBar">
+    <FormHandler/>
 
+    <Overlay click={() => {
+      Global.setMenuOpen = false;
+      Global.setOverlayActive = false;
+      Local.closeForm();
+      }}/>
+
+    <div id="MenuBar">
       <div className="MainMenuItem" onClick={() => Local.link("Todos")}>
         <MdArticle id="Icon"/>
       </div>
@@ -55,13 +62,12 @@ function App() {
         <MdHome id="Icon"/>
       </div>
       
-      <button className="button_secondary">
+      <button className="button_secondary" onClick={() => Local.openForm("AddTodo")}>
         <MdAdd id="Icon" style={{color:"var(--text_color)"}}/>
         <label>Add Todo</label>
       </button>
 
       <MdSettings id="MenuIcon" onClick={() => Local.link("Settings")}/>
-
     </div>
     </div>
 

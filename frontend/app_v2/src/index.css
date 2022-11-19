@@ -88,12 +88,6 @@ p, button, textarea, input, select, option, a {
   resize: none;
 }
 
-textarea:focus, input:focus, select:focus, option:focus {
-  box-sizing: border-box;
-  outline: none;
-  border-bottom: 2px solid var(--accent);
-}
-
 div {
   display: flex;
   flex-flow: column wrap;
@@ -124,6 +118,7 @@ button {
 button:disabled, button[disabled] {
   background-color: var(--accent-dark);
   text-decoration: line-through;
+  text-decoration-thickness: 2px;
 }
 
 button.small {
@@ -151,13 +146,20 @@ input, textarea {
   border: 0;
   background-color: var(--base);
   padding: 0 .5rem;
-  box-shadow: var(--base_shadow);
+  border-bottom: 2px solid var(--base-darker);
+  border-radius: 0;
   margin: .2rem 0;
 }
 
 textarea {
-  height: 15vh;
+  max-height: 15vh;
   padding: .5rem;
+}
+
+textarea:focus, input:focus, select:focus, option:focus {
+  box-sizing: border-box;
+  outline: none;
+  border-bottom: 2px solid var(--accent-light);
 }
 
 select {
@@ -213,7 +215,7 @@ select {
 #Overlay {
   height: 100vh;
   width: 100vw;
-  z-index: 90;
+  z-index: 110;
   position: fixed;
   background-color: rgba(40, 40, 40, .6);
   border-radius: 0;
@@ -301,6 +303,23 @@ select {
   bottom: 20%;
 }
 
+.Header {
+  display: flex;
+  width: 100%;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.Header label {
+  width: fit-content;
+  height: fit-content;
+  border-bottom: 2px solid var(--accent);
+  border-radius: 0;
+}
+.Header button{
+  max-height: 35px;
+}
+
 .seperator {
   height: 2px;
   width: 60vw;
@@ -315,6 +334,9 @@ select {
   width: 95vw;
 }
 
+.left{
+  align-self: flex-start;
+}
 .row {
   display: flex;
   flex-direction: row;

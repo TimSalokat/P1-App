@@ -1,6 +1,6 @@
 
 import "../css/Projects.css";
-import { Global } from "../functionality/functions";
+import { Global, Local } from "../functionality/functions";
 
 import {BiDownArrow} from "react-icons/bi";
 
@@ -49,7 +49,11 @@ const Project = (self) => {
         )
     }
     return(
-        <div id="ProjectChip" className={active()}>
+        <div id="ProjectChip" className={active()} onClick={() => {
+            if(self.title === "New Project") {Local.openForm("AddProject"); return}
+            Global.setActiveProject = self.title;
+            Global.appRerender();
+            }}>
             <label>{self.title}</label>
         </div>
     )
