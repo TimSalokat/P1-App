@@ -22,7 +22,12 @@ const Global = {
 
     backend: "http://127.0.0.1:8000",
 
-    projects: [],
+    projects: [
+        {title: "All Todos", index:1},
+        {title: "Ideas", index:2},
+        {title: "Testing", index:3},
+        {title: "Bugs", index:4}
+    ],
     serverTodos: [],
     displayedTodos: [],
 
@@ -35,7 +40,7 @@ const Global = {
 
     formInputs: {},
     set setFormInputs(new_thing){
-        this.formInput = new_thing;
+        this.formInputs = new_thing;
     },
 
     formPlaceholder: {},

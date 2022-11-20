@@ -14,11 +14,15 @@ export default function Projects() {
                 <BiDownArrow id="Icon" style={{color:"var(--text_color)"}}/>
             </div>
             <div className="ProjectContainer stretch">
-                <Project title={"All"}/>
+                {/* <Project title={"All"}/> */}
 
-                <Project title={"Testing"}/>
-                <Project title={"Some more Testing"}/>
-                <Project title={"More Testing"}/>
+                {
+                    Global.projects.map((project) => {
+                        return(
+                            <Project title={project.title} key={project.index}/>
+                        )
+                    })
+                }
 
                 <div id="ProjectChip" style={{height: "2.4rem"}} onClick={() => Local.openForm("AddProject")}> 
                     <MdAdd id="Icon" style={{color: "var(--text_color)"}}/>

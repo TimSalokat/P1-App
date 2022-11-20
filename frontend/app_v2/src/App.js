@@ -35,7 +35,7 @@ function App() {
       data-activepage="Home"
       data-overlayactive="false"
       data-showprojects="true"
-      data-activeproject="All"
+      data-activeproject="All Todos"
     
     >
       <Init/>

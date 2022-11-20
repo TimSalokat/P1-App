@@ -6,12 +6,6 @@ import "../css/Forms.css"
 
 export function FormHandler() {
 
-    const [, updateState] = React.useState();
-    const forceUpdate = React.useCallback(() => updateState({}), []);
-    React.useState(() => {
-      Global.setFormRerender = forceUpdate;
-    }, [])
-
     return (
         <div id="FormContainer">
             <Form/>
@@ -21,32 +15,47 @@ export function FormHandler() {
 
 const Form = () => {
 
-    const closeForm_helper = () => {
+    const [, updateState] = React.useState();
+    const forceUpdate = React.useCallback(() => updateState({}), []);
+    React.useState(() => {
+      Global.setFormRerender = forceUpdate;
+    }, [])
+
+    const closeForm_helper = (event) => {
+        var form = document.getElementById("input_form");
+        try{event.preventDefault()}catch{}
         Local.closeForm();
-        Global.formInputs = {};
+        Global.setFormInputs = {};
+        form.reset();
     }
 
     if(Global.form === "AddTodo"){
+
+        function submit_helper(event){
+            var form = document.getElementById("input_form");
+            event.preventDefault();
+            if(Global.formInputs.title){
+                console.log(Global.formInputs);
+                closeForm_helper();
+            }
+            form.reset();
+        }
+
         return (
+            <>
             <BottomBase label="Add Todo" 
                 closeForm_helper={closeForm_helper} 
-                submit={() => {
-                    if(Global.formInputs.title){
-                        console.log(Global.formInputs);
-                        closeForm_helper();
-                    }
-                }}
-            >
+                submit={submit_helper}
+                >
+
                 <input type="text" 
                     placeholder="Title" 
-                    value={Global.formInputs.title} 
                     onChange={(e) =>{
                         Global.formInputs.title = e.target.value;
                     }}/>
 
                 <div className="Header">
                     <textarea placeholder="Description"
-                        value={Global.formInputs.description} 
                         onChange={(e) =>{
                             Global.formInputs.description = e.target.value;
                         }}/>
@@ -62,15 +71,34 @@ const Form = () => {
                 </div>
 
                 <div className="ProjectSelect">
-                    <ProjectOption title="Unassigned"/>
-                    <ProjectOption title="Ideas"/>
-                    <ProjectOption title="Testing"/>
+                    {Global.projects.map((project) => {
+                        return(
+                            <ProjectOption 
+                                title={project.title}
+                                key={project.index}
+                                />
+                        )
+                    })}
                 </div>
             </BottomBase>
+            </>
         )
     }else if(Global.form === "AddProject"){
+
+        function submit_helper(event){
+            var form = document.getElementById("input_form");
+            event.preventDefault();
+            if(Global.formInputs.title){
+                console.log(Global.formInputs);
+                closeForm_helper();
+            }
+            form.reset();
+        }
+
         return(
-            <BottomBase label="Add Project" closeForm_helper={closeForm_helper}>
+            <BottomBase label="Add Project" 
+                closeForm_helper={closeForm_helper}
+                submit={submit_helper}>
                 <input type="text" 
                     placeholder="Title" 
                     value={Global.formInputs.title} 
@@ -86,22 +114,23 @@ const Form = () => {
 
 const BottomBase = (props) => {
     return (
-        <div className="bottomForm">
+        <form className="bottomForm" id="input_form">
             <div className="Header">
                 <label>{props.label}</label>
                 <div className="row">
-                    <button className="button_secondary small" onClick={() => props.closeForm_helper()}>Cancel</button>
-                    <button className="small" onClick={props.submit}>Submit</button>
+                    <button className="button_secondary small" onClick={props.closeForm_helper}>Cancel</button>
+                    <button className="button small" onClick={props.submit}>Submit</button>
                 </div>
             </div>
             {props.children}
-        </div>
+        </form>
     )
 }
 
 const ProjectOption = (self) => {
 
     const active = () => {
+        if(Global.formInputs.selectedProject === undefined && self.title === "All Todos") return "active"
         return Global.formInputs.selectedProject === self.title ? "active" : "";
     }
 
