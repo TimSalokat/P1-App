@@ -58,9 +58,10 @@ def Startup():
 
 class Todo(BaseModel):
     uuid: str
-    heading: str
+    title: str
     description: str
     project: str
+    priority: int
 
 class Project(BaseModel):
     title: str
@@ -120,12 +121,13 @@ async def add_todo(todo: Todo):
     print(todo)
     Todos.append({
         "uuid": todo.uuid,
-        "heading": todo.heading,
+        "title": todo.title,
         "description": todo.description,
         "project": todo.project,
+        "priority": todo.priority,
         "finished": False })
     # update_index()
-    log(("Added Todo: ", todo.heading))
+    log(("Added Todo: ", todo.title))
     save(Todos, "todos.txt")
     return {"response": "Successful"}
 

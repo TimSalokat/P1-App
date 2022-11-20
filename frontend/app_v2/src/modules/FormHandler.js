@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Global, Local } from "../functionality/functions";
+import { Global, Local, Server } from "../functionality/functions";
 
 import "../css/Forms.css"
 
@@ -36,6 +36,7 @@ const Form = () => {
             event.preventDefault();
             if(Global.formInputs.title){
                 console.log(Global.formInputs);
+                Server.addTodo(Global.formInputs);
                 closeForm_helper();
             }
             form.reset();
@@ -71,6 +72,7 @@ const Form = () => {
                 </div>
 
                 <div className="ProjectSelect">
+                    <ProjectOption title={"All Todos"}/>
                     {Global.projects.map((project) => {
                         return(
                             <ProjectOption 
@@ -90,6 +92,7 @@ const Form = () => {
             event.preventDefault();
             if(Global.formInputs.title){
                 console.log(Global.formInputs);
+                Server.addProject(Global.formInputs.title);
                 closeForm_helper();
             }
             form.reset();

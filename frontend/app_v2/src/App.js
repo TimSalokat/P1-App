@@ -22,7 +22,6 @@ function App() {
   }, [])
 
   function openForm_helper (title){
-    // Todo fix the fuckin clear of the Global.forminputs. It doesnt clear the value smh. 
     Local.openForm(title);
   }
 

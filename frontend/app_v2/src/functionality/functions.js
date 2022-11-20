@@ -1,8 +1,6 @@
 
-// import { displayed_history } from "./History";
-// import { dev_variables } from "../pages/DevPage";
+import { v4 as uuidv4 } from 'uuid';
 
-var history = [];
 
 function placeholder_func() {
     return 
@@ -56,6 +54,10 @@ const Global = {
     formRerender: placeholder_func,
     set setFormRerender(new_func){
         this.formRerender = new_func;
+    },
+    todosRerender: placeholder_func,
+    set setTodosRerender(new_func){
+        this.todosRerender = new_func;
     },
 
     set setShowHistory(new_showHistory){
@@ -149,18 +151,6 @@ const Global = {
     }
 
 }
-class History {
-    static add = async ( text, fromServer = true, dev = false) => {
-        history.push({
-            fromServer: fromServer,
-            dev: dev,
-            text: text
-        })
-        // displayed_history.update = history;
-        // dev_variables.setLastHistoryEntry = text;
-    }
-}
-
 class Saving {
     static saveLocal = (KEY, toSave) => {
         localStorage.setItem(KEY, JSON.stringify(toSave));
@@ -305,23 +295,30 @@ class Server{
         }catch {}
     }
 
-    static addTodo = async (uuid, heading, description, project) => {
-        try {
-            if(heading){
-                let json_data = {
-                    "uuid": uuid,
-                    "heading": heading,
-                    "description": description,
-                    "project": project
-                }
+    static addTodo = async (props) => {
+        let new_uuid = uuidv4();
 
-                await fetch(Global.backend + "/add-todo", {  
-                    method: 'POST', 
-                    mode: 'cors', 
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(json_data)
-                })
-            }   
+        let description = props.description ? props.description : "";
+        let project = props.selectedProject ? props.selectedProject : "All Todos";
+
+        try {
+            let json_data = {
+                "uuid": new_uuid,
+                "title": props.title,
+                "description": description,
+                "project": project,
+                "priority": 1,
+            }
+
+            console.log(json_data);
+
+            await fetch(Global.backend + "/add-todo", {  
+                method: 'POST', 
+                mode: 'cors', 
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(json_data)
+            })
+             
             await this.fetchTodos();
             History.add("Successfully added todo", false);
         }catch {}   
@@ -402,4 +399,4 @@ class Server{
 
 }
 
-export { Saving, History, Server, Local, Global}
+export { Saving, Server, Local, Global}

@@ -3,7 +3,7 @@ import Todos from '../modules/Todos';
 
 import '../css/Pages.css';
 
-export default function ComponentsPage() {
+export default function Home_Page() {
     return (
         <div id="Home_Page">
         

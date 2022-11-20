@@ -14,7 +14,7 @@ export default function Projects() {
                 <BiDownArrow id="Icon" style={{color:"var(--text_color)"}}/>
             </div>
             <div className="ProjectContainer stretch">
-                {/* <Project title={"All"}/> */}
+                <Project title={"All Todos"}/>
 
                 {
                     Global.projects.map((project) => {

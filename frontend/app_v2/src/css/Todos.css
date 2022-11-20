@@ -51,6 +51,31 @@
     color: var(--accent-light);
 }
 
+.Todo.finished {
+    text-decoration: line-through;
+}
+
+.Todo.finished .CheckBoxContainer::after{
+    content: "";
+    position: absolute;
+    right: .92rem;
+    top: 36.4%;
+    height: 16px;
+    width: 16px;
+    background-color: var(--base);
+    clip-path: circle(50%);
+}
+
+#CheckBox {
+    position: absolute;
+    font-size: 1.9rem;
+    right: .6rem;
+    z-index: 1;
+    fill: var(--text_color-light);
+    top: 30%;
+}
+
+
 .CheckBoxContainer{
     position: relative;
     height: 100%;
@@ -76,13 +101,4 @@
     left: -6rem;
     top: 3.2rem;
     background-color: var(--accent-light);
-}
-
-#CheckBox {
-    position: absolute;
-    font-size: 1.9rem;
-    right: .6rem;
-    z-index: 1;
-    fill: var(--text_color-light);
-    top: 30%;
 }

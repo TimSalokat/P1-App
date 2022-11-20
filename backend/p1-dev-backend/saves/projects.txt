@@ -1,1 +1,1 @@
-[{'index': 1, 'title': 'Ideas'}, {'index': 2, 'title': 'Implement'}]
+[{'index': 1, 'title': 'Ideas'}, {'index': 2, 'title': 'Implement'}, {'index': 3, 'title': 'New_Project'}]
