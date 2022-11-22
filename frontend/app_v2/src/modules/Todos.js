@@ -13,27 +13,28 @@ export default function Todos() {
       Global.setTodosRerender = forceUpdate;
     }, [])
 
-    let filteredTodos = () => {
+
+    let getFilteredTodos = () => {
         if(Global.activeproject === "All Todos"){return Global.displayedTodos}
         let filtered = Global.displayedTodos.filter((todo) => todo.project === Global.activeproject)
         return filtered
     }
 
-    let unfinishedTodos = () => {
-        let unfinished = filteredTodos().filter((todo)=>todo.finished === false);
-        return unfinished;
+    let getUnfinishedTodos = () => {
+        let unfinished = getFilteredTodos().filter((todo)=>todo.finished === false);
+        return unfinished
     }
 
-    let finishedTodos = () => {
-        let finished = filteredTodos().filter((todo)=>todo.finished === true);
-        return finished;
+    let getFinishedTodos = () => {
+        let finished = getFilteredTodos().filter((todo)=>todo.finished === true);
+        return finished
     }
 
     return (
         <div className="Section">
             <label>Todos in <span className="text_accent text_bold">{Global.activeproject}</span></label>
             <div className="TodoContainer">
-                {unfinishedTodos().map((todo) => (
+                {getUnfinishedTodos().map((todo) => (
                     <TodoItem 
                     key={todo.uuid}
                     uuid={todo.uuid}
@@ -44,7 +45,7 @@ export default function Todos() {
                     />
                 ))}
 
-                {finishedTodos().map((todo) => (
+                {getFinishedTodos().map((todo) => (
                     <TodoItem 
                     key={todo.uuid}
                     uuid={todo.uuid}
@@ -54,6 +55,18 @@ export default function Todos() {
                     // delTodo={self.delTodo}
                     />
                 ))}
+
+                {Global.displayedTodos.map((todo) => (
+                    <TodoItem 
+                    key={todo.uuid}
+                    uuid={todo.uuid}
+                    todo={todo}
+                    title={todo.title}
+                    description={todo.description}
+                    // delTodo={self.delTodo}
+                    />
+                ))}
+
             </div>
         </div>
     )

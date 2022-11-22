@@ -36,7 +36,7 @@ const Form = () => {
             event.preventDefault();
             if(Global.formInputs.title){
                 console.log(Global.formInputs);
-                Server.addTodo(Global.formInputs);
+                Local.addTodo(Global.formInputs);
                 closeForm_helper();
             }
             form.reset();

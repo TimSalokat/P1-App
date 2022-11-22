@@ -20,12 +20,7 @@ const Global = {
 
     backend: "http://127.0.0.1:8000",
 
-    projects: [
-        {title: "All Todos", index:1},
-        {title: "Ideas", index:2},
-        {title: "Testing", index:3},
-        {title: "Bugs", index:4}
-    ],
+    projects: [],
     serverTodos: [],
     displayedTodos: [],
 
@@ -178,6 +173,36 @@ class Local {
     //     await Server.fetchTodos(true);
     // }
 
+    static addTodo = async (props) => {
+        
+        let new_uuid = uuidv4();
+
+        let description = props.description ? props.description : "";
+        let project = props.selectedProject ? props.selectedProject : "All Todos";
+
+        let new_todo = {
+            "uuid": new_uuid,
+            "title": props.title,
+            "description": description,
+            "project": project,
+            "priority": 1,
+        }
+
+        if (Global.serverReachable) Server.addTodo(new_todo)
+        else {
+            Global.localActions.push({
+                "action": "todo_added",
+                "todo": new_todo,
+            })
+        }
+
+        Global.displayedTodos.push(new_todo);
+
+        Global.appRerender();
+        Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
+        Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
+    }
+
     static editTodo = async (new_heading, new_description, new_project, uuid) => {
         if(new_project === "") new_project = "General";
         Global.displayedTodos.forEach(todo => {
@@ -296,18 +321,14 @@ class Server{
     }
 
     static addTodo = async (props) => {
-        let new_uuid = uuidv4();
-
-        let description = props.description ? props.description : "";
-        let project = props.selectedProject ? props.selectedProject : "All Todos";
 
         try {
             let json_data = {
-                "uuid": new_uuid,
+                "uuid": props.uuid,
                 "title": props.title,
-                "description": description,
-                "project": project,
-                "priority": 1,
+                "description": props.description,
+                "project": props.project,
+                "priority": props.priority,
             }
 
             console.log(json_data);
