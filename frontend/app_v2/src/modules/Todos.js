@@ -3,7 +3,7 @@ import React from "react";
 
 import "../css/Todos.css";
 import {BsCircle} from "react-icons/bs"
-import { Global, Server } from "../functionality/functions";
+import { Global, Local, Server } from "../functionality/functions";
 
 export default function Todos() {
 
@@ -21,12 +21,12 @@ export default function Todos() {
     }
 
     let getUnfinishedTodos = () => {
-        let unfinished = getFilteredTodos().filter((todo)=>todo.finished === false);
+        let unfinished = getFilteredTodos().filter((todo)=>todo.finished == false);
         return unfinished
     }
 
     let getFinishedTodos = () => {
-        let finished = getFilteredTodos().filter((todo)=>todo.finished === true);
+        let finished = getFilteredTodos().filter((todo)=> todo.finished == true);
         return finished
     }
 
@@ -46,17 +46,6 @@ export default function Todos() {
                 ))}
 
                 {getFinishedTodos().map((todo) => (
-                    <TodoItem 
-                    key={todo.uuid}
-                    uuid={todo.uuid}
-                    todo={todo}
-                    title={todo.title}
-                    description={todo.description}
-                    // delTodo={self.delTodo}
-                    />
-                ))}
-
-                {Global.displayedTodos.map((todo) => (
                     <TodoItem 
                     key={todo.uuid}
                     uuid={todo.uuid}
@@ -87,7 +76,7 @@ function TodoItem(self) {
 
             <div className="CheckBoxContainer">
                 <BsCircle id="CheckBox" onClick={() => {
-                    Server.finishTodo(self.uuid);
+                    Local.finishTodo(self.uuid)
                     Global.todosRerender();
                     }}/>
                 <div/>

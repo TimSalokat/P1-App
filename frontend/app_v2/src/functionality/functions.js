@@ -173,19 +173,28 @@ class Local {
     //     await Server.fetchTodos(true);
     // }
 
+    static getByUuid = (uuid) => {
+        for(let i=0; i < Global.displayedTodos.length; i++){
+            if(Global.displayedTodos[i].uuid === uuid){
+                return i;
+            }
+        }
+    }
+
     static addTodo = async (props) => {
         
-        let new_uuid = uuidv4();
+        const new_uuid = () => uuidv4();
 
         let description = props.description ? props.description : "";
         let project = props.selectedProject ? props.selectedProject : "All Todos";
 
         let new_todo = {
-            "uuid": new_uuid,
+            "uuid": new_uuid(),
             "title": props.title,
             "description": description,
             "project": project,
             "priority": 1,
+            "finished": false,
         }
 
         if (Global.serverReachable) Server.addTodo(new_todo)
@@ -197,6 +206,25 @@ class Local {
         }
 
         Global.displayedTodos.push(new_todo);
+
+        Global.appRerender();
+        Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
+        Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
+        
+    }
+
+    static finishTodo = async (uuid) => {
+        let index = this.getByUuid(uuid);
+        Global.displayedTodos[index].finished = !Global.displayedTodos[index].finished;
+
+        if (Global.serverReachable) Server.finishTodo(uuid)
+        else {
+            Global.localActions.push({
+                "action": "todo_finished",
+                "uuid": uuid,
+                "new_state": Global.displayedTodos[index].finished,
+            })
+        }
 
         Global.appRerender();
         Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);

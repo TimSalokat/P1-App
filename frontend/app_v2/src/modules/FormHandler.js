@@ -35,7 +35,6 @@ const Form = () => {
             var form = document.getElementById("input_form");
             event.preventDefault();
             if(Global.formInputs.title){
-                console.log(Global.formInputs);
                 Local.addTodo(Global.formInputs);
                 closeForm_helper();
             }
