@@ -3,7 +3,7 @@ import React from "react";
 
 import "../css/Todos.css";
 import {BsCircle} from "react-icons/bs"
-import { Global, Local, Server } from "../functionality/functions";
+import { Global, Local } from "../functionality/functions";
 
 export default function Todos() {
 
@@ -21,12 +21,12 @@ export default function Todos() {
     }
 
     let getUnfinishedTodos = () => {
-        let unfinished = getFilteredTodos().filter((todo)=>todo.finished == false);
+        let unfinished = getFilteredTodos().filter((todo)=>todo.finished === false);
         return unfinished
     }
 
     let getFinishedTodos = () => {
-        let finished = getFilteredTodos().filter((todo)=> todo.finished == true);
+        let finished = getFilteredTodos().filter((todo)=> todo.finished === true);
         return finished
     }
 

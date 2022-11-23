@@ -4,12 +4,13 @@
     position: absolute;
     height: fit-content;
     width: 100%;
+    box-sizing: border-box;
+    max-width: 100vw;
     display: none;
 }
 
 .ProjectSelect {
     flex-flow: row;
-    /* position: relative; */
     overflow-y: scroll;
     padding: .5rem;
     gap: .5rem;
