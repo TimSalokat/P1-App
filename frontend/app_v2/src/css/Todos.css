@@ -10,6 +10,7 @@
 }
 
 .TodoContainer {
+    min-height: 60px;
     max-height: 90vh;
     overflow-y: scroll;
     flex-flow: column nowrap;
@@ -17,7 +18,8 @@
 
 .Todo {
     width: 100%;
-    min-height: 4.5rem;
+    height: 4.4rem;
+    max-height: 60px;
     margin: .5rem 0;
     border-radius: .75rem;
     box-shadow: var(--base_shadow);
@@ -43,6 +45,7 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    padding-bottom: 0;
 }
 .Todo > p {
     position: absolute;

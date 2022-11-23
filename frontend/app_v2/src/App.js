@@ -21,10 +21,6 @@ function App() {
     Global.setAppRerender = forceUpdate;
   }, [])
 
-  function openForm_helper (title){
-    Local.openForm(title);
-  }
-
   return (
     <>
     <div 
@@ -57,7 +53,27 @@ function App() {
       Local.closeForm();
       }}/>
 
+    <BottomMenu/>
+
+    </div>
+
+    </>
+  );
+}
+
+const BottomMenu = () => {
+
+  function openForm_helper (title){
+    Local.openForm(title);
+  }
+
+  return (
     <div id="MenuBar">
+      
+      <div className="MainMenuItem" onClick={() => Local.link("Settings")}>
+        <MdSettings id="Icon"/>
+      </div>
+
       <div className={"MainMenuItem "} onClick={() => Local.link("Todos")}>
         <MdArticle id="Icon"/>
       </div>
@@ -66,20 +82,23 @@ function App() {
         <MdHome id="Icon"/>
       </div>
       
-      <button className="button_secondary" onClick={() => openForm_helper("AddTodo")}>
+      <button 
+        className="button_secondary" 
+        onClick={() => {
+          Local.link("Todos");
+          openForm_helper("AddTodo"); 
+        }}>
         <MdAdd id="Icon"/>
         <label>Add Todo</label>
       </button>
 
-      <MdSettings 
+      {/* <MdSettings 
         id="SettingsIcon"  
         onClick={() => Local.link("Settings")}
-        />
+        /> */}
     </div>
-    </div>
-
-    </>
-  );
+  )
 }
+
 
 export default App;

@@ -15,9 +15,6 @@ const Global = {
     PAGE_KEY: "todoApp.last_page",
     COLOR_SCHEME_KEY: "todoApp.color_scheme",
 
-    showHistory: false,
-    lastShowHistory: false,
-
     backend: "http://127.0.0.1:8000",
 
     projects: [],
@@ -27,40 +24,22 @@ const Global = {
     localActions: [],
 
     form: "",
-    set setForm(new_form){
-        this.form = new_form;
-    },
+    set setForm(new_form){this.form = new_form;},
 
     formInputs: {},
-    set setFormInputs(new_thing){
-        this.formInputs = new_thing;
-    },
+    set setFormInputs(new_thing){this.formInputs = new_thing;},
 
     formPlaceholder: {},
-    set setFormPlaceholder(new_placeholder){
-        this.formPlaceholder = new_placeholder;
-    },
+    set setFormPlaceholder(new_placeholder){this.formPlaceholder = new_placeholder;},
 
     appRerender: placeholder_func,
-    set setAppRerender(new_func){
-        this.appRerender = new_func;
-    },
+    set setAppRerender(new_func){this.appRerender = new_func;},
 
     formRerender: placeholder_func,
-    set setFormRerender(new_func){
-        this.formRerender = new_func;
-    },
-    todosRerender: placeholder_func,
-    set setTodosRerender(new_func){
-        this.todosRerender = new_func;
-    },
+    set setFormRerender(new_func){this.formRerender = new_func;},
 
-    set setShowHistory(new_showHistory){
-        this.showHistory = new_showHistory;
-    },
-    set setLastShowHistory(new_lastShowHistory){
-        this.lastShowHistory = new_lastShowHistory;
-    },
+    todosRerender: placeholder_func,
+    set setTodosRerender(new_func){this.todosRerender = new_func;},
 
     set setBackend(new_backend){
         this.backend = new_backend;
@@ -75,23 +54,20 @@ const Global = {
         Global.todosRerender();
     },
 
-    set setServerTodos(new_todos){
-        this.serverTodos = new_todos;},
+    set setServerTodos(new_todos){this.serverTodos = new_todos;},
+
     set setDisplayedTodos(new_todos){
         this.displayedTodos = new_todos;
         Global.todosRerender();
     },
-    set setLocalActions(new_action){
-        this.localActions = new_action;},
+
+    set setLocalActions(new_action){this.localActions = new_action;},
 
     superContainer: undefined,
-    set setSuperContainer(new_supercontainer){
-        this.superContainer = new_supercontainer;
-    }, 
+    set setSuperContainer(new_supercontainer){this.superContainer = new_supercontainer;}, 
+    
     formContainer: undefined,
-    set setFormContainer(new_instance){
-        this.formContainer = new_instance;
-    },
+    set setFormContainer(new_instance){this.formContainer = new_instance;},
     
     serverReachable: undefined,
     set setServerReachable(new_bool){

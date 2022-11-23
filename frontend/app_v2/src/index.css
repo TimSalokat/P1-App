@@ -125,7 +125,7 @@ button:disabled, button[disabled] {
 
 button.small {
   width: 6rem;
-  height: 3.5rem;
+  height: 2.8rem;
 }
 button.large {
   width: 13rem;
@@ -252,8 +252,8 @@ select {
 }
 #MenuBar button {
   position: absolute;
-  left: 55px;
-  bottom: 5px;
+  left: 5px;
+  bottom: 4px;
   box-shadow: none;
   border: 2px solid var(--base-dark);
   height: 40px;
@@ -278,21 +278,31 @@ select {
   justify-content: center;
   background-color: var(--base-dark);
   height: 100%;
-  width: 27%;
+  width: 45%;
   right: 0;
   border-radius: 0;
-  clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%)
+  clip-path: polygon(28% 0%, 100% 0%, 100% 100%, 0% 100%)
 }
-#MenuBar .MainMenuItem:nth-of-type(1){
-  right: 2%;
-  width: 45%;
-  clip-path: polygon(32% 0%, 100% 0%, 70% 100%, 0% 100%)
-}
-#AppContainer[data-activePage="Todos"] #MenuBar .MainMenuItem:nth-of-type(1) {background-color: var(--accent-light);}
-#AppContainer[data-activePage="Home"] #MenuBar .MainMenuItem:nth-of-type(2) {background-color: var(--accent-dark);}
 
-#AppContainer[data-activePage="Todos"] #MenuBar .MainMenuItem:nth-of-type(1) #Icon {color: var(--base);}
-#AppContainer[data-activePage="Home"] #MenuBar .MainMenuItem:nth-of-type(2) #Icon {color: var(--base);}
+#MenuBar .MainMenuItem:nth-of-type(1){
+  right: 20%;
+}
+#MenuBar .MainMenuItem:nth-of-type(2){
+  right: 1%;
+}
+#MenuBar .MainMenuItem:nth-of-type(3){
+  right: 0;
+  width: 27%;
+  clip-path: polygon(45% 0%, 100% 0%, 100% 100%, 0% 100%)
+}
+
+#AppContainer[data-activePage="Settings"] #MenuBar .MainMenuItem:nth-of-type(1) {background-color: var(--accent-light);}
+#AppContainer[data-activePage="Todos"] #MenuBar .MainMenuItem:nth-of-type(2) {background-color: var(--accent);}
+#AppContainer[data-activePage="Home"] #MenuBar .MainMenuItem:nth-of-type(3) {background-color: var(--accent-dark);}
+
+#AppContainer[data-activePage="Settings"] #MenuBar .MainMenuItem:nth-of-type(1) #Icon {color: var(--base);}
+#AppContainer[data-activePage="Todos"] #MenuBar .MainMenuItem:nth-of-type(2) #Icon {color: var(--base);}
+#AppContainer[data-activePage="Home"] #MenuBar .MainMenuItem:nth-of-type(3) #Icon {color: var(--base);}
 
 .MainMenuItem label {
   position: relative;
@@ -300,8 +310,9 @@ select {
   color: var(--base);
 }
 .MainMenuItem #Icon{color: var(--base-darker);}
-.MainMenuItem:nth-child(1) #Icon{right: 20px;}
-.MainMenuItem:nth-child(2) #Icon {left: 10px;}
+.MainMenuItem:nth-child(1) #Icon{right: 25px;}
+.MainMenuItem:nth-child(2) #Icon{right: 25px;}
+.MainMenuItem:nth-child(3) #Icon {left: 10px;}
 
 #SettingsIcon > path {
   color: inherit;
@@ -343,7 +354,7 @@ select {
   width: 25vw;
 }
 .seperator.large {
-  width: 95vw;
+  width: 80vw;
 }
 
 .left{
@@ -429,3 +440,5 @@ select {
   border-radius: .5rem;
   background-color: var(--accent-dark);
 }
+
+#AppContainer:not([data-activePage="Todos"]) .show-in-todos {display: none;}

@@ -44,17 +44,20 @@ export default function Todos() {
                     // delTodo={self.delTodo}
                     />
                 ))}
-
+            </div>
+            <div className="TodoContainer show-in-todos">
+                <label>Finished</label>
+                <span className="seperator large" style={{backgroundColor: "var(--base-dark)"}}></span>
                 {getFinishedTodos().map((todo) => (
-                    <TodoItem 
-                    key={todo.uuid}
-                    uuid={todo.uuid}
-                    todo={todo}
-                    title={todo.title}
-                    description={todo.description}
-                    // delTodo={self.delTodo}
-                    />
-                ))}
+                        <TodoItem 
+                        key={todo.uuid}
+                        uuid={todo.uuid}
+                        todo={todo}
+                        title={todo.title}
+                        description={todo.description}
+                        // delTodo={self.delTodo}
+                        />
+                    ))}
 
             </div>
         </div>
