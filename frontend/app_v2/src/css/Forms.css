@@ -2,7 +2,7 @@
 
 #FormContainer {
     position: absolute;
-    height: fit-content;
+    height: max-content;
     width: 100%;
     box-sizing: border-box;
     max-width: 100vw;
