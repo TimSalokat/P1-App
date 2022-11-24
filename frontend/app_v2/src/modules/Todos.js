@@ -1,5 +1,6 @@
 
 import React from "react";
+import {useSwipeable} from "react-swipeable"
 
 import "../css/Todos.css";
 import {BsCircle, BsCheck2Circle} from "react-icons/bs"
@@ -13,6 +14,18 @@ export default function Todos() {
       Global.setTodosRerender = forceUpdate;
     }, [])
 
+    const swipeHandler = useSwipeable({
+        onSwipedLeft: (e) => {
+            // console.log(e)
+            let items = e.event.path;
+            if(e.absX < 140) return
+            for(let i = 0; i < items.length; i++){
+                if(items[i].id === "TodoItem"){
+                    Local.delTodo(items[i].dataset.uuid)
+                }
+            }
+        }
+    });
 
     let getFilteredTodos = () => {
         if(Global.activeproject === "All Todos"){return Global.displayedTodos}
@@ -41,11 +54,11 @@ export default function Todos() {
                     todo={todo}
                     title={todo.title}
                     description={todo.description}
-                    // delTodo={self.delTodo}
+                    data-uuid = {todo.uuid}
                     />
                 ))}
             </div>
-            <div className="TodoContainer show-in-todos">
+            <div className="TodoContainer show-in-todos" {...swipeHandler}>
                 <label>Finished</label>
                 <span className="seperator large" style={{backgroundColor: "var(--base-dark)"}}></span>
                 {getFinishedTodos().map((todo) => (
@@ -55,7 +68,6 @@ export default function Todos() {
                         todo={todo}
                         title={todo.title}
                         description={todo.description}
-                        // delTodo={self.delTodo}
                         />
                     ))}
 
@@ -76,7 +88,11 @@ function TodoItem(self) {
     }
 
     return (
-        <div className={"Todo " + isFinished()}>
+        <div 
+            className={"Todo " + isFinished()} 
+            id="TodoItem"
+            data-uuid={self.uuid}
+        >
             <div>
                 <label> {self.title} </label>
                 <p> {self.description} </p>

@@ -22,6 +22,7 @@
     max-height: 60px;
     margin: .5rem 0;
     border-radius: .75rem;
+    background-color: var(--base);
     box-shadow: var(--base_shadow);
     border-left: .15rem solid red;
     padding-left: .5rem;

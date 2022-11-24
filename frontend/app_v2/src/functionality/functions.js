@@ -230,6 +230,16 @@ class Local {
         Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
     }
 
+    static delTodo = async (uuid) => {
+        let index = Local.getByUuid(uuid);
+        Global.displayedTodos.splice(index, 1);
+
+        
+        Global.appRerender();
+        Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
+        Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
+    }
+
     static link = async (page) => {
         Global.appRerender();
         Global.setActivePage = page;
