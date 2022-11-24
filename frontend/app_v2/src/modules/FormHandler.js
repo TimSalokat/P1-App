@@ -90,7 +90,6 @@ const Form = () => {
             var form = document.getElementById("input_form");
             event.preventDefault();
             if(Global.formInputs.title){
-                console.log(Global.formInputs);
                 Server.addProject(Global.formInputs.title);
                 closeForm_helper();
             }
@@ -120,7 +119,7 @@ const BottomBase = (props) => {
             <div className="Header">
                 <label>{props.label}</label>
                 <div className="row">
-                    <button className="button_secondary small" onClick={props.closeForm_helper}>Cancel</button>
+                    {/* <button className="button_secondary small" onClick={props.closeForm_helper}>Cancel</button> */}
                     <button className="button small" onClick={props.submit}>Submit</button>
                 </div>
             </div>

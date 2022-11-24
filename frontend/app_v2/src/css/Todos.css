@@ -10,7 +10,7 @@
 }
 
 .TodoContainer {
-    min-height: 60px;
+    min-height: 70px;
     max-height: 90vh;
     overflow-y: scroll;
     flex-flow: column nowrap;
@@ -56,17 +56,6 @@
 
 .Todo.finished {
     text-decoration: line-through;
-}
-
-.Todo.finished .CheckBoxContainer::after{
-    content: "";
-    position: absolute;
-    right: .92rem;
-    top: 36.4%;
-    height: 16px;
-    width: 16px;
-    background-color: var(--base);
-    clip-path: circle(50%);
 }
 
 #CheckBox {

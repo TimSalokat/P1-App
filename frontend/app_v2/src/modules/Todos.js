@@ -2,7 +2,7 @@
 import React from "react";
 
 import "../css/Todos.css";
-import {BsCircle} from "react-icons/bs"
+import {BsCircle, BsCheck2Circle} from "react-icons/bs"
 import { Global, Local } from "../functionality/functions";
 
 export default function Todos() {
@@ -70,6 +70,11 @@ function TodoItem(self) {
         return self.todo.finished ? "finished" : "";
     }
 
+    const finishTodo_helper = () => {
+        Local.finishTodo(self.uuid)
+        Global.todosRerender();
+    }
+
     return (
         <div className={"Todo " + isFinished()}>
             <div>
@@ -78,10 +83,13 @@ function TodoItem(self) {
             </div>
 
             <div className="CheckBoxContainer">
-                <BsCircle id="CheckBox" onClick={() => {
-                    Local.finishTodo(self.uuid)
-                    Global.todosRerender();
-                    }}/>
+                {
+                    self.todo.finished ? 
+                        <BsCheck2Circle id="CheckBox" onClick={() => finishTodo_helper()}/> 
+                        : 
+                        <BsCircle id="CheckBox" onClick={() => finishTodo_helper()}/>
+
+                }
                 <div/>
                 <div/>
             </div>

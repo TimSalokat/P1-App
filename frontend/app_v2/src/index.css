@@ -125,7 +125,7 @@ button:disabled, button[disabled] {
 
 button.small {
   width: 6rem;
-  height: 2.8rem;
+  height: 3rem;
 }
 button.large {
   width: 13rem;
@@ -144,7 +144,7 @@ button:disabled.button_secondary, button[disabled].button_secondary {
 
 input, textarea {
   width: 100%;
-  height: 2.8rem;
+  height: 3rem;
   border: 0;
   background-color: var(--base);
   padding: 0 .5rem;
