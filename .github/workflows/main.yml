@@ -34,6 +34,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Install all the dependencies
+        working-directory: ./frontend/app_v2
         run: |
 
           npm install --force
