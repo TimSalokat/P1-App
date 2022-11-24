@@ -35,22 +35,25 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install all the dependencies
         run: |
-          npm install ionic --force
-          npm install react-icons --force
-          npm install react-scripts --force
-          npm install react-dom --force
-          npm install web-vitals --force
-          npm install react --force
-          npm install yarn --force
-          npm install axios --force
-          npm install uuid --force
 
-          npm install file-saver --save
+          npm install --force
 
-          npm install @ionic/cli
-          npm install @capacitor/android
-          npm install @capacitor/cli
-          npm install @capacitor/core
+          # npm install ionic --force
+          # npm install react-icons --force
+          # npm install react-scripts --force
+          # npm install react-dom --force
+          # npm install web-vitals --force
+          # npm install react --force
+          # npm install yarn --force
+          # npm install axios --force
+          # npm install uuid --force
+
+          # npm install file-saver --save
+
+          # npm install @ionic/cli
+          # npm install @capacitor/android
+          # npm install @capacitor/cli
+          # npm install @capacitor/core
       
       - name: Build npm site
         working-directory: ./frontend/app_v2
