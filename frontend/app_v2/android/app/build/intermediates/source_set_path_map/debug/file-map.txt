@@ -7,7 +7,7 @@ io.ionic.p1_dev_build.app-merged_res-5 /home/runner/work/P1-App/P1-App/frontend/
 io.ionic.p1_dev_build.app-debug-6 /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/debug/res
 io.ionic.p1_dev_build.app-main-7 /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/res
 io.ionic.p1_dev_build.app-packaged_res-8 /home/runner/work/P1-App/P1-App/frontend/app_v2/android/capacitor-cordova-android-plugins/build/intermediates/packaged_res/debug
-io.ionic.p1_dev_build.app-packaged_res-9 /home/runner/work/P1-App/P1-App/node_modules/@capacitor/android/capacitor/build/intermediates/packaged_res/debug
+io.ionic.p1_dev_build.app-packaged_res-9 /home/runner/work/P1-App/P1-App/frontend/app_v2/node_modules/@capacitor/android/capacitor/build/intermediates/packaged_res/debug
 io.ionic.p1_dev_build.app-jetified-startup-runtime-1.0.0-10 /root/.gradle/caches/transforms-3/13d80db27eeb1b7f8279ad504eac1b76/transformed/jetified-startup-runtime-1.0.0/res
 io.ionic.p1_dev_build.app-jetified-savedstate-1.1.0-11 /root/.gradle/caches/transforms-3/274cb68ed4def82466c61bde728c0c76/transformed/jetified-savedstate-1.1.0/res
 io.ionic.p1_dev_build.app-jetified-lifecycle-process-2.4.0-12 /root/.gradle/caches/transforms-3/31fc96d9881c54f9b47ddec530ec8052/transformed/jetified-lifecycle-process-2.4.0/res

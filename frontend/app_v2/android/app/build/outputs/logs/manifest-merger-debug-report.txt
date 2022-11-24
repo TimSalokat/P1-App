@@ -15,7 +15,7 @@ ADDED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/
 INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:2:1-42:12
 INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:2:1-42:12
 INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml:2:1-42:12
-MERGED from [:capacitor-android] /home/runner/work/P1-App/P1-App/node_modules/@capacitor/android/capacitor/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:capacitor-android] /home/runner/work/P1-App/P1-App/frontend/app_v2/node_modules/@capacitor/android/capacitor/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:capacitor-cordova-android-plugins] /home/runner/work/P1-App/P1-App/frontend/app_v2/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.appcompat:appcompat:1.4.2] /root/.gradle/caches/transforms-3/a8e52a507448d4b845688b4ff42bab35/transformed/appcompat-1.4.2/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] /root/.gradle/caches/transforms-3/96bfe7ff07b49e78a3a68f6b88db966e/transformed/coordinatorlayout-1.2.0/AndroidManifest.xml:17:1-24:12
@@ -126,8 +126,8 @@ uses-sdk
 INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
 INJECTED from /home/runner/work/P1-App/P1-App/frontend/app_v2/android/app/src/main/AndroidManifest.xml
-MERGED from [:capacitor-android] /home/runner/work/P1-App/P1-App/node_modules/@capacitor/android/capacitor/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:capacitor-android] /home/runner/work/P1-App/P1-App/node_modules/@capacitor/android/capacitor/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:capacitor-android] /home/runner/work/P1-App/P1-App/frontend/app_v2/node_modules/@capacitor/android/capacitor/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:capacitor-android] /home/runner/work/P1-App/P1-App/frontend/app_v2/node_modules/@capacitor/android/capacitor/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:capacitor-cordova-android-plugins] /home/runner/work/P1-App/P1-App/frontend/app_v2/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-8:41
 MERGED from [:capacitor-cordova-android-plugins] /home/runner/work/P1-App/P1-App/frontend/app_v2/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-8:41
 MERGED from [androidx.appcompat:appcompat:1.4.2] /root/.gradle/caches/transforms-3/a8e52a507448d4b845688b4ff42bab35/transformed/appcompat-1.4.2/AndroidManifest.xml:20:5-22:41
