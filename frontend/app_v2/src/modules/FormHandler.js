@@ -90,7 +90,7 @@ const Form = () => {
             var form = document.getElementById("input_form");
             event.preventDefault();
             if(Global.formInputs.title){
-                Server.addProject(Global.formInputs.title);
+                Local.addProject(Global.formInputs);
                 closeForm_helper();
             }
             form.reset();

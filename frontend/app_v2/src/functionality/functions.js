@@ -157,6 +157,30 @@ class Local {
         }
     }
 
+    static addProject = async (props) => {
+        const new_uuid = () => uuidv4();
+
+        let new_project = {
+            "uuid": new_uuid(),
+            "title": props.title
+        }
+
+        if (Global.serverReachable) Server.addProject(new_project)
+        else {
+            Global.localActions.push({
+                "action": "project_added",
+                "todo": new_project,
+            })
+        }
+
+        Global.projects.push(new_project);
+        
+        Global.appRerender();
+        Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
+        Saving.saveLocal(Global.PROJECT_KEY, Global.displayedTodos);
+
+    }
+
     static addTodo = async (props) => {
         
         const new_uuid = () => uuidv4();
@@ -230,11 +254,18 @@ class Local {
         Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
     }
 
-    static delTodo = async (uuid) => {
+    static deleteTodo = async (uuid) => {
         let index = Local.getByUuid(uuid);
         Global.displayedTodos.splice(index, 1);
 
-        
+        if (Global.serverReachable) Server.deleteTodo(uuid);
+        else {
+            Global.localActions.push({
+                "action": "todo_deleted",
+                "uuid": uuid
+            })
+        }
+
         Global.appRerender();
         Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
         Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);

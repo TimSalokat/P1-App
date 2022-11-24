@@ -21,7 +21,7 @@ export default function Todos() {
             if(e.absX < 140) return
             for(let i = 0; i < items.length; i++){
                 if(items[i].id === "TodoItem"){
-                    Local.delTodo(items[i].dataset.uuid)
+                    Local.deleteTodo(items[i].dataset.uuid)
                 }
             }
         }

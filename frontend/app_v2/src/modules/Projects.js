@@ -19,7 +19,7 @@ export default function Projects() {
                 {
                     Global.projects.map((project) => {
                         return(
-                            <Project title={project.title} key={project.index}/>
+                            <Project title={project.title} key={project.uuid}/>
                         )
                     })
                 }

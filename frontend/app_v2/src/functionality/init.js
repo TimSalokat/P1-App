@@ -23,6 +23,9 @@ const Init = (self) => {
         let local_todos = Saving.loadSave(Global.TODO_KEY);
         if (local_todos !== undefined) Global.setDisplayedTodos = local_todos;
 
+        let local_projects = Saving.loadSave(Global.PROJECT_KEY);
+        if (local_projects !== undefined) Global.projects = local_projects;
+
         let lastBackend = Saving.loadSave(Global.BACKEND_KEY);
         if (lastBackend !== undefined) Global.setBackend = lastBackend;
 
