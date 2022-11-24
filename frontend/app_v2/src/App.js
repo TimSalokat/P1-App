@@ -91,11 +91,6 @@ const BottomMenu = () => {
         <MdAdd id="Icon"/>
         <label>Add Todo</label>
       </button>
-
-      {/* <MdSettings 
-        id="SettingsIcon"  
-        onClick={() => Local.link("Settings")}
-        /> */}
     </div>
   )
 }

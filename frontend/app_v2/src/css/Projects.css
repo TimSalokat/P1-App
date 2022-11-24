@@ -7,10 +7,10 @@
 .ProjectHeader #Icon {
     display: none;
     font-size: 1.6rem;
-    rotate: 0deg;
+    rotate: 180deg;
 }
 #AppContainer[data-activepage="Todos"] .ProjectHeader #Icon {display: block}
-#AppContainer[data-showprojects="false"] .ProjectHeader #Icon {rotate: 90deg}
+#AppContainer[data-showprojects="false"] .ProjectHeader #Icon {rotate: 0deg}
 
 .ProjectContainer {
     gap: .75rem;

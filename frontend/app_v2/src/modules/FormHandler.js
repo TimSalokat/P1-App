@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Global, Local, Server } from "../functionality/functions";
+import { Global, Local } from "../functionality/functions";
 
 import "../css/Forms.css"
 

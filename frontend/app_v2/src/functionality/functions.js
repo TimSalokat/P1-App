@@ -169,7 +169,7 @@ class Local {
         else {
             Global.localActions.push({
                 "action": "project_added",
-                "todo": new_project,
+                "project": new_project,
             })
         }
 
@@ -177,8 +177,32 @@ class Local {
         
         Global.appRerender();
         Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
-        Saving.saveLocal(Global.PROJECT_KEY, Global.displayedTodos);
+        Saving.saveLocal(Global.PROJECT_KEY, Global.projects);
 
+    }
+
+    static deleteProject = async (toDelete) => {
+
+        if(Global.activeproject === toDelete || Global.activeproject === Global.activeproject[0]) Global.setActiveProject = "All Todos"; 
+
+        if(toDelete === "") {Global.projects.splice(0,1)}
+        else {for(let i=0; i < Global.projects.length; i++){
+            if(Global.projects[i].title === toDelete){
+                Global.projects.splice(i, 1);
+            }
+        }}
+
+        if (Global.serverReachable) Server.deleteProject(toDelete)
+        else {
+            Global.localActions.push({
+                "action": "project_deleted",
+                "title": toDelete,
+            })
+        }
+
+        Global.appRerender();
+        Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
+        Saving.saveLocal(Global.PROJECT_KEY, Global.projects);
     }
 
     static addTodo = async (props) => {

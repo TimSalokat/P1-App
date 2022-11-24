@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Global, Server } from "../functionality/functions";
+import { Global, Local, Server } from "../functionality/functions";
 
 import "../css/Settings.css";
 
@@ -11,6 +11,7 @@ export default function Settings_Page() {
     }   
 
     const [new_backend, setNewBackend] = React.useState("");
+    const [project_toDelete, setProjectToDelete] = React.useState("");
 
     return(
         <div id="Settings_Page">
@@ -33,7 +34,7 @@ export default function Settings_Page() {
             <div className="Section">
                 {/* <label>Value editing</label> */}
                 <p>{Global.backend}</p>
-                <div className="row">
+                <div className="grid2" style={{gridTemplateColumns: "75% 25%"}}>
                     <input 
                         className="stretch" 
                         placeholder="New Backend"
@@ -46,9 +47,21 @@ export default function Settings_Page() {
                             Global.setBackend = new_backend;
                             setNewBackend("");
                             console.log(Global.backend);
-                    }}>
-                        Apply
-                    </button>
+                    }}> Apply </button>
+
+                    <select className="stretch" onChange={(e) => setProjectToDelete(e.target.value)}>
+                        {Global.projects.map((project) => {
+                                return(
+                                <option key={project.uuid}>
+                                    {project.title}
+                                </option>)
+                            })}</select>
+
+                    <button className="small stretch" 
+                        onClick={() => {
+                            Local.deleteProject(project_toDelete);
+                            setProjectToDelete("");
+                    }}> Delete </button>
                 </div>
             </div>
 
