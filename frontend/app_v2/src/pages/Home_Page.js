@@ -17,12 +17,18 @@ export default function Home_Page() {
         </div>
 
         
-        <div className="" id="YourDaySection">
+        <div className="row nowrap" id="YourDaySection">
+
             <div id='WeatherContainer'>
                 <BsCloudMoonFill id='Icon'/>
                 <div id="TemperatureContainer">
                     <label>15</label>
                 </div>
+            </div>
+
+            <div className='TextContainer stretch'>
+                <h3> Cloudy </h3>
+                <h4> There will be no stars to see tonight </h4>
             </div>
         </div>
         
