@@ -132,7 +132,7 @@
     width: fit-content;
     min-width: 50px;
     align-content: center;
-    background-color: var(--base-dark);
+    background-color: var(--base-light);
     box-shadow: var(--base_shadow);
     padding: 7px;
     border-radius: 1rem;

@@ -1,5 +1,8 @@
 
 import React from "react";
+
+import { BiSend } from "react-icons/bi";
+
 import { Global, Local } from "../functionality/functions";
 
 import "../css/Forms.css"
@@ -121,7 +124,9 @@ const BottomBase = (props) => {
             <div className="Header" id="FormHeader">
                 <label>{props.label}</label>
                 {/* <button className="button_secondary small" onClick={props.closeForm_helper}>Cancel</button> */}
-                <button className="button small" onClick={props.submit}>Submit</button>
+                <button className="button" onClick={props.submit}>
+                    <BiSend id="Icon" style={{rotate:"270deg", fontSize:"33px"}}/>
+                </button>
             </div>
             {props.children}
         </form>
