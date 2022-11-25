@@ -1,4 +1,4 @@
-/* eslint-disable */
+
 import React from "react";
 import {useSwipeable} from "react-swipeable"
 
@@ -57,11 +57,9 @@ export default function Todos() {
                     data-uuid = {todo.uuid}
                     />
                 ))}
-                <AddTodoBtn/>
             </div>
             
-
-            {/* <div className="TodoContainer show-in-todos" {...swipeHandler}>
+            <div className="TodoContainer show-in-todos" {...swipeHandler}>
                 <label style={{marginLeft:"10px"}}>Finished</label>
                 <span className="seperator large" style={{backgroundColor: "var(--base-darker)"}}></span>
                 {getFinishedTodos().map((todo) => (
@@ -73,7 +71,8 @@ export default function Todos() {
                         description={todo.description}
                         />
                     ))}
-            </div> */}
+                    <DeleteAllBtn/>
+            </div>
         </div>
     )
 }
@@ -118,21 +117,10 @@ function TodoItem(self) {
     )
 }
 
-const AddTodoBtn = () => {
-
-    function openForm_helper (title){
-        Local.link("Todos");
-        Local.openForm(title);
-      }
-
+const DeleteAllBtn = () => {
     return (
-        <button 
-            id="AddTodoBtn" 
-            className="Todo" 
-            onClick={() => openForm_helper("AddTodo")}
-        >
-            <MdAdd id="Icon" style={{fill:"var(--text_color)"}}/>
-            <label>Add Todo</label>
+        <button id="DeleteAllBtn" className="Todo">
+            <label> Delete Finished </label>
         </button>
     )
 }

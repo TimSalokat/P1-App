@@ -17,12 +17,12 @@
 }
 
 .Todo {
-    width: 100%;
+    width: calc(100% - 20px);
     height: 4.4rem;
     max-height: 60px;
-    margin: .5rem 0;
+    margin: .5rem 10px;
     border-radius: .75rem;
-    background-color: var(--base-dark);
+    background-color: var(--base-light);
     box-shadow: var(--base_shadow);
     padding-left: .5rem;
     align-content: flex-start;
@@ -82,21 +82,28 @@
     padding: 0 12px 0 10px;
 }
 
+#AddTodoBtn #Icon {
+    font-size: 35px;
+}
+
 #AddTodoBtn {
+    position: fixed;
+    bottom: 75px;
+    left: 20px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
     display: flex;
-    height: 45px;
-    border-radius: 5px;
     align-items: center;
     justify-content: center;
-    background-color: var(--base);
-    border: 1px solid var(--base-darkest);
+}
+
+#DeleteAllBtn {
+    height: 45px;
+    width: 80%;
+    border-radius: 5px;
     align-self: center;
+    /* border: 1px solid var(--base-darker); */
+    background-color: var(--base);
     box-shadow: none;
-}
-#AddTodoBtn label {
-    margin-top: 2px;
-    font-size: 18px;
-}
-#AddTodoBtn #Icon {
-    font-size: 25px;
 }
