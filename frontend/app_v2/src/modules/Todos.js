@@ -1,9 +1,10 @@
 
 import React from "react";
-import {useSwipeable} from "react-swipeable"
+import {useSwipeable} from "react-swipeable";
 
 import "../css/Todos.css";
 import {BsCircle, BsCheck2Circle} from "react-icons/bs";
+import { BiDownArrow } from "react-icons/bi";
 import { Global, Local } from "../functionality/functions";
 
 export default function Todos() {
@@ -59,18 +60,26 @@ export default function Todos() {
             </div>
             
             <div className="TodoContainer show-in-todos" {...swipeHandler}>
-                <label style={{marginLeft:"10px"}}>Finished</label>
-                <span className="seperator large" style={{backgroundColor: "var(--base-darker)"}}></span>
-                {getFinishedTodos().map((todo) => (
-                        <TodoItem 
-                        key={todo.uuid}
-                        uuid={todo.uuid}
-                        todo={todo}
-                        title={todo.title}
-                        description={todo.description}
-                        />
+                <div className="Header" onClick={() => {Global.setShowFinished = !Global.showfinished}}>
+                    <label style={{padding:"10px", paddingBottom:"0"}}>
+                        Finished
+                    </label>   
+                    <BiDownArrow id="Icon" style={{color:"var(--text_color)"}}/>
+                </div>
+
+                <div id="FinishedContainer">
+                    <span className="seperator large" style={{backgroundColor: "var(--base-darker)"}}></span>
+                    {getFinishedTodos().map((todo) => (
+                            <TodoItem 
+                            key={todo.uuid}
+                            uuid={todo.uuid}
+                            todo={todo}
+                            title={todo.title}
+                            description={todo.description}
+                            />
                     ))}
                     <DeleteAllBtn/>
+                </div>
             </div>
         </div>
     )

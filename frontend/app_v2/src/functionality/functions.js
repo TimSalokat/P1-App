@@ -114,6 +114,12 @@ const Global = {
         this.showprojects = new_state;
         this.superContainer.showprojects = new_state;
     },
+    
+    showfinished: undefined,
+    set setShowFinished(new_state){
+        this.showfinished = new_state;
+        this.superContainer.showfinished = new_state;
+    },
 
     activeproject: "All",
     set setActiveProject(new_project){

@@ -30,6 +30,7 @@ function App() {
       data-activepage="Home"
       data-overlayactive="false"
       data-showprojects="true"
+      data-showfinished="false"
       data-activeproject="All Todos"
     
     >

@@ -1,0 +1,44 @@
+
+#YourDaySection {
+    flex: initial;
+    border-radius: 30px;
+    height: 25vh;
+    background: linear-gradient(45deg, var(--accent-dark) 0%, var(--accent-light) 80%);
+    margin: 20px 10px;
+    padding: 20px;
+    width: calc(100% - 20px)
+}
+#YourDaySection label {
+    color: var(--text_color-light);
+    font-size: 2rem;
+}
+
+#WeatherContainer{
+    position: relative;
+    background-color: var(--accent-light);
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+#WeatherContainer #Icon {
+    fill: var(--base);
+    font-size: 55px;
+}
+#TemperatureContainer {
+    background-color: var(--base);
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+#TemperatureContainer label{
+    color: var(--accent);
+    font-family: defaultBold;
+}

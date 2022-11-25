@@ -2,6 +2,8 @@
 import Todos from '../modules/Todos';
 
 import '../css/Pages.css';
+import '../css/Home.css';
+import { BsCloudMoonFill } from 'react-icons/bs';
 
 export default function Home_Page() {
     return (
@@ -15,9 +17,13 @@ export default function Home_Page() {
         </div>
 
         
-        <div className="Section" id="YourDaySection">
-            <label> Your Day </label>
-            <h3>Hello world this is just some testing text</h3>
+        <div className="" id="YourDaySection">
+            <div id='WeatherContainer'>
+                <BsCloudMoonFill id='Icon'/>
+                <div id="TemperatureContainer">
+                    <label>15</label>
+                </div>
+            </div>
         </div>
         
 

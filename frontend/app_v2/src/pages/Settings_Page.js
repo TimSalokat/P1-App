@@ -2,8 +2,6 @@
 import React from "react";
 import { Global, Local, Server } from "../functionality/functions";
 
-import "../css/Settings.css";
-
 export default function Settings_Page() {
 
     const devRun = (func) => {
