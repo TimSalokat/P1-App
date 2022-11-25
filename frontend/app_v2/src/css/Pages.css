@@ -25,3 +25,15 @@
 #YourDaySection{
     /* display: grid; */
 }
+
+
+#Settings_Page {
+    flex-flow: column wrap;
+}
+
+#Settings_Page .Section {
+    flex: initial;
+    min-height: initial;
+    height: fit-content;
+    padding-bottom: 0;
+}

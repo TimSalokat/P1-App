@@ -49,13 +49,14 @@ const Form = () => {
                 >
 
                 <input type="text" 
+                    id="MainInput"
                     placeholder="Title" 
                     onChange={(e) =>{
                         Global.formInputs.title = e.target.value;
                     }}/>
 
                 <div className="Header">
-                    <textarea placeholder="Description"
+                    <input placeholder="Description"
                         onChange={(e) =>{
                             Global.formInputs.description = e.target.value;
                         }}/>
@@ -101,6 +102,7 @@ const Form = () => {
                 closeForm_helper={closeForm_helper}
                 submit={submit_helper}>
                 <input type="text" 
+                    id="MainInput"
                     placeholder="Title" 
                     value={Global.formInputs.title} 
                     onChange={(e) =>{
@@ -116,12 +118,10 @@ const Form = () => {
 const BottomBase = (props) => {
     return (
         <form className="bottomForm" id="input_form">
-            <div className="Header">
+            <div className="Header" id="FormHeader">
                 <label>{props.label}</label>
-                <div className="row">
-                    {/* <button className="button_secondary small" onClick={props.closeForm_helper}>Cancel</button> */}
-                    <button className="button small" onClick={props.submit}>Submit</button>
-                </div>
+                {/* <button className="button_secondary small" onClick={props.closeForm_helper}>Cancel</button> */}
+                <button className="button small" onClick={props.submit}>Submit</button>
             </div>
             {props.children}
         </form>
@@ -131,7 +131,7 @@ const BottomBase = (props) => {
 const ProjectOption = (self) => {
 
     const active = () => {
-        if(Global.formInputs.selectedProject === undefined && self.title === "All Todos") return "active"
+        if(Global.formInputs.selectedProject === undefined) Global.formInputs.selectedProject = Global.activeproject;
         return Global.formInputs.selectedProject === self.title ? "active" : "";
     }
 

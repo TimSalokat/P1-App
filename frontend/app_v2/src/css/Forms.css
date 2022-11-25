@@ -1,5 +1,4 @@
 
-
 #FormContainer {
     position: absolute;
     height: max-content;
@@ -7,6 +6,7 @@
     box-sizing: border-box;
     max-width: 100vw;
     display: none;
+    overflow: shown;
 }
 
 .ProjectSelect {
@@ -38,4 +38,25 @@
     background-color: var(--base);
     padding: .8rem;
     border-radius: 25px 25px 0 0;
+}
+
+#FormHeader {
+    position: absolute;
+    top: -40px;
+    display: flex;
+    justify-content: space-between;
+    padding-right:20px;
+}
+#FormHeader button {
+    box-shadow: none;
+}
+#FormHeader label {
+    font-size: 2rem;
+    color: var(--base-light);
+    border-bottom: 2px solid var(--accent-light);
+}
+#MainInput {
+    height: 3.75rem;
+    font-size: 1.4rem;
+    font-family: defaultBold;
 }

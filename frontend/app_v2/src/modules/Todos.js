@@ -17,7 +17,6 @@ export default function Todos() {
 
     const swipeHandler = useSwipeable({
         onSwipedLeft: (e) => {
-            // console.log(e)
             let items = e.event.path;
             if(e.absX < 140) return
             for(let i = 0; i < items.length; i++){
@@ -46,7 +45,7 @@ export default function Todos() {
 
     return (
         <div className="Section">
-            <label>Todos in <span className="text_accent text_bold">{Global.activeproject}</span></label>
+            <label>Todos in <span className="text_base_darkest text_bold">{Global.activeproject}</span></label>
             <div className="TodoContainer">
                 {getUnfinishedTodos().map((todo) => (
                     <TodoItem 
@@ -58,13 +57,13 @@ export default function Todos() {
                     data-uuid = {todo.uuid}
                     />
                 ))}
+                <AddTodoBtn/>
             </div>
             
-            <AddTodoBtn/>
 
-            <div className="TodoContainer show-in-todos" {...swipeHandler}>
-                <label>Finished</label>
-                <span className="seperator large" style={{backgroundColor: "var(--base-dark)"}}></span>
+            {/* <div className="TodoContainer show-in-todos" {...swipeHandler}>
+                <label style={{marginLeft:"10px"}}>Finished</label>
+                <span className="seperator large" style={{backgroundColor: "var(--base-darker)"}}></span>
                 {getFinishedTodos().map((todo) => (
                         <TodoItem 
                         key={todo.uuid}
@@ -74,7 +73,7 @@ export default function Todos() {
                         description={todo.description}
                         />
                     ))}
-            </div>
+            </div> */}
         </div>
     )
 }
@@ -120,11 +119,17 @@ function TodoItem(self) {
 }
 
 const AddTodoBtn = () => {
+
+    function openForm_helper (title){
+        Local.link("Todos");
+        Local.openForm(title);
+      }
+
     return (
         <button 
             id="AddTodoBtn" 
-            className="Todo show-in-todos" 
-            onClick={() => Local.openForm("AddTodo")}
+            className="Todo" 
+            onClick={() => openForm_helper("AddTodo")}
         >
             <MdAdd id="Icon" style={{fill:"var(--text_color)"}}/>
             <label>Add Todo</label>

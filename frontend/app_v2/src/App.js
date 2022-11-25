@@ -51,6 +51,7 @@ function App() {
       Global.setMenuOpen = false;
       Global.setOverlayActive = false;
       Local.closeForm();
+      Global.setFormInputs = [];
       }}/>
 
     <BottomMenu/>
@@ -62,10 +63,6 @@ function App() {
 }
 
 const BottomMenu = () => {
-
-  function openForm_helper (title){
-    Local.openForm(title);
-  }
 
   return (
     <div id="MenuBar">

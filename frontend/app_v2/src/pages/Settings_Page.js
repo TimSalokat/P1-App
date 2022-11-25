@@ -15,9 +15,6 @@ export default function Settings_Page() {
 
     return(
         <div id="Settings_Page">
-            <div className="Section">
-                <label>Settings</label>
-            </div>
 
             <div className="Section">
                 <label>Quick Actions</label>
@@ -32,7 +29,7 @@ export default function Settings_Page() {
             </div>
 
             <div className="Section">
-                {/* <label>Value editing</label> */}
+                <label>Stuff</label>
                 <p>{Global.backend}</p>
                 <div className="grid2" style={{gridTemplateColumns: "75% 25%"}}>
                     <input 

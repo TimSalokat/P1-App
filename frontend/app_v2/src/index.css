@@ -154,7 +154,7 @@ input, textarea {
   border: 0;
   background-color: var(--base-light);
   padding: 0 .5rem;
-  border-radius: 0;
+  border-radius: 5px;
   margin: .2rem 0;
 }
 
@@ -192,6 +192,7 @@ select {
   min-width: 100vw;
   margin: 0;
   padding: 1rem;
+  padding-bottom: 0;
   border-radius: 0;
 }
 
@@ -199,7 +200,7 @@ select {
   content: '';
   height: 2px;
   width: 80vw;
-  background-color: var(--accent-dark);
+  /* background-color: var(--accent); */
   border-radius: 2px;
   position: absolute;
   bottom: 0;
@@ -207,12 +208,13 @@ select {
 }
 
 .Section > label:nth-of-type(1), .ProjectHeader > label {
-  font-size: 1.7rem;
-  font-family: defaultBold;
+  font-size: 1.75rem;
+  color: var(--accent);
+  font-weight: 900;
+  margin: 8px;
 }
 
 .Section:has(.TodoContainer) {
-  flex: 1;
   overflow: hidden;
   flex-wrap: nowrap;
 }
@@ -252,9 +254,9 @@ select {
 #MenuBar::after {
   content: "";
   width: 100%;
-  height: 2px;
+  height: 1px;
   top: -2px;
-  background-color: var(--base-dark);
+  background-color: var(--base-darkest);
   z-index: 1;
   align-self: center;
   position: absolute;
@@ -312,11 +314,12 @@ select {
 }
 
 .seperator {
-  height: 2px;
+  height: 1px;
   width: 60vw;
   margin: .5rem 0px;
   background-color: var(--accent);
   align-self: center;
+  box-shadow: none;
 }
 .seperator.small {
   width: 25vw;
@@ -360,8 +363,13 @@ select {
   grid-template-columns: 50% 50%;
 }
 
+.text_base_darkest {
+  color: var(--base-darkest);
+  font-size: inherit;
+}
 .text_light {
   color: var(--text_color-light);
+  font-size: inherit;
 }
 .text_accent {
   color: var(--accent);
