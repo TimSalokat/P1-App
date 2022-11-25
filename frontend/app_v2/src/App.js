@@ -8,7 +8,7 @@ import { Global, Local } from "./functionality/functions";
 import Home_Page from "./pages/Home_Page";
 import Todo_Page from "./pages/Todo_Page";
 
-import {MdArticle, MdHome, MdSettings, MdAdd} from "react-icons/md";
+import {MdArticle, MdHome, MdSettings } from "react-icons/md";
 import Settings_Page from "./pages/Settings_Page";
 import { FormHandler } from "./modules/FormHandler";
 // import {CgMenuLeft} from "react-icons/cg";
@@ -73,24 +73,15 @@ const BottomMenu = () => {
       <div className="MainMenuItem" onClick={() => Local.link("Settings")}>
         <MdSettings id="Icon"/>
       </div>
+      
+      <div className={"MainMenuItem "} onClick={() => Local.link("Home")}>
+        <MdHome id="Icon"/>
+      </div>
 
       <div className={"MainMenuItem "} onClick={() => Local.link("Todos")}>
         <MdArticle id="Icon"/>
       </div>
-
-      <div className={"MainMenuItem "} onClick={() => Local.link("Home")}>
-        <MdHome id="Icon"/>
-      </div>
       
-      <button 
-        className="button_secondary" 
-        onClick={() => {
-          Local.link("Todos");
-          openForm_helper("AddTodo"); 
-        }}>
-        <MdAdd id="Icon"/>
-        <label>Add Todo</label>
-      </button>
     </div>
   )
 }

@@ -19,14 +19,19 @@
 
 * {
   --text_color: rgb(50,50,50);
-  --text_color-light: var(--base);
-  --base_shadow: 0px .1rem .3rem .1rem var(--base-darker);
+  --base_shadow: 0px .1rem .55rem .1rem var(--base-dark);
 
   --color_variation: 10%;
 
   --accent-h: 227;
   --accent-s: 53%;
   --accent-l: 41%;
+
+  --base-l: 89%;
+}
+
+* {
+  --text_color-light: var(--base);
 
   --accent-light-l: calc(var(--accent-l) + 5%);
   --accent-lightest-l: calc(var(--accent-l) + 15%);
@@ -48,13 +53,13 @@
                       var(--accent-s),
                       var(--accent-lightest-l));
 
-  --base-l: 89%;
-
-  --base-dark-l: calc(var(--base-l) - 10%);
+  --base-light-l: calc(var(--base-l) + 5%);
+  --base-dark-l: calc(var(--base-l) - 5%);
   --base-darker-l: calc(var(--base-l) - 30%);
   --base-darkest-l: calc(var(--base-l) - 55%);
 
   --base: hsl(0, 0%, var(--base-l));
+  --base-light: hsl(0, 0%, var(--base-light-l));
   --base-dark: hsl(0, 0%, var(--base-dark-l));
   --base-darker: hsl(0, 0%, var(--base-darker-l));
   --base-darkest: hsl(0, 0%, var(--base-darkest-l));
@@ -133,7 +138,8 @@ button.large {
 }
 
 .button_secondary {
-  background-color: var(--base);
+  background-color: var(--base-light);
+  border: 1px solid var(--accent);
   color: var(--accent);
   font-family: defaultBold;
 }
@@ -146,9 +152,8 @@ input, textarea {
   width: 100%;
   height: 3rem;
   border: 0;
-  background-color: var(--base);
+  background-color: var(--base-light);
   padding: 0 .5rem;
-  border-bottom: 2px solid var(--base-darker);
   border-radius: 0;
   margin: .2rem 0;
 }
@@ -161,7 +166,7 @@ textarea {
 textarea:focus, input:focus, option:focus {
   box-sizing: border-box;
   outline: none;
-  border-bottom: 2px solid var(--accent-light);
+  border-bottom: 1px solid var(--accent-light);
 }
 
 select:focus {
@@ -171,12 +176,11 @@ select:focus {
 
 select {
   width: 100vw;
-  height: 2.8rem;
-  background-color: var(--base);
+  height: 3.1rem;
+  background-color: var(--base-light);
   border: 0;
   border: 2px solid var(--base-dark);
   margin-top: .2rem;
-  margin-left: .5rem;
   flex: .7;
 }
 
@@ -189,7 +193,6 @@ select {
   margin: 0;
   padding: 1rem;
   border-radius: 0;
-  /* box-shadow: 0rem .1rem .9rem .7rem rgba(0,0,0,.25); */
 }
 
 #PagesContainer .Section::after{
@@ -242,77 +245,42 @@ select {
   bottom: 0;
   z-index: 100;
   background-color: var(--base);
+  align-content: space-around;
+  justify-content: center;
+  padding: 0 35px;
 }
 #MenuBar::after {
   content: "";
-  width: 70%;
+  width: 100%;
   height: 2px;
+  top: -2px;
   background-color: var(--base-dark);
+  z-index: 1;
   align-self: center;
-}
-#MenuBar button {
   position: absolute;
-  left: 5px;
-  bottom: 4px;
-  box-shadow: none;
-  border: 2px solid var(--base-dark);
-  height: 40px;
-  border-radius: 30px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-#MenuBar button #Icon{
-  color: var(--base-darker);
-  font-size: 2rem;
-}
-#MenuBar label{
-  color: var(--base-darkest);
-  margin-top: 1px;
-  font-size: 1.3rem;
 }
 #MenuBar .MainMenuItem{
-  position: absolute;
   display: flex;
   align-content: center;
   justify-content: center;
-  background-color: var(--base-dark);
-  height: 100%;
-  width: 45%;
+  background-color: var(--base);
+  height: 50px;
+  width: 50px;
   right: 0;
-  border-radius: 0;
-  clip-path: polygon(28% 0%, 100% 0%, 100% 100%, 0% 100%)
+  border-radius: 50%;
 }
 
-#MenuBar .MainMenuItem:nth-of-type(1){
-  right: 20%;
+#AppContainer[data-activePage="Settings"] #MenuBar .MainMenuItem:nth-of-type(1),
+#AppContainer[data-activePage="Home"] #MenuBar .MainMenuItem:nth-of-type(2), 
+#AppContainer[data-activePage="Todos"] #MenuBar .MainMenuItem:nth-of-type(3){
+  background-color: var(--accent);
 }
-#MenuBar .MainMenuItem:nth-of-type(2){
-  right: 1%;
-}
-#MenuBar .MainMenuItem:nth-of-type(3){
-  right: 0;
-  width: 27%;
-  clip-path: polygon(45% 0%, 100% 0%, 100% 100%, 0% 100%)
-}
-
-#AppContainer[data-activePage="Settings"] #MenuBar .MainMenuItem:nth-of-type(1) {background-color: var(--accent-light);}
-#AppContainer[data-activePage="Todos"] #MenuBar .MainMenuItem:nth-of-type(2) {background-color: var(--accent);}
-#AppContainer[data-activePage="Home"] #MenuBar .MainMenuItem:nth-of-type(3) {background-color: var(--accent-dark);}
 
 #AppContainer[data-activePage="Settings"] #MenuBar .MainMenuItem:nth-of-type(1) #Icon {color: var(--base);}
-#AppContainer[data-activePage="Todos"] #MenuBar .MainMenuItem:nth-of-type(2) #Icon {color: var(--base);}
-#AppContainer[data-activePage="Home"] #MenuBar .MainMenuItem:nth-of-type(3) #Icon {color: var(--base);}
+#AppContainer[data-activePage="Home"] #MenuBar .MainMenuItem:nth-of-type(2) #Icon {color: var(--base);}
+#AppContainer[data-activePage="Todos"] #MenuBar .MainMenuItem:nth-of-type(3) #Icon {color: var(--base);}
 
-.MainMenuItem label {
-  position: relative;
-  font-size: 11px;
-  color: var(--base);
-}
 .MainMenuItem #Icon{color: var(--base-darker);}
-.MainMenuItem:nth-child(1) #Icon{right: 25px;}
-.MainMenuItem:nth-child(2) #Icon{right: 25px;}
-.MainMenuItem:nth-child(3) #Icon {left: 10px;}
 
 #SettingsIcon > path {
   color: inherit;
@@ -355,6 +323,10 @@ select {
 }
 .seperator.large {
   width: 80vw;
+}
+
+.hidden {
+  display: none;
 }
 
 .left{

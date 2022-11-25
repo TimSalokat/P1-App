@@ -3,7 +3,8 @@ import React from "react";
 import {useSwipeable} from "react-swipeable"
 
 import "../css/Todos.css";
-import {BsCircle, BsCheck2Circle} from "react-icons/bs"
+import {BsCircle, BsCheck2Circle} from "react-icons/bs";
+import {MdAdd} from "react-icons/md";
 import { Global, Local } from "../functionality/functions";
 
 export default function Todos() {
@@ -58,6 +59,9 @@ export default function Todos() {
                     />
                 ))}
             </div>
+            
+            <AddTodoBtn/>
+
             <div className="TodoContainer show-in-todos" {...swipeHandler}>
                 <label>Finished</label>
                 <span className="seperator large" style={{backgroundColor: "var(--base-dark)"}}></span>
@@ -70,7 +74,6 @@ export default function Todos() {
                         description={todo.description}
                         />
                     ))}
-
             </div>
         </div>
     )
@@ -87,16 +90,16 @@ function TodoItem(self) {
         Global.todosRerender();
     }
 
+    const descriptionEmpty = () => {
+        return self.description === "" ? "hidden" : ""
+    }
+
     return (
         <div 
             className={"Todo " + isFinished()} 
             id="TodoItem"
             data-uuid={self.uuid}
         >
-            <div>
-                <label> {self.title} </label>
-                <p> {self.description} </p>
-            </div>
 
             <div className="CheckBoxContainer">
                 {
@@ -104,11 +107,27 @@ function TodoItem(self) {
                         <BsCheck2Circle id="CheckBox" onClick={() => finishTodo_helper()}/> 
                         : 
                         <BsCircle id="CheckBox" onClick={() => finishTodo_helper()}/>
-
                 }
-                <div/>
-                <div/>
             </div>
+
+            <div>
+                <label> {self.title} </label>
+                <p className={descriptionEmpty()}> {self.description} </p>
+            </div>
+
         </div>
+    )
+}
+
+const AddTodoBtn = () => {
+    return (
+        <button 
+            id="AddTodoBtn" 
+            className="Todo show-in-todos" 
+            onClick={() => Local.openForm("AddTodo")}
+        >
+            <MdAdd id="Icon" style={{fill:"var(--text_color)"}}/>
+            <label>Add Todo</label>
+        </button>
     )
 }
