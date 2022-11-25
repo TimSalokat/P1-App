@@ -4,7 +4,6 @@ import {useSwipeable} from "react-swipeable"
 
 import "../css/Todos.css";
 import {BsCircle, BsCheck2Circle} from "react-icons/bs";
-import {MdAdd} from "react-icons/md";
 import { Global, Local } from "../functionality/functions";
 
 export default function Todos() {
