@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 import React from "react";
 import {useSwipeable} from "react-swipeable"
 
