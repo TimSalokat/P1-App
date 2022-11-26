@@ -185,12 +185,13 @@ select {
 
 .Section {
   flex: 1;
+  width: 100%;
   position: relative;
   background-color: var(--base);
   min-height: 10rem;
   min-width: 100vw;
   margin: 0;
-  padding: 1rem;
+  padding: 0 10px;
   padding-bottom: 0;
   border-radius: 0;
 }
@@ -206,10 +207,15 @@ select {
   left: 10vw;
 }
 
-.Section > label:nth-of-type(1), .ProjectHeader > label {
-  font-size: 1.75rem;
-  color: var(--accent);
+.Section > label:nth-of-type(1), .ProjectHeader > label, #SectionLabel {
+  font-size: 2rem;
+  color: var(--text_color);
+  filter: drop-shadow(0px 0px 7px var(--base-light));
   font-weight: 900;
+  /* border-bottom: 2px solid var(--accent-dark); */
+  /* max-width: max-content; */
+  text-align: left;
+  border-radius: 0;
   margin: 8px;
 }
 
@@ -403,7 +409,7 @@ select {
 }
 
 .chip_wrapper {
-  padding: 0 20px;
+  margin: 0 10px;
   gap: 10px;
   overflow-y: auto;
   width: 100%;

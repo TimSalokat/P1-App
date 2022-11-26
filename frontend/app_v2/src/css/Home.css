@@ -1,11 +1,12 @@
 
 #YourDaySection, #HvvSection {
     width: 100%;
-    margin-top: 10px;
+}
+#HvvSection {
+    margin: 0 10px;
 }
 
 #WeatherSection {
-    flex: initial;
     border-radius: 30px;
     height: 25vh;
     background: linear-gradient(45deg, var(--accent-dark) 0%, var(--accent-light) 80%);
@@ -81,9 +82,9 @@
 
 #Connection {
     position: relative;
-    height: 140px;
-    min-width: 130px;
-    border-radius: 20px;
+    height: 125px;
+    min-width: 140px;
+    border-radius: 25px;
     padding: 15px;
     background-color: var(--base-light);
     box-shadow: var(--base_shadow);
@@ -97,16 +98,24 @@
 }
 #Connection label:nth-child(1) {
     font-weight: 700;
+    color: var(--accent)
+}
+#Connection label:nth-child(2) {
+    color: var(--base-light);
+    place-self: flex-end;
+    text-align: right;
 }
 
 #Connection #Decorator {
     position: absolute;
-    background-color: rgb(255, 37, 37);
+    background-color: var(--accent-light);
     height: 120px;
-    width: 180px;
+    width: 200px;
     z-index: 2;
     border-radius: 0;
-    rotate: -30deg;
-    left: -60px;
-    top: -40px;
+    rotate: -45deg;
+    /* left: -60px; */
+    /* top: -40px; */
+    bottom: -30%;
+    right: -55%;
 }

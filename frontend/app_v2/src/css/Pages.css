@@ -18,14 +18,9 @@
     color: var(--base-darkest);
 } */
 
-#HvvSection, #YourDaySection{
-    flex: .55;
+#Home_Page {
+    gap: 10px;
 }
-
-#YourDaySection{
-    /* display: grid; */
-}
-
 
 #Settings_Page {
     flex-flow: column wrap;

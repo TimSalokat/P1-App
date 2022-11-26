@@ -21,8 +21,8 @@ export default function Home_Page() {
         
         <Todos/>
 
-        <div className="Section" id="HvvSection">
-            {/* <label> The Way </label> */}  
+        <div id="HvvSection">
+            <label id='SectionLabel'> Connection </label>  
             <div id="Connections_wrapper" className='row nowrap'>
                 <Connection />
                 <Connection />
@@ -80,7 +80,7 @@ const Connection = (props) => {
     return (
         <div id="Connection">
             <label className='text_light'>Harburg - <br/> Altona </label>
-            <label style={{color:"red", placeSelf:"flex-end", textAlign:"right"}}>07:00<br/> - 07:43</label>
+            <label>07:00<br/> - 07:43</label>
             <div id='Decorator'/>
         </div>
     )

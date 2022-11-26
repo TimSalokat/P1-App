@@ -1,4 +1,4 @@
-/* eslint-disable */
+// /* eslint-disable */
 import React from "react";
 import {useSwipeable} from "react-swipeable";
 
@@ -45,7 +45,7 @@ export default function Todos() {
 
     return (
         <div className="Section">
-            <label>Todos in <span className="text_base_darkest text_bold">{Global.activeproject}</span></label>
+            <label>Todos in <span className="text_accent text_bold">{Global.activeproject}</span></label>
             <div className="TodoContainer">
                 {getUnfinishedTodos().map((todo) => (
                     <TodoItem 
