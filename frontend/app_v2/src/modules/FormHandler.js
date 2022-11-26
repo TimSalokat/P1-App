@@ -142,7 +142,7 @@ const ProjectOption = (self) => {
 
     return (
         <label 
-            id="ProjectChip" 
+            id="Chip" 
             className={active()} 
             onClick={() => {
                 Global.formInputs.selectedProject = self.title; 

@@ -16,7 +16,7 @@
     gap: .5rem;
     width: 100%;
 }
-.ProjectSelect #ProjectChip {
+.ProjectSelect #Chip {
     border: none;
     background-color: var(--base-dark);
     box-shadow: none;
@@ -24,7 +24,7 @@
     font-family: defaultBold;
     min-width: max-content;
 }
-.ProjectSelect #ProjectChip.active {
+.ProjectSelect #Chip.active {
     background-color: var(--accent-light);
 }
 

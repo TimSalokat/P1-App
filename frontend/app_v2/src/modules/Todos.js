@@ -61,14 +61,16 @@ export default function Todos() {
             
             <div className="TodoContainer show-in-todos" {...swipeHandler}>
                 <div className="Header" onClick={() => {Global.setShowFinished = !Global.showfinished}}>
-                    <label style={{padding:"10px", paddingBottom:"0"}}>
+                    {/* <label style={{padding:"10px", paddingBottom:"0"}}>
                         Finished
-                    </label>   
-                    <BiDownArrow id="Icon" style={{color:"var(--text_color)"}}/>
+                    </label>   */}
+
+                    <span className="seperator large" style={{backgroundColor: "var(--base-darker)", marginLeft:"5vw"}}></span> 
+                    {/* <BiDownArrow id="Icon" style={{color:"var(--text_color)"}}/> */}
+                    
                 </div>
 
                 <div id="FinishedContainer">
-                    <span className="seperator large" style={{backgroundColor: "var(--base-darker)"}}></span>
                     {getFinishedTodos().map((todo) => (
                             <TodoItem 
                             key={todo.uuid}
@@ -78,7 +80,7 @@ export default function Todos() {
                             description={todo.description}
                             />
                     ))}
-                    <DeleteAllBtn/>
+                    {/* <DeleteAllBtn/> */}
                 </div>
             </div>
         </div>

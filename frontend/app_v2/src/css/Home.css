@@ -1,20 +1,25 @@
 
-#YourDaySection {
+#YourDaySection, #HvvSection {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#WeatherSection {
     flex: initial;
     border-radius: 30px;
     height: 25vh;
     background: linear-gradient(45deg, var(--accent-dark) 0%, var(--accent-light) 80%);
-    margin: 20px 10px;
+    margin: 10px;
     padding: 20px;
     width: calc(100% - 20px);
     justify-content: space-between;
     align-items: center;
 }
-#YourDaySection label {
+#WeatherSection label {
     color: var(--text_color-light);
     font-size: 2rem;
 }
-#YourDaySection .TextContainer {
+#WeatherSection .TextContainer {
     flex: 1;
     align-items: center;
     justify-content: center;
@@ -63,4 +68,45 @@
     color: var(--accent);
     font-size: 22px;
     font-family: defaultBold;
+}
+
+#Connections_wrapper{
+    width: 100%;
+    overflow: scroll;
+    gap: 10px;
+}
+#Connections_wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+#Connection {
+    position: relative;
+    height: 140px;
+    min-width: 130px;
+    border-radius: 20px;
+    padding: 15px;
+    background-color: var(--base-light);
+    box-shadow: var(--base_shadow);
+    overflow: hidden;
+    z-index: 1;
+    justify-content: space-between;
+}
+#Connection > * {
+    z-index: 3;
+    font-size: 18px;
+}
+#Connection label:nth-child(1) {
+    font-weight: 700;
+}
+
+#Connection #Decorator {
+    position: absolute;
+    background-color: rgb(255, 37, 37);
+    height: 120px;
+    width: 180px;
+    z-index: 2;
+    border-radius: 0;
+    rotate: -30deg;
+    left: -60px;
+    top: -40px;
 }

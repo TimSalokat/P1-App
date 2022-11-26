@@ -11,8 +11,9 @@ export default function Projects() {
         <div className="Section column nowrap">
             <div className="ProjectHeader" onClick={() => Global.setShowProjects = !Global.showprojects}>
                 <label>Projects</label>
-                <BiDownArrow id="Icon" style={{color:"var(--text_color)"}}/>
+                {/* <BiDownArrow id="Icon" style={{color:"var(--text_color)"}}/> */}
             </div>
+
             <div className="ProjectContainer stretch">
                 <Project title={"All Todos"}/>
 
@@ -24,10 +25,13 @@ export default function Projects() {
                     })
                 }
 
-                <div id="ProjectChip" style={{height: "2.4rem"}} onClick={() => Local.openForm("AddProject")}> 
+                <div id="Chip" style={{height: "2.4rem"}} onClick={() => Local.openForm("AddProject")}> 
                     <MdAdd id="Icon" style={{color: "var(--text_color)"}}/>
                 </div>
             </div>
+
+            <span className="seperator large"/>
+
         </div>
     )
 }
@@ -56,7 +60,7 @@ const Project = (self) => {
         )
     }
     return(
-        <div id="ProjectChip" className={active()} onClick={() => {
+        <div id="Chip" className={active()} onClick={() => {
             Global.setActiveProject = self.title;
             Global.appRerender();
             }}>

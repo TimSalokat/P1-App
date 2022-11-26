@@ -1,16 +1,17 @@
-
+/* 
 .Section:has(.TodoContainer) > label::after{
     content:"";
     position: absolute;
     top: 3.3rem;
     left: 10%;
-    /* background-color: var(--base-darker); */
+    background-color: var(--base-darker);
     width: 80%;
     height: 2px;    
-}
+} */
 
 .TodoContainer {
-    min-height: 55px;
+    /* min-height: 55px; */
+    min-height: 250px;
     max-height: 90vh;
     overflow-y: scroll;
     flex-flow: column nowrap;

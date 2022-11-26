@@ -125,6 +125,11 @@ const Global = {
     set setActiveProject(new_project){
         this.activeproject = new_project;
         this.superContainer.activeproject = new_project;
+    },
+
+    setWeatherFilter: placeholder_func,
+    set setWeatherFilterFunc(new_func){
+        this.setWeatherFilter = new_func;
     }
 
 }
