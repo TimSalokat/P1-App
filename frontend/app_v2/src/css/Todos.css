@@ -10,16 +10,14 @@
 } */
 
 .TodoContainer {
-    /* min-height: 55px; */
-    min-height: 250px;
-    max-height: 90vh;
+    min-height: 55px;
     overflow-y: scroll;
     flex-flow: column nowrap;
 }
 
 .Todo {
     width: calc(100% - 20px);
-    height: 55px;
+    min-height: 70px;
     max-height: 70px;
     margin: .5rem 10px;
     border-radius: .75rem;
@@ -27,13 +25,15 @@
     padding-left: .5rem;
     align-content: flex-start;
 }
+.Todo:has(div p.hidden){
+    min-height: 55px;
+}
 .Todo > div:nth-child(2) {
     flex: 1;
     justify-content: center;
     max-width: 80%;
     margin-left: 10px;
 }
-
 .Todo > div label {
     font-family: defaultBold;
     text-transform: capitalize;
@@ -50,7 +50,7 @@
     padding-bottom: 0;
 }
 .Todo > div p.hidden {
-    display: none
+    display: none;
 }
 .Todo > p {
     position: absolute;
@@ -88,27 +88,40 @@
 
 #AddTodoBtn {
     position: fixed;
-    bottom: 75px;
-    left: 20px;
+    bottom: 65px;
+    left: 15px;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 200;
 }
 #AddTodoBtn #Icon {
     font-size: 35px;
 }
 
-#DeleteAllBtn {
-    height: 45px;
-    width: 80%;
-    border-radius: 5px;
-    align-self: center;
-    background-color: var(--base);
-    box-shadow: none;
+#FinishedContainer {
+    padding-bottom: 20px;
 }
 
-#AppContainer[data-showfinished="false"] #FinishedContainer{display: none;}
-#AppContainer[data-showfinished="false"] .TodoContainer .Header #Icon {rotate: 0deg}
+#finished_seperator {
+    background-color: var(--base-darker);
+    min-height: 2px;
+    margin-bottom: 10px;
+}
+
+#DoneSVG {
+    aspect-ratio: 1 / 1;
+    place-self: center;
+    opacity: .85;
+}
+#AppContainer[data-activePage="Home"] #DoneSVG{
+    height: 170px;
+    margin-top: 5%;
+}
+#AppContainer[data-activePage="Todos"] #DoneSVG{
+    height: 250px;
+    margin-top: 20%;
+}

@@ -10,14 +10,6 @@
 #AppContainer:not([data-activepage="Todos"]) #PagesContainer #Todo_Page {display: none;}
 #AppContainer:not([data-activepage="Settings"]) #PagesContainer #Settings_Page {display: none;}
 
-/* #HvvSection h3, #YourDaySection h3{
-    align-self: center;
-    text-align: center;
-    margin: 4% 0;
-    width: 80vw;
-    color: var(--base-darkest);
-} */
-
 #Home_Page {
     gap: 10px;
 }

@@ -76,9 +76,6 @@
     overflow: scroll;
     gap: 10px;
 }
-#Connections_wrapper::-webkit-scrollbar {
-    display: none;
-}
 
 #Connection {
     position: relative;
@@ -114,8 +111,6 @@
     z-index: 2;
     border-radius: 0;
     rotate: -45deg;
-    /* left: -60px; */
-    /* top: -40px; */
     bottom: -30%;
     right: -55%;
 }

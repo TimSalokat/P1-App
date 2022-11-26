@@ -3,8 +3,8 @@ import React from "react";
 import {useSwipeable} from "react-swipeable";
 
 import "../css/Todos.css";
+import DoneSVG from "../svg/DoneSVG";
 import {BsCircle, BsCheck2Circle} from "react-icons/bs";
-import { BiDownArrow } from "react-icons/bi";
 import { Global, Local } from "../functionality/functions";
 
 export default function Todos() {
@@ -47,6 +47,7 @@ export default function Todos() {
         <div className="Section">
             <label>Todos in <span className="text_accent text_bold">{Global.activeproject}</span></label>
             <div className="TodoContainer">
+                <DoneSVG/>                    
                 {getUnfinishedTodos().map((todo) => (
                     <TodoItem 
                     key={todo.uuid}
@@ -57,20 +58,10 @@ export default function Todos() {
                     data-uuid = {todo.uuid}
                     />
                 ))}
-            </div>
-            
-            <div className="TodoContainer show-in-todos" {...swipeHandler}>
-                <div className="Header" onClick={() => {Global.setShowFinished = !Global.showfinished}}>
-                    {/* <label style={{padding:"10px", paddingBottom:"0"}}>
-                        Finished
-                    </label>   */}
 
-                    <span className="seperator large" style={{backgroundColor: "var(--base-darker)", marginLeft:"5vw"}}></span> 
-                    {/* <BiDownArrow id="Icon" style={{color:"var(--text_color)"}}/> */}
-                    
-                </div>
+                <span className="seperator large show-in-todos" id="finished_seperator"/>
 
-                <div id="FinishedContainer">
+                <div id="FinishedContainer" className="show-in-todos" {...swipeHandler}>
                     {getFinishedTodos().map((todo) => (
                             <TodoItem 
                             key={todo.uuid}
@@ -80,7 +71,6 @@ export default function Todos() {
                             description={todo.description}
                             />
                     ))}
-                    {/* <DeleteAllBtn/> */}
                 </div>
             </div>
         </div>
@@ -124,13 +114,5 @@ function TodoItem(self) {
             </div>
 
         </div>
-    )
-}
-
-const DeleteAllBtn = () => {
-    return (
-        <button id="DeleteAllBtn" className="Todo">
-            <label> Delete Finished </label>
-        </button>
     )
 }
