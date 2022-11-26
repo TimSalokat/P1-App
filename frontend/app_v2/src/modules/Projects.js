@@ -2,7 +2,7 @@
 import "../css/Projects.css";
 import { Global, Local } from "../functionality/functions";
 
-import {BiDownArrow} from "react-icons/bi";
+// import {BiDownArrow} from "react-icons/bi";
 import { MdAdd } from "react-icons/md";
 
 export default function Projects() {
