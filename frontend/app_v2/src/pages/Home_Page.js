@@ -22,7 +22,7 @@ export default function Home_Page() {
         <Todos/>
 
         <div id="HvvSection">
-            <label id='SectionLabel'> Connection </label>  
+            <label id='SectionLabel'> Train Timings </label>  
             <div id="Connections_wrapper" className='row nowrap'>
                 <Connection />
                 <Connection />
@@ -78,10 +78,19 @@ const TimeOption = (props) => {
 
 const Connection = (props) => {
     return (
-        <div id="Connection">
-            <label className='text_light'>Harburg - <br/> Altona </label>
-            <label>07:00<br/> - 07:43</label>
-            <div id='Decorator'/>
+        <div id="Connection" className='row'>
+            <label className='text_light'>
+                Meckelfeld<br/>
+                Harburg<br/>
+                Altona<br/>
+                Lukas
+            </label>
+            <label>
+                88:88<br/>
+                88:88<br/>
+                88:88<br/>
+                88:88
+            </label>
         </div>
     )
 }

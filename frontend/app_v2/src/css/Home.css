@@ -8,7 +8,7 @@
 
 #WeatherSection {
     border-radius: 30px;
-    height: 25vh;
+    height: 22vh;
     background: var(--accent-gradient);
     margin: 10px;
     padding: 20px;
@@ -72,46 +72,29 @@
 }
 
 #Connections_wrapper{
-    width: 100%;
+    width: calc(100% - 20px);
     overflow: scroll;
     gap: 10px;
 }
 
 #Connection {
     position: relative;
-    height: 125px;
-    min-width: 140px;
-    border-radius: 25px;
+    height: 110px;
+    min-width: 165px;
+    border-radius: 15px;
     padding: 15px;
     background-color: var(--base-light);
     box-shadow: var(--base_shadow);
     overflow: hidden;
     z-index: 1;
-    justify-content: space-between;
+    align-content: center;
 }
-#Connection > * {
-    z-index: 3;
+#Connection label {
     font-size: 18px;
-}
-#Connection label:nth-child(1) {
-    font-weight: 700;
-    color: var(--accent)
+    color: var(--text-color);
+    width: 50%;
 }
 #Connection label:nth-child(2) {
-    color: var(--base-light);
-    place-self: flex-end;
+    color: var(--accent);
     text-align: right;
-}
-
-#Connection #Decorator {
-    position: absolute;
-    background-color: var(--accent-light);
-    background: var(--accent-gradient);
-    height: 120px;
-    width: 200px;
-    z-index: 2;
-    border-radius: 0;
-    rotate: -45deg;
-    bottom: -30%;
-    right: -55%;
 }

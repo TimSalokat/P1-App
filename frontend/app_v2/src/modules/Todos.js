@@ -27,7 +27,6 @@ export default function Todos() {
     });
 
     function unfinishedEmpty() {
-        console.log(todos.unfinished.length);
         return todos.unfinished.length === 0 ? "" : "hidden"
     }
     function finishedEmpty() {
@@ -42,7 +41,9 @@ export default function Todos() {
             <label>Todos in <span className="text_accent text_bold">{Global.activeproject}</span></label>
             <div className="TodoContainer ">
                 <DoneSVG className={"show-in-todos " + filteredEmpty()}/>
-                <label className={"show-in-home " + unfinishedEmpty()}> Nothing <br/> to do </label>    
+                <div className={"show-in-home " + unfinishedEmpty()}>
+                    <label> Nothing <br/> to do </label>  
+                </div>  
 
                 {todos.unfinished.map((todo) => (
                     <TodoItem 

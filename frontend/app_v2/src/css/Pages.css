@@ -11,7 +11,7 @@
 #AppContainer:not([data-activepage="Settings"]) #PagesContainer #Settings_Page {display: none;}
 
 #Home_Page {
-    gap: 10px;
+    gap: 20px;
 }
 
 #Settings_Page {

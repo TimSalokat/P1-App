@@ -16,6 +16,7 @@
 .ProjectContainer {
     gap: .75rem;
     padding: .5rem;
+    padding-top: 0;
     overflow: scroll;
     max-height: 25vh;
 }

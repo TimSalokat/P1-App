@@ -68,16 +68,16 @@ const BottomMenu = () => {
   return (
     <div id="MenuBar">
       
-      <div className="MainMenuItem" onClick={() => Local.link("Settings")}>
-        <MdSettings id="Icon"/>
+      <div className="MainMenuItem" onClick={() => Local.link("Todos")}>
+        <MdArticle id="Icon"/>
       </div>
       
       <div className={"MainMenuItem "} onClick={() => Local.link("Home")}>
         <MdHome id="Icon"/>
       </div>
 
-      <div className={"MainMenuItem "} onClick={() => Local.link("Todos")}>
-        <MdArticle id="Icon"/>
+      <div className={"MainMenuItem "} onClick={() => Local.link("Settings")}>
+        <MdSettings id="Icon"/>
       </div>
       
     </div>
