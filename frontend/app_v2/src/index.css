@@ -25,6 +25,8 @@
   --text_color: rgb(50,50,50);
   --base_shadow: 0px .1rem .55rem .1rem var(--base-dark);
 
+  --accent-gradient: linear-gradient(45deg, var(--accent-dark) 0%, var(--accent-light) 80%);
+
   --color_variation: 10%;
 
   --accent-h: 227;
@@ -279,6 +281,7 @@ select {
 #AppContainer[data-activePage="Home"] #MenuBar .MainMenuItem:nth-of-type(2), 
 #AppContainer[data-activePage="Todos"] #MenuBar .MainMenuItem:nth-of-type(3){
   background-color: var(--accent);
+  background: var(--accent-gradient);
 }
 
 #AppContainer[data-activePage="Settings"] #MenuBar .MainMenuItem:nth-of-type(1) #Icon {color: var(--base);}
@@ -286,18 +289,6 @@ select {
 #AppContainer[data-activePage="Todos"] #MenuBar .MainMenuItem:nth-of-type(3) #Icon {color: var(--base);}
 
 .MainMenuItem #Icon{color: var(--base-darker);}
-
-#SettingsIcon > path {
-  color: inherit;
-}
-#SettingsIcon {
-  position: absolute;
-  font-size: 2.5rem;
-  left: 4%;
-  bottom: 20%;
-  color: var(--base-darker);
-}
-#AppContainer[data-activePage="Settings"] #SettingsIcon{color: var(--accent);}
 
 .Header {
   display: flex;
@@ -406,6 +397,7 @@ select {
 }
 #Chip.active{
   background-color: var(--accent-light);
+  background: var(--accent-gradient);
   color: var(--text_color-light);
 }
 
@@ -429,3 +421,4 @@ select {
 }
 
 #AppContainer:not([data-activePage="Todos"]) .show-in-todos {display: none;}
+#AppContainer:not([data-activePage="Home"]) .show-in-home {display: none;}

@@ -6,6 +6,7 @@ import "../css/Todos.css";
 import DoneSVG from "../svg/DoneSVG";
 import {BsCircle, BsCheck2Circle} from "react-icons/bs";
 import { Global, Local } from "../functionality/functions";
+import { todos } from "../functionality/modules";
 
 export default function Todos() {
 
@@ -22,33 +23,28 @@ export default function Todos() {
             for(let i = 0; i < items.length; i++){
                 if(items[i].id === "TodoItem"){
                     Local.deleteTodo(items[i].dataset.uuid)
-                }
-            }
-        }
+            }}}
     });
 
-    let getFilteredTodos = () => {
-        if(Global.activeproject === "All Todos"){return Global.displayedTodos}
-        let filtered = Global.displayedTodos.filter((todo) => todo.project === Global.activeproject)
-        return filtered
+    function unfinishedEmpty() {
+        console.log(todos.unfinished.length);
+        return todos.unfinished.length === 0 ? "" : "hidden"
     }
-
-    let getUnfinishedTodos = () => {
-        let unfinished = getFilteredTodos().filter((todo)=>todo.finished === false);
-        return unfinished
+    function finishedEmpty() {
+        return todos.finished.length === 0 ? "hidden" : ""
     }
-
-    let getFinishedTodos = () => {
-        let finished = getFilteredTodos().filter((todo)=> todo.finished === true);
-        return finished
+    function filteredEmpty() {
+        return todos.filtered.length === 0 ? "" : "hidden"
     }
 
     return (
         <div className="Section">
             <label>Todos in <span className="text_accent text_bold">{Global.activeproject}</span></label>
-            <div className="TodoContainer">
-                <DoneSVG/>                    
-                {getUnfinishedTodos().map((todo) => (
+            <div className="TodoContainer ">
+                <DoneSVG className={"show-in-todos " + filteredEmpty()}/>
+                <label className={"show-in-home " + unfinishedEmpty()}> Nothing <br/> to do </label>    
+
+                {todos.unfinished.map((todo) => (
                     <TodoItem 
                     key={todo.uuid}
                     uuid={todo.uuid}
@@ -59,10 +55,10 @@ export default function Todos() {
                     />
                 ))}
 
-                <span className="seperator large show-in-todos" id="finished_seperator"/>
+                <span className={"seperator large show-in-todos " + finishedEmpty()} id="finished_seperator"/>
 
                 <div id="FinishedContainer" className="show-in-todos" {...swipeHandler}>
-                    {getFinishedTodos().map((todo) => (
+                    {todos.finished.map((todo) => (
                             <TodoItem 
                             key={todo.uuid}
                             uuid={todo.uuid}
@@ -112,7 +108,6 @@ function TodoItem(self) {
                 <label> {self.title} </label>
                 <p className={descriptionEmpty()}> {self.description} </p>
             </div>
-
         </div>
     )
 }

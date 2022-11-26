@@ -9,7 +9,7 @@
 #WeatherSection {
     border-radius: 30px;
     height: 25vh;
-    background: linear-gradient(45deg, var(--accent-dark) 0%, var(--accent-light) 80%);
+    background: var(--accent-gradient);
     margin: 10px;
     padding: 20px;
     width: calc(100% - 20px);
@@ -106,6 +106,7 @@
 #Connection #Decorator {
     position: absolute;
     background-color: var(--accent-light);
+    background: var(--accent-gradient);
     height: 120px;
     width: 200px;
     z-index: 2;

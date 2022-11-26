@@ -1,6 +1,6 @@
 
 import { v4 as uuidv4 } from 'uuid';
-
+import { todos } from './modules';
 
 function placeholder_func() {
     return 
@@ -18,8 +18,6 @@ const Global = {
     backend: "http://127.0.0.1:8000",
 
     projects: [],
-    serverTodos: [],
-    displayedTodos: [],
 
     localActions: [],
 
@@ -51,13 +49,6 @@ const Global = {
 
     set setProjects(new_projects){
         this.projects = new_projects;
-        Global.todosRerender();
-    },
-
-    set setServerTodos(new_todos){this.serverTodos = new_todos;},
-
-    set setDisplayedTodos(new_todos){
-        this.displayedTodos = new_todos;
         Global.todosRerender();
     },
 
@@ -161,8 +152,8 @@ class Local {
     // }
 
     static getByUuid = (uuid) => {
-        for(let i=0; i < Global.displayedTodos.length; i++){
-            if(Global.displayedTodos[i].uuid === uuid){
+        for(let i=0; i < todos.displayedTodos.length; i++){
+            if(todos.displayedTodos[i].uuid === uuid){
                 return i;
             }
         }
@@ -240,35 +231,35 @@ class Local {
             })
         }
 
-        Global.displayedTodos.push(new_todo);
+        todos.displayedTodos.push(new_todo);
 
         Global.appRerender();
         Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
-        Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
+        Saving.saveLocal(Global.TODO_KEY, todos.displayedTodos);
         
     }
 
     static finishTodo = async (uuid) => {
         let index = this.getByUuid(uuid);
-        Global.displayedTodos[index].finished = !Global.displayedTodos[index].finished;
+        todos.displayedTodos[index].finished = !todos.displayedTodos[index].finished;
 
         if (Global.serverReachable) Server.finishTodo(uuid)
         else {
             Global.localActions.push({
                 "action": "todo_finished",
                 "uuid": uuid,
-                "new_state": Global.displayedTodos[index].finished,
+                "new_state": todos.displayedTodos[index].finished,
             })
         }
 
         Global.appRerender();
         Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
-        Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
+        Saving.saveLocal(Global.TODO_KEY, todos.displayedTodos);
     }
 
     static editTodo = async (new_heading, new_description, new_project, uuid) => {
         if(new_project === "") new_project = "General";
-        Global.displayedTodos.forEach(todo => {
+        todos.displayedTodos.forEach(todo => {
             if(todo["uuid"] === uuid){
                 todo["heading"] = new_heading;
                 todo["description"] = new_description;
@@ -286,12 +277,12 @@ class Local {
 
         Global.appRerender();
         Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
-        Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
+        Saving.saveLocal(Global.TODO_KEY, todos.displayedTodos);
     }
 
     static deleteTodo = async (uuid) => {
         let index = Local.getByUuid(uuid);
-        Global.displayedTodos.splice(index, 1);
+        todos.displayedTodos.splice(index, 1);
 
         if (Global.serverReachable) Server.deleteTodo(uuid);
         else {
@@ -303,7 +294,7 @@ class Local {
 
         Global.appRerender();
         Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
-        Saving.saveLocal(Global.TODO_KEY, Global.displayedTodos);
+        Saving.saveLocal(Global.TODO_KEY, todos.displayedTodos);
     }
 
     static link = async (page) => {
@@ -383,7 +374,7 @@ class Server{
 
             Global.setServerTodos = await response.todos;
 
-            if(update_displayed) Global.displayedTodos = Global.serverTodos;
+            if(update_displayed) todos.displayedTodos = Global.serverTodos;
             Global.todosRerender();
             return Global.serverTodos;
         }catch {}

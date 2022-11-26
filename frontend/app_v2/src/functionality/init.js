@@ -1,6 +1,7 @@
 
 import { useEffect } from "react"
 import { Global, Saving, Server} from "./functions"
+import { todos } from "./modules"
 
 const Init = (self) => {
 
@@ -21,7 +22,7 @@ const Init = (self) => {
         else{Global.setActivePage = Global.superContainer.activepage;}
 
         let local_todos = Saving.loadSave(Global.TODO_KEY);
-        if (local_todos !== undefined) Global.setDisplayedTodos = local_todos;
+        if (local_todos !== undefined) todos.setDisplayedTodos = local_todos;
 
         let local_projects = Saving.loadSave(Global.PROJECT_KEY);
         if (local_projects !== undefined) Global.projects = local_projects;
