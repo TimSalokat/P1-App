@@ -96,6 +96,7 @@ const Form = () => {
             event.preventDefault();
             if(Global.formInputs.title){
                 projects.add(Global.formInputs);
+                Global.activeproject = Global.formInputs.title;
                 closeForm_helper();
             }
             form.reset();
