@@ -14,9 +14,6 @@ const Init = (self) => {
         Global.setOverlayActive = Global.superContainer.overlayactive;
         Global.setActiveProject = Global.superContainer.activeproject;
 
-        // let last_colorScheme = Saving.loadSave(Global.COLOR_SCHEME_KEY);
-        // if(last_colorScheme !== undefined) Global.setColorScheme = last_colorScheme;
-
         let last_page = Saving.loadSave(Global.PAGE_KEY);
         if (last_page !== undefined && last_page !== "Settings") Global.setActivePage = last_page;
         else{Global.setActivePage = Global.superContainer.activepage;}

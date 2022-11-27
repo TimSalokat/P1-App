@@ -55,8 +55,10 @@ function App() {
       Global.setFormInputs = [];
       }}/>
 
-    <BottomMenu/>
+    {/* <BottomMenu/> */}
     <TopMenu/>
+
+    <SideBar/>
 
     </div>
 
@@ -86,18 +88,35 @@ const BottomMenu = () => {
 }
 
 const TopMenu = () => {
+  return (
+    <div id="TopMenuBar" className="row nowrap">
+      <span id="Burger" onClick={() => Global.setMenuOpen = !Global.menuopen}/>
+      <h3>Home</h3>
+      <MdSettings id="Icon" onClick={() => Local.link("Settings")}/>
+    </div>
+  )
+}
 
-  const [open, setOpen] = React.useState(false);
+const SideBar = () => {
 
-  function openMenu () {
-    return open ? "active" : ""
+  function isActive (value) {
+    return Global.activepage === value ? " active" : "";
   }
 
   return (
-    <div id="TopMenuBar" className="row nowrap">
-      <span id="Burger" className={openMenu()} onClick={() => setOpen(!open)}/>
-      <h3>Home</h3>
-      <MdSettings id="Icon"/>
+    <div id="SideBar">
+
+      <div className="link_wrapper">
+        <div className={"IconLink"+isActive("Home")} onClick={() => Local.link("Home")}>
+          <MdHome id="Icon"/>
+          <label>Home</label>
+        </div>
+        <div className={"IconLink"+isActive("Todos")} onClick={() => Local.link("Todos")}>
+          <MdArticle id="Icon"/>
+          <label>Todos</label>
+        </div>        
+      </div>
+
     </div>
   )
 }

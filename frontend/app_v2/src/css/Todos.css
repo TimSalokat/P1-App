@@ -94,20 +94,21 @@
 
 #AddTodoBtn {
     position: fixed;
-    bottom: 65px;
-    right: 20px;
+    bottom: 30px;
+    right: 15px;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 140;
+    z-index: 100;
     filter: drop-shadow(0 0 4px var(--accent));
 }
 #AddTodoBtn #Icon {
     font-size: 35px;
 }
+#AppContainer[data-overlayactive="true"] #AddTodoBtn {bottom: 0;}
 
 #FinishedContainer {
     padding-bottom: 20px;

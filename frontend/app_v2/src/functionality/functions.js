@@ -75,13 +75,6 @@ const Global = {
         this.superContainer.activepage = new_page;
     },
 
-    colorScheme: "DefaultDark",
-    set setColorScheme(new_scheme){
-        this.colorScheme = new_scheme;
-        this.superContainer.colorscheme = new_scheme;
-        Saving.saveLocal(this.COLOR_SCHEME_KEY, this.colorScheme);
-    },
-
     overlayactive: undefined,
     set setOverlayActive(new_state){
         this.overlayactive = new_state;
