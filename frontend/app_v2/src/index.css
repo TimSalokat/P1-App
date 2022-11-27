@@ -322,11 +322,11 @@ select {
 #SideBar {
   position: fixed;
   height: 100%;
-  width: 230px;
+  width: 190px;
   background-color: var(--base-dark);
   filter: drop-shadow(0 0 8px var(--accent));
   border-radius: 0 20px 20px 0;
-  justify-content: center;
+  justify-content: space-between;
   padding: 20px;
 
   z-index: 105;
@@ -347,12 +347,12 @@ select {
 .IconLink label {
   margin-top: 3px;
   color: var(--base-darkest);
-  font-size: 2.1rem;
+  font-size: 1.75rem;
   height: min-content;
 }
 .IconLink #Icon{
   color: var(--base-darkest);
-  font-size: 2.4rem;
+  font-size: 2rem;
 }
 .IconLink.active label, .IconLink.active #Icon{
   color: var(--accent);

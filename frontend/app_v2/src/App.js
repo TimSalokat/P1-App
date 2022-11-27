@@ -91,8 +91,9 @@ const TopMenu = () => {
   return (
     <div id="TopMenuBar" className="row nowrap">
       <span id="Burger" onClick={() => Global.setMenuOpen = !Global.menuopen}/>
-      <h3>Home</h3>
-      <MdSettings id="Icon" onClick={() => Local.link("Settings")}/>
+      <h3>{Global.activepage}</h3>
+      {/* <MdSettings id="Icon" onClick={() => Local.link("Settings")}/> */}
+      <div/>
     </div>
   )
 }
@@ -106,6 +107,10 @@ const SideBar = () => {
   return (
     <div id="SideBar">
 
+      <div id="personal_wrapper">
+
+      </div>
+
       <div className="link_wrapper">
         <div className={"IconLink"+isActive("Home")} onClick={() => Local.link("Home")}>
           <MdHome id="Icon"/>
@@ -116,6 +121,11 @@ const SideBar = () => {
           <label>Todos</label>
         </div>        
       </div>
+
+      <div style={{justifySelf:"flex-end"}} className={"IconLink"+isActive("Settings")} onClick={() => Local.link("Settings")}>
+        <MdSettings id="Icon"/>
+        <label>Settings</label>
+      </div>        
 
     </div>
   )
