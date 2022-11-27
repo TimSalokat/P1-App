@@ -39,7 +39,14 @@ export default function Todos() {
 
     return (
         <div className="Section">
-            <label>Todos in <span className="text_accent text_bold">{Global.activeproject}</span></label>
+
+            <div className="Header">
+                <label id="SectionLabel">Todos in <span className="text_accent text_bold">{Global.activeproject}</span></label>
+                <button className="button_secondary show-in-home" onClick={() => Local.link("Todos")}>
+                    More
+                </button>
+            </div>
+
             <div className="TodoContainer ">
                 <DoneSVG className={"show-in-todos " + filteredEmpty()}/>
                 <div className={"show-in-home " + unfinishedEmpty()}>

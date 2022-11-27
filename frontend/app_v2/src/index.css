@@ -372,7 +372,10 @@ select {
   border-radius: 0;
 }
 .Header button{
-  max-height: 35px;
+  max-height: 30px;
+  padding-right: 10px;
+  padding-left: 10px;
+  width: fit-content;
 }
 .Header #Icon {
   font-size: 1.6rem;

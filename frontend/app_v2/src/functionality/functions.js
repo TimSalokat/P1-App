@@ -15,6 +15,12 @@ const Global = {
     COLOR_SCHEME_KEY: "todoApp.color_scheme",
 
     backend: "http://127.0.0.1:8000",
+    set setBackend(new_backend){
+        this.backend = new_backend;
+        if(Server.ping()){
+            Server.fetchTodos();
+        }else{console.error("Server not reachable");};
+    },
 
     form: "",
     set setForm(new_form){this.form = new_form;},
@@ -33,14 +39,6 @@ const Global = {
 
     todosRerender: placeholder_func,
     set setTodosRerender(new_func){this.todosRerender = new_func;},
-
-    set setBackend(new_backend){
-        this.backend = new_backend;
-        if(Server.ping()){
-            Server.fetchText();
-            Server.fetchTodos();
-        }else{console.error("Server not reachable");};
-    },
 
     superContainer: undefined,
     set setSuperContainer(new_supercontainer){this.superContainer = new_supercontainer;}, 
