@@ -56,6 +56,7 @@ function App() {
       }}/>
 
     <BottomMenu/>
+    <TopMenu/>
 
     </div>
 
@@ -65,24 +66,40 @@ function App() {
 
 const BottomMenu = () => {
 
+  function isActive (value) {
+    return Global.activepage === value ? " active" : "";
+  }
+
   return (
-    <div id="MenuBar">
-      
-      <div className="MainMenuItem" onClick={() => Local.link("Todos")}>
+    <div id="BottomMenuBar">
+      <div className={"MainMenuItem"+isActive("Todos")} onClick={() => Local.link("Todos")}>
         <MdArticle id="Icon"/>
       </div>
-      
-      <div className={"MainMenuItem "} onClick={() => Local.link("Home")}>
+      <div className={"MainMenuItem"+isActive("Home")} onClick={() => Local.link("Home")}>
         <MdHome id="Icon"/>
       </div>
-
-      <div className={"MainMenuItem "} onClick={() => Local.link("Settings")}>
+      <div className={"MainMenuItem"+isActive("Settings")} onClick={() => Local.link("Settings")}>
         <MdSettings id="Icon"/>
       </div>
-      
     </div>
   )
 }
 
+const TopMenu = () => {
+
+  const [open, setOpen] = React.useState(false);
+
+  function openMenu () {
+    return open ? "active" : ""
+  }
+
+  return (
+    <div id="TopMenuBar" className="row nowrap">
+      <span id="Burger" className={openMenu()} onClick={() => setOpen(!open)}/>
+      <h3>Home</h3>
+      <MdSettings id="Icon"/>
+    </div>
+  )
+}
 
 export default App;

@@ -4,6 +4,7 @@ import React from "react";
 import { BiSend } from "react-icons/bi";
 
 import { Global, Local } from "../functionality/functions";
+import { todos,projects } from "../functionality/modules";
 
 import "../css/Forms.css"
 
@@ -38,7 +39,7 @@ const Form = () => {
             var form = document.getElementById("input_form");
             event.preventDefault();
             if(Global.formInputs.title){
-                Local.addTodo(Global.formInputs);
+                todos.add(Global.formInputs);
                 closeForm_helper();
             }
             form.reset();
@@ -76,7 +77,7 @@ const Form = () => {
 
                 <div className="ProjectSelect">
                     <ProjectOption title={"All Todos"}/>
-                    {Global.projects.map((project) => {
+                    {projects.projects.map((project) => {
                         return(
                             <ProjectOption 
                                 title={project.title}
@@ -94,7 +95,7 @@ const Form = () => {
             var form = document.getElementById("input_form");
             event.preventDefault();
             if(Global.formInputs.title){
-                Local.addProject(Global.formInputs);
+                projects.add(Global.formInputs);
                 closeForm_helper();
             }
             form.reset();

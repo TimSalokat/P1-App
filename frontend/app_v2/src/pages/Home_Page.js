@@ -16,6 +16,8 @@ export default function Home_Page() {
         // console.log(weatherFilter)
     }, [weatherFilter])
 
+    const [selectedConnection, setSelectedConnection] = React.useState("ConnectionOne");
+
     return (
         <div id="Home_Page">
         
@@ -24,9 +26,9 @@ export default function Home_Page() {
         <div id="HvvSection">
             <label id='SectionLabel'> Train Timings </label>  
             <div id="Connections_wrapper" className='row nowrap'>
-                <Connection />
-                <Connection />
-                <Connection />
+                <Connection selected={selectedConnection} setSelected={setSelectedConnection} value="ConnectionOne"/>
+                <Connection selected={selectedConnection} setSelected={setSelectedConnection} value="ConnectionTwo"/>
+                <Connection selected={selectedConnection} setSelected={setSelectedConnection} value="ConnectionThree"/>
             </div>
         </div>
 
@@ -49,7 +51,7 @@ const WeatherSection = () => {
             <div id='WeatherContainer'>
                 <BsCloudMoonFill id='Icon'/>
                 <div id="TemperatureContainer">
-                    <label>15</label>
+                    <h4>15</h4>
                 </div>
             </div>
 
@@ -77,20 +79,30 @@ const TimeOption = (props) => {
 }
 
 const Connection = (props) => {
+    
+    function isSelected(value){
+        return value === props.selected ? " selected" : ""
+    }
+
     return (
-        <div id="Connection" className='row'>
-            <label className='text_light'>
+        <div 
+            id="Connection" 
+            className={'row'+isSelected(props.value)} 
+            value={props.value}
+            onClick={() => props.setSelected(props.value)}
+        >
+            <h4>
                 Meckelfeld<br/>
                 Harburg<br/>
                 Altona<br/>
                 Lukas
-            </label>
-            <label>
+            </h4>
+            <h4>
                 88:88<br/>
                 88:88<br/>
                 88:88<br/>
                 88:88
-            </label>
+            </h4>
         </div>
     )
 }

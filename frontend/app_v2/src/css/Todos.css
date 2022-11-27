@@ -10,12 +10,13 @@
 } */
 
 .TodoContainer {
-    min-height: 55px;
+    min-height: 50vh;
     overflow-y: scroll;
     flex-flow: column nowrap;
 }
 #AppContainer[data-activePage="Home"] .TodoContainer {
-    flex: 1;
+    min-height: 36vh;
+    overflow: hidden;
 }
 #AppContainer[data-activePage="Home"] .TodoContainer > *:nth-child(n+6){
     display: none;
@@ -93,7 +94,7 @@
 
 #AddTodoBtn {
     position: fixed;
-    bottom: 75px;
+    bottom: 65px;
     right: 20px;
     width: 60px;
     height: 60px;
@@ -137,7 +138,7 @@
     border: 2px solid var(--base-darker);
     width: 100%;
     height: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     place-content: center;
     opacity: .85;
 }

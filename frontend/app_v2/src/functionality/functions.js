@@ -1,6 +1,5 @@
 
-import { v4 as uuidv4 } from 'uuid';
-import { todos } from './modules';
+import {todos, projects, local_actions} from './modules';
 
 function placeholder_func() {
     return 
@@ -16,10 +15,6 @@ const Global = {
     COLOR_SCHEME_KEY: "todoApp.color_scheme",
 
     backend: "http://127.0.0.1:8000",
-
-    projects: [],
-
-    localActions: [],
 
     form: "",
     set setForm(new_form){this.form = new_form;},
@@ -46,13 +41,6 @@ const Global = {
             Server.fetchTodos();
         }else{console.error("Server not reachable");};
     },
-
-    set setProjects(new_projects){
-        this.projects = new_projects;
-        Global.todosRerender();
-    },
-
-    set setLocalActions(new_action){this.localActions = new_action;},
 
     superContainer: undefined,
     set setSuperContainer(new_supercontainer){this.superContainer = new_supercontainer;}, 
@@ -138,125 +126,6 @@ class Saving {
 
 class Local {
 
-    // TODO This is fucked
-    // static addLocalTodos = async () => {
-    //     if(Global.todosToAdd === undefined) return;
-    //     for(var index=0; index < Global.todosToAdd.length; index++){
-    //         Server.addTodo(Global.todosToAdd[index]);
-    //     }
-    //     Global.setTodosToAdd = [];
-    //     Saving.saveLocal(Global.TODO_TO_ADD_KEY, Global.todosToAdd);
-
-    //     History.add("Successfully added local todos", false);
-    //     await Server.fetchTodos(true);
-    // }
-
-    static getByUuid = (uuid) => {
-        for(let i=0; i < todos.displayedTodos.length; i++){
-            if(todos.displayedTodos[i].uuid === uuid){
-                return i;
-            }
-        }
-    }
-
-    static addProject = async (props) => {
-        const new_uuid = () => uuidv4();
-
-        let new_project = {
-            "uuid": new_uuid(),
-            "title": props.title
-        }
-
-        if (Global.serverReachable) Server.addProject(new_project)
-        else {
-            Global.localActions.push({
-                "action": "project_added",
-                "project": new_project,
-            })
-        }
-
-        Global.projects.push(new_project);
-        
-        Global.appRerender();
-        Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
-        Saving.saveLocal(Global.PROJECT_KEY, Global.projects);
-
-    }
-
-    static deleteProject = async (toDelete) => {
-
-        if(Global.activeproject === toDelete || Global.activeproject === Global.activeproject[0]) Global.setActiveProject = "All Todos"; 
-
-        if(toDelete === "") {Global.projects.splice(0,1)}
-        else {for(let i=0; i < Global.projects.length; i++){
-            if(Global.projects[i].title === toDelete){
-                Global.projects.splice(i, 1);
-            }
-        }}
-
-        if (Global.serverReachable) Server.deleteProject(toDelete)
-        else {
-            Global.localActions.push({
-                "action": "project_deleted",
-                "title": toDelete,
-            })
-        }
-
-        Global.appRerender();
-        Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
-        Saving.saveLocal(Global.PROJECT_KEY, Global.projects);
-    }
-
-    static addTodo = async (props) => {
-        
-        const new_uuid = () => uuidv4();
-
-        let description = props.description ? props.description : "";
-        let project = props.selectedProject ? props.selectedProject : "All Todos";
-
-        let new_todo = {
-            "uuid": new_uuid(),
-            "title": props.title,
-            "description": description,
-            "project": project,
-            "priority": 1,
-            "finished": false,
-        }
-
-        if (Global.serverReachable) Server.addTodo(new_todo)
-        else {
-            Global.localActions.push({
-                "action": "todo_added",
-                "todo": new_todo,
-            })
-        }
-
-        todos.displayedTodos.push(new_todo);
-
-        Global.appRerender();
-        Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
-        Saving.saveLocal(Global.TODO_KEY, todos.displayedTodos);
-        
-    }
-
-    static finishTodo = async (uuid) => {
-        let index = this.getByUuid(uuid);
-        todos.displayedTodos[index].finished = !todos.displayedTodos[index].finished;
-
-        if (Global.serverReachable) Server.finishTodo(uuid)
-        else {
-            Global.localActions.push({
-                "action": "todo_finished",
-                "uuid": uuid,
-                "new_state": todos.displayedTodos[index].finished,
-            })
-        }
-
-        Global.appRerender();
-        Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
-        Saving.saveLocal(Global.TODO_KEY, todos.displayedTodos);
-    }
-
     static editTodo = async (new_heading, new_description, new_project, uuid) => {
         if(new_project === "") new_project = "General";
         todos.displayedTodos.forEach(todo => {
@@ -274,23 +143,6 @@ class Local {
             "description": new_description,
             "project": new_project,
         })
-
-        Global.appRerender();
-        Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
-        Saving.saveLocal(Global.TODO_KEY, todos.displayedTodos);
-    }
-
-    static deleteTodo = async (uuid) => {
-        let index = Local.getByUuid(uuid);
-        todos.displayedTodos.splice(index, 1);
-
-        if (Global.serverReachable) Server.deleteTodo(uuid);
-        else {
-            Global.localActions.push({
-                "action": "todo_deleted",
-                "uuid": uuid
-            })
-        }
 
         Global.appRerender();
         Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);

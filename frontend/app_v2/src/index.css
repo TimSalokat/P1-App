@@ -84,13 +84,6 @@
   max-height: 100vh;
 }
 
-#PagesContainer {
-  display: flex;
-  flex-flow: column wrap;
-  margin: 0;
-  height: calc(100% - 50px);
-}
-
 html, #root {
   padding: 0;
   margin: 0;
@@ -108,8 +101,8 @@ div {
 
 h1 {font-size: 3.5rem;}
 h2 {font-size: 2.5rem;}
-h3 {font-size: 2rem;}
-h4 {font-size: 1.5rem;}
+h3 {font-size: 1.75rem;}
+h4 {font-size: 1.3rem;}
 h5 {font-size: 1.1rem; font-weight: 100;}
 
 label {font-size: 1.5rem;}
@@ -196,7 +189,6 @@ select {
   position: relative;
   background-color: var(--base);
   min-height: 10rem;
-  min-width: 100vw;
   margin: 0;
   padding: 0 10px;
   padding-bottom: 0;
@@ -220,17 +212,12 @@ select {
   font-weight: 900;
   text-align: left;
   border-radius: 0;
-  margin: 8px;
-  margin-top: 16px;
+  /* margin: 8px; */
+  margin-top: 12px;
   margin-bottom: 4px;
 }
 
-#SectionLabel {
-  margin-top: 0;
-}
-
 .Section:has(.TodoContainer) {
-  overflow: hidden;
   flex-wrap: nowrap;
 }
 .Section:has(.ProjectContainer) {
@@ -252,43 +239,84 @@ select {
   display: block;
 }
 
-#MenuBar {
+#BottomMenuBar {
   position: fixed;
-  width: 90vw;
-  height: 55px;
-  bottom: 10px;
-  left: 5vw;
+  width: 80vw;
+  height: 45px;
+  bottom: 0px;
+  left: 10vw;
   z-index: 100;
   background-color: var(--base);
   align-content: space-around;
   justify-content: center;
   padding: 0 35px;
-  filter: drop-shadow(0px 0px 10px var(--accent));
-  border-radius: 40px;
+  filter: drop-shadow(0px 0px 6px var(--accent));
+  border-radius: 20px 20px 0 0;
 }
-#MenuBar .MainMenuItem{
+.MainMenuItem{
   display: flex;
   align-content: center;
   justify-content: center;
-  background-color: var(--base);
-  height: 50px;
-  width: 50px;
+  background: transparent;
+  height: 30px;
+  width: 30px;
   right: 0;
-  border-radius: 50%;
+  border-radius: 0%;
+}
+.MainMenuItem #Icon{
+  color: var(--base-darker);
+  font-size: 25px;
+}
+.MainMenuItem.active {
+  border-bottom: 2px solid var(--accent);
+}
+.MainMenuItem.active #Icon {
+  color: var(--accent);
+  font-size: 30px;
 }
 
-#AppContainer[data-activePage="Todos"] #MenuBar .MainMenuItem:nth-of-type(1),
-#AppContainer[data-activePage="Home"] #MenuBar .MainMenuItem:nth-of-type(2), 
-#AppContainer[data-activePage="Settings"] #MenuBar .MainMenuItem:nth-of-type(3){
-  background-color: var(--accent);
-  background: var(--accent-gradient);
+#TopMenuBar {
+  width: 100%;
+  height: 55px;
+  position: absolute;
+  top: 0;
+  background-color: var(--base);
+  border-bottom: 2px solid var(--base-dark);
+  /* filter: drop-shadow(0 0 10px var(--base-darker)); */
+  border-radius: 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+#TopMenuBar #Icon, #TopMenuBar h3 {
+  color: var(--text_color);
+}
+#TopMenuBar h3 {
+  margin-top: 1px;
 }
 
-#AppContainer[data-activePage="Todos"] #MenuBar .MainMenuItem:nth-of-type(1) #Icon {color: var(--base);}
-#AppContainer[data-activePage="Home"] #MenuBar .MainMenuItem:nth-of-type(2) #Icon {color: var(--base);}
-#AppContainer[data-activePage="Settings"] #MenuBar .MainMenuItem:nth-of-type(3) #Icon {color: var(--base);}
+#Burger {
+  position: relative;
+  height: 2px;
+  width: 28px;
+  background-color: var(--text_color);
+}
+#Burger::after, #Burger::before {
+  content:"";
+  position: absolute;
+  height: 2px;
+  width: 28px;
+  background-color: var(--text_color);
+}
+#Burger::after{top: 8px;}
+#Burger::before{top: -8px;}
 
-.MainMenuItem #Icon{color: var(--base-darker);}
+#Burger.active {rotate: 45deg;}
+#Burger.active::after {
+  rotate: 90deg;
+  top: 0;
+}
+#Burger.active::before {visibility: hidden;}
 
 .Header {
   display: flex;
@@ -391,13 +419,12 @@ select {
   border-radius: 1rem;
 }
 #Chip > label {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-family: defaultBold;
   color: inherit;
 }
 #Chip.active{
-  background-color: var(--accent-light);
-  background: var(--accent-gradient);
+  background-color: var(--accent);
   color: var(--text_color-light);
 }
 

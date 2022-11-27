@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Global, Local, Server } from "../functionality/functions";
+import { todos, projects, local_actions } from "../functionality/modules";
 
 export default function Settings_Page() {
 
@@ -45,7 +46,7 @@ export default function Settings_Page() {
                     }}> Apply </button>
 
                     <select className="stretch" onChange={(e) => setProjectToDelete(e.target.value)}>
-                        {Global.projects.map((project) => {
+                        {projects.projects.map((project) => {
                                 return(
                                 <option key={project.uuid}>
                                     {project.title}
@@ -54,7 +55,7 @@ export default function Settings_Page() {
 
                     <button className="small stretch" 
                         onClick={() => {
-                            Local.deleteProject(project_toDelete);
+                            projects.delete(project_toDelete);
                             setProjectToDelete("");
                     }}> Delete </button>
                 </div>
