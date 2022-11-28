@@ -374,12 +374,14 @@ select {
   border-radius: 0;
 }
 .Header button{
-  max-height: 30px;
   padding-right: 10px;
   padding-left: 10px;
-  width: fit-content;
+  height: 55px;
+  width: 65px;
+  border-radius: 50%;
 }
 .Header .button_secondary {
+  width: fit-content;
   border: none;
   background: transparent;
   box-shadow: none;

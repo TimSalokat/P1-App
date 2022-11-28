@@ -49,7 +49,6 @@ const Form = () => {
             <>
             <BottomBase label="Add Todo" 
                 closeForm_helper={closeForm_helper} 
-                submit={submit_helper}
                 >
 
                 <input type="text" 
@@ -75,16 +74,23 @@ const Form = () => {
                     </select>
                 </div>
 
-                <div className="ProjectSelect">
-                    <ProjectOption title={"All Todos"}/>
-                    {projects.projects.map((project) => {
-                        return(
-                            <ProjectOption 
-                                title={project.title}
-                                key={project.index}
-                                />
-                        )
-                    })}
+                <div className="Header">
+                    <div className="ProjectSelect">
+                        <ProjectOption title={"All Todos"}/>
+                        {projects.projects.map((project) => {
+                            return(
+                                <ProjectOption 
+                                    title={project.title}
+                                    key={project.index}
+                                    />
+                            )
+                        })}
+                    </div>
+
+                    <button className="button" onClick={submit_helper}>
+                        <BiSend id="Icon" style={{rotate:"270deg", fontSize:"33px"}}/>
+                    </button>
+
                 </div>
             </BottomBase>
             </>
@@ -106,6 +112,8 @@ const Form = () => {
             <BottomBase label="Add Project" 
                 closeForm_helper={closeForm_helper}
                 submit={submit_helper}>
+                <div className="Header">
+
                 <input type="text" 
                     id="MainInput"
                     placeholder="Title" 
@@ -113,6 +121,11 @@ const Form = () => {
                     onChange={(e) =>{
                         Global.formInputs.title = e.target.value;
                     }}/>
+                <button className="button" onClick={submit_helper}>
+                    <BiSend id="Icon" style={{rotate:"270deg", fontSize:"33px"}}/>
+                </button>
+                
+                </div>
                 
             </BottomBase>
         )
@@ -126,9 +139,6 @@ const BottomBase = (props) => {
             <div className="Header" id="FormHeader">
                 <label>{props.label}</label>
                 {/* <button className="button_secondary small" onClick={props.closeForm_helper}>Cancel</button> */}
-                <button className="button" onClick={props.submit}>
-                    <BiSend id="Icon" style={{rotate:"270deg", fontSize:"33px"}}/>
-                </button>
             </div>
             {props.children}
         </form>
