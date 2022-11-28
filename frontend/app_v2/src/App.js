@@ -92,8 +92,8 @@ const TopMenu = () => {
     <div id="TopMenuBar" className="row nowrap">
       <span id="Burger" onClick={() => Global.setMenuOpen = !Global.menuopen}/>
       <h3>{Global.activepage}</h3>
-      {/* <MdSettings id="Icon" onClick={() => Local.link("Settings")}/> */}
-      <div/>
+      <MdHome id="Icon" className="show-not-in-home" onClick={() => Local.link("Home")}/>
+      <div style={{width:"28px"}} className="show-in-home"/>
     </div>
   )
 }

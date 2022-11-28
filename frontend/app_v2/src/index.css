@@ -281,8 +281,8 @@ select {
   position: absolute;
   top: 0;
   background-color: var(--base);
-  border-bottom: 2px solid var(--base-dark);
-  /* filter: drop-shadow(0 0 10px var(--base-darker)); */
+  /* border-bottom: 2px solid var(--base-dark); */
+  box-shadow: 0 1px 10px var(--base-darker);
   border-radius: 0;
   justify-content: space-between;
   align-items: center;
@@ -323,11 +323,11 @@ select {
   position: fixed;
   height: 100%;
   width: 190px;
-  background-color: var(--base-dark);
-  filter: drop-shadow(0 0 8px var(--accent));
+  background-color: var(--base);
+  filter: drop-shadow(0 0 10px var(--base-darker));
   border-radius: 0 20px 20px 0;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 0px;
 
   z-index: 105;
   display: none;
@@ -337,11 +337,13 @@ select {
 }
 .link_wrapper {
   display: flex;
-  gap: 10px;
+  /* gap: 10px; */
 }
 .IconLink {
   flex-direction: row;
   gap: 10px;
+  padding: 5px 20px;
+  /* border-bottom: 2px solid var(--base-darker); */
   align-items: center;
 }
 .IconLink label {
@@ -376,6 +378,11 @@ select {
   padding-right: 10px;
   padding-left: 10px;
   width: fit-content;
+}
+.Header .button_secondary {
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 .Header #Icon {
   font-size: 1.6rem;
@@ -493,3 +500,4 @@ select {
 
 #AppContainer:not([data-activePage="Todos"]) .show-in-todos {display: none;}
 #AppContainer:not([data-activePage="Home"]) .show-in-home {display: none;}
+#AppContainer[data-activePage="Home"] .show-not-in-home {display: none;}
