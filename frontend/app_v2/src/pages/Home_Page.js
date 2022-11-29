@@ -7,24 +7,26 @@ import '../css/Home.css';
 import { BsCloudMoonFill } from 'react-icons/bs';
 import { Global } from '../functionality/functions';
 
-// function func() {return}
+function func() {return}
 
-// const testing = {
-//     test: "",
-//     set setTest()
+const This = {
+    selectConnection: func,
+    set setConnectionSelector(new_func){
+        this.selectConnection=new_func;
+    }
 
-// }
+}
 
 export default function Home_Page() {
 
     const [weatherFilter, setWeatherFilter] = React.useState("24:00");
+    const [selectedConnection, setSelectedConnection] = React.useState("");
     Global.setWeatherFilterFunc = setWeatherFilter;
 
     React.useEffect(() => {
         // console.log(weatherFilter)
-    }, [weatherFilter])
-
-    const [selectedConnection, setSelectedConnection] = React.useState("");
+        This.setConnectionSelector = setSelectedConnection;
+    }, [])
 
     return (
         <div id="Home_Page">
@@ -34,9 +36,9 @@ export default function Home_Page() {
         <div id="HvvSection">
             <label id='SectionLabel'> Train Timings </label>  
             <div id="Connections_wrapper" className='row nowrap'>
-                <Connection selected={selectedConnection} setSelected={setSelectedConnection} value="ConnectionOne"/>
-                <Connection selected={selectedConnection} setSelected={setSelectedConnection} value="ConnectionTwo"/>
-                <Connection selected={selectedConnection} setSelected={setSelectedConnection} value="ConnectionThree"/>
+                <Connection selected={selectedConnection} value="ConnectionOne"/>
+                <Connection selected={selectedConnection} value="ConnectionTwo"/>
+                <Connection selected={selectedConnection} value="ConnectionThree"/>
             </div>
         </div>
 
@@ -97,7 +99,7 @@ const Connection = (props) => {
             id="Connection" 
             className={'row'+isSelected(props.value)} 
             value={props.value}
-            onClick={() => props.setSelected(props.value)}
+            onClick={() => This.selectConnection(props.value)}
         >
             <h4>
                 Meckelfeld<br/>

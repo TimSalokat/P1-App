@@ -81,7 +81,8 @@
 }
 
 #AppContainer {
-  max-height: 100vh;
+  min-height: 100vh;
+  padding: 50px 0;
 }
 
 html, #root {
@@ -101,7 +102,7 @@ div {
 
 h1 {font-size: 3.5rem;}
 h2 {font-size: 2.5rem;}
-h3 {font-size: 1.75rem;}
+h3 {font-size: 1.6rem;}
 h4 {font-size: 1.3rem;}
 h5 {font-size: 1.1rem; font-weight: 100;}
 
@@ -228,8 +229,9 @@ select {
 #Overlay {
   height: 100vh;
   width: 100vw;
+  top: 0;
   z-index: 101;
-  position: fixed;
+  position: absolute;
   background-color: rgba(40, 40, 40, .6);
   border-radius: 0;
   display: none;
@@ -241,19 +243,18 @@ select {
 
 #BottomMenuBar {
   position: fixed;
-  width: 80vw;
+  width: 100vw;
   height: 45px;
   bottom: 0px;
-  left: 10vw;
   z-index: 100;
   background-color: var(--base);
   align-content: space-around;
   justify-content: center;
-  padding: 0 35px;
-  filter: drop-shadow(0px 0px 6px var(--accent));
+  padding: 0 40px;
   border-radius: 20px 20px 0 0;
 }
 .MainMenuItem{
+  position: relative;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -263,42 +264,53 @@ select {
   right: 0;
   border-radius: 0%;
 }
+/* .MainMenuItem::after {
+  display: none;
+} */
 .MainMenuItem #Icon{
   color: var(--base-darker);
   font-size: 25px;
 }
-.MainMenuItem.active {
-  border-bottom: 2px solid var(--accent);
+.MainMenuItem.active::after {
+  content: "";
+  position: absolute;
+  background-color: var(--accent);
+  width: 10px;
+  height: 5px;
+  left: calc(50% - 5px);
+  border-radius: 50%;
+  bottom: -3px;
+  /* border-bottom: 2px solid var(--accent) */
 }
 .MainMenuItem.active #Icon {
   color: var(--accent);
-  font-size: 30px;
+  font-size: 27px;
 }
 
 #TopMenuBar {
   width: 100%;
-  height: 55px;
-  position: absolute;
+  height: 50px;
+  position: fixed;
   top: 0;
   background-color: var(--base);
   /* border-bottom: 2px solid var(--base-dark); */
-  box-shadow: 0 1px 10px var(--base-darker);
   border-radius: 0;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  z-index: 100;
 }
 #TopMenuBar #Icon, #TopMenuBar h3 {
   color: var(--text_color);
 }
 #TopMenuBar h3 {
-  margin-top: 1px;
+  margin-top: 5px;
 }
 
 #Burger {
   position: relative;
   height: 2px;
-  width: 28px;
+  width: 25px;
   background-color: var(--text_color);
   z-index: 110;
 }
@@ -306,11 +318,11 @@ select {
   content:"";
   position: absolute;
   height: 2px;
-  width: 28px;
+  width: 25px;
   background-color: var(--text_color);
 }
-#Burger::after{top: 8px;}
-#Burger::before{top: -8px;}
+#Burger::after{top: 7px;}
+#Burger::before{top: -7px;}
 
 #AppContainer[data-menuopen="true"] #Burger {rotate: 45deg;}
 #AppContainer[data-menuopen="true"] #Burger::after {
@@ -321,10 +333,10 @@ select {
 
 #SideBar {
   position: fixed;
+  top: 0;
   height: 100%;
   width: 190px;
   background-color: var(--base);
-  filter: drop-shadow(0 0 10px var(--base-darker));
   border-radius: 0 20px 20px 0;
   justify-content: space-between;
   padding: 20px 0px;
@@ -367,7 +379,7 @@ select {
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
-  max-height: 40px;
+  max-height: 50px;
 }
 .Header label {
   width: fit-content;
@@ -486,6 +498,7 @@ select {
 
 .chip_wrapper {
   margin: 0 10px;
+  padding: 0 10px;
   gap: 10px;
   overflow-y: auto;
   width: 100%;

@@ -1,21 +1,11 @@
-/* 
-.Section:has(.TodoContainer) > label::after{
-    content:"";
-    position: absolute;
-    top: 3.3rem;
-    left: 10%;
-    background-color: var(--base-darker);
-    width: 80%;
-    height: 2px;    
-} */
 
 .TodoContainer {
-    min-height: 50vh;
     overflow-y: scroll;
     flex-flow: column nowrap;
 }
 #AppContainer[data-activePage="Home"] .TodoContainer {
-    min-height: 36vh;
+    min-height: initial;
+    flex: 1;
     overflow: hidden;
 }
 #AppContainer[data-activePage="Home"] .TodoContainer > *:nth-child(n+6){
@@ -94,8 +84,8 @@
 
 #AddTodoBtn {
     position: fixed;
-    bottom: 30px;
-    right: 15px;
+    bottom: 70px;
+    right: 25px;
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -108,7 +98,6 @@
 #AddTodoBtn #Icon {
     font-size: 35px;
 }
-#AppContainer[data-overlayactive="true"] #AddTodoBtn {bottom: 0;}
 
 #FinishedContainer {
     padding-bottom: 20px;

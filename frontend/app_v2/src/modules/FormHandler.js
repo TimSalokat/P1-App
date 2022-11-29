@@ -87,8 +87,8 @@ const Form = () => {
                         })}
                     </div>
 
-                    <button className="button" onClick={submit_helper}>
-                        <BiSend id="Icon" style={{rotate:"270deg", fontSize:"33px"}}/>
+                    <button className="button" id="SubmitButton" onClick={submit_helper}>
+                        <BiSend id="Icon" style={{rotate:"270deg", fontSize:"inherit"}}/>
                     </button>
 
                 </div>
@@ -121,8 +121,8 @@ const Form = () => {
                     onChange={(e) =>{
                         Global.formInputs.title = e.target.value;
                     }}/>
-                <button className="button" onClick={submit_helper}>
-                    <BiSend id="Icon" style={{rotate:"270deg", fontSize:"33px"}}/>
+                <button className="button" id="SubmitButton" onClick={submit_helper}>
+                    <BiSend id="Icon" style={{rotate:"270deg", fontSize:"inherit"}}/>
                 </button>
                 
                 </div>

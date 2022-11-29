@@ -12,7 +12,7 @@ export default function Projects() {
     return (
         <div className="Section column nowrap">
             <div className="ProjectHeader" onClick={() => Global.setShowProjects = !Global.showprojects}>
-                <label>Projects</label>
+                {/* <label>Projects</label> */}
                 {/* <BiDownArrow id="Icon" style={{color:"var(--text_color)"}}/> */}
             </div>
 

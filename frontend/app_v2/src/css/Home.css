@@ -7,7 +7,7 @@
 }
 
 #WeatherSection {
-    border-radius: 30px;
+    border-radius: 20px;
     height: 20vh;
     background: var(--accent-gradient);
     margin: 10px;
