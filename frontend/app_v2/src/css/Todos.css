@@ -10,12 +10,13 @@
 } */
 
 .TodoContainer {
-    min-height: 55px;
+    min-height: 50vh;
     overflow-y: scroll;
     flex-flow: column nowrap;
 }
 #AppContainer[data-activePage="Home"] .TodoContainer {
-    flex: 1;
+    min-height: 36vh;
+    overflow: hidden;
 }
 #AppContainer[data-activePage="Home"] .TodoContainer > *:nth-child(n+6){
     display: none;
@@ -93,20 +94,21 @@
 
 #AddTodoBtn {
     position: fixed;
-    bottom: 75px;
-    right: 20px;
+    bottom: 30px;
+    right: 15px;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 140;
+    z-index: 100;
     filter: drop-shadow(0 0 4px var(--accent));
 }
 #AddTodoBtn #Icon {
     font-size: 35px;
 }
+#AppContainer[data-overlayactive="true"] #AddTodoBtn {bottom: 0;}
 
 #FinishedContainer {
     padding-bottom: 20px;
@@ -137,7 +139,7 @@
     border: 2px solid var(--base-darker);
     width: 100%;
     height: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     place-content: center;
     opacity: .85;
 }

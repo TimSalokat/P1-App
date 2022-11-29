@@ -4,6 +4,7 @@ import React from "react";
 import { BiSend } from "react-icons/bi";
 
 import { Global, Local } from "../functionality/functions";
+import { todos,projects } from "../functionality/modules";
 
 import "../css/Forms.css"
 
@@ -38,7 +39,7 @@ const Form = () => {
             var form = document.getElementById("input_form");
             event.preventDefault();
             if(Global.formInputs.title){
-                Local.addTodo(Global.formInputs);
+                todos.add(Global.formInputs);
                 closeForm_helper();
             }
             form.reset();
@@ -48,7 +49,6 @@ const Form = () => {
             <>
             <BottomBase label="Add Todo" 
                 closeForm_helper={closeForm_helper} 
-                submit={submit_helper}
                 >
 
                 <input type="text" 
@@ -74,16 +74,23 @@ const Form = () => {
                     </select>
                 </div>
 
-                <div className="ProjectSelect">
-                    <ProjectOption title={"All Todos"}/>
-                    {Global.projects.map((project) => {
-                        return(
-                            <ProjectOption 
-                                title={project.title}
-                                key={project.index}
-                                />
-                        )
-                    })}
+                <div className="Header">
+                    <div className="ProjectSelect">
+                        <ProjectOption title={"All Todos"}/>
+                        {projects.projects.map((project) => {
+                            return(
+                                <ProjectOption 
+                                    title={project.title}
+                                    key={project.index}
+                                    />
+                            )
+                        })}
+                    </div>
+
+                    <button className="button" onClick={submit_helper}>
+                        <BiSend id="Icon" style={{rotate:"270deg", fontSize:"33px"}}/>
+                    </button>
+
                 </div>
             </BottomBase>
             </>
@@ -94,7 +101,8 @@ const Form = () => {
             var form = document.getElementById("input_form");
             event.preventDefault();
             if(Global.formInputs.title){
-                Local.addProject(Global.formInputs);
+                projects.add(Global.formInputs);
+                Global.activeproject = Global.formInputs.title;
                 closeForm_helper();
             }
             form.reset();
@@ -104,6 +112,8 @@ const Form = () => {
             <BottomBase label="Add Project" 
                 closeForm_helper={closeForm_helper}
                 submit={submit_helper}>
+                <div className="Header">
+
                 <input type="text" 
                     id="MainInput"
                     placeholder="Title" 
@@ -111,6 +121,11 @@ const Form = () => {
                     onChange={(e) =>{
                         Global.formInputs.title = e.target.value;
                     }}/>
+                <button className="button" onClick={submit_helper}>
+                    <BiSend id="Icon" style={{rotate:"270deg", fontSize:"33px"}}/>
+                </button>
+                
+                </div>
                 
             </BottomBase>
         )
@@ -124,9 +139,6 @@ const BottomBase = (props) => {
             <div className="Header" id="FormHeader">
                 <label>{props.label}</label>
                 {/* <button className="button_secondary small" onClick={props.closeForm_helper}>Cancel</button> */}
-                <button className="button" onClick={props.submit}>
-                    <BiSend id="Icon" style={{rotate:"270deg", fontSize:"33px"}}/>
-                </button>
             </div>
             {props.children}
         </form>

@@ -2,6 +2,8 @@
 import "../css/Projects.css";
 import { Global, Local } from "../functionality/functions";
 
+import { projects } from "../functionality/modules";
+
 // import {BiDownArrow} from "react-icons/bi";
 import { MdAdd } from "react-icons/md";
 
@@ -16,15 +18,10 @@ export default function Projects() {
 
             <div className="ProjectContainer stretch">
                 <Project title={"All Todos"}/>
-
-                {
-                    Global.projects.map((project) => {
+                {projects.projects.map((project) => {
                         return(
                             <Project title={project.title} key={project.uuid}/>
-                        )
-                    })
-                }
-
+                )})}
                 <div id="Chip" style={{height: "2.4rem"}} onClick={() => Local.openForm("AddProject")}> 
                     <MdAdd id="Icon" style={{color: "var(--text_color)"}}/>
                 </div>
@@ -42,23 +39,6 @@ const Project = (self) => {
         return Global.activeproject === self.title ? "active" : ""
     }
 
-    if(Global.activepage === "Home"){
-        return (
-            <div className="Project">
-    
-                <div>
-                    <label>{self.title}</label>
-                    <label id="PCounter">15</label>
-                    <Graphic/>
-                </div>
-    
-                <div className="row">
-                    <span id="ProgressBar"/>
-                    <h5>50%</h5>
-                </div>
-            </div>
-        )
-    }
     return(
         <div id="Chip" className={active()} onClick={() => {
             Global.setActiveProject = self.title;

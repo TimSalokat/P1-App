@@ -1,7 +1,15 @@
 
+#PagesContainer {
+    display: flex;
+    flex-flow: column wrap;
+    /* padding-bottom: 45px; */
+    padding-top: 60px;
+    height: 100vh;
+  }
+
 #Home_Page, #Todo_Page, #Settings_Page {
     max-width: 100vw;
-    min-height: calc(100vh - 55px);
+    max-height: 100%;
     flex-direction: column-reverse;
     background-color: var(--base);
 }
@@ -11,7 +19,10 @@
 #AppContainer:not([data-activepage="Settings"]) #PagesContainer #Settings_Page {display: none;}
 
 #Home_Page {
-    gap: 20px;
+    max-width: 100vw;
+    gap: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 #Settings_Page {

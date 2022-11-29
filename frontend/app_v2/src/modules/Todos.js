@@ -12,7 +12,8 @@ export default function Todos() {
 
     const [, updateState] = React.useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
-    React.useState(() => {
+
+    React.useEffect(() => {
       Global.setTodosRerender = forceUpdate;
     }, [])
 
@@ -22,7 +23,7 @@ export default function Todos() {
             if(e.absX < 140) return
             for(let i = 0; i < items.length; i++){
                 if(items[i].id === "TodoItem"){
-                    Local.deleteTodo(items[i].dataset.uuid)
+                    todos.delete(items[i].dataset.uuid)
             }}}
     });
 
@@ -38,7 +39,14 @@ export default function Todos() {
 
     return (
         <div className="Section">
-            <label>Todos in <span className="text_accent text_bold">{Global.activeproject}</span></label>
+
+            <div className="Header">
+                <label id="SectionLabel">Todos in <span className="text_accent text_bold">{Global.activeproject}</span></label>
+                <button className="button_secondary show-in-home" onClick={() => Local.link("Todos")}>
+                    See All
+                </button>
+            </div>
+
             <div className="TodoContainer ">
                 <DoneSVG className={"show-in-todos " + filteredEmpty()}/>
                 <div className={"show-in-home " + unfinishedEmpty()}>
@@ -49,10 +57,10 @@ export default function Todos() {
                     <TodoItem 
                     key={todo.uuid}
                     uuid={todo.uuid}
+                    data-uuid={todo.uuid}
                     todo={todo}
                     title={todo.title}
                     description={todo.description}
-                    data-uuid = {todo.uuid}
                     />
                 ))}
 
@@ -81,8 +89,7 @@ function TodoItem(self) {
     }
 
     const finishTodo_helper = () => {
-        Local.finishTodo(self.uuid)
-        Global.todosRerender();
+        todos.finish(self.uuid);
     }
 
     const descriptionEmpty = () => {
