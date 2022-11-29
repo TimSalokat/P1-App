@@ -1,5 +1,5 @@
 
-import {todos, projects, local_actions} from './modules';
+import {todos} from './modules';
 
 function placeholder_func() {
     return 

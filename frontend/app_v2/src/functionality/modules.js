@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { Global, Saving, Server } from "./functions";
 
-function placeholder_func(){return};
+// function placeholder_func(){return};
 
 const todos = {
     serverTodos: [],

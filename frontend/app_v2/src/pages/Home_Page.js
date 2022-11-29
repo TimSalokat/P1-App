@@ -7,6 +7,14 @@ import '../css/Home.css';
 import { BsCloudMoonFill } from 'react-icons/bs';
 import { Global } from '../functionality/functions';
 
+// function func() {return}
+
+// const testing = {
+//     test: "",
+//     set setTest()
+
+// }
+
 export default function Home_Page() {
 
     const [weatherFilter, setWeatherFilter] = React.useState("24:00");

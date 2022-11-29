@@ -1,7 +1,7 @@
 
 import React from "react";
-import { Global, Local, Server } from "../functionality/functions";
-import { todos, projects, local_actions } from "../functionality/modules";
+import { Global, Server } from "../functionality/functions";
+import { projects } from "../functionality/modules";
 
 export default function Settings_Page() {
 
