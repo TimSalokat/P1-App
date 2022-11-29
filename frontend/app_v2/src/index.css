@@ -367,6 +367,7 @@ select {
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
+  max-height: 40px;
 }
 .Header label {
   width: fit-content;
@@ -385,6 +386,8 @@ select {
   border: none;
   background: transparent;
   box-shadow: none;
+  height: 60%;
+  align-self: flex-end;
 }
 .Header #Icon {
   font-size: 1.6rem;

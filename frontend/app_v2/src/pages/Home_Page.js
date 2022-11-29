@@ -16,7 +16,7 @@ export default function Home_Page() {
         // console.log(weatherFilter)
     }, [weatherFilter])
 
-    const [selectedConnection, setSelectedConnection] = React.useState("ConnectionOne");
+    const [selectedConnection, setSelectedConnection] = React.useState("");
 
     return (
         <div id="Home_Page">

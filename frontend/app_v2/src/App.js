@@ -65,7 +65,7 @@ function App() {
     </>
   );
 }
-
+// eslint-disable-next-line
 const BottomMenu = () => {
 
   function isActive (value) {
