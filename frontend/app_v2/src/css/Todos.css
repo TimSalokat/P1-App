@@ -13,18 +13,19 @@
 }
 
 .Todo {
+    position: relative;
     width: calc(100% - 20px);
-    min-height: 67px;
-    max-height: 67px;
+    min-height: 65px;
+    max-height: 65px;
     margin: .5rem 10px;
-    border-radius: .75rem;
+    border-radius: 10px;
     background-color: var(--base-light);
     padding-left: .5rem;
-    align-content: flex-start;
+
 }
 .Todo:has(div p.hidden){
-    min-height: 52px;
-    max-height: 52px;
+    min-height: 50px;
+    max-height: 50px;
 }
 .Todo > div:nth-child(2) {
     flex: 1;
@@ -33,7 +34,9 @@
     margin-left: 10px;
 }
 .Todo > div label {
-    font-family: defaultBold;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 1px;
     text-transform: capitalize;
     display: -webkit-box;
     -webkit-line-clamp: 1;
@@ -51,8 +54,9 @@
     display: none;
 }
 .Todo > p {
+    letter-spacing: 1px;
     position: absolute;
-    font-size: 1rem;
+    font-size: 12px;
     right: 25%;
     color: var(--accent-light);
 }
@@ -64,7 +68,7 @@
 }
 
 #CheckBox {
-    font-size: 22px;
+    font-size: 20px;
     z-index: 1;
     fill: var(--text-color);
 }
@@ -131,4 +135,16 @@
     margin-bottom: 10px;
     place-content: center;
     opacity: .85;
+}
+
+#DelTodoButton{
+    position: absolute;
+    background-color: red;
+    border-radius: 0 10px 10px 0;
+    width: 65px;
+    align-self: flex-end;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

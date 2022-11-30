@@ -10,6 +10,7 @@ import { Global } from '../functionality/functions';
 function func() {return}
 
 const This = {
+
     selectConnection: func,
     set setConnectionSelector(new_func){
         this.selectConnection = new_func;
@@ -57,10 +58,10 @@ export default function Home_Page() {
         <HomeMainSection selected={menuItem}>
 
             <div id="Connections_wrapper" className='row nowrap'>
-                <Connection selected={selectedConnection} value="ConnectionOne"/>
-                <Connection selected={selectedConnection} value="ConnectionTwo"/>
-                <Connection selected={selectedConnection} value="ConnectionThree"/>
-                <Connection selected={selectedConnection} value="ConnectionFour"/>
+                <Connection selected={selectedConnection} value="One"/>
+                <Connection selected={selectedConnection} value="Two"/>
+                <Connection selected={selectedConnection} value="Three"/>
+                <Connection selected={selectedConnection} value="Four"/>
             </div>
         
         </HomeMainSection>
@@ -111,10 +112,10 @@ const Connection = (props) => {
                 Lukas
             </h4>
             <h4>
-                88:88<br/>
-                88:88<br/>
-                88:88<br/>
-                88:88
+                06:56<br/>
+                07:12<br/>
+                07:57<br/>
+                08:11
             </h4>
             <label></label>
             <div id='Decorator'/>

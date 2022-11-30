@@ -7,6 +7,7 @@ import DoneSVG from "../svg/DoneSVG";
 import {BsCircle, BsCheck2Circle} from "react-icons/bs";
 import { Global, Local } from "../functionality/functions";
 import { todos } from "../functionality/modules";
+import {TbTrashX} from "react-icons/tb";
 
 export default function Todos() {
 
@@ -20,7 +21,7 @@ export default function Todos() {
     const swipeHandler = useSwipeable({
         onSwipedLeft: (e) => {
             let items = e.event.path;
-            if(e.absX < 140) return
+            if(e.absX < 100) return
             for(let i = 0; i < items.length; i++){
                 if(items[i].id === "TodoItem"){
                     todos.delete(items[i].dataset.uuid)
@@ -112,9 +113,13 @@ function TodoItem(self) {
                 }
             </div>
 
-            <div>
+            <div style={{alignSelf:"flex-start", width:"100%"}}>
                 <label> {self.title} </label>
                 <p className={descriptionEmpty()}> {self.description} </p>
+            </div>
+
+            <div id="DelTodoButton">
+                <TbTrashX id="Icon"/>
             </div>
         </div>
     )
