@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Concert+One&display=swap');
+
 @font-face {
   font-family: defaultFont;
   src: url("/public/font/QuattrocentoSans-Regular.ttf");
@@ -29,9 +33,9 @@
 
   --color_variation: 10%;
 
-  --accent-h: 227;
-  --accent-s: 53%;
-  --accent-l: 41%;
+  --accent-h: 214;
+  --accent-s: 64%;
+  --accent-l: 43%;
 
   --base-l: 89%;
 }
@@ -82,7 +86,8 @@
 
 #AppContainer {
   min-height: 100vh;
-  padding: 50px 0;
+  padding: 0;
+  padding-bottom: 50px;
 }
 
 html, #root {
@@ -101,9 +106,9 @@ div {
 }
 
 h1 {font-size: 3.5rem;}
-h2 {font-size: 2.5rem;}
-h3 {font-size: 1.6rem;}
-h4 {font-size: 1.3rem;}
+h2 {font-size: 2.2rem;}
+h3 {font-size: 1.5rem;}
+h4 {font-size: 1.25rem;}
 h5 {font-size: 1.1rem; font-weight: 100;}
 
 label {font-size: 1.5rem;}
@@ -207,10 +212,10 @@ select {
 }
 
 .Section > label:nth-of-type(1), .ProjectHeader > label, #SectionLabel {
-  font-size: 1.75rem;
-  color: var(--text_color);
+  font-size: 1.3rem;
+  color: var(--base-darker);
   filter: drop-shadow(0px 0px 7px var(--base-light));
-  font-weight: 900;
+  font-family: defaultBold;
   text-align: left;
   border-radius: 0;
   /* margin: 8px; */
@@ -406,6 +411,21 @@ select {
   rotate: 180deg;
 }
 
+.ListSelector {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 8px 30px;
+  width: 100%;
+}
+
+.ListSelector li{
+  font-size: 13px;
+  font-family: Dosis;
+  font-weight: 900;
+  color: var(--base-darker);
+}
+
 .seperator {
   height: 2px;
   width: 60vw;
@@ -484,10 +504,10 @@ select {
   background-color: var(--base-light);
   box-shadow: var(--base_shadow);
   padding: 7px;
-  border-radius: 1rem;
+  border-radius: 10px;
 }
 #Chip > label {
-  font-size: 1.1rem;
+  font-size: 12px;
   font-family: defaultBold;
   color: inherit;
 }
@@ -515,6 +535,33 @@ select {
 #Icon > path {
   color: inherit;
 }
+
+#LogoContainer {
+  content: "";
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+#LogoContainer::before{
+  content:"";
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  filter: blur(5px);
+}
+#LogoContainer img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  z-index: 1;
+}
+
 
 #AppContainer:not([data-activePage="Todos"]) .show-in-todos {display: none;}
 #AppContainer:not([data-activePage="Home"]) .show-in-home {display: none;}

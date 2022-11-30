@@ -19,6 +19,8 @@ const This = {
 
 export default function Home_Page() {
 
+    let Logo = require('../images/nyan-cat.png');
+
     const [weatherFilter, setWeatherFilter] = React.useState("24:00");
     const [selectedConnection, setSelectedConnection] = React.useState("");
     Global.setWeatherFilterFunc = setWeatherFilter;
@@ -31,7 +33,7 @@ export default function Home_Page() {
     return (
         <div id="Home_Page">
         
-        <Todos/>
+        {/* <Todos/>
 
         <div id="HvvSection">
             <label id='SectionLabel'> Train Timings </label>  
@@ -40,8 +42,17 @@ export default function Home_Page() {
                 <Connection selected={selectedConnection} value="ConnectionTwo"/>
                 <Connection selected={selectedConnection} value="ConnectionThree"/>
             </div>
-        </div>
+        </div> */}
 
+        <div id="YouSection">
+            <div>
+                <h2>Morning <span className='text_accent text_bold'>Admin</span></h2>    
+                <h4>Should be a day like any other.</h4>    
+            </div>    
+            <div id='LogoContainer'>
+                <img src={Logo}/>
+            </div>
+        </div>
         
         <div id="YourDaySection">
             <WeatherSection/>
@@ -51,6 +62,22 @@ export default function Home_Page() {
                 <TimeOption label="Till 18:00" value="18:00" weatherFilter={weatherFilter}/>
             </div>
         </div>
+
+        <div id="HomeMainSection">
+            <ul className="ListSelector">
+                <li>Bahn</li>
+                <li>Stundenplan</li>
+                <li>Todos</li>
+                <li>Something</li>
+            </ul>
+
+            <div id="Connections_wrapper" className='row nowrap'>
+                <Connection selected={selectedConnection} value="ConnectionOne"/>
+                <Connection selected={selectedConnection} value="ConnectionTwo"/>
+                <Connection selected={selectedConnection} value="ConnectionThree"/>
+            </div>
+        </div>
+
     </div>
     )
 }

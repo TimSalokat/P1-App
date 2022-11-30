@@ -7,7 +7,7 @@
 }
 
 #WeatherSection {
-    border-radius: 20px;
+    border-radius: 15px;
     height: 20vh;
     background: var(--accent-gradient);
     margin: 10px;
@@ -29,20 +29,21 @@
 }
 
 .TextContainer h3, .TextContainer h4{
-    color: var(--base);
+    color: var(--base-dark);
     text-align: center;
 }
 .TextContainer h3 {
-    border-bottom: 2px solid var(--base-light);
+    color: var(--base);
+    border-bottom: 2px solid var(--base-dark);
     border-radius: 0;
     width: 70%;
 }
 
 #WeatherContainer{
     position: relative;
-    background-color: var(--accent-light);
-    min-width: 90px;
-    min-height: 90px;
+    background-color: var(--accent);
+    min-width: 85px;
+    min-height: 85px;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -51,31 +52,40 @@
     filter: drop-shadow(0 0 12px var(--accent-dark));
 }
 #WeatherContainer #Icon {
-    fill: var(--base);
-    font-size: 50px;
+    fill: var(--base-light);
+    font-size: 45px;
 }
 #TemperatureContainer {
     background-color: var(--base);
     position: absolute;
-    bottom: -8px;
-    right: -8px;
-    width: 40px;
-    height: 40px;
+    bottom: -5px;
+    right: -5px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
 }
 
+#HomeMainSection {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #Connections_wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     width: calc(100% - 20px);
-    overflow: scroll;
-    gap: 10px;
+    flex: 1;
+    gap: 15px;
+    padding: 10px;
 }
 
 #Connection {
     position: relative;
-    height: 100px;
-    min-width: 150px;
+    height: stretch;
     border-radius: 15px;
     padding: 10px;
     background-color: var(--base-light);
@@ -98,4 +108,21 @@
 }
 #Connection h4:nth-child(2) {
     text-align: right;
+}
+
+#YouSection {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    padding-bottom: 0;
+    height: 80px;
+}
+#YouSection h2 {
+    font-family: defaultBold;
+    color: var(--base-darkest);
+}
+#YouSection h4 {
+    color: var(--base-darker);
 }

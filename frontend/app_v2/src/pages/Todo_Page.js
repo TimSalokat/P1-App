@@ -10,8 +10,8 @@ export default function Todo_Page() {
     return (
         <>
         <div id="Todo_Page" className="column nowrap">
-            <Todos/>
             <Projects/>
+            <Todos/>
         </div>
         <AddTodoBtn/>
         </>

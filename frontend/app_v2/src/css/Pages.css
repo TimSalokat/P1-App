@@ -9,7 +9,7 @@
     max-width: 100vw;
     max-height: 100%;
     height: 99%;
-    flex-direction: column-reverse;
+    flex-direction: column;
     background-color: var(--base);
 }
 
