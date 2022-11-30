@@ -93,7 +93,7 @@
 #AppContainer {
   min-height: 100vh;
   padding: 0;
-  padding-bottom: 50px;
+  padding-bottom: 60px;
 }
 
 html, #root {
@@ -165,8 +165,9 @@ input, textarea {
   border: 0;
   background-color: var(--base-light);
   padding: 0 .5rem;
-  border-radius: 5px;
+  border-radius: 10px;
   margin: .2rem 0;
+  border-bottom: 1px solid transparent;
 }
 
 textarea {
@@ -177,7 +178,8 @@ textarea {
 textarea:focus, input:focus, option:focus {
   box-sizing: border-box;
   outline: none;
-  border-bottom: 1px solid var(--accent-light);
+  border-bottom: 1px solid var(--accent);
+  border-radius: 10px 10px 0 0;
 }
 
 select:focus {
@@ -282,16 +284,14 @@ select {
   color: var(--base-darker);
   font-size: 25px;
 }
-.MainMenuItem.active::after {
-  content: "";
-  position: absolute;
-  background-color: var(--accent);
-  width: 10px;
-  height: 5px;
-  left: calc(50% - 5px);
-  border-radius: 50%;
+.MainMenuItem.active::after{
+  content:"";
   bottom: -3px;
-  /* border-bottom: 2px solid var(--accent) */
+  left: calc(50% - 4px);
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  background-color: var(--accent);
 }
 .MainMenuItem.active #Icon {
   color: var(--accent);
@@ -525,7 +525,7 @@ select {
   border-radius: 10px;
 }
 #Chip > label {
-  font-size: 12px;
+  font-size: 14px;
   font-family: defaultBold;
   color: inherit;
 }
@@ -556,8 +556,8 @@ select {
 
 #LogoContainer {
   content: "";
-  width: 55px;
-  height: 55px;
+  width: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -566,16 +566,16 @@ select {
 #LogoContainer::before{
   content:"";
   position: absolute;
-  width: 59px;
-  height: 59px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background-color: var(--accent);
   filter: blur(5px);
 }
 #LogoContainer img {
   border-radius: 50%;
-  width: 55px;
-  height: 55px;
+  width: 45px;
+  height: 45px;
   object-fit: cover;
   z-index: 1;
 }

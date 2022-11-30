@@ -59,7 +59,6 @@
 #FormHeader label {
     font-size: 2rem;
     color: var(--base-light);
-    /* border-bottom: 2px solid var(--accent-light); */
 }
 #MainInput {
     height: 3.75rem;

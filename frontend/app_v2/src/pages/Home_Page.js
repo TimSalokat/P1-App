@@ -41,13 +41,13 @@ export default function Home_Page() {
         <div id="Home_Page">
 
         <div id="YouSection">
+            <div id='LogoContainer'>
+                <img src={Logo} alt="User_Icon"/>
+            </div>
             <div>
                 <h2>Morning <span className='text_accent text_bold'>Admin</span></h2>    
                 <h4>Should be a day like any other.</h4>    
             </div>    
-            <div id='LogoContainer'>
-                <img src={Logo} alt="User_Icon"/>
-            </div>
         </div>
         
         <div id="YourDaySection">
@@ -116,7 +116,8 @@ const Connection = (props) => {
                 88:88<br/>
                 88:88
             </h4>
-            <label>Selected</label>
+            <label></label>
+            <div id='Decorator'/>
         </div>
     )
 }

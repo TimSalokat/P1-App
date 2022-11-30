@@ -89,19 +89,22 @@
     position: relative;
     border-radius: 15px;
     padding: 10px;
+    padding-bottom: 5px;
     background-color: var(--base-light);
     box-shadow: var(--base_shadow);
     overflow: hidden;
     z-index: 1;
-    align-items: center;
+    align-items: flex-end;
+    border: 1px solid transparent;
 }
 #Connection.active {
-    box-shadow: 0 0 10px var(--accent)
+    box-shadow: 0 0 10px var(--accent);
+    border: 1px solid var(--accent);
 }
 #Connection label {
     font-size: 13px;
     width: 100%;
-    text-align: center;
+    text-align: right;
     font-family: Dosis;
     font-weight: 900;
     padding: 0;
@@ -111,7 +114,16 @@
     align-self: flex-end;
 }
 #Connection.active label {
-    color: var(--accent);
+    color: var(--base);
+    z-index: 1;
+    position: relative;
+}
+#Connection:not(.active) label::after {
+    content: "Placeholder";
+    visibility: hidden;
+}
+#Connection.active label::after {
+    content: "Selected"
 }
 #Connection h4 {
     color: var(--text-color);
@@ -122,11 +134,15 @@
     text-align: right;
     color: var(--accent);
 }
+#Connection.active #Decorator {
+    visibility: visible;
+}
 
 #YouSection {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 20px;
     align-items: center;
     padding: 20px;
     padding-top: 35px;
@@ -139,4 +155,17 @@
 }
 #YouSection h4 {
     color: var(--base-darker);
+}
+
+#Decorator {
+    width: 70px;
+    height: 200px;
+    background-color: var(--accent);
+    position: absolute;
+    bottom: -75%;
+    right: 2%;
+    rotate: 76deg;
+    visibility: hidden;
+    box-shadow: 0 0 3px var(--base-darker);
+    overflow: hidden;
 }

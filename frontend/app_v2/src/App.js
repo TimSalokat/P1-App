@@ -86,7 +86,11 @@ const BottomMenu = () => {
         <BiTask id="Icon"/>
       </div>
 
-      <div className={"MainMenuItem"+isActive("Temp")} onClick={() => Local.link("Nothing")}>
+      <div className={"MainMenuItem"} 
+        onClick={() => {
+            Local.link("Todos");
+            Local.openForm("AddTodo"); 
+          }}>
         <BsTriangle id="Icon" style={{fontSize:"80px", rotate:"180deg", color:"var(--accent)"}}/>
       </div>
 
