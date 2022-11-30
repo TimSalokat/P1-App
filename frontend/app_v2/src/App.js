@@ -100,17 +100,17 @@ const BottomMenu = () => {
   )
 }
 
-const TopMenu = () => {
-  return (
-    <div id="TopMenuBar" className="row nowrap">
-      <span id="Burger" onClick={() => Global.setMenuOpen = !Global.menuopen} style={{visibility:"hidden"}}/>
-      <h3>{Global.activepage}</h3>
-      {/* <MdHome id="Icon" className="show-not-in-home" onClick={() => Local.link("Home")}/> */}
-      {/* <div style={{width:"28px"}} className="show-in-home"/> */}
-      <div style={{width:"28px"}}></div>
-    </div>
-  )
-}
+// const TopMenu = () => {
+//   return (
+//     <div id="TopMenuBar" className="row nowrap">
+//       <span id="Burger" onClick={() => Global.setMenuOpen = !Global.menuopen} style={{visibility:"hidden"}}/>
+//       <h3>{Global.activepage}</h3>
+//       {/* <MdHome id="Icon" className="show-not-in-home" onClick={() => Local.link("Home")}/> */}
+//       {/* <div style={{width:"28px"}} className="show-in-home"/> */}
+//       <div style={{width:"28px"}}></div>
+//     </div>
+//   )
+// }
 
 const SideBar = () => {
 

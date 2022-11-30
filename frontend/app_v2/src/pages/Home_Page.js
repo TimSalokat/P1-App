@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Todos from '../modules/Todos';
+// import Todos from '../modules/Todos';
 
 import '../css/Pages.css';
 import '../css/Home.css';
@@ -50,7 +50,7 @@ export default function Home_Page() {
                 <h4>Should be a day like any other.</h4>    
             </div>    
             <div id='LogoContainer'>
-                <img src={Logo}/>
+                <img src={Logo} alt="User_Icon"/>
             </div>
         </div>
         
