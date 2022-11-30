@@ -26,6 +26,7 @@ export default function Home_Page() {
 
     let Logo = require('../images/nyan-cat.png');
 
+    //eslint-disable-next-line
     const [weatherFilter, setWeatherFilter] = React.useState("24:00");
     const [selectedConnection, setSelectedConnection] = React.useState("");
     const [menuItem, setMenuItem] = React.useState("Bahn");
