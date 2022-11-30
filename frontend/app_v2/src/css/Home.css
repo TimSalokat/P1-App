@@ -8,13 +8,15 @@
 
 #WeatherSection {
     border-radius: 15px;
-    height: 20vh;
+    height: 22vh;
     background: var(--accent-gradient);
     margin: 10px;
     padding: 20px;
     width: calc(100% - 20px);
     justify-content: space-between;
     align-items: center;
+    
+    box-shadow: 0 0 10px var(--accent)
 }
 #WeatherSection label {
     color: var(--text_color-light);
@@ -79,35 +81,46 @@
     grid-template-columns: 1fr 1fr;
     width: calc(100% - 20px);
     flex: 1;
-    gap: 15px;
+    gap: 20px;
     padding: 10px;
 }
 
 #Connection {
     position: relative;
-    height: stretch;
     border-radius: 15px;
     padding: 10px;
     background-color: var(--base-light);
     box-shadow: var(--base_shadow);
     overflow: hidden;
     z-index: 1;
-    align-content: center;
+    align-items: center;
 }
-#Connection.selected {
-    background: var(--accent-gradient);
-    color: var(--base)
+#Connection.active {
+    box-shadow: 0 0 10px var(--accent)
+}
+#Connection label {
+    font-size: 13px;
+    width: 100%;
+    text-align: center;
+    font-family: Dosis;
+    font-weight: 900;
+    padding: 0;
+    color: var(--base-darker);
+    letter-spacing: .5px;
+    height: fit-content;
+    align-self: flex-end;
+}
+#Connection.active label {
+    color: var(--accent);
 }
 #Connection h4 {
     color: var(--text-color);
     font-weight: 400;
     width: 50%;
 }
-#Connection:not(.selected) h4:nth-child(2) {
-    color: var(--accent);
-}
 #Connection h4:nth-child(2) {
     text-align: right;
+    color: var(--accent);
 }
 
 #YouSection {
@@ -116,6 +129,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    padding-top: 35px;
     padding-bottom: 0;
     height: 80px;
 }

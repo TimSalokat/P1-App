@@ -12,7 +12,12 @@ function func() {return}
 const This = {
     selectConnection: func,
     set setConnectionSelector(new_func){
-        this.selectConnection=new_func;
+        this.selectConnection = new_func;
+    },
+
+    selectMenuItem: func,
+    set setMenuItemSelector(new_func){
+        this.selectMenuItem = new_func;
     }
 
 }
@@ -23,26 +28,16 @@ export default function Home_Page() {
 
     const [weatherFilter, setWeatherFilter] = React.useState("24:00");
     const [selectedConnection, setSelectedConnection] = React.useState("");
+    const [menuItem, setMenuItem] = React.useState("Bahn");
     Global.setWeatherFilterFunc = setWeatherFilter;
 
     React.useEffect(() => {
-        // console.log(weatherFilter)
         This.setConnectionSelector = setSelectedConnection;
+        This.setMenuItemSelector = setMenuItem;
     }, [])
 
     return (
         <div id="Home_Page">
-        
-        {/* <Todos/>
-
-        <div id="HvvSection">
-            <label id='SectionLabel'> Train Timings </label>  
-            <div id="Connections_wrapper" className='row nowrap'>
-                <Connection selected={selectedConnection} value="ConnectionOne"/>
-                <Connection selected={selectedConnection} value="ConnectionTwo"/>
-                <Connection selected={selectedConnection} value="ConnectionThree"/>
-            </div>
-        </div> */}
 
         <div id="YouSection">
             <div>
@@ -56,27 +51,18 @@ export default function Home_Page() {
         
         <div id="YourDaySection">
             <WeatherSection/>
-            <div className='chip_wrapper row nowrap'>
-                <TimeOption label="Whole Day" value="24:00" weatherFilter={weatherFilter}/>
-                <TimeOption label="Till 13:25" value="13:25" weatherFilter={weatherFilter}/>
-                <TimeOption label="Till 18:00" value="18:00" weatherFilter={weatherFilter}/>
-            </div>
         </div>
 
-        <div id="HomeMainSection">
-            <ul className="ListSelector">
-                <li>Bahn</li>
-                <li>Stundenplan</li>
-                <li>Todos</li>
-                <li>Something</li>
-            </ul>
+        <HomeMainSection selected={menuItem}>
 
             <div id="Connections_wrapper" className='row nowrap'>
                 <Connection selected={selectedConnection} value="ConnectionOne"/>
                 <Connection selected={selectedConnection} value="ConnectionTwo"/>
                 <Connection selected={selectedConnection} value="ConnectionThree"/>
+                <Connection selected={selectedConnection} value="ConnectionFour"/>
             </div>
-        </div>
+        
+        </HomeMainSection>
 
     </div>
     )
@@ -100,33 +86,22 @@ const WeatherSection = () => {
     )
 }
 
-const TimeOption = (props) => {
-    function isActive() {
-        return props.value === props.weatherFilter ? "active" : ""}
-
-    return (
-        <div id='Chip' className={isActive()} onClick={() => {
-            Global.setWeatherFilter(props.value);
-        }}>
-            <label>
-                {props.label}
-            </label>
-        </div>
-    )
-}
-
 const Connection = (props) => {
     
     function isSelected(value){
-        return value === props.selected ? " selected" : ""
+        return value === props.selected ? " active" : ""
+    }
+
+    function onClick_handler(value){
+        value === props.selected ? This.selectConnection("") : This.selectConnection(value);
     }
 
     return (
         <div 
             id="Connection" 
-            className={'row'+isSelected(props.value)} 
+            className={'row' + isSelected(props.value).toString()} 
             value={props.value}
-            onClick={() => This.selectConnection(props.value)}
+            onClick={() => onClick_handler(props.value)}
         >
             <h4>
                 Meckelfeld<br/>
@@ -140,6 +115,28 @@ const Connection = (props) => {
                 88:88<br/>
                 88:88
             </h4>
+            <label>Selected</label>
+        </div>
+    )
+}
+
+const HomeMainSection = (props) => {
+
+    function isSelected(value) {
+        return value === props.selected ? " selected" : ""
+    }
+
+    return (
+        <div id="HomeMainSection">
+            <ul className="ListSelector">
+                <li className={isSelected("Bahn").toString()} onClick={() => This.selectMenuItem("Bahn")}>Bahn</li>
+                <li className={isSelected("Stundenplan").toString()} onClick={() => This.selectMenuItem("Stundenplan")}>Stundenplan</li>
+                <li className={isSelected("Todos").toString()} onClick={() => This.selectMenuItem("Todos")}>Todos</li>
+                <li className={isSelected("Something").toString()} onClick={() => This.selectMenuItem("Something")}>Something</li>
+            </ul>
+
+            {props.children}
+
         </div>
     )
 }

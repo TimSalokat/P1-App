@@ -1,6 +1,12 @@
 
 @import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Concert+One&display=swap');
+
+/* @import url('https://fonts.googleapis.com/css?family=Concert+One&display=swap'); */
+
+@font-face {
+  font-family: rounded;
+  src: url('https://fonts.googleapis.com/css?family=Concert+One&display=swap');
+}
 
 @font-face {
   font-family: defaultFont;
@@ -418,12 +424,24 @@ select {
   padding: 8px 30px;
   width: 100%;
 }
-
 .ListSelector li{
   font-size: 13px;
   font-family: Dosis;
   font-weight: 900;
   color: var(--base-darker);
+  position: relative;
+}
+.ListSelector li.selected {
+  color: var(--text_color);
+}
+.ListSelector li.selected::after{
+  content:"";
+  bottom: -3px;
+  left: calc(50% - 4px);
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  background-color: var(--accent);
 }
 
 .seperator {
@@ -538,8 +556,8 @@ select {
 
 #LogoContainer {
   content: "";
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -548,16 +566,16 @@ select {
 #LogoContainer::before{
   content:"";
   position: absolute;
-  width: 62px;
-  height: 62px;
+  width: 59px;
+  height: 59px;
   border-radius: 50%;
   background-color: var(--accent);
   filter: blur(5px);
 }
 #LogoContainer img {
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   object-fit: cover;
   z-index: 1;
 }
