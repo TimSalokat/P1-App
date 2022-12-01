@@ -24,11 +24,13 @@ function App() {
   const [mode, setMode] = React.useState(Global.activeScheme);
   const [color, setColor] = React.useState();
 
+  /* eslint-disable */
   React.useEffect(() => {
     Global.setAppRerender = forceUpdate;
     Global.setActiveSchemeSetter = setMode;
     Global.setAccentSetter = setColor;
   }, [])
+  /* eslint-enable */
 
   React.useEffect(() => {
     if(mode !== undefined)Saving.saveLocal(Global.COLOR_SCHEME_KEY, mode);
