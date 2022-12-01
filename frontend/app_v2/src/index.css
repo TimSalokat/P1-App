@@ -256,7 +256,7 @@ select {
 #BottomMenuBar {
   position: fixed;
   width: 80vw;
-  height: 40px;
+  height: 50px;
   bottom: 15px;
   left: 10vw;
   z-index: 100;
@@ -266,7 +266,7 @@ select {
   justify-content: center;
   padding: 0 20px;
   /* border-radius: 20px 20px 0 0; */
-  border-radius: 20px;
+  border-radius: 25px;
 }
 .MainMenuItem{
   position: relative;
@@ -281,7 +281,7 @@ select {
 }
 .MainMenuItem #Icon{
   color: var(--base-darker);
-  font-size: 22px;
+  font-size: 25px;
 }
 .MainMenuItem.active::after{
   content:"";
@@ -294,13 +294,13 @@ select {
 }
 .MainMenuItem.active #Icon {
   color: var(--accent);
-  font-size: 25px;
+  font-size: 27px;
 }
 
 #TriangleButton {
   position: relative;
   aspect-ratio: 1 / 0.8666;
-  width: 60px;
+  width: 65px;
   background: none;
   transform-origin: 50% 50%;
   opacity: 1;
@@ -311,30 +311,30 @@ select {
 #Triangle, #Triangle::before, #Triangle::after{
   position: absolute;
   width: inherit;
-  height: 5px;
+  height: 6px;
   background-color: var(--accent);
   box-shadow: 0px 0px 15px 1px var(--accent);
   border-radius: 18px;
   rotate: 180deg;
 }
-#Triangle {top: -5px;}
+#Triangle {top: -2px;}
 #Triangle::before{
   content: "";
-  rotate: 60deg;
+  rotate: 61deg;
   left: 46%;
   transform: translateX(-47%)
 }
 #Triangle::after{
   content: "";
-  rotate: -60deg;
+  rotate: -61deg;
   right: 46%;
   transform: translateX(47%);
 }
 #Triangle + #Icon{
   position: absolute;
-  top: 12%;
-  transform: translateX(calc(50% + 8px));
-  font-size: 22px;
+  top: 15%;
+  transform: translateX(calc(81.5%));
+  font-size: 25px;
   color: var(--base-darkest);
 }
 
