@@ -1,16 +1,18 @@
 
 import React from "react";
+import "../css/Settings.css";
+
 import { Global, Server } from "../functionality/functions";
 import { projects } from "../functionality/modules";
 
 export default function Settings_Page() {
 
-    const devRun = (func) => {
-        func();
-    }   
+    const devRun = (func) => {func();}   
 
     const [new_backend, setNewBackend] = React.useState("");
     const [project_toDelete, setProjectToDelete] = React.useState("");
+
+    const color_options = ["blue", "red", "orange", "green", "pink", "purple", "copper"]
 
     return(
         <div id="Settings_Page">
@@ -59,6 +61,25 @@ export default function Settings_Page() {
                             setProjectToDelete("");
                     }}> Delete </button>
                 </div>
+            </div>
+
+            <div className="Section">
+                <label> Theme </label>
+
+                <button onClick={() => {
+                    Global.setActiveScheme(!Global.activeScheme);
+                    Global.setLocalScheme = !Global.activeScheme;
+                }}>Change Scheme</button>
+                
+                <div id="ColorContainer">
+                    {color_options.map((color) => {
+                        return(
+                            <button className="small" style={{backgroundColor:color}} onClick={() => Global.setAccent(color)}>
+                                {/* {color} */}
+                            </button>
+                    )})}
+                </div>
+
             </div>
 
         </div>

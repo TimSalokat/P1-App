@@ -18,6 +18,12 @@ const Init = (self) => {
         if (last_page !== undefined && last_page !== "Settings") Global.setActivePage = last_page;
         else{Global.setActivePage = Global.superContainer.activepage;}
 
+        let local_accent = Saving.loadSave(Global.COLOR_ACCENT_KEY);
+        Global.setAccent(local_accent);
+
+        let local_scheme = Saving.loadSave(Global.COLOR_SCHEME_KEY);
+        Global.setActiveScheme(local_scheme);
+
         todos.load();
         projects.load();
         local_actions.load();

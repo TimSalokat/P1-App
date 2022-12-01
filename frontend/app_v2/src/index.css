@@ -32,22 +32,17 @@
 }
 
 * {
-  --text_color: rgb(50,50,50);
   --base_shadow: 0px .1rem .55rem .1rem var(--base-dark);
 
   --accent-gradient: linear-gradient(45deg, var(--accent-dark) 0%, var(--accent-light) 80%);
 
-  --color_variation: 17.5%;
+  --color_variation: 20%;
 
-  --accent-h: 214;
-  --accent-s: 64%;
-  --accent-l: 43%;
-
-  --base-l: 89%;
+  --text_color_darker: rgb(125,125,125);
+  --text_color-light: rgb(200,200,200);
 }
 
 * {
-  --text_color-light: var(--base);
 
   --accent-light-l: calc(var(--accent-l) + 5%);
   --accent-lightest-l: calc(var(--accent-l) + var(--color_variation));
@@ -82,18 +77,26 @@
 
 }
 
+body {
+  border-radius: 0;
+  background-color: var(--text_color);
+}
+
 #root {
   width: 100vw;
   height: 100vh;
   max-width: 100vw;
   overflow-x: hidden;
+  border-radius: 0;
   background-color: var(--base);
 }
 
 #AppContainer {
   min-height: 100vh;
+  border-radius: 0;
   padding: 0;
   padding-bottom: 60px;
+  background-color: var(--base);
 }
 
 html, #root {
@@ -117,7 +120,10 @@ h3 {font-size: 1.5rem;}
 h4 {font-size: 1.25rem;}
 h5 {font-size: 1.1rem; font-weight: 100;}
 
-label {font-size: 1.5rem}
+label {
+  font-size: 1.5rem;
+  color: var(--text_color_darker);
+}
 
 a{
   text-decoration: none;
@@ -220,7 +226,7 @@ select {
 }
 
 .Section > label:nth-of-type(1), .ProjectHeader > label, #SectionLabel {
-  color: var(--base-darker);
+  color: var(--text_color_darker);
   filter: drop-shadow(0px 0px 7px var(--base-light));
   font-weight: 600;
   font-size: 18px;
@@ -261,11 +267,10 @@ select {
   left: 10vw;
   z-index: 100;
   background-color: var(--base);
-  box-shadow: 0 0 12px var(--base-darker);
+  box-shadow: 0 0 12px var(--accent);
   align-content: space-around;
   justify-content: center;
   padding: 0 20px;
-  /* border-radius: 20px 20px 0 0; */
   border-radius: 25px;
 }
 .MainMenuItem{
@@ -280,21 +285,11 @@ select {
   border-radius: 0%;
 }
 .MainMenuItem #Icon{
-  color: var(--base-darker);
+  color: var(--text_color_darker);
   font-size: 25px;
-}
-.MainMenuItem.active::after{
-  content:"";
-  bottom: -3px;
-  left: calc(50% - 4px);
-  position: absolute;
-  width: 8px;
-  height: 2px;
-  background-color: var(--accent);
 }
 .MainMenuItem.active #Icon {
   color: var(--accent);
-  font-size: 27px;
 }
 
 #TriangleButton {
@@ -335,31 +330,7 @@ select {
   top: 15%;
   transform: translateX(calc(81.5%));
   font-size: 25px;
-  color: var(--base-darkest);
-}
-
-.link_wrapper {
-  display: flex;
-}
-.IconLink {
-  flex-direction: row;
-  gap: 10px;
-  padding: 5px 20px;
-  align-items: center;
-}
-.IconLink label {
-  margin-top: 3px;
-  color: var(--base-darkest);
-  font-size: 1.75rem;
-  height: min-content;
-}
-.IconLink #Icon{
-  color: var(--base-darkest);
-  font-size: 2rem;
-}
-.IconLink.active label, .IconLink.active #Icon{
-  color: var(--accent);
-  text-decoration: underline;
+  color: var(--text_color_darker);
 }
 
 .Header {
@@ -406,7 +377,7 @@ select {
   font-size: 13px;
   font-family: Dosis;
   font-weight: 900;
-  color: var(--base-darker);
+  color: var(--text_color_darker);
   position: relative;
 }
 .ListSelector li.selected {

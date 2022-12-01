@@ -41,6 +41,7 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    color: var(--text_color);
 }
 .Todo > div p {
     display: -webkit-box;
@@ -69,7 +70,7 @@
 #CheckBox {
     font-size: 20px;
     z-index: 1;
-    fill: var(--text-color);
+    fill: var(--text_color);
 }
 
 .CheckBoxContainer{
@@ -107,7 +108,7 @@
 }
 
 #finished_seperator {
-    background-color: var(--base-darker);
+    background-color: var(--text_color_darker);
     min-height: 2px;
     margin-bottom: 10px;
 }
@@ -125,7 +126,7 @@
     font-size: 1.75rem;
     font-family: defaultBold;
     text-align: center;
-    color: var(--base-darker);
+    color: var(--text_color_darker);
 }
 #DoneSVG + div{
     width: 100%;
@@ -137,7 +138,7 @@
 
 #DelTodoButton{
     position: absolute;
-    background-color: red;
+    background-color: rgb(183, 38, 38);
     border-radius: 0 10px 10px 0;
     width: 55px;
     align-self: flex-end;
@@ -148,4 +149,7 @@
 }
 #DelTodoButton.show {
     display: flex;
+}
+#DelTodoButton #Icon {
+    color: var(--text_color);
 }

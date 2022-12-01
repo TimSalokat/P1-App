@@ -3,7 +3,7 @@ import React from "react";
 
 import Init from "./functionality/init";
 import Overlay from "./modules/Overlay";
-import { Global, Local } from "./functionality/functions";
+import { Global, Local, Saving } from "./functionality/functions";
 
 import Home_Page from "./pages/Home_Page";
 import Todo_Page from "./pages/Todo_Page";
@@ -20,15 +20,91 @@ function App() {
 
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
-  React.useState(() => {
+
+  const [mode, setMode] = React.useState(Global.activeScheme);
+  const [color, setColor] = React.useState();
+
+  React.useEffect(() => {
     Global.setAppRerender = forceUpdate;
+    Global.setActiveSchemeSetter = setMode;
+    Global.setAccentSetter = setColor;
   }, [])
+
+  React.useEffect(() => {
+    if(mode !== undefined)Saving.saveLocal(Global.COLOR_SCHEME_KEY, mode);
+    if(color !== undefined)Saving.saveLocal(Global.COLOR_ACCENT_KEY, color);
+  }, [mode, color])
+  
+  let base = mode ? {
+      "--base-l": "80%",
+      "--text_color": "rgb(35,35,35)"}
+    :
+    {
+        "--base-l": "15%",
+        "--text_color": "rgb(185,185,185)"}
+
+  let accent = () => {switch(color) {
+    case "blue":
+      return {
+        "--accent-h": 214,
+        "--accent-s": "64%",
+        "--accent-l": "53%",
+      }  
+    case "red":
+      return {
+        "--accent-h": 353,
+        "--accent-s": "60%",
+        "--accent-l": "45%",
+      }
+    case "orange":
+      return {
+        "--accent-h": 20,
+        "--accent-s": "65%",
+        "--accent-l": "45%",
+      }
+    case "green":
+      return {
+        "--accent-h": 145,
+        "--accent-s": "40%",
+        "--accent-l": "45%",
+      }
+    case "pink":
+      return {
+        "--accent-h": 305,
+        "--accent-s": "40%",
+        "--accent-l": "45%",
+      }
+    case "purple":
+      return {
+        "--accent-h": 275,
+        "--accent-s": "50%",
+        "--accent-l": "45%",
+      }
+
+    
+    case "copper":
+      return {
+        "--accent-h": 20,
+        "--accent-s": "40%",
+        "--accent-l": "45%",
+      }
+
+    default:
+      return {
+        "--accent-h": 214,
+        "--accent-s": "64%",
+        "--accent-l": "53%",
+      }
+  }}
+
+  let style = {...accent(), ...base}
 
   return (
     <>
     
     <div 
       id="AppContainer" 
+      style={style}
 
       data-menuopen="false"
       data-activepage="Home"

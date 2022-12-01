@@ -31,13 +31,13 @@
 }
 
 .TextContainer h3, .TextContainer h4{
-    color: var(--base-dark);
+    color: var(--text_color-light);
     text-align: center;
     width: 90%;
 }
 .TextContainer h3 {
-    color: var(--base);
-    border-bottom: 2px solid var(--base-dark);
+    color: var(--text_color-light);
+    border-bottom: 2px solid var(--text_color-light);
     border-radius: 0;
     width: 60%;
 }
@@ -55,11 +55,11 @@
     filter: drop-shadow(0 0 12px var(--accent-dark));
 }
 #WeatherContainer #Icon {
-    fill: var(--base-light);
+    fill: var(--text_color-light);
     font-size: 45px;
 }
 #TemperatureContainer {
-    background-color: var(--base);
+    background-color: var(--text_color-light);
     position: absolute;
     bottom: -5px;
     right: -5px;
@@ -70,6 +70,7 @@
     justify-content: center;
     letter-spacing: 1px;
 }
+#TemperatureContainer h4 {color: var(--base-darkest);}
 
 #HomeMainSection {
     flex: 1;
@@ -96,7 +97,7 @@
     padding: 10px;
     padding-bottom: 5px;
     background-color: var(--base-light);
-    box-shadow: 0 0 10px var(--base-darker);
+    box-shadow: 0 0 10px var(--base-dark);
     overflow: hidden;
     z-index: 1;
     align-items: flex-end;
@@ -113,7 +114,7 @@
     font-family: Dosis;
     font-weight: 900;
     padding: 0;
-    color: var(--base-darker);
+    color: var(--text_color_darker);
     letter-spacing: .5px;
     height: fit-content;
     align-self: flex-end;
@@ -160,10 +161,10 @@
 }
 #YouSection h2 {
     font-family: defaultBold;
-    color: var(--base-darkest);
+    color: var(--text_color);
 }
 #YouSection h4 {
-    color: var(--base-darker);
+    color: var(--text_color);
 }
 
 #Decorator {

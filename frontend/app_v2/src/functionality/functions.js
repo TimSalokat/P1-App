@@ -7,12 +7,12 @@ function placeholder_func() {
 
 const Global = {
     BACKEND_KEY: "todoApp.backend",
-    HISTORY_KEY: "todoApp.history",
     TODO_KEY: "todoApp.local_todos",
     PROJECT_KEY: "todoApp.projects",
     LOCAL_ACTIONS_KEY: "todoApp.local_actions",
     PAGE_KEY: "todoApp.last_page",
     COLOR_SCHEME_KEY: "todoApp.color_scheme",
+    COLOR_ACCENT_KEY: "todoApp.color_accent",
 
     backend: "http://127.0.0.1:8000",
     set setBackend(new_backend){
@@ -20,6 +20,20 @@ const Global = {
         if(Server.ping()){
             Server.fetchTodos();
         }else{console.error("Server not reachable");};
+    },
+
+    activeScheme: undefined,
+    set setLocalScheme(new_scheme){
+        this.activeScheme = new_scheme;
+    },
+    setActiveScheme: placeholder_func,
+    set setActiveSchemeSetter(new_func){
+        this.setActiveScheme = new_func;
+    },
+
+    setAccent: placeholder_func,
+    set setAccentSetter(new_func){
+        this.setAccent = new_func;
     },
 
     form: "",
@@ -109,9 +123,11 @@ class Saving {
     }
     
     static loadSave = ( KEY, raw = false) => {
-        const stored = JSON.parse(localStorage.getItem(KEY));
-        if(raw) return stored
-        else if(stored !== null) return stored;
+        let stored = localStorage.getItem(KEY);
+        if(stored === undefined || stored === null) return
+        const storedJson = JSON.parse(stored);
+        if(raw) return storedJson
+        else if(storedJson !== null) return storedJson;
     }
 }
 

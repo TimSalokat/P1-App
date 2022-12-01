@@ -18,14 +18,13 @@
 }
 .ProjectSelect #Chip {
     border: none;
-    background-color: var(--base-dark);
-    box-shadow: none;
+    background-color: var(--base);
     font-size: 1.2rem;
     font-family: defaultBold;
     min-width: max-content;
 }
 .ProjectSelect #Chip.active {
-    background-color: var(--accent-light);
+    background-color: var(--accent);
 }
 
 .bottomForm {
@@ -35,7 +34,7 @@
     bottom: 0;
     min-height: 50px;
     z-index: 150;
-    background-color: var(--base);
+    background-color: var(--base-dark);
     padding: .8rem;
     border-radius: 25px 25px 0 0;
 }
@@ -58,7 +57,7 @@
 }
 #FormHeader label {
     font-size: 2rem;
-    color: var(--base-light);
+    color: var(--text_color);
 }
 #MainInput {
     height: 3.75rem;
