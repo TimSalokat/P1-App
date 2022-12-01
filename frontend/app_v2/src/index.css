@@ -37,7 +37,7 @@
 
   --accent-gradient: linear-gradient(45deg, var(--accent-dark) 0%, var(--accent-light) 80%);
 
-  --color_variation: 10%;
+  --color_variation: 17.5%;
 
   --accent-h: 214;
   --accent-s: 64%;
@@ -50,7 +50,7 @@
   --text_color-light: var(--base);
 
   --accent-light-l: calc(var(--accent-l) + 5%);
-  --accent-lightest-l: calc(var(--accent-l) + 15%);
+  --accent-lightest-l: calc(var(--accent-l) + var(--color_variation));
   --accent-dark-l: calc(var(--accent-l) - var(--color_variation));
 
   --accent: hsl( var(--accent-h),
@@ -320,13 +320,13 @@ select {
 #Triangle {top: -2px;}
 #Triangle::before{
   content: "";
-  rotate: 61deg;
+  rotate: 60.5deg;
   left: 46%;
   transform: translateX(-47%)
 }
 #Triangle::after{
   content: "";
-  rotate: -61deg;
+  rotate: -60.5deg;
   right: 46%;
   transform: translateX(47%);
 }

@@ -80,11 +80,11 @@ function TodoItem(self) {
 
     const swipeHandler = useSwipeable({
         onSwipedLeft: (e) => {
-            if(e.absX < 100) return   
+            if(e.absX < 80) return   
             setShowDelete(true);
         },
         onSwipedRight: (e) => {
-            if(e.absX < 100) return
+            if(e.absX < 80) return
             setShowDelete(false);
         }
     });
