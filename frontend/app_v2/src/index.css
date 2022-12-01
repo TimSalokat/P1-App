@@ -117,7 +117,7 @@ h3 {font-size: 1.5rem;}
 h4 {font-size: 1.25rem;}
 h5 {font-size: 1.1rem; font-weight: 100;}
 
-label {font-size: 1.5rem;}
+label {font-size: 1.5rem}
 
 a{
   text-decoration: none;
@@ -255,15 +255,18 @@ select {
 
 #BottomMenuBar {
   position: fixed;
-  width: 100vw;
-  height: 45px;
-  bottom: 0px;
+  width: 80vw;
+  height: 40px;
+  bottom: 15px;
+  left: 10vw;
   z-index: 100;
   background-color: var(--base);
+  box-shadow: 0 0 12px var(--base-darker);
   align-content: space-around;
   justify-content: center;
-  padding: 0 40px;
-  border-radius: 20px 20px 0 0;
+  padding: 0 20px;
+  /* border-radius: 20px 20px 0 0; */
+  border-radius: 20px;
 }
 .MainMenuItem{
   position: relative;
@@ -276,12 +279,9 @@ select {
   right: 0;
   border-radius: 0%;
 }
-/* .MainMenuItem::after {
-  display: none;
-} */
 .MainMenuItem #Icon{
   color: var(--base-darker);
-  font-size: 25px;
+  font-size: 22px;
 }
 .MainMenuItem.active::after{
   content:"";
@@ -294,78 +294,57 @@ select {
 }
 .MainMenuItem.active #Icon {
   color: var(--accent);
-  font-size: 27px;
+  font-size: 25px;
 }
 
-#TopMenuBar {
-  width: 100%;
-  height: 50px;
-  position: fixed;
-  top: 0;
-  background-color: var(--base);
-  /* border-bottom: 2px solid var(--base-dark); */
-  border-radius: 0;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  z-index: 100;
-}
-#TopMenuBar #Icon, #TopMenuBar h3 {
-  color: var(--text_color);
-}
-#TopMenuBar h3 {
-  margin-top: 5px;
-}
-
-#Burger {
+#TriangleButton {
   position: relative;
-  height: 2px;
-  width: 25px;
-  background-color: var(--text_color);
-  z-index: 110;
-}
-#Burger::after, #Burger::before {
-  content:"";
-  position: absolute;
-  height: 2px;
-  width: 25px;
-  background-color: var(--text_color);
-}
-#Burger::after{top: 7px;}
-#Burger::before{top: -7px;}
-
-#AppContainer[data-menuopen="true"] #Burger {rotate: 45deg;}
-#AppContainer[data-menuopen="true"] #Burger::after {
-  rotate: 90deg;
-  top: 0;
-}
-#AppContainer[data-menuopen="true"] #Burger::before {visibility: hidden;}
-
-#SideBar {
-  position: fixed;
-  top: 0;
-  height: 100%;
-  width: 190px;
-  background-color: var(--base);
-  border-radius: 0 20px 20px 0;
-  justify-content: space-between;
-  padding: 20px 0px;
-
-  z-index: 105;
-  display: none;
-}
-#AppContainer[data-menuopen="true"] #SideBar{
+  aspect-ratio: 1 / 0.8666;
+  width: 60px;
+  background: none;
+  transform-origin: 50% 50%;
+  opacity: 1;
   display: flex;
+  justify-content: center;
 }
+
+#Triangle, #Triangle::before, #Triangle::after{
+  position: absolute;
+  width: inherit;
+  height: 5px;
+  background-color: var(--accent);
+  box-shadow: 0px 0px 15px 1px var(--accent);
+  border-radius: 18px;
+  rotate: 180deg;
+}
+#Triangle {top: -5px;}
+#Triangle::before{
+  content: "";
+  rotate: 60deg;
+  left: 46%;
+  transform: translateX(-47%)
+}
+#Triangle::after{
+  content: "";
+  rotate: -60deg;
+  right: 46%;
+  transform: translateX(47%);
+}
+#Triangle + #Icon{
+  position: absolute;
+  top: 12%;
+  transform: translateX(calc(50% + 8px));
+  font-size: 22px;
+  color: var(--base-darkest);
+}
+
 .link_wrapper {
   display: flex;
-  /* gap: 10px; */
 }
 .IconLink {
   flex-direction: row;
   gap: 10px;
   padding: 5px 20px;
-  /* border-bottom: 2px solid var(--base-darker); */
   align-items: center;
 }
 .IconLink label {

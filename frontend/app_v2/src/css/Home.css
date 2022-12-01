@@ -68,6 +68,7 @@
     border-radius: 50%;
     align-items: center;
     justify-content: center;
+    letter-spacing: 1px;
 }
 
 #HomeMainSection {
@@ -106,7 +107,7 @@
     border: 1px solid var(--accent);
 }
 #Connection label {
-    font-size: 13px;
+    font-size: 12px;
     width: 100%;
     text-align: right;
     font-family: Dosis;
@@ -135,7 +136,7 @@
     line-height: 16px;
     letter-spacing: 1px;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 14px;
     width: 50%;
 }
 #Connection h4:nth-child(2) {

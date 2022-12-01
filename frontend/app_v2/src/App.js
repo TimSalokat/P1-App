@@ -7,12 +7,13 @@ import { Global, Local } from "./functionality/functions";
 
 import Home_Page from "./pages/Home_Page";
 import Todo_Page from "./pages/Todo_Page";
-
-import { MdArticle, MdHome, MdLibraryBooks, MdSettings } from "react-icons/md";
 import Settings_Page from "./pages/Settings_Page";
+
 import { FormHandler } from "./modules/FormHandler";
+
+import { MdHome, MdLibraryBooks, MdSettings } from "react-icons/md";
 import { BiTask } from "react-icons/bi";
-import { BsTriangle } from "react-icons/bs";
+import {HiPlus} from "react-icons/hi";
 // import {CgMenuLeft} from "react-icons/cg";
 
 function App() {
@@ -51,11 +52,7 @@ function App() {
       </div>
 
       <FormHandler/>
-
-      {/* <TopMenu/> */}
       <BottomMenu/>
-
-      <SideBar/>
 
       <Overlay click={() => {
         Global.setMenuOpen = false;
@@ -65,7 +62,6 @@ function App() {
         }}/>
 
     </div>
-
 
     </>
   );
@@ -86,13 +82,21 @@ const BottomMenu = () => {
         <BiTask id="Icon"/>
       </div>
 
-      <div className={"MainMenuItem"} 
+      <div id="TriangleButton" onClick={() => {
+        Local.link("Todos");
+        Local.openForm("AddTodo");
+      }}>
+        <span id="Triangle"/>
+        <HiPlus id="Icon"/>
+      </div>
+
+      {/* <div className={"MainMenuItem"} 
         onClick={() => {
             Local.link("Todos");
             Local.openForm("AddTodo"); 
           }}>
         <BsTriangle id="Icon" style={{fontSize:"80px", rotate:"180deg", color:"var(--accent)"}}/>
-      </div>
+      </div> */}
 
       <div className={"MainMenuItem"+isActive("Library")} onClick={() => Local.link("Library")}>
         <MdLibraryBooks id="Icon"/>
@@ -100,51 +104,6 @@ const BottomMenu = () => {
       <div className={"MainMenuItem"+isActive("Settings")} onClick={() => Local.link("Settings")}>
         <MdSettings id="Icon"/>
       </div>
-    </div>
-  )
-}
-
-// const TopMenu = () => {
-//   return (
-//     <div id="TopMenuBar" className="row nowrap">
-//       <span id="Burger" onClick={() => Global.setMenuOpen = !Global.menuopen} style={{visibility:"hidden"}}/>
-//       <h3>{Global.activepage}</h3>
-//       {/* <MdHome id="Icon" className="show-not-in-home" onClick={() => Local.link("Home")}/> */}
-//       {/* <div style={{width:"28px"}} className="show-in-home"/> */}
-//       <div style={{width:"28px"}}></div>
-//     </div>
-//   )
-// }
-
-const SideBar = () => {
-
-  function isActive (value) {
-    return Global.activepage === value ? " active" : "";
-  }
-
-  return (
-    <div id="SideBar">
-
-      <div id="personal_wrapper">
-
-      </div>
-
-      <div className="link_wrapper">
-        <div className={"IconLink"+isActive("Home")} onClick={() => Local.link("Home")}>
-          <MdHome id="Icon"/>
-          <label>Home</label>
-        </div>
-        <div className={"IconLink"+isActive("Todos")} onClick={() => Local.link("Todos")}>
-          <MdArticle id="Icon"/>
-          <label>Todos</label>
-        </div>        
-      </div>
-
-      <div style={{justifySelf:"flex-end"}} className={"IconLink"+isActive("Settings")} onClick={() => Local.link("Settings")}>
-        <MdSettings id="Icon"/>
-        <label>Settings</label>
-      </div>        
-
     </div>
   )
 }
