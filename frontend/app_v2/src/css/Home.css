@@ -16,7 +16,7 @@
     justify-content: space-between;
     align-items: center;
     
-    box-shadow: 0 0 10px var(--accent)
+    /* box-shadow: 0 0 10px var(--accent) */
 }
 #WeatherSection label {
     color: var(--text_color-light);
@@ -76,6 +76,10 @@
     align-items: center;
     justify-content: center;
 }
+#HomeMainSection>div{
+    padding: 10px;
+    flex: 1;
+}
 
 #Connections_wrapper{
     display: grid;
@@ -83,7 +87,6 @@
     width: calc(100% - 20px);
     flex: 1;
     gap: 20px;
-    padding: 10px;
 }
 
 #Connection {
@@ -92,14 +95,14 @@
     padding: 10px;
     padding-bottom: 5px;
     background-color: var(--base-light);
-    box-shadow: var(--base_shadow);
+    box-shadow: 0 0 10px var(--base-darker);
     overflow: hidden;
     z-index: 1;
     align-items: flex-end;
     border: 1px solid transparent;
 }
 #Connection.active {
-    box-shadow: 0 0 10px var(--accent);
+    box-shadow: 0 0 12px var(--accent);
     border: 1px solid var(--accent);
 }
 #Connection label {
@@ -127,7 +130,7 @@
     content: "Selected"
 }
 #Connection h4 {
-    color: var(--text-color);
+    color: var(--text_color);
     font-family: Dosis;
     line-height: 16px;
     letter-spacing: 1px;
@@ -174,3 +177,4 @@
     box-shadow: 0 0 3px var(--base-darker);
     overflow: hidden;
 }
+

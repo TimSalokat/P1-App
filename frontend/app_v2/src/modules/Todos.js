@@ -18,16 +18,6 @@ export default function Todos() {
       Global.setTodosRerender = forceUpdate;
     }, [])
 
-    const swipeHandler = useSwipeable({
-        onSwipedLeft: (e) => {
-            let items = e.event.path;
-            if(e.absX < 100) return
-            for(let i = 0; i < items.length; i++){
-                if(items[i].id === "TodoItem"){
-                    todos.delete(items[i].dataset.uuid)
-            }}}
-    });
-
     function unfinishedEmpty() {
         return todos.unfinished.length === 0 ? "" : "hidden"
     }
@@ -41,8 +31,8 @@ export default function Todos() {
     return (
         <div className="Section">
 
-            <div className="Header">
-                <label id="SectionLabel">Todos in <span className="text_accent text_bold">{Global.activeproject}</span></label>
+            <div className="Header show-in-todos">
+                <label id="SectionLabel">Project: <span className="text_accent text_bold">{Global.activeproject}</span></label>
                 <button className="button_secondary show-in-home" onClick={() => Local.link("Todos")}>
                     See All
                 </button>
@@ -67,7 +57,7 @@ export default function Todos() {
 
                 <span className={"seperator large show-in-todos " + finishedEmpty()} id="finished_seperator"/>
 
-                <div id="FinishedContainer" className="show-in-todos" {...swipeHandler}>
+                <div id="FinishedContainer" className="show-in-todos" >
                     {todos.finished.map((todo) => (
                             <TodoItem 
                             key={todo.uuid}
@@ -85,23 +75,32 @@ export default function Todos() {
 
 function TodoItem(self) {
 
-    const isFinished = () => {
-        return self.todo.finished ? "finished" : "";
-    }
+    
+    const [_showDelete, setShowDelete] = React.useState(false);
 
-    const finishTodo_helper = () => {
-        todos.finish(self.uuid);
-    }
+    const swipeHandler = useSwipeable({
+        onSwipedLeft: (e) => {
+            if(e.absX < 100) return   
+            setShowDelete(true);
+        },
+        onSwipedRight: (e) => {
+            if(e.absX < 100) return
+            setShowDelete(false);
+        }
+    });
 
-    const descriptionEmpty = () => {
-        return self.description === "" ? "hidden" : ""
-    }
+    const isFinished = () => {return self.todo.finished ? "finished" : "";}
+    const descriptionEmpty = () => {return self.description === "" ? "hidden" : ""}
+    const showDelete = () => {return _showDelete ? "show" : ""};
+
+    const finishTodo_helper = () => {todos.finish(self.uuid);}
 
     return (
         <div 
             className={"Todo " + isFinished()} 
             id="TodoItem"
             data-uuid={self.uuid}
+            {...swipeHandler}
         >
 
             <div className="CheckBoxContainer">
@@ -118,7 +117,7 @@ function TodoItem(self) {
                 <p className={descriptionEmpty()}> {self.description} </p>
             </div>
 
-            <div id="DelTodoButton">
+            <div id="DelTodoButton" className={showDelete()} onClick={() => todos.delete(self.uuid)}>
                 <TbTrashX id="Icon"/>
             </div>
         </div>

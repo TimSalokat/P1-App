@@ -1,6 +1,6 @@
 
 import React from 'react';
-// import Todos from '../modules/Todos';
+import Todos from '../modules/Todos';
 
 import '../css/Pages.css';
 import '../css/Home.css';
@@ -56,14 +56,7 @@ export default function Home_Page() {
         </div>
 
         <HomeMainSection selected={menuItem}>
-
-            <div id="Connections_wrapper" className='row nowrap'>
-                <Connection selected={selectedConnection} value="One"/>
-                <Connection selected={selectedConnection} value="Two"/>
-                <Connection selected={selectedConnection} value="Three"/>
-                <Connection selected={selectedConnection} value="Four"/>
-            </div>
-        
+            <MainComponent selected={menuItem} selectedConnection={selectedConnection}/>
         </HomeMainSection>
 
     </div>
@@ -133,13 +126,30 @@ const HomeMainSection = (props) => {
         <div id="HomeMainSection">
             <ul className="ListSelector">
                 <li className={isSelected("Bahn").toString()} onClick={() => This.selectMenuItem("Bahn")}>Bahn</li>
-                <li className={isSelected("Stundenplan").toString()} onClick={() => This.selectMenuItem("Stundenplan")}>Stundenplan</li>
                 <li className={isSelected("Todos").toString()} onClick={() => This.selectMenuItem("Todos")}>Todos</li>
-                <li className={isSelected("Something").toString()} onClick={() => This.selectMenuItem("Something")}>Something</li>
+                <li className={isSelected("Stundenplan").toString()} onClick={() => This.selectMenuItem("Stundenplan")}>Stundenplan</li>
+                <li className={isSelected("Weather").toString()} onClick={() => This.selectMenuItem("Weather")}>Weather</li>
             </ul>
 
             {props.children}
 
         </div>
     )
+}
+
+const MainComponent = (props) => {
+    switch(props.selected){
+        case "Bahn":
+            return (
+            <div id="Connections_wrapper" className='row nowrap'>
+                <Connection selected={props.selectedConnection} value="One"/>
+                <Connection selected={props.selectedConnection} value="Two"/>
+                <Connection selected={props.selectedConnection} value="Three"/>
+                <Connection selected={props.selectedConnection} value="Four"/>
+            </div> );
+        case "Todos":
+            return <Todos/>;
+        default: 
+            return <div>Couldnt load</div>
+    }
 }

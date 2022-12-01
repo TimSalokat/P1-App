@@ -8,9 +8,9 @@
     flex: 1;
     overflow: hidden;
 }
-#AppContainer[data-activePage="Home"] .TodoContainer > *:nth-child(n+6){
+/* #AppContainer[data-activePage="Home"] .TodoContainer > *:nth-child(n+6){
     display: none;
-}
+} */
 
 .Todo {
     position: relative;
@@ -21,7 +21,6 @@
     border-radius: 10px;
     background-color: var(--base-light);
     padding-left: .5rem;
-
 }
 .Todo:has(div p.hidden){
     min-height: 50px;
@@ -129,7 +128,6 @@
     color: var(--base-darker);
 }
 #DoneSVG + div{
-    border: 2px solid var(--base-darker);
     width: 100%;
     height: 100%;
     margin-bottom: 10px;
@@ -141,10 +139,13 @@
     position: absolute;
     background-color: red;
     border-radius: 0 10px 10px 0;
-    width: 65px;
+    width: 55px;
     align-self: flex-end;
     height: 100%;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
+}
+#DelTodoButton.show {
+    display: flex;
 }
