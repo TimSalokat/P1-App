@@ -95,7 +95,7 @@ body {
   min-height: 100vh;
   border-radius: 0;
   padding: 0;
-  padding-bottom: 60px;
+  padding-bottom: 90px;
   background-color: var(--base);
 }
 
@@ -261,10 +261,10 @@ select {
 
 #BottomMenuBar {
   position: fixed;
-  width: 80vw;
-  height: 50px;
+  width: 85vw;
+  height: 60px;
   bottom: 15px;
-  left: 10vw;
+  left: 7.5vw;
   z-index: 100;
   background-color: var(--base);
   box-shadow: 0 0 12px var(--accent);
@@ -279,14 +279,14 @@ select {
   align-content: center;
   justify-content: center;
   background: transparent;
-  height: 30px;
-  width: 30px;
+  height: 45px;
+  width: 45px;
   right: 0;
   border-radius: 0%;
 }
 .MainMenuItem #Icon{
   color: var(--text_color_darker);
-  font-size: 25px;
+  font-size: 30px;
 }
 .MainMenuItem.active #Icon {
   color: var(--accent);
@@ -295,7 +295,7 @@ select {
 #TriangleButton {
   position: relative;
   aspect-ratio: 1 / 0.8666;
-  width: 65px;
+  width: 75px;
   background: none;
   transform-origin: 50% 50%;
   opacity: 1;
@@ -327,9 +327,9 @@ select {
 }
 #Triangle + #Icon{
   position: absolute;
-  top: 15%;
-  transform: translateX(calc(81.5%));
-  font-size: 25px;
+  top: 14%;
+  transform: translateX(calc(75%));
+  font-size: 30px;
   color: var(--text_color_darker);
 }
 
