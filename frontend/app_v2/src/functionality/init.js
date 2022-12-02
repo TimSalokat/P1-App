@@ -1,12 +1,25 @@
 
+import React, { Component } from "react"
 import { useEffect } from "react"
 import { Global, Saving, Server} from "./functions"
-import { todos, projects, local_actions } from "./modules"
+import { todos, projects, local_actions, log } from "./modules"
 
 const Init = (self) => {
 
+    let [displayedLog,] = React.useState([]);
+
+    let [mode, ] = React.useState(Global.activeScheme);
+    let [color, ] = React.useState();
+
+    useEffect(() => {
+        log.setLog = displayedLog;
+        Global.makeMode = mode;
+        Global.makeAccent = color;
+    }, [])
+
     useEffect(() => {
         console.warn("Initialization");
+        log.add("init");
 
         Global.setSuperContainer = document.getElementById("AppContainer").dataset;
         Global.setFormContainer = document.getElementById("FormContainer");
@@ -15,14 +28,17 @@ const Init = (self) => {
         Global.setActiveProject = Global.superContainer.activeproject;
 
         let last_page = Saving.loadSave(Global.PAGE_KEY);
+        log.add("Last page: " + last_page);
         if (last_page !== undefined && last_page !== "Settings") Global.setActivePage = last_page;
         else{Global.setActivePage = Global.superContainer.activepage;}
 
         let local_accent = Saving.loadSave(Global.COLOR_ACCENT_KEY);
-        Global.setAccent(local_accent);
+        log.add("Local Accent: " + local_accent);
+        Global.accent = local_accent;
 
         let local_scheme = Saving.loadSave(Global.COLOR_SCHEME_KEY);
-        Global.setActiveScheme(local_scheme);
+        log.add("Local Scheme: " + local_scheme);
+        Global.mode = local_scheme;
 
         todos.load();
         projects.load();
@@ -36,8 +52,6 @@ const Init = (self) => {
         Global.appRerender();
 
     }, []) 
-
-
 
     setInterval(() => {
         // ! Commented just for dev

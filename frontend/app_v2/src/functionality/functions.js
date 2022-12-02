@@ -1,5 +1,5 @@
 
-import {todos} from './modules';
+import {todos, log} from './modules';
 
 function placeholder_func() {
     return 
@@ -9,7 +9,10 @@ const Global = {
     BACKEND_KEY: "todoApp.backend",
     TODO_KEY: "todoApp.local_todos",
     PROJECT_KEY: "todoApp.projects",
+
     LOCAL_ACTIONS_KEY: "todoApp.local_actions",
+    LOG_KEY: "todoApp.log",
+
     PAGE_KEY: "todoApp.last_page",
     COLOR_SCHEME_KEY: "todoApp.color_scheme",
     COLOR_ACCENT_KEY: "todoApp.color_accent",
@@ -35,6 +38,11 @@ const Global = {
     set setAccentSetter(new_func){
         this.setAccent = new_func;
     },
+
+    accent: undefined,
+    set makeAccent(new_value){this.accent = new_value},
+    mode: undefined,
+    set makeMode(new_value){this.mode = new_value},
 
     form: "",
     set setForm(new_form){this.form = new_form;},
@@ -122,6 +130,7 @@ const Global = {
     }
 
 }
+
 class Saving {
     static saveLocal = (KEY, toSave) => {
         localStorage.setItem(KEY, JSON.stringify(toSave));
@@ -162,10 +171,12 @@ class Local {
     }
 
     static link = async (page) => {
+        if(Global.activepage === page) return
         Global.appRerender();
         Global.setActivePage = page;
         Saving.saveLocal(Global.PAGE_KEY, page);
         Global.setMenuOpen = false;
+        log.add("Link to " + page);
     }
 
     static openForm = async (formName, ...args) => {
@@ -173,10 +184,12 @@ class Local {
         Global.setForm = formName;
         Global.formRerender();
         Global.formContainer.style.display = "block";
+        log.add("Opened Form");
     }
     static closeForm = async () => {
         Global.formContainer.style.display = "none";
         Global.setOverlayActive = "false";
+        log.add("Closed Form");
     }
 }
 

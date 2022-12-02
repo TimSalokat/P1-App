@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { Global, Saving, Server } from "./functions";
 
-// function placeholder_func(){return};
+function placeholder_func(){return};
 
 const todos = {
     serverTodos: [],
@@ -25,7 +25,6 @@ const todos = {
     get finished() {
         return this.filtered.filter((todo) => todo.finished === true)
     },
-
 
     save(){
         Global.appRerender();
@@ -63,6 +62,7 @@ const todos = {
                 "todo": new_todo,
         })}
 
+        log.add("Added Todo: " + new_todo.title);
         this.todos.push(new_todo);
         this.save();
     },
@@ -78,11 +78,15 @@ const todos = {
                 "uuid": uuid,
                 "new_state": this.todos[index].finished,
         })}
+        
+        // log.add("Finished Todo: " + this.todos[index].title);
         this.save();
     },
 
     async delete(uuid) {
         let index = this.getByUuid(uuid);
+        log.add("Deleted Todo: " + this.todos[index].title);
+        
         this.todos.splice(index, 1);
 
         if (Global.serverReachable) Server.deleteTodo(uuid);
@@ -123,6 +127,7 @@ const projects = {
                 "action": "project_added",
                 "project": new_project,
             })}
+        log.add("Added Project: " + new_project.title);
         this.projects.push(new_project);
         this.save();
     },
@@ -143,6 +148,8 @@ const projects = {
                 "action": "project_deleted",
                 "title": toDelete,
         })}
+        
+        log.add("Deleted Project: " + toDelete);
         this.save();
     }
 
@@ -167,4 +174,14 @@ const local_actions = {
     },
 }
 
-export { todos, projects, local_actions}
+const log = {
+
+    log: undefined,
+    set setLog(new_thing){this.log = new_thing},
+
+    add(value) {
+        this.log.push(value);
+    },
+}
+
+export { todos, projects, local_actions, log}

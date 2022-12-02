@@ -3,7 +3,7 @@ import React from "react";
 
 import { BiSend } from "react-icons/bi";
 
-import { Global, Local } from "../functionality/functions";
+import { Global, Local, Logging } from "../functionality/functions";
 import { todos,projects } from "../functionality/modules";
 
 import "../css/Forms.css"

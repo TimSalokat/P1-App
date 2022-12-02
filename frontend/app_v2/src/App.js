@@ -21,23 +21,18 @@ function App() {
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
-  const [mode, setMode] = React.useState(Global.activeScheme);
-  const [color, setColor] = React.useState();
-
   /* eslint-disable */
   React.useEffect(() => {
     Global.setAppRerender = forceUpdate;
-    Global.setActiveSchemeSetter = setMode;
-    Global.setAccentSetter = setColor;
   }, [])
   /* eslint-enable */
 
-  React.useEffect(() => {
-    if(mode !== undefined)Saving.saveLocal(Global.COLOR_SCHEME_KEY, mode);
-    if(color !== undefined)Saving.saveLocal(Global.COLOR_ACCENT_KEY, color);
-  }, [mode, color])
+  // React.useEffect(() => {
+  //   if(mode !== undefined)Saving.saveLocal(Global.COLOR_SCHEME_KEY, mode);
+  //   if(color !== undefined)Saving.saveLocal(Global.COLOR_ACCENT_KEY, color);
+  // }, [mode, color])
   
-  let base = mode ? {
+  let base = Global.mode ? {
       "--base-l": "80%",
       "--text_color": "rgb(35,35,35)"}
     :
@@ -45,7 +40,7 @@ function App() {
         "--base-l": "15%",
         "--text_color": "rgb(185,185,185)"}
 
-  let accent = () => {switch(color) {
+  let accent = () => {switch(Global.accent) {
     case "blue":
       return {
         "--accent-h": 214,
@@ -103,7 +98,7 @@ function App() {
 
   return (
     <>
-    
+
     <div 
       id="AppContainer" 
       style={style}

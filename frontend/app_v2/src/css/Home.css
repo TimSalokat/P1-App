@@ -78,6 +78,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 #HomeMainSection>div{
     padding: 10px;

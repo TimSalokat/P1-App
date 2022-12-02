@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Todos from '../modules/Todos';
+import Console from '../modules/Console';
 
 import '../css/Pages.css';
 import '../css/Home.css';
@@ -127,8 +128,8 @@ const HomeMainSection = (props) => {
             <ul className="ListSelector">
                 <li className={isSelected("Bahn").toString()} onClick={() => This.selectMenuItem("Bahn")}>Bahn</li>
                 <li className={isSelected("Todos").toString()} onClick={() => This.selectMenuItem("Todos")}>Todos</li>
-                <li className={isSelected("Stundenplan").toString()} onClick={() => This.selectMenuItem("Stundenplan")}>Stundenplan</li>
                 <li className={isSelected("Weather").toString()} onClick={() => This.selectMenuItem("Weather")}>Weather</li>
+                <li className={isSelected("Console").toString()} onClick={() => This.selectMenuItem("Console")}>Console</li>
             </ul>
 
             {props.children}
@@ -149,6 +150,10 @@ const MainComponent = (props) => {
             </div> );
         case "Todos":
             return <Todos/>;
+        case "Console":
+            return <Console/>;
+
+
         default: 
             return <div>Couldnt load</div>
     }

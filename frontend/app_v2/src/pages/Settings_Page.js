@@ -2,8 +2,8 @@
 import React from "react";
 import "../css/Settings.css";
 
-import { Global, Server } from "../functionality/functions";
-import { projects } from "../functionality/modules";
+import { Global, Saving, Server } from "../functionality/functions";
+import { projects, log } from "../functionality/modules";
 
 export default function Settings_Page() {
 
@@ -67,16 +67,23 @@ export default function Settings_Page() {
                 <label> Theme </label>
 
                 <button onClick={() => {
-                    Global.setActiveScheme(!Global.activeScheme);
-                    Global.setLocalScheme = !Global.activeScheme;
+                    Global.mode = !Global.mode;
+                    Global.appRerender();
+                    Saving.saveLocal(Global.COLOR_SCHEME_KEY, Global.mode);
                 }}>Change Scheme</button>
                 
                 <div id="ColorContainer">
                     {color_options.map((color) => {
                         return(
-                            <button className="small" style={{backgroundColor:color}} onClick={() => Global.setAccent(color)}>
-                                {/* {color} */}
-                            </button>
+                            <button 
+                                className="small" 
+                                style={{backgroundColor:color}} 
+                                onClick={() => {
+                                    Global.accent = color;
+                                    Global.appRerender();
+                                    Saving.saveLocal(Global.COLOR_ACCENT_KEY, color);
+                                    log.add("Set Accent: " + color);
+                                }}/>
                     )})}
                 </div>
 
