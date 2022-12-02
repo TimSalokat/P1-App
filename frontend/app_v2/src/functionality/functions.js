@@ -45,6 +45,11 @@ const Global = {
     formPlaceholder: {},
     set setFormPlaceholder(new_placeholder){this.formPlaceholder = new_placeholder;},
 
+    clearForm: placeholder_func,
+    set setClearForm(new_func){
+        this.clearForm = new_func;
+    },
+
     appRerender: placeholder_func,
     set setAppRerender(new_func){this.appRerender = new_func;},
 

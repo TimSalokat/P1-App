@@ -21,9 +21,6 @@ const Form = () => {
 
     const [, updateState] = React.useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
-    React.useState(() => {
-      Global.setFormRerender = forceUpdate;
-    }, [])
 
     const closeForm_helper = (event) => {
         var form = document.getElementById("input_form");
@@ -32,6 +29,11 @@ const Form = () => {
         Global.setFormInputs = {};
         form.reset();
     }
+
+    React.useState(() => {
+        Global.setFormRerender = forceUpdate;
+        Global.setClearForm = closeForm_helper;
+      }, [])
 
     if(Global.form === "AddTodo"){
 
