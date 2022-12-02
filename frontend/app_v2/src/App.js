@@ -3,7 +3,7 @@ import React from "react";
 
 import Init from "./functionality/init";
 import Overlay from "./modules/Overlay";
-import { Global, Local, Saving } from "./functionality/functions";
+import { Global, Local } from "./functionality/functions";
 
 import Home_Page from "./pages/Home_Page";
 import Todo_Page from "./pages/Todo_Page";
@@ -14,7 +14,6 @@ import { FormHandler } from "./modules/FormHandler";
 import { MdHome, MdLibraryBooks, MdSettings } from "react-icons/md";
 import { BiTask } from "react-icons/bi";
 import {HiPlus} from "react-icons/hi";
-// import {CgMenuLeft} from "react-icons/cg";
 
 function App() {
 
@@ -25,12 +24,6 @@ function App() {
   React.useEffect(() => {
     Global.setAppRerender = forceUpdate;
   }, [])
-  /* eslint-enable */
-
-  // React.useEffect(() => {
-  //   if(mode !== undefined)Saving.saveLocal(Global.COLOR_SCHEME_KEY, mode);
-  //   if(color !== undefined)Saving.saveLocal(Global.COLOR_ACCENT_KEY, color);
-  // }, [mode, color])
   
   let base = Global.mode ? {
       "--base-l": "80%",

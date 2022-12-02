@@ -1,6 +1,5 @@
-
-import React, { Component } from "react"
-import { useEffect } from "react"
+/* eslint-disable */
+import React, { useEffect } from "react"
 import { Global, Saving, Server} from "./functions"
 import { todos, projects, local_actions, log } from "./modules"
 
