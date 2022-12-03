@@ -120,7 +120,7 @@ class ColorHelper extends React.Component {
     Global.makeMode = this.state.mode;
     Global.makeAccent = this.state.accent;
 
-    log.add("init", "init");
+    log.add("init", "Init");
 
     Global.setSuperContainer = document.getElementById("AppContainer").dataset;
     Global.setFormContainer = document.getElementById("FormContainer");
@@ -129,16 +129,16 @@ class ColorHelper extends React.Component {
     Global.setActiveProject = Global.superContainer.activeproject;
 
     let last_page = Saving.loadSave(Global.PAGE_KEY);
-    log.add("Last page: " + last_page, "init");
+    log.add("Last page: " + last_page, "Init");
     if (last_page !== undefined && last_page !== "Settings") Global.setActivePage = last_page;
     else{Global.setActivePage = Global.superContainer.activepage;}
 
     let local_accent = Saving.loadSave(Global.COLOR_ACCENT_KEY);
-    log.add("Local Accent: " + local_accent, "init");
+    log.add("Local Accent: " + local_accent, "Init");
     Global.accent = local_accent;
 
     let local_scheme = Saving.loadSave(Global.COLOR_SCHEME_KEY);
-    log.add("Local Scheme: " + local_scheme, "init");
+    log.add("Local Scheme: " + local_scheme, "Init");
     Global.mode = local_scheme;
 
     todos.load();
@@ -153,11 +153,10 @@ class ColorHelper extends React.Component {
         mode: local_scheme,
         accent: local_accent,
       })
-      // this.render();
       Global.appRerender();
     }, 1)
     Server.ping();
-    log.add("-----Finished-----", "init");
+    log.add("-----Finished-----", "Init");
   }
 
   render() {
@@ -173,9 +172,9 @@ class ColorHelper extends React.Component {
     var accent = () => {switch(Global.accent) {
       case "blue":
         return {
-          "--accent-h": 214,
+          "--accent-h": 230,
           "--accent-s": "64%",
-          "--accent-l": "53%",
+          "--accent-l": "48%",
         }  
       case "red":
         return {
@@ -205,14 +204,6 @@ class ColorHelper extends React.Component {
         return {
           "--accent-h": 275,
           "--accent-s": "50%",
-          "--accent-l": "45%",
-        }
-
-      
-      case "copper":
-        return {
-          "--accent-h": 20,
-          "--accent-s": "40%",
           "--accent-l": "45%",
         }
 

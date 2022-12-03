@@ -13,10 +13,6 @@
     border-radius: 50%;
 }
 
-#ColorContainer button:last-child{
-    background-color: rgb(173, 126, 51);
-}
-
 #LogOption{
     flex-flow: row nowrap;
     margin: 10px 0;

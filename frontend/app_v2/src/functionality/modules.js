@@ -199,7 +199,7 @@ const log = {
     },
 
     show: {
-        Info: true,
+        Info: false,
         Warning: true,
 
         Todos: true,

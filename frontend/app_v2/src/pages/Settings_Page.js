@@ -14,13 +14,12 @@ export default function Settings_Page() {
     const [new_backend, setNewBackend] = React.useState("");
     const [project_toDelete, setProjectToDelete] = React.useState("");
 
-    const color_options = ["blue", "red", "orange", "green", "pink", "purple", "copper"]
+    const color_options = ["blue", "red", "orange", "green", "pink", "purple"]
 
     return(
         <div id="Settings_Page">
 
             <Collapsible label=" Quick Actions">
-                {/* <label>Quick Actions</label> */}
                 <div className="grid2">
                     <button className="stretch" onClick={() => devRun(Server.ping)}>Ping Server</button>
                     <button className="stretch" onClick={() => devRun(Server.fetchTodos)}>Get Todos</button>
