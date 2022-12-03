@@ -66,12 +66,17 @@ export default function Settings_Page() {
             </Collapsible>
 
             <Collapsible label="Theme">
-
-                <button onClick={() => {
-                    Global.mode = !Global.mode;
-                    Global.appRerender();
-                    Saving.saveLocal(Global.COLOR_SCHEME_KEY, Global.mode);
-                }}>Change Scheme</button>
+                <div className="Header">
+                    <label style={{padding:"5px", margin:"10px"}}>Dark Mode</label>
+                    <Switch 
+                        onChange={(value) => {
+                            Global.mode = value;
+                            Global.appRerender();
+                            Saving.saveLocal(Global.COLOR_SCHEME_KEY, Global.mode);
+                        }} 
+                        initial = {Global.mode}
+                    />
+                </div>
                 
                 <div id="ColorContainer">
                     {color_options.map((color) => {

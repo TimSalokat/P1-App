@@ -2,7 +2,10 @@
 
 #ColorContainer{
     flex-flow: row wrap;
-    padding: 10px;
+    padding: 0 20px;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
 }
 #ColorContainer button {
     width: 30px;

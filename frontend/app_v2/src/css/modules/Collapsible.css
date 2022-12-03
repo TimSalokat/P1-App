@@ -2,7 +2,7 @@
 #Collapsible {
     margin: 10px 0;
 }
-#Collapsible .Header {
+#Collapsible > .Header {
     position: relative;
     display: flex;
     flex-flow: row nowrap;
