@@ -184,12 +184,12 @@ class Local {
         Global.setForm = formName;
         Global.formRerender();
         Global.formContainer.style.display = "block";
-        log.add("Opened", "Form");
+        log.add("Opened " + formName, "Info");
     }
     static closeForm = async () => {
         Global.formContainer.style.display = "none";
         Global.setOverlayActive = "false";
-        log.add("Closed", "Form");
+        log.add("Closed", "Info");
     }
 }
 

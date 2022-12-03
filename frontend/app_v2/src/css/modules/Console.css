@@ -23,15 +23,12 @@
 .entryText.Error {
     color: red;
 }
-.entryText.init, .entryText.Color {
+.entryText.init, .entryText.Color, .entryText.Warning {
     color: orange;
 }
-.entryText.Link {
+.entryText.Link, .entryText.Info{
     color: rgb(51, 209, 46);
 }
 .entryText.Todos, .entryText.Projects {
     color: rgb(35, 177, 224);
-}
-.entryText.Form {
-    color:rgb(244, 151, 214);
 }

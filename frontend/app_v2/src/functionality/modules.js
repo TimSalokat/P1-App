@@ -182,6 +182,17 @@ const log = {
     add(entry, from) {
         this.log.push({from, entry});
     },
+
+    show: {
+        Info: true,
+        Warning: true,
+
+        Todos: true,
+        Projects: true,
+        
+        Link: false,
+        Color: false,
+    },
 }
 
 export { todos, projects, local_actions, log}

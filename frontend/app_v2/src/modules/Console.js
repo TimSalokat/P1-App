@@ -15,13 +15,20 @@ export default function Console () {
                 return(
                     <ConsoleEntry content={content.entry} from={content.from}/>
                 )
+                    
             })}
         </div>
     )
 }
 
 const ConsoleEntry = (props) => {
+
+    function isShown() {
+        if(log.show[props.from] === undefined) return "";
+        return log.show[props.from] ? "" : " hidden";
+    }
+
     return (
-        <label className={"entryText " + props.from}>[{props.from}]: {props.content}</label>
+        <label className={"entryText " + props.from + isShown()}>[{props.from}]: {props.content}</label>
     )
 }

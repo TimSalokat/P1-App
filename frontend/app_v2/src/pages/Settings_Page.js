@@ -90,9 +90,11 @@ export default function Settings_Page() {
             </Collapsible>
 
             <Collapsible label="Log Settings">
+                <LogOption title="Info"/>
+                <LogOption title="Warning"/>
+
                 <LogOption title="Todos"/>
                 <LogOption title="Projects"/>
-                <LogOption title="Form"/>
                 <LogOption title="Link"/>
                 <LogOption title="Color"/>
             </Collapsible>
@@ -105,18 +107,26 @@ const LogOption = (props) => {
     return (
         <div id="LogOption">
             <label> Show {props.title} </label>
-            <Switch/>
+            <Switch 
+                onChange={(value) => {
+                    if(value) log.add("Now showing " + props.title, "Warning")
+                    else log.add("Not showing " + props.title + " anymore", "Warning")
+                    log.show[props.title] = value;
+                }} 
+                from={props.title}
+            />
         </div>
     )
 }
 
 const Switch = (props) => {
-    const [active, setActive] = React.useState(true);
+    const [active, setActive] = React.useState(log.show[props.from]);
     function isActive() {return active ? " active" : "";}
 
     function onClick_handler() {
+
+        props.onChange(!active);
         setActive(!active);
-        active ? props.onSetActive() : props.onSetInactive();
     }
 
     return (
