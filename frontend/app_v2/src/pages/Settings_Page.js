@@ -5,6 +5,8 @@ import "../css/Settings.css";
 import { Global, Saving, Server } from "../functionality/functions";
 import { projects, log } from "../functionality/modules";
 
+import Collapsible from "../modules/Collapsible";
+
 export default function Settings_Page() {
 
     const devRun = (func) => {func();}   
@@ -88,6 +90,18 @@ export default function Settings_Page() {
                     )})}
                 </div>
             </div>
+
+            <Collapsible label="Testing">
+                <h4>Hello</h4>
+                <h4>Hello</h4>
+                <h4>Hello</h4>
+            </Collapsible>
+            <Collapsible label="wow">
+                <h4>Hello</h4>
+                <h4>Hello</h4>
+                <h4>Hello</h4>
+            </Collapsible>
+
         </div>
     )
 }

@@ -1,0 +1,43 @@
+
+#Collapsible {
+    margin: 10px 0;
+}
+#Collapsible .Header {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    background-color: var(--base-light);
+    padding: 10px;
+    border-radius: 10px;
+    width: 94vw;
+    margin-left: 3vw;
+}
+#Collapsible label {
+    filter: none;
+    margin-top: 0;
+}
+#CollapsibleContent {
+    padding: 5px 20px;
+    border: 1px;
+    display: none;
+}
+
+#CollapsibleIndicator, #CollapsibleIndicator::after {
+    position: relative;
+    width: 15px;
+    height: 2px;
+    background-color: var(--text_color_darker);
+}
+#CollapsibleIndicator::after {
+    content: "";
+    position: absolute;
+    rotate: 90deg;
+}
+
+#Collapsible.open #CollapsibleContent {
+    display: initial;
+}
+#Collapsible.open #CollapsibleIndicator::after {
+    rotate: 0deg;
+}
