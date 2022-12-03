@@ -76,6 +76,7 @@ export default function Settings_Page() {
                     {color_options.map((color) => {
                         return(
                             <button 
+                                key={color}
                                 className="small" 
                                 style={{backgroundColor:color}} 
                                 onClick={() => {
