@@ -6,7 +6,6 @@ import { Global, Saving, Server } from "../functionality/functions";
 import { projects, log } from "../functionality/modules";
 
 import Collapsible from "../modules/Collapsible";
-import Console from "../modules/Console";
 
 export default function Settings_Page() {
 
