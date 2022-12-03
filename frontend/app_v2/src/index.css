@@ -93,6 +93,7 @@ body {
 
 #AppContainer {
   min-height: 100vh;
+  max-height: 100vh;
   border-radius: 0;
   padding: 0;
   padding-bottom: 90px;
@@ -529,6 +530,29 @@ select {
   z-index: 1;
 }
 
+#Switch {
+  margin: 5px;
+  width: 55px;
+  height: 25px;
+  background-color: var(--base-light);
+  box-shadow: 0 0 12px var(--base-dark);
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  padding: 2px 7px;
+}
+#Switch::after {
+  content: "";
+  background-color: var(--base-dark);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  align-self: flex-start;
+}
+#Switch.active::after {
+  align-self: flex-end;
+  background-color: var(--accent-light);
+}
 
 #AppContainer:not([data-activePage="Todos"]) .show-in-todos {display: none;}
 #AppContainer:not([data-activePage="Home"]) .show-in-home {display: none;}

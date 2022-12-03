@@ -3,6 +3,7 @@
     display: flex;
     flex-flow: column wrap;
     height: 100%;
+    max-height: 100vh;
   }
 
 #Home_Page, #Todo_Page, #Settings_Page {

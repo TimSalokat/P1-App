@@ -13,3 +13,15 @@
 #ColorContainer button:last-child{
     background-color: rgb(173, 126, 51);
 }
+
+#LogOption{
+    flex-flow: row nowrap;
+    margin: 10px 0;
+    align-items: center;
+    justify-content: space-between;
+}
+#LogOption label {
+    height: fit-content;
+    padding-bottom: 5px;
+    font-size: 20px;
+}

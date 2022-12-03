@@ -19,8 +19,8 @@ export default function Settings_Page() {
     return(
         <div id="Settings_Page">
 
-            <div className="Section">
-                <label>Quick Actions</label>
+            <Collapsible label=" Quick Actions">
+                {/* <label>Quick Actions</label> */}
                 <div className="grid2">
                     <button className="stretch" onClick={() => devRun(Server.ping)}>Ping Server</button>
                     <button className="stretch" onClick={() => devRun(Server.fetchTodos)}>Get Todos</button>
@@ -29,10 +29,9 @@ export default function Settings_Page() {
                     <button className="button_secondary stretch" onClick={() => devRun(Server.restart)}>Update Api</button>
                     <button className="button_secondary stretch" onClick={() => devRun(Server.getVersion)}>Get Server Version</button>
                 </div>
-            </div>
+            </Collapsible>
 
-            <div className="Section">
-                <label>Stuff</label>
+            <Collapsible label="Inputs">
                 <p>{Global.backend}</p>
                 <div className="grid2" style={{gridTemplateColumns: "75% 25%"}}>
                     <input 
@@ -63,10 +62,9 @@ export default function Settings_Page() {
                             setProjectToDelete("");
                     }}> Delete </button>
                 </div>
-            </div>
+            </Collapsible>
 
-            <div className="Section">
-                <label> Theme </label>
+            <Collapsible label="Theme">
 
                 <button onClick={() => {
                     Global.mode = !Global.mode;
@@ -89,19 +87,39 @@ export default function Settings_Page() {
                                 }}/>
                     )})}
                 </div>
-            </div>
-
-            <Collapsible label="Testing">
-                <h4>Hello</h4>
-                <h4>Hello</h4>
-                <h4>Hello</h4>
             </Collapsible>
-            <Collapsible label="wow">
-                <h4>Hello</h4>
-                <h4>Hello</h4>
-                <h4>Hello</h4>
+
+            <Collapsible label="Log Settings">
+                <LogOption title="Todos"/>
+                <LogOption title="Projects"/>
+                <LogOption title="Form"/>
+                <LogOption title="Link"/>
+                <LogOption title="Color"/>
             </Collapsible>
 
         </div>
+    )
+}
+
+const LogOption = (props) => {
+    return (
+        <div id="LogOption">
+            <label> Show {props.title} </label>
+            <Switch/>
+        </div>
+    )
+}
+
+const Switch = (props) => {
+    const [active, setActive] = React.useState(true);
+    function isActive() {return active ? " active" : "";}
+
+    function onClick_handler() {
+        setActive(!active);
+        active ? props.onSetActive() : props.onSetInactive();
+    }
+
+    return (
+        <div id="Switch" className={isActive()} onClick={() => onClick_handler()}/>
     )
 }
