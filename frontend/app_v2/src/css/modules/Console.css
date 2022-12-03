@@ -20,3 +20,18 @@
     font-size: 14px;
     width: 100%;
 }
+.entryText.Error {
+    color: red;
+}
+.entryText.init, .entryText.Color {
+    color: orange;
+}
+.entryText.Link {
+    color: rgb(51, 209, 46);
+}
+.entryText.Todos, .entryText.Projects {
+    color: rgb(35, 177, 224);
+}
+.entryText.Form {
+    color:rgb(244, 151, 214);
+}

@@ -2,7 +2,7 @@
 import React from "react";
 import {useSwipeable} from "react-swipeable";
 
-import "../css/Todos.css";
+import "../css/modules/Todos.css";
 import DoneSVG from "../svg/DoneSVG";
 import {BsCircle, BsCheck2Circle} from "react-icons/bs";
 import { Global, Local } from "../functionality/functions";

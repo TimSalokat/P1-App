@@ -176,7 +176,7 @@ class Local {
         Global.setActivePage = page;
         Saving.saveLocal(Global.PAGE_KEY, page);
         Global.setMenuOpen = false;
-        log.add("Link to " + page);
+        log.add(page, "Link");
     }
 
     static openForm = async (formName, ...args) => {
@@ -184,12 +184,12 @@ class Local {
         Global.setForm = formName;
         Global.formRerender();
         Global.formContainer.style.display = "block";
-        log.add("Opened Form");
+        log.add("Opened", "Form");
     }
     static closeForm = async () => {
         Global.formContainer.style.display = "none";
         Global.setOverlayActive = "false";
-        log.add("Closed Form");
+        log.add("Closed", "Form");
     }
 }
 

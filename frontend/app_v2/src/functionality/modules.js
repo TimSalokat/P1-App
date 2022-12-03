@@ -62,7 +62,7 @@ const todos = {
                 "todo": new_todo,
         })}
 
-        log.add("Added Todo: " + new_todo.title);
+        log.add("Added: " + new_todo.title, "Todos");
         this.todos.push(new_todo);
         this.save();
     },
@@ -79,13 +79,13 @@ const todos = {
                 "new_state": this.todos[index].finished,
         })}
         
-        // log.add("Finished Todo: " + this.todos[index].title);
+        log.add("Finished: " + this.todos[index].title, "Todos");
         this.save();
     },
 
     async delete(uuid) {
         let index = this.getByUuid(uuid);
-        log.add("Deleted Todo: " + this.todos[index].title);
+        log.add("Deleted: " + this.todos[index].title, "Todos");
         
         this.todos.splice(index, 1);
 
@@ -127,7 +127,7 @@ const projects = {
                 "action": "project_added",
                 "project": new_project,
             })}
-        log.add("Added Project: " + new_project.title);
+        log.add("Added: " + new_project.title, "Projects");
         this.projects.push(new_project);
         this.save();
     },
@@ -149,7 +149,7 @@ const projects = {
                 "title": toDelete,
         })}
         
-        log.add("Deleted Project: " + toDelete);
+        log.add("Deleted: " + toDelete, "Projects");
         this.save();
     }
 
@@ -179,8 +179,8 @@ const log = {
     log: undefined,
     set setLog(new_thing){this.log = new_thing},
 
-    add(value) {
-        this.log.push(value);
+    add(entry, from) {
+        this.log.push({from, entry});
     },
 }
 

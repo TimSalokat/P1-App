@@ -3,7 +3,7 @@
 
 import React from "react";
 
-import "../css/Console.css";
+import "../css/modules/Console.css";
 
 import { log } from "../functionality/modules";
 
@@ -11,9 +11,9 @@ export default function Console () {
 
     return (
         <div id="ConsoleContainer">
-            {log.log?.map((entry) => {
+            {log.log?.map((content) => {
                 return(
-                    <ConsoleEntry content={entry}/>
+                    <ConsoleEntry content={content.entry} from={content.from}/>
                 )
             })}
         </div>
@@ -22,6 +22,6 @@ export default function Console () {
 
 const ConsoleEntry = (props) => {
     return (
-        <label className="entryText">[Client]: {props.content}</label>
+        <label className={"entryText " + props.from}>[{props.from}]: {props.content}</label>
     )
 }

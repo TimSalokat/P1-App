@@ -1,5 +1,5 @@
 
-import "../css/Projects.css";
+import "../css/modules/Projects.css";
 import { Global, Local } from "../functionality/functions";
 
 import { projects } from "../functionality/modules";

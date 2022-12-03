@@ -6,7 +6,7 @@ import { BiSend } from "react-icons/bi";
 import { Global, Local } from "../functionality/functions";
 import { todos,projects } from "../functionality/modules";
 
-import "../css/Forms.css"
+import "../css/modules/Forms.css"
 
 export function FormHandler() {
 

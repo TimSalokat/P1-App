@@ -83,13 +83,11 @@ export default function Settings_Page() {
                                     Global.accent = color;
                                     Global.appRerender();
                                     Saving.saveLocal(Global.COLOR_ACCENT_KEY, color);
-                                    log.add("Set Accent: " + color);
+                                    log.add("Set Accent: " + color, "Color");
                                 }}/>
                     )})}
                 </div>
-
             </div>
-
         </div>
     )
 }
