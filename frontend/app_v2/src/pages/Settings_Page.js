@@ -6,6 +6,7 @@ import { Global, Saving, Server } from "../functionality/functions";
 import { projects, log } from "../functionality/modules";
 
 import Collapsible from "../modules/Collapsible";
+import Console from "../modules/Console";
 
 export default function Settings_Page() {
 
@@ -104,6 +105,7 @@ export default function Settings_Page() {
 }
 
 const LogOption = (props) => {
+
     return (
         <div id="LogOption">
             <label> Show {props.title} </label>
@@ -113,14 +115,14 @@ const LogOption = (props) => {
                     else log.add("Not showing " + props.title + " anymore", "Warning")
                     log.show[props.title] = value;
                 }} 
-                from={props.title}
+                initial = {log.show[props.title]}
             />
         </div>
     )
 }
 
 const Switch = (props) => {
-    const [active, setActive] = React.useState(log.show[props.from]);
+    const [active, setActive] = React.useState(props.initial);
     function isActive() {return active ? " active" : "";}
 
     function onClick_handler() {

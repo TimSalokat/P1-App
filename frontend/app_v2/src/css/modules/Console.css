@@ -24,10 +24,10 @@
     color: red;
 }
 .entryText.init, .entryText.Color, .entryText.Warning {
-    color: orange;
+    color: rgb(223, 168, 67);
 }
 .entryText.Link, .entryText.Info{
-    color: rgb(51, 209, 46);
+    color: rgb(124, 212, 121);
 }
 .entryText.Todos, .entryText.Projects {
     color: rgb(35, 177, 224);
