@@ -17,7 +17,12 @@ export function FormHandler() {
     )
 }
 
-const Form = () => {
+const Form = (props) => {
+
+    if(Global.newForm && Global.form === "EditTodo"){
+        Global.formInputs = {...Global.formArgs[0]};
+        Global.setNewForm = false;
+    }
 
     const [, updateState] = React.useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -30,11 +35,15 @@ const Form = () => {
         form.reset();
     }
 
-    React.useState(() => {
+    /* eslint-disable */
+    React.useEffect(() => {
         Global.setFormRerender = forceUpdate;
         Global.setClearForm = closeForm_helper;
       }, [])
+    /* eslint-enable */
 
+
+    // * --- Adding Todos ---
     if(Global.form === "AddTodo"){
 
         function submit_helper(event){
@@ -97,7 +106,11 @@ const Form = () => {
             </BottomBase>
             </>
         )
-    }else if(Global.form === "AddProject"){
+    }
+    
+
+    //* --- Adding Projects ---    
+    else if(Global.form === "AddProject"){
 
         function submit_helper(event){
             var form = document.getElementById("input_form");
@@ -132,6 +145,61 @@ const Form = () => {
             </BottomBase>
         )
     }
+
+    //* --- Edit Todos ---
+    else if(Global.form === "EditTodo") {
+
+        function submit_helper(event){
+            var form = document.getElementById("input_form");
+            event.preventDefault();
+            if(Global.formInputs.title){
+                todos.edit(Global.formInputs);
+                closeForm_helper();
+            }
+            form.reset();
+        }
+
+        return(
+            <FloatyBase>
+                <input id="MainInput"
+                    type="text"
+                    placeholder="Title"
+                    value={Global.formInputs.title}
+                    onChange={(e) => {
+                        Global.formInputs.title = e.target.value;
+                        Global.formRerender();
+                    }}
+                />
+
+                <textarea id="DescriptionInput"
+                    placeholder="Description"
+                    value={Global.formInputs.description}
+                    onChange={(e) =>{
+                        Global.formInputs.description = e.target.value;
+                        Global.formRerender();
+                }}/>
+
+                <div className="Header">
+                    <div className="ProjectSelect">
+                        <ProjectOption title={"All Todos"}/>
+                        {projects.projects.map((project) => {
+                            return(
+                                <ProjectOption 
+                                    title={project.title}
+                                    key={project.index}
+                                    />
+                            )
+                        })}
+                    </div>
+
+                    <button className="button" id="SubmitButton" onClick={submit_helper}>
+                        <BiSend id="Icon" style={{rotate:"270deg", fontSize:"inherit"}}/>
+                    </button>
+
+                </div>
+            </FloatyBase>
+        )
+    }
     // console.warn("Error could'nt open form with name: " + Global.form);
 }
 
@@ -140,18 +208,24 @@ const BottomBase = (props) => {
         <form className="bottomForm" id="input_form">
             <div className="Header" id="FormHeader">
                 <label>{props.label}</label>
-                {/* <button className="button_secondary small" onClick={props.closeForm_helper}>Cancel</button> */}
             </div>
             {props.children}
         </form>
     )
 }
 
-const ProjectOption = (self) => {
+const FloatyBase = (props) => {
+    return (
+        <form className="floatyForm" id="input_form">
+            {props.children}
+        </form>
+    )
+}
 
+const ProjectOption = (self) => {
     const active = () => {
-        if(Global.formInputs.selectedProject === undefined) Global.formInputs.selectedProject = Global.activeproject;
-        return Global.formInputs.selectedProject === self.title ? "active" : "";
+        if(Global.formInputs.project === undefined) Global.formInputs.project = Global.activeproject;
+        return Global.formInputs.project === self.title ? "active" : "";
     }
 
     return (
@@ -159,7 +233,7 @@ const ProjectOption = (self) => {
             id="Chip" 
             className={active()} 
             onClick={() => {
-                Global.formInputs.selectedProject = self.title; 
+                Global.formInputs.project = self.title;
                 Global.formRerender();
             }}
         >

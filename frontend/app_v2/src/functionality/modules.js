@@ -46,7 +46,7 @@ const todos = {
         const new_uuid = () => uuidv4();
 
         let description = props.description ? props.description : "";
-        let project = props.selectedProject ? props.selectedProject : "All Todos";
+        let project = props.project ? props.project : "All Todos";
         let new_todo = {
             "uuid": new_uuid(),
             "title": props.title,
@@ -64,6 +64,21 @@ const todos = {
 
         log.add("Added: " + new_todo.title, "Todos");
         this.todos.push(new_todo);
+        this.save();
+    },
+
+    async edit(todo) {
+        let index = this.getByUuid(todo.uuid);
+        this.todos[index] = todo;
+
+        local_actions.add({
+            "action": "todo_edited",
+            "uuid": todo.uuid,
+            "new_title": todo.title,
+            "new_description": todo.description,
+            "new_project": todo.project,
+        })
+        log.add("Edited: " + todo.title, "Todos");
         this.save();
     },
 
@@ -189,7 +204,7 @@ const log = {
 
         Todos: true,
         Projects: true,
-        
+
         Link: false,
         Color: false,
     },

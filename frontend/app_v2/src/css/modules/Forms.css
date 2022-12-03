@@ -1,12 +1,14 @@
 
 #FormContainer {
     position: absolute;
-    height: max-content;
+    height: 100%;
     width: 100%;
     box-sizing: border-box;
     max-width: 100vw;
     display: none;
-    overflow: shown;
+    overflow: visible;
+    align-items: center;
+    justify-content: center;
 }
 
 .ProjectSelect {
@@ -37,6 +39,22 @@
     background-color: var(--base-dark);
     padding: .8rem;
     border-radius: 25px 25px 0 0;
+}
+
+.floatyForm {
+    position: fixed;
+    height: fit-content;
+    width: 80vw;
+    min-height: 200px;
+    z-index: 150;
+    background-color: var(--base-dark);
+    padding: .8rem;
+    border-radius: 25px;
+    align-self: center;
+    justify-self: center;
+}
+.floatyForm #DescriptionInput {
+    height: 100px;
 }
 
 #FormHeader {

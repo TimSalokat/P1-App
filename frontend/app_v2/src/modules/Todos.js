@@ -100,6 +100,7 @@ function TodoItem(self) {
             className={"Todo " + isFinished()} 
             id="TodoItem"
             data-uuid={self.uuid}
+            onClick={() => {if(!_showDelete) Local.openForm("EditTodo", self.todo )}}
             {...swipeHandler}
         >
 

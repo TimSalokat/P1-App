@@ -44,14 +44,18 @@ const Global = {
     mode: undefined,
     set makeMode(new_value){this.mode = new_value},
 
+
+    newForm: null,
+    set setNewForm(new_bool) {this.newForm = new_bool},
+
     form: "",
     set setForm(new_form){this.form = new_form;},
 
     formInputs: {},
     set setFormInputs(new_thing){this.formInputs = new_thing;},
 
-    formPlaceholder: {},
-    set setFormPlaceholder(new_placeholder){this.formPlaceholder = new_placeholder;},
+    formArgs: {},
+    set setFormArgs(new_args){this.formArgs = new_args;},
 
     clearForm: placeholder_func,
     set setClearForm(new_func){
@@ -181,10 +185,12 @@ class Local {
 
     static openForm = async (formName, ...args) => {
         Global.setOverlayActive = true;
+        Global.setFormArgs = args;
         Global.setForm = formName;
         Global.formRerender();
-        Global.formContainer.style.display = "block";
+        Global.formContainer.style.display = "flex";
         log.add("Opened " + formName, "Info");
+        Global.setNewForm = true;
     }
     static closeForm = async () => {
         Global.formContainer.style.display = "none";

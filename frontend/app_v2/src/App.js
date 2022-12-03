@@ -92,14 +92,6 @@ const BottomMenu = () => {
         <HiPlus id="Icon"/>
       </div>
 
-      {/* <div className={"MainMenuItem"} 
-        onClick={() => {
-            Local.link("Todos");
-            Local.openForm("AddTodo"); 
-          }}>
-        <BsTriangle id="Icon" style={{fontSize:"80px", rotate:"180deg", color:"var(--accent)"}}/>
-      </div> */}
-
       <div className={"MainMenuItem"+isActive("Library")} onClick={() => Local.link("Library")}>
         <MdLibraryBooks id="Icon"/>
       </div>
