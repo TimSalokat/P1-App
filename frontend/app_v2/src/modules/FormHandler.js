@@ -67,7 +67,8 @@ const Form = (props) => {
                 closeForm_helper={closeForm_helper} 
                 >
 
-                <input type="text" 
+                <input autoFocus
+                    type="text" 
                     id="MainInput"
                     placeholder="Title" 
                     onChange={(e) =>{
@@ -134,7 +135,8 @@ const Form = (props) => {
                 submit={submit_helper}>
                 <div className="Header">
 
-                <input type="text" 
+                <input autoFocus
+                    type="text" 
                     id="MainInput"
                     placeholder="Title" 
                     value={Global.formInputs.title} 
@@ -171,6 +173,7 @@ const Form = (props) => {
         )
     }
 
+    //* --- Editing Projects ---
     else if(Global.form === "EditProject") {
 
         function submit_helper(event){
@@ -186,7 +189,7 @@ const Form = (props) => {
         return (
             <BottomBase label="Rename Project">
                 <div className="Header">
-                    <input
+                    <input autoFocus
                         id="MainInput"
                         value={Global.formInputs.title}
                         onChange={(e) => {
@@ -217,7 +220,8 @@ const Form = (props) => {
 
         return(
             <FloatyBase>
-                <input id="MainInput"
+                <input autoFocus
+                    id="MainInput"
                     type="text"
                     placeholder="Title"
                     value={Global.formInputs.title}
