@@ -306,7 +306,10 @@ const ProjectInstance = (self) => {
                 <label>{self.title}</label>
             </div>
             
-            <div id="DelTodoButton" className="show" onClick={() => projects.delete(self.title)}>
+            <div id="DelTodoButton" className="show" onClick={() => {
+                projects.delete(self.title);
+                Local.closeForm();
+            }}>
                 <TbTrashX id="Icon"/>
             </div>
         </div>

@@ -1,7 +1,7 @@
 
 import { v4 as uuidv4 } from 'uuid';
 
-import { Global, Saving, Server } from "./functions";
+import { Global, Local, Saving, Server } from "./functions";
 
 // function placeholder_func(){return};
 
@@ -188,10 +188,8 @@ const projects = {
         if(toDelete === "") {toDelete = this.projects[0].title}
         if(Global.activeproject === toDelete) Global.setActiveProject = "All Todos"; 
 
-        else {for(let i=0; i < this.projects.length; i++){
-            if(this.projects[i].title === toDelete){
-                this.projects.splice(i, 1);
-        }}}
+        let index = this.getByTitle(toDelete) 
+        this.projects.splice(index, 1);
 
         if (Global.serverReachable) Server.deleteProject(toDelete)
         else {
@@ -199,7 +197,21 @@ const projects = {
                 "action": "project_deleted",
                 "title": toDelete,
         })}
-        
+
+        todos.todos.forEach((todo) => {
+            if(todo.project = toDelete && todo.finished){
+                todos.delete(todo.uuid);
+            }else if (todo.project = toDelete){
+                todo.project = "All Todos";
+                local_actions.add({
+                    "action": "todo_project_change",
+                    "uuid": todo.uuid,
+                    "new_project": "All Todos",
+                })
+            }
+        })
+
+        todos.save();        
         log.add("Deleted: " + toDelete, "Projects");
         this.save();
     }

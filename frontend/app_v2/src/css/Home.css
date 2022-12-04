@@ -8,8 +8,9 @@
 
 #WeatherSection {
     border-radius: 15px;
-    height: 22vh;
+    height: 21vh;
     background: var(--accent-gradient);
+    background-color: var(--base-light);
     margin: 10px;
     margin-bottom: 0;
     padding: 20px;   
@@ -179,7 +180,7 @@
     right: 10px;
     rotate: 76deg;
     visibility: hidden;
-    box-shadow: 0 0 3px var(--base-darker);
+    box-shadow: 0 0 5px var(--accent);
     overflow: hidden;
 }
 
