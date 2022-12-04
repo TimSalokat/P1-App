@@ -109,7 +109,7 @@ class ColorHelper extends React.Component {
 
     this.state = {
       displayedLog: [],
-      mode: false,
+      mode: true,
       accent: "",
     }    
   }
@@ -134,8 +134,9 @@ class ColorHelper extends React.Component {
     else{Global.setActivePage = Global.superContainer.activepage;}
 
     let local_accent = Saving.loadSave(Global.COLOR_ACCENT_KEY);
-    log.add("Local Accent: " + local_accent, "Init");
-    Global.accent = local_accent;
+    if(local_accent === undefined) Global.accent = "blue";
+    else (Global.accent = local_accent);
+    log.add("Set Accent: " + Global.accent, "Init");
 
     let local_scheme = Saving.loadSave(Global.COLOR_SCHEME_KEY);
     log.add("Local Scheme: " + local_scheme, "Init");
@@ -161,13 +162,13 @@ class ColorHelper extends React.Component {
 
   render() {
 
-    var base = Global.mode ? {
-      "--base-l": "15%",
-      "--text_color": "rgb(185,185,185)"}
+    var base = !Global.mode ? {
+      "--base-l": "80%",
+      "--text_color": "rgb(35,35,35)"}
       :
       {
-          "--base-l": "80%",
-          "--text_color": "rgb(35,35,35)"}
+          "--base-l": "15%",
+          "--text_color": "rgb(185,185,185)"}
 
     var accent = () => {switch(Global.accent) {
       case "blue":
