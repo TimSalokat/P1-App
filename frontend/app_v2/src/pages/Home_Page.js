@@ -34,6 +34,7 @@ export default function Home_Page() {
     let Logo = require('../images/nyan-cat.png');
 
     //eslint-disable-next-line
+    const [weather, setWeather] = React.useState("moon");
     const [weatherFilter, setWeatherFilter] = React.useState("24:00");
     const [selectedConnection, setSelectedConnection] = React.useState("");
     const [menuItem, setMenuItem] = React.useState();
@@ -60,7 +61,7 @@ export default function Home_Page() {
         </div>
         
         <div id="YourDaySection">
-            <WeatherSection/>
+            <WeatherSection weather={weather} setWeather={setWeather}/>
         </div>
 
         <HomeMainSection selected={menuItem}>
@@ -71,10 +72,17 @@ export default function Home_Page() {
     )
 }
 
-const WeatherSection = () => {
+const WeatherSection = (props) => {
 
     const [mainText, setMainText] = React.useState("");
     const [subText, setSubText] = React.useState("");
+
+    function cycleWeather() {
+        let possible = ["sun", "sun_cloudy", "moon", "moon_cloudy", "cloudy", "rain", "thunder", "snow"]
+        let current = possible.indexOf(props.weather);
+        let next = current+1 <= possible.length ? possible[current+1] : possible[0];
+        props.setWeather(next);
+    }
 
     let WeatherIcon = (props) => {switch(props.weather) {
         case "sun":
@@ -83,7 +91,7 @@ const WeatherSection = () => {
             return (<BsSun id="Icon"/>);
         case "sun_cloudy":            
             setMainText("Partly Cloudy");
-            setSubText("Think twice about your shorts");
+            setSubText("Think twice about your shorts, you might freeze");
             return (<BsFillCloudSunFill id="Icon"/>);
         case "moon":
             setMainText("Clear Sky");
@@ -95,7 +103,7 @@ const WeatherSection = () => {
             return (<BsCloudMoonFill id='Icon'/>);
         case "cloudy":
             setMainText("Cloudy");
-            setSubText("No sun for you today");
+            setSubText("No sun for you my man");
             return(<BsClouds id="Icon"/>);
         case "rain":
             setMainText("Rainy");
@@ -118,9 +126,8 @@ const WeatherSection = () => {
 
     return (
         <div id='WeatherSection' className='row nowrap'>
-            <div id='WeatherContainer'>
-                {/* <BsCloudMoonFill id='Icon'/> */}
-                <WeatherIcon weather="moon"/>
+            <div id='WeatherContainer' onClick={cycleWeather}>
+                <WeatherIcon weather={props.weather}/>
                 <div id="TemperatureContainer">
                     <h4>15</h4>
                 </div>
