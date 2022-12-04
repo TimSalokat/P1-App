@@ -262,10 +262,10 @@ select {
 
 #BottomMenuBar {
   position: fixed;
-  width: 85vw;
+  width: 80vw;
   height: 52px;
-  bottom: 15px;
-  left: 7.5vw;
+  bottom: 25px;
+  left: 10vw;
   z-index: 100;
   background-color: var(--base);
   box-shadow: 0 0 12px var(--accent);
