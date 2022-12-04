@@ -35,7 +35,7 @@ export default function Home_Page() {
 
     //eslint-disable-next-line
     const [weather, setWeather] = React.useState("moon");
-    const [weatherFilter, setWeatherFilter] = React.useState("24:00");
+    const [, setWeatherFilter] = React.useState("24:00");
     const [selectedConnection, setSelectedConnection] = React.useState("");
     const [menuItem, setMenuItem] = React.useState();
     Global.setWeatherFilterFunc = setWeatherFilter;

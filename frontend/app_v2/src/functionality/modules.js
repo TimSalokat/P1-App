@@ -199,10 +199,10 @@ const projects = {
         })}
 
         todos.todos.forEach((todo) => {
-            if(todo.project = toDelete && todo.finished){
+            if(todo.project === toDelete && todo.finished){
                 todos.delete(todo.uuid);
                 log.add("Deleted todo: " + todo.title + " due to project deletion", "Info")
-            }else if (todo.project = toDelete){
+            }else if (todo.project === toDelete){
                 todo.project = "All Todos";
                 local_actions.add({
                     "action": "todo_project_change",

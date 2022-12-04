@@ -12,11 +12,9 @@ export default function Settings_Page() {
     const devRun = (func) => {func();}   
 
     const [new_backend, setNewBackend] = React.useState("");
-    const [project_toDelete, setProjectToDelete] = React.useState("");
+    // const [project_toDelete, setProjectToDelete] = React.useState("");
 
     const color_options = ["blue", "red", "orange", "green", "pink", "purple"]
-
-    let initialMode = Global.mode;
 
     return(
         <div id="Settings_Page">
