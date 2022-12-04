@@ -7,6 +7,7 @@ import '../css/Pages.css';
 import '../css/Home.css';
 import { BsCloudMoonFill } from 'react-icons/bs';
 import { Global } from '../functionality/functions';
+import { todos } from "../functionality/modules";
 
 function func() {return}
 
@@ -31,12 +32,14 @@ export default function Home_Page() {
     //eslint-disable-next-line
     const [weatherFilter, setWeatherFilter] = React.useState("24:00");
     const [selectedConnection, setSelectedConnection] = React.useState("");
-    const [menuItem, setMenuItem] = React.useState("Bahn");
+    const [menuItem, setMenuItem] = React.useState();
     Global.setWeatherFilterFunc = setWeatherFilter;
 
     React.useEffect(() => {
         This.setConnectionSelector = setSelectedConnection;
         This.setMenuItemSelector = setMenuItem;
+        setMenuItem(
+            todos.unfinished.length === 0 ? "Bahn" : "Todos")
     }, [])
 
     return (
@@ -126,8 +129,8 @@ const HomeMainSection = (props) => {
     return (
         <div id="HomeMainSection">
             <ul className="ListSelector" style={{marginTop:"10px"}}>
-                <li className={isSelected("Bahn").toString()} onClick={() => This.selectMenuItem("Bahn")}>Bahn</li>
                 <li className={isSelected("Todos").toString()} onClick={() => This.selectMenuItem("Todos")}>Todos</li>
+                <li className={isSelected("Bahn").toString()} onClick={() => This.selectMenuItem("Bahn")}>Bahn</li>
                 <li className={isSelected("Weather").toString()} onClick={() => This.selectMenuItem("Weather")}>Weather</li>
                 <li className={isSelected("Console").toString()} onClick={() => This.selectMenuItem("Console")}>Console</li>
             </ul>

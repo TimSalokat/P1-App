@@ -201,6 +201,7 @@ const projects = {
         todos.todos.forEach((todo) => {
             if(todo.project = toDelete && todo.finished){
                 todos.delete(todo.uuid);
+                log.add("Deleted todo: " + todo.title + " due to project deletion", "Info")
             }else if (todo.project = toDelete){
                 todo.project = "All Todos";
                 local_actions.add({
@@ -208,6 +209,7 @@ const projects = {
                     "uuid": todo.uuid,
                     "new_project": "All Todos",
                 })
+                log.add("Moved todo: " + todo.title + " into All Todos", "Info")
             }
         })
 
