@@ -100,11 +100,6 @@ function TodoItem(self) {
             className={"Todo " + isFinished()} 
             id="TodoItem"
             data-uuid={self.uuid}
-            onClick={() => {
-                if(!_showDelete){
-                    Local.link("Todos");
-                    Local.openForm("EditTodo", self.todo);
-                    }}}
             {...swipeHandler}
         >
 
@@ -117,7 +112,15 @@ function TodoItem(self) {
                 }
             </div>
 
-            <div style={{alignSelf:"flex-start", width:"100%"}}>
+            <div style={{alignSelf:"flex-start", width:"100%"}}            
+                onClick={() => {
+                    if(!_showDelete){
+                        Local.link("Todos");
+                        Local.openForm("EditTodo", self.todo);
+                    }else {
+                        setShowDelete(false);
+                    }
+                }}> 
                 <label> {self.title} </label>
                 <p className={descriptionEmpty()}> {self.description} </p>
             </div>
