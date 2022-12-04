@@ -1,7 +1,7 @@
 
 import { v4 as uuidv4 } from 'uuid';
 
-import { Global, Local, Saving, Server } from "./functions";
+import { Global, Saving, Server } from "./functions";
 
 // function placeholder_func(){return};
 
@@ -256,7 +256,6 @@ const log = {
         Projects: true,
 
         Link: false,
-        Color: false,
     },
 }
 

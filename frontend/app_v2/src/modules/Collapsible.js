@@ -7,13 +7,17 @@ export default function Collapsible(props) {
 
     const [open, setOpen] = React.useState(false);
 
+    function open_helper() {
+        setOpen(!open);
+    }
+
     function isOpen() {
         return open ? " open" : "";
     }
 
     return(
         <div id="Collapsible" className={isOpen()}>
-            <div className="Header" onClick={() => setOpen(!open)}>
+            <div className="Header" onClick={() => open_helper()}>
                 <label id="SectionLabel"> {props.label} </label>
                 <span id="CollapsibleIndicator"/>
             </div>

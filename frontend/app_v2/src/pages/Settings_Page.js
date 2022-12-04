@@ -16,6 +16,8 @@ export default function Settings_Page() {
 
     const color_options = ["blue", "red", "orange", "green", "pink", "purple"]
 
+    let initialMode = Global.mode;
+
     return(
         <div id="Settings_Page">
 
@@ -45,7 +47,7 @@ export default function Settings_Page() {
                         onClick={() => {
                             Global.setBackend = new_backend;
                             setNewBackend("");
-                            console.log(Global.backend);
+                            log.add("New Backend: " + Global.backend, "Error");
                     }}> Apply </button>
 
                     <select className="stretch" onChange={(e) => setProjectToDelete(e.target.value)}>
@@ -73,7 +75,7 @@ export default function Settings_Page() {
                             Global.appRerender();
                             Saving.saveLocal(Global.COLOR_SCHEME_KEY, Global.mode);
                         }} 
-                        initial = {Global.mode}
+                        initial={Global.mode}
                     />
                 </div>
                 
@@ -88,7 +90,7 @@ export default function Settings_Page() {
                                     Global.accent = color;
                                     Global.appRerender();
                                     Saving.saveLocal(Global.COLOR_ACCENT_KEY, color);
-                                    log.add("Set Accent: " + color, "Color");
+                                    log.add("Set Accent: " + color, "Info");
                                 }}/>
                     )})}
                 </div>
@@ -101,7 +103,6 @@ export default function Settings_Page() {
                 <LogOption title="Todos"/>
                 <LogOption title="Projects"/>
                 <LogOption title="Link"/>
-                <LogOption title="Color"/>
             </Collapsible>
 
         </div>
@@ -129,8 +130,11 @@ const Switch = (props) => {
     const [active, setActive] = React.useState(props.initial);
     function isActive() {return active ? " active" : "";}
 
-    function onClick_handler() {
+    React.useEffect(() => {
+        setActive(props.initial);
+    }, [props.initial])
 
+    function onClick_handler() {
         props.onChange(!active);
         setActive(!active);
     }
