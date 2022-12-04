@@ -220,7 +220,7 @@ const Form = (props) => {
 
         return(
             <FloatyBase>
-                <input autoFocus
+                <input 
                     id="MainInput"
                     type="text"
                     placeholder="Title"

@@ -2,8 +2,8 @@
 import React from "react";
 import "../css/Settings.css";
 
-import { Global, Saving, Server } from "../functionality/functions";
-import { projects, log } from "../functionality/modules";
+import { Global, Local, Saving, Server } from "../functionality/functions";
+import { todos, projects, log } from "../functionality/modules";
 
 import Collapsible from "../modules/Collapsible";
 
@@ -21,15 +21,45 @@ export default function Settings_Page() {
     return(
         <div id="Settings_Page">
 
-            <Collapsible label=" Quick Actions">
+            <Collapsible label="Quick Actions Server">
                 <div className="grid2">
                     <button className="stretch" onClick={() => devRun(Server.ping)}>Ping Server</button>
                     <button className="stretch" onClick={() => devRun(Server.fetchTodos)}>Get Todos</button>
                     <button disabled className="stretch" onClick={() => devRun(Server.fetchMain)}>Get Main</button> 
-                    <button className="stretch" onClick={() => projects.add({title: "Testo " + projects.projects.length})}>Add Project</button> 
+
 
                     <button className="button_secondary stretch" onClick={() => devRun(Server.restart)}>Update Api</button>
                     <button className="button_secondary stretch" onClick={() => devRun(Server.getVersion)}>Get Server Version</button>
+                </div>
+            </Collapsible>
+
+            <Collapsible label="Quick Actions Client">
+                <div className="grid2">
+                <button className="stretch" onClick={() => {
+                    localStorage.clear();
+                }}>Clear localstorage</button> 
+
+                <button className="stretch" onClick={() => {
+                    projects.add({title: "Next Version"})
+                    projects.add({title: "Bugs"})
+                    Local.link("Todos");
+                }}>Add Project</button> 
+
+                <button className="button_secondary stretch" onClick={() => {
+                    todos.add({title: "No Description"})
+                    todos.add({
+                        title: "Some Description",
+                        description: "The Description",
+                    })
+                    Local.link("Todos");
+                    }}>Add some Todos</button> 
+                <button className="button_secondary stretch" onClick={() => {
+                    todos.todos.forEach((todo) => {
+                        if(todo.finished) todos.delete(todo.uuid);
+                    })
+                    Local.link("Todos");
+                }}>Delete all finished</button>
+
                 </div>
             </Collapsible>
 
