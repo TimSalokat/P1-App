@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.41af312c.css",
-    "main.js": "/static/js/main.e9dc0c2d.js",
+    "main.css": "/static/css/main.96bcb67c.css",
+    "main.js": "/static/js/main.9235bbfc.js",
     "static/media/QuattrocentoSans-Bold.ttf": "/static/media/QuattrocentoSans-Bold.7b057d60a5d6d316ce3b.ttf",
     "static/media/QuattrocentoSans-Regular.ttf": "/static/media/QuattrocentoSans-Regular.c2e444fd4e26b791b257.ttf",
     "static/media/nyan-cat.png": "/static/media/nyan-cat.82ee49f047c31e5f686b.png",
     "index.html": "/index.html",
-    "main.41af312c.css.map": "/static/css/main.41af312c.css.map",
-    "main.e9dc0c2d.js.map": "/static/js/main.e9dc0c2d.js.map"
+    "main.96bcb67c.css.map": "/static/css/main.96bcb67c.css.map",
+    "main.9235bbfc.js.map": "/static/js/main.9235bbfc.js.map"
   },
   "entrypoints": [
-    "static/css/main.41af312c.css",
-    "static/js/main.e9dc0c2d.js"
+    "static/css/main.96bcb67c.css",
+    "static/js/main.9235bbfc.js"
   ]
 }
