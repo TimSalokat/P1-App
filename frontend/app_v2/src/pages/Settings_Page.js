@@ -24,6 +24,7 @@ export default function Settings_Page() {
                     <button className="stretch" onClick={() => devRun(Server.ping)}>Ping Server</button>
                     <button className="stretch" onClick={() => devRun(Server.fetchTodos)}>Get Todos</button>
                     <button disabled className="stretch" onClick={() => devRun(Server.fetchMain)}>Get Main</button> 
+                    <button className="stretch" onClick={() => projects.add({title: "Testo " + projects.projects.length})}>Add Project</button> 
 
                     <button className="button_secondary stretch" onClick={() => devRun(Server.restart)}>Update Api</button>
                     <button className="button_secondary stretch" onClick={() => devRun(Server.getVersion)}>Get Server Version</button>

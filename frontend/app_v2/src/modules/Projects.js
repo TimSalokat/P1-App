@@ -5,7 +5,7 @@ import { Global, Local } from "../functionality/functions";
 import { projects } from "../functionality/modules";
 
 // import {BiDownArrow} from "react-icons/bi";
-import { MdAdd } from "react-icons/md";
+import { FiEdit } from "react-icons/fi";
 
 export default function Projects() {
 
@@ -22,8 +22,8 @@ export default function Projects() {
                         return(
                             <Project title={project.title} key={project.uuid}/>
                 )})}
-                <div id="Chip" style={{height: "2.4rem"}} onClick={() => Local.openForm("AddProject")}> 
-                    <MdAdd id="Icon" style={{color: "var(--text_color)"}}/>
+                <div id="Chip" style={{height: "2.4rem"}} onClick={() => Local.openForm("OverviewProjects")}> 
+                    <FiEdit id="Icon" style={{color: "var(--text_color)"}}/>
                 </div>
             </div>
 

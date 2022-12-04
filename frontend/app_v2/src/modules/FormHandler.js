@@ -2,6 +2,8 @@
 import React from "react";
 
 import { BiSend } from "react-icons/bi";
+import { MdAdd } from "react-icons/md";
+import { TbTrashX } from "react-icons/tb";
 
 import { Global, Local } from "../functionality/functions";
 import { todos,projects } from "../functionality/modules";
@@ -20,6 +22,9 @@ export function FormHandler() {
 const Form = (props) => {
 
     if(Global.newForm && Global.form === "EditTodo"){
+        Global.formInputs = {...Global.formArgs[0]};
+        Global.setNewForm = false;
+    } else if(Global.newForm && Global.form === "EditProject"){
         Global.formInputs = {...Global.formArgs[0]};
         Global.setNewForm = false;
     }
@@ -87,10 +92,10 @@ const Form = (props) => {
 
                 <div className="Header">
                     <div className="ProjectSelect">
-                        <ProjectOption title={"All Todos"}/>
+                        <ProjectOptionChip title={"All Todos"}/>
                         {projects.projects.map((project) => {
                             return(
-                                <ProjectOption 
+                                <ProjectOptionChip
                                     title={project.title}
                                     key={project.index}
                                     />
@@ -146,6 +151,57 @@ const Form = (props) => {
         )
     }
 
+    //* --- Project Overview ---
+    else if(Global.form === "OverviewProjects"){
+        return (
+            <FloatyBase>
+                {projects.projects.map((project) => {
+                    return (
+                        <ProjectInstance title={project.title}/>
+                    )
+                })}
+
+                <div id="AddProjectButton"
+                    onClick={() => Local.openForm("AddProject")}
+                >
+                    <MdAdd id="Icon"/>
+                    <label>Add Project</label>
+                </div>
+            </FloatyBase>
+        )
+    }
+
+    else if(Global.form === "EditProject") {
+
+        function submit_helper(event){
+            var form = document.getElementById("input_form");
+            event.preventDefault();
+            if(Global.formInputs.title){
+                projects.edit(Global.formArgs[0], Global.formInputs);
+                closeForm_helper();
+            }
+            form.reset();
+        }
+
+        return (
+            <BottomBase label="Rename Project">
+                <div className="Header">
+                    <input
+                        id="MainInput"
+                        value={Global.formInputs.title}
+                        onChange={(e) => {
+                            Global.formInputs.title = e.target.value;
+                            Global.formRerender();
+                        }}
+                    /> 
+                    <button className="button" id="SubmitButton" onClick={submit_helper}>
+                        <BiSend id="Icon" style={{rotate:"270deg", fontSize:"inherit"}}/>
+                    </button>
+                </div>
+            </BottomBase>
+        )
+    }
+
     //* --- Edit Todos ---
     else if(Global.form === "EditTodo") {
 
@@ -181,10 +237,10 @@ const Form = (props) => {
 
                 <div className="Header">
                     <div className="ProjectSelect">
-                        <ProjectOption title={"All Todos"}/>
+                        <ProjectOptionChip title={"All Todos"}/>
                         {projects.projects.map((project) => {
                             return(
-                                <ProjectOption 
+                                <ProjectOptionChip
                                     title={project.title}
                                     key={project.index}
                                     />
@@ -222,7 +278,7 @@ const FloatyBase = (props) => {
     )
 }
 
-const ProjectOption = (self) => {
+const ProjectOptionChip = (self) => {
     const active = () => {
         if(Global.formInputs.project === undefined) Global.formInputs.project = Global.activeproject;
         return Global.formInputs.project === self.title ? "active" : "";
@@ -239,5 +295,20 @@ const ProjectOption = (self) => {
         >
          {self.title} 
         </label>
+    )
+}
+
+const ProjectInstance = (self) => {
+
+    return (
+        <div id="ProjectInstance">
+            <div className="content" onClick={() => Local.openForm("EditProject", self)}>
+                <label>{self.title}</label>
+            </div>
+            
+            <div id="DelTodoButton" className="show" onClick={() => projects.delete(self.title)}>
+                <TbTrashX id="Icon"/>
+            </div>
+        </div>
     )
 }

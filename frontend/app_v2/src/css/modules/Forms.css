@@ -45,7 +45,7 @@
     position: fixed;
     height: fit-content;
     width: 80vw;
-    min-height: 200px;
+    min-height: fit-content;
     z-index: 150;
     background-color: var(--base-dark);
     padding: .8rem;
@@ -101,4 +101,44 @@
     padding: 0;
     font-size: 28px;
     padding-top: 2px;
+}
+
+#ProjectInstance, #AddProjectButton {
+    position: relative;
+    background-color: var(--base);
+    min-height: 55px;
+    justify-content: center;
+    margin: 10px 5px;
+}
+#ProjectInstance .content {
+    width: calc(100% - 50px);
+    height: 100%;
+    padding: 10px;
+}
+#ProjectInstance label, #AddProjectButton label {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text_color);
+}
+#ProjectInstance #DelTodoButton {
+    right: 0;
+    background-color: transparent;
+}
+#ProjectInstance #DelTodoButton #Icon {
+    font-size: 26px;
+    color: inherit;
+}
+
+.floatyForm:has(#ProjectInstance) {
+    min-height: fit-content;
+}
+
+#AddProjectButton{
+    flex-flow: row nowrap;
+    background-color: transparent;
+    border: 2px solid var(--base);
+    align-items: center;
+}
+#AddProjectButton #Icon {
+    color: var(--text_color);
 }

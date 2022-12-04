@@ -128,6 +128,12 @@ const projects = {
         if(local_save !== undefined) this.projects = local_save;
     },
 
+    getByTitle(title){
+        for(let i=0; i < this.projects.length; i++){
+            if(this.projects[i].title === title){
+                return i;
+    }}},
+
     async add(props) {
         const new_uuid = () => uuidv4();
 
@@ -144,6 +150,36 @@ const projects = {
             })}
         log.add("Added: " + new_project.title, "Projects");
         this.projects.push(new_project);
+        this.save();
+    },
+
+    async edit(toChange, new_value){
+        let index = this.getByTitle(toChange.title);
+        this.projects[index].title = new_value.title;
+
+        local_actions.add({
+            "action": "project_edited",
+            "project_old": toChange.title,
+            "project_new": new_value.title,
+        })
+
+        todos.todos.forEach((todo) => {
+            if(todo.project === toChange.title){
+                todo.project = new_value.title;
+                local_actions.add({
+                    "action": "todo_project_change",
+                    "uuid": todo.uuid,
+                    "new_project": toChange.title,
+                })
+            }
+        })
+        todos.save();
+
+        if(Global.activeproject === toChange.title) {
+            Global.setActiveProject = new_value.title;
+        }
+
+        log.add("Renamed Project " + toChange.title + " to " + new_value.title, "Projects")
         this.save();
     },
 

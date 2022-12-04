@@ -149,6 +149,7 @@
 #DelTodoButton{
     position: absolute;
     background-color: rgb(183, 38, 38);
+    color: rgb(183, 38, 38);
     border-radius: 0 10px 10px 0;
     width: 55px;
     align-self: flex-end;
