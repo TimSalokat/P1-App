@@ -376,7 +376,7 @@ select {
   width: 100%;
 }
 .ListSelector li{
-  font-size: 13px;
+  font-size: 14px;
   font-family: Dosis;
   font-weight: 900;
   color: var(--text_color_darker);
@@ -388,9 +388,9 @@ select {
 .ListSelector li.selected::after{
   content:"";
   bottom: -3px;
-  left: calc(50% - 4px);
+  left: calc(50% - 7px);
   position: absolute;
-  width: 8px;
+  width: 14px;
   height: 2px;
   background-color: var(--accent);
 }
