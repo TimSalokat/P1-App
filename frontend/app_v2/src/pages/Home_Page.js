@@ -125,7 +125,7 @@ const HomeMainSection = (props) => {
 
     return (
         <div id="HomeMainSection">
-            <ul className="ListSelector">
+            <ul className="ListSelector" style={{marginTop:"10px"}}>
                 <li className={isSelected("Bahn").toString()} onClick={() => This.selectMenuItem("Bahn")}>Bahn</li>
                 <li className={isSelected("Todos").toString()} onClick={() => This.selectMenuItem("Todos")}>Todos</li>
                 <li className={isSelected("Weather").toString()} onClick={() => This.selectMenuItem("Weather")}>Weather</li>
