@@ -9,6 +9,7 @@
 #Home_Page, #Todo_Page, #Settings_Page {
     max-width: 100vw;
     max-height: 100%;
+    overflow: scroll;
     height: 99%;
     flex-direction: column;
     background-color: var(--base);
