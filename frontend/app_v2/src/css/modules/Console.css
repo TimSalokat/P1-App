@@ -18,19 +18,19 @@
 }
 
 .entryText{
-    color: var(--text_color);
+    color: var(--text_color-light);
     font-size: 14px;
     width: 100%;
 }
-.entryText.Error {
-    color: red;
-}
-.entryText.Init, .entryText.Warning {
-    color: rgb(223, 168, 67);
-}
-.entryText.Link, .entryText.Info{
+.highlighted, .highlighted.Link, .highlighted.Info{
     color: rgb(124, 212, 121);
 }
-.entryText.Todos, .entryText.Projects {
+.highlighted.Error {
+    color: red;
+}
+.highlighted.Init, .highlighted.Warning {
+    color: rgb(223, 168, 67);
+}
+.highlighted.Todos, .highlighted.Projects {
     color: rgb(35, 177, 224);
 }

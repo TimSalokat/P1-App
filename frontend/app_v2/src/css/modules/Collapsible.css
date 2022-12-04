@@ -1,6 +1,6 @@
 
 #Collapsible {
-    margin: 10px 0;
+    margin: 5px 0;
 }
 #Collapsible > .Header {
     position: relative;
@@ -12,6 +12,9 @@
     border-radius: 10px;
     width: 94vw;
     margin-left: 3vw;
+}
+#Collapsible.open .Header {
+    border-radius: 10px 10px 0 0;
 }
 #Collapsible label {
     filter: none;

@@ -52,7 +52,7 @@
     border-radius: 50%;
     align-items: center;
     justify-content: center;
-    padding-bottom: 10px;
+    padding-bottom: 4px;
     margin-bottom: 10px;
     filter: drop-shadow(0 0 12px var(--accent-dark));
 }

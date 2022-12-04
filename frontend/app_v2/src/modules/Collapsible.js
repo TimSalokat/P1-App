@@ -5,7 +5,7 @@ import "../css/modules/Collapsible.css";
 
 export default function Collapsible(props) {
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(props.initial);
 
     function open_helper() {
         setOpen(!open);

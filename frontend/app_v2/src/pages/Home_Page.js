@@ -5,7 +5,11 @@ import Console from '../modules/Console';
 
 import '../css/Pages.css';
 import '../css/Home.css';
-import { BsCloudMoonFill } from 'react-icons/bs';
+import { BsSun, BsFillCloudSunFill, BsCloudMoonFill, 
+    BsCloudRain, BsCloudLightningRain, BsClouds 
+} from 'react-icons/bs';
+import {TbSnowflake} from "react-icons/tb";
+import {RiMoonClearLine} from "react-icons/ri";
 import { Global } from '../functionality/functions';
 import { todos } from "../functionality/modules";
 
@@ -68,18 +72,63 @@ export default function Home_Page() {
 }
 
 const WeatherSection = () => {
+
+    const [mainText, setMainText] = React.useState("");
+    const [subText, setSubText] = React.useState("");
+
+    let WeatherIcon = (props) => {switch(props.weather) {
+        case "sun":
+            setMainText("Sunny");
+            setSubText("Perfect weather for shorts and some drinks");
+            return (<BsSun id="Icon"/>);
+        case "sun_cloudy":            
+            setMainText("Partly Cloudy");
+            setSubText("Think twice about your shorts");
+            return (<BsFillCloudSunFill id="Icon"/>);
+        case "moon":
+            setMainText("Clear Sky");
+            setSubText("A perfect night for some stargazing");
+            return (<RiMoonClearLine id="Icon"/>);
+        case "moon_cloudy":
+            setMainText("Cloudy Night");
+            setSubText("There will be no stars to see tonight");
+            return (<BsCloudMoonFill id='Icon'/>);
+        case "cloudy":
+            setMainText("Cloudy");
+            setSubText("No sun for you today");
+            return(<BsClouds id="Icon"/>);
+        case "rain":
+            setMainText("Rainy");
+            setSubText("You should have an umbrella with you today");
+            return (<BsCloudRain id="Icon"/>);
+        case "thunder":
+            setMainText("Thunder");
+            setSubText("Yeah. Thunder.");
+            return (<BsCloudLightningRain id="Icon"/>);
+        case "snow":
+            setMainText("It's snowing");
+            setSubText("May Olaf's grace be with you today");
+            return (<TbSnowflake id="Icon"/>);
+
+        default:
+            setMainText("Error");
+            setSubText("Could'nt load");
+            return(<label>Error</label>)
+    }}
+
     return (
         <div id='WeatherSection' className='row nowrap'>
             <div id='WeatherContainer'>
-                <BsCloudMoonFill id='Icon'/>
+                {/* <BsCloudMoonFill id='Icon'/> */}
+                <WeatherIcon weather="moon"/>
                 <div id="TemperatureContainer">
                     <h4>15</h4>
                 </div>
             </div>
 
             <div className='TextContainer stretch'>
-                <h3> Cloudy </h3>
-                <h4> There will be no stars to see tonight </h4>
+                <h3> {mainText} </h3>
+                <h4> {subText} </h4>
             </div>
         </div>
     )

@@ -151,29 +151,6 @@ class Saving {
 
 class Local {
 
-    static editTodo = async (new_heading, new_description, new_project, uuid) => {
-        if(new_project === "") new_project = "General";
-        todos.displayedTodos.forEach(todo => {
-            if(todo["uuid"] === uuid){
-                todo["heading"] = new_heading;
-                todo["description"] = new_description;
-                todo["project"] = new_project;
-            }
-        });
-
-        Global.localActions.push({
-            "action": "todo_edited",
-            "uuid": uuid,
-            "heading": new_heading,
-            "description": new_description,
-            "project": new_project,
-        })
-
-        Global.appRerender();
-        Saving.saveLocal(Global.LOCAL_ACTIONS_KEY, Global.localActions);
-        Saving.saveLocal(Global.TODO_KEY, todos.displayedTodos);
-    }
-
     static link = async (page) => {
         if(Global.activepage === page) return
         Global.appRerender();

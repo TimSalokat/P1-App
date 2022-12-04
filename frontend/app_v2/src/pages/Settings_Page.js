@@ -63,39 +63,6 @@ export default function Settings_Page() {
                 </div>
             </Collapsible>
 
-            <Collapsible label="Inputs">
-                <p>{Global.backend}</p>
-                <div className="grid2" style={{gridTemplateColumns: "75% 25%"}}>
-                    <input 
-                        className="stretch" 
-                        placeholder="New Backend"
-                        value={new_backend}
-                        onChange={(e) => setNewBackend(e.target.value)}
-                        />
-
-                    <button className="small stretch" 
-                        onClick={() => {
-                            Global.setBackend = new_backend;
-                            setNewBackend("");
-                            log.add("New Backend: " + Global.backend, "Error");
-                    }}> Apply </button>
-
-                    <select className="stretch" onChange={(e) => setProjectToDelete(e.target.value)}>
-                        {projects.projects.map((project) => {
-                                return(
-                                <option key={project.uuid}>
-                                    {project.title}
-                                </option>)
-                            })}</select>
-
-                    <button className="small stretch" 
-                        onClick={() => {
-                            projects.delete(project_toDelete);
-                            setProjectToDelete("");
-                    }}> Delete </button>
-                </div>
-            </Collapsible>
-
             <Collapsible label="Theme">
                 <div className="Header">
                     <label style={{padding:"5px", margin:"10px"}}>Dark Mode</label>
@@ -133,6 +100,33 @@ export default function Settings_Page() {
                 <LogOption title="Todos"/>
                 <LogOption title="Projects"/>
                 <LogOption title="Link"/>
+            </Collapsible>
+
+            <Collapsible label="New Backend">
+                <div className="grid2" style={{gridTemplateColumns: "75% 25%"}}>
+                    <input 
+                        className="stretch" 
+                        placeholder="New Backend"
+                        value={new_backend}
+                        onChange={(e) => setNewBackend(e.target.value)}
+                        />
+
+                    <button className="small stretch" 
+                        onClick={() => {
+                            Global.setBackend = new_backend;
+                            setNewBackend("");
+                            log.add("New Backend: " + Global.backend, "Error");
+                    }}> Apply </button>
+                </div>
+            </Collapsible>
+
+            <Collapsible label="Information" initial={true}>
+                <div id="sysInfoContainer">
+                    <label>Backend: {Global.backend} </label>
+                    <label>Api reachable: {Global.serverReachable} </label>
+                    <label>Api Version: {Global.serverVersion} </label>
+                    <label>Client Version: v1.2 </label>
+                </div>
             </Collapsible>
 
         </div>

@@ -15,7 +15,6 @@ export default function Console () {
                 return(
                     <ConsoleEntry content={content.entry} from={content.from}/>
                 )
-                    
             })}
         </div>
     )
@@ -29,6 +28,8 @@ const ConsoleEntry = (props) => {
     }
 
     return (
-        <label className={"entryText " + props.from + isShown()}>[{props.from}]: {props.content}</label>
+        <label className={"entryText "+ isShown()}>
+            <span className={"highlighted " + props.from}>[{props.from}]: </span> 
+            {props.content}</label>
     )
 }
