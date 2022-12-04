@@ -74,17 +74,16 @@ export default function Todos() {
 }
 
 function TodoItem(self) {
-
     
     const [_showDelete, setShowDelete] = React.useState(false);
 
     const swipeHandler = useSwipeable({
         onSwipedLeft: (e) => {
-            if(e.absX < 80) return   
+            if(e.absX < 60) return   
             setShowDelete(true);
         },
         onSwipedRight: (e) => {
-            if(e.absX < 80) return
+            if(e.absX < 60) return
             setShowDelete(false);
         }
     });
@@ -128,6 +127,9 @@ function TodoItem(self) {
             <div id="DelTodoButton" className={showDelete()} onClick={() => todos.delete(self.uuid)}>
                 <TbTrashX id="Icon"/>
             </div>
+
+            <p className={"projectTitle " + showDelete()}>{self.todo.project}</p>
+
         </div>
     )
 }
