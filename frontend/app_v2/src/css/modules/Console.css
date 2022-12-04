@@ -25,7 +25,7 @@
 .entryText.Error {
     color: red;
 }
-.entryText.Init, .entryText.Color, .entryText.Warning {
+.entryText.Init, .entryText.Warning {
     color: rgb(223, 168, 67);
 }
 .entryText.Link, .entryText.Info{
