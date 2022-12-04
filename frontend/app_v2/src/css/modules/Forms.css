@@ -57,6 +57,17 @@
     height: 100px;
 }
 
+.floatyForm textarea, .floatyForm input {
+    background-color: var(--base-dark);
+}
+.floatyForm textarea:focus {
+    background-color: var(--base);
+}
+.floatyForm #MainInput {
+    border-bottom: 2px solid var(--accent);
+    border-radius: 0;
+}
+
 #FormHeader {
     position: absolute;
     height: 50px;
