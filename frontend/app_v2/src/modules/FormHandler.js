@@ -27,6 +27,9 @@ const Form = (props) => {
     } else if(Global.newForm && Global.form === "EditProject"){
         Global.formInputs = {...Global.formArgs[0]};
         Global.setNewForm = false;
+    } else if(Global.newForm && Global.form === "AddTodo") {
+        Global.formInputs.project = Global.activeProject;
+        Global.setNewForm = false;
     }
 
     const [, updateState] = React.useState();

@@ -52,9 +52,14 @@ export default function Settings_Page() {
                     Local.link("Todos");
                     }}>Add some Todos</button> 
                 <button className="button_secondary stretch" onClick={() => {
-                    todos.todos.forEach((todo) => {
-                        if(todo.finished) todos.delete(todo.uuid);
+                    let toDelete = [];
+                    for(var i=0; i<todos.todos.length; i++ ){
+                        if(todos.todos[i].finished) toDelete.push(todos.todos[i].uuid);
+                    }
+                    toDelete.forEach((uuid) => {
+                        todos.delete(uuid);
                     })
+                    toDelete = [];
                     Local.link("Todos");
                 }}>Delete all finished</button>
 

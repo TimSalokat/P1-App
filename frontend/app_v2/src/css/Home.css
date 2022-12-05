@@ -8,17 +8,16 @@
 
 #WeatherSection {
     border-radius: 15px;
-    height: 21vh;
-    background: var(--accent-gradient);
+    height: 20vh;
+    /* background: var(--accent-gradient); */
     background-color: var(--base-light);
-    margin: 10px;
+    margin: 15px;
     margin-bottom: 0;
     padding: 20px;   
-    width: calc(100% - 20px);
+    width: calc(100% - 30px);
     justify-content: space-between;
     align-items: center;
-    
-    /* box-shadow: 0 0 10px var(--accent) */
+    box-shadow: 0 0 10px var(--base-dark);
 }
 #WeatherSection label {
     color: var(--text_color-light);
@@ -33,13 +32,13 @@
 }
 
 .TextContainer h3, .TextContainer h4{
-    color: var(--text_color-light);
+    color: var(--text_color);
     text-align: center;
     width: 90%;
 }
 .TextContainer h3 {
-    color: var(--text_color-light);
-    border-bottom: 2px solid var(--text_color-light);
+    color: var(--text_color);
+    border-bottom: 2px solid var(--text_color);
     border-radius: 0;
     width: 60%;
 }
@@ -47,8 +46,9 @@
 #WeatherContainer{
     position: relative;
     background-color: var(--accent);
-    min-width: 85px;
-    min-height: 85px;
+    background: var(--accent-gradient);
+    min-width: 80px;
+    min-height: 80px;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -58,7 +58,7 @@
 }
 #WeatherContainer #Icon {
     fill: var(--text_color-light);
-    font-size: 45px;
+    font-size: 40px;
 }
 #TemperatureContainer {
     background-color: var(--text_color-light);
@@ -72,7 +72,10 @@
     justify-content: center;
     letter-spacing: 1px;
 }
-#TemperatureContainer h4 {color: var(--base-darkest);}
+#TemperatureContainer h4 {
+    color: var(--base-darkest);
+    margin-left: 5px;
+}
 
 #HomeMainSection {
     flex: 1;

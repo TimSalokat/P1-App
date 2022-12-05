@@ -129,7 +129,12 @@ const WeatherSection = (props) => {
             <div id='WeatherContainer' onClick={cycleWeather}>
                 <WeatherIcon weather={props.weather}/>
                 <div id="TemperatureContainer">
-                    <h4>15</h4>
+                    <h4>
+                        15
+                        <span style={{color:"var(--text-color)", fontSize:"16px"}}>
+                            &deg;
+                        </span>
+                    </h4>
                 </div>
             </div>
 

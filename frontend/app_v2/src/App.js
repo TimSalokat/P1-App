@@ -173,9 +173,9 @@ class ColorHelper extends React.Component {
     var accent = () => {switch(Global.accent) {
       case "blue":
         return {
-          "--accent-h": 230,
-          "--accent-s": "64%",
-          "--accent-l": "48%",
+          "--accent-h": 225,
+          "--accent-s": "62%",
+          "--accent-l": "50%",
         }  
       case "red":
         return {

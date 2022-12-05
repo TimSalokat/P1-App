@@ -110,6 +110,9 @@
     justify-content: center;
     margin: 10px 5px;
 }
+#ProjectInstance{
+    box-shadow: 0 0 8px var(--base-darker);
+}
 #ProjectInstance .content {
     width: calc(100% - 50px);
     height: 100%;
@@ -136,7 +139,7 @@
 #AddProjectButton{
     flex-flow: row nowrap;
     background-color: transparent;
-    border: 2px solid var(--base);
+    border: 2px solid var(--accent);
     align-items: center;
 }
 #AddProjectButton #Icon {

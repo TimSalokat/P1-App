@@ -38,7 +38,7 @@
 
   --color_variation: 20%;
 
-  --text_color_darker: rgb(125,125,125);
+  --text_color_darker: rgb(105,105,105);
   --text_color-light: rgb(200,200,200);
 }
 
@@ -272,7 +272,7 @@ select {
   align-content: space-around;
   justify-content: center;
   padding: 0 15px;
-  border-radius: 25px;
+  border-radius: 30px;
 }
 .MainMenuItem{
   position: relative;
@@ -290,7 +290,7 @@ select {
   font-size: 27px;
 }
 .MainMenuItem.active #Icon {
-  color: var(--accent);
+  color: var(--accent-light);
 }
 
 #TriangleButton {
@@ -309,7 +309,7 @@ select {
   position: absolute;
   width: inherit;
   height: 6px;
-  background-color: var(--accent);
+  background-color: var(--accent-light);
   box-shadow: 0px 0px 15px 1px var(--accent);
   border-radius: 18px;
   rotate: 180deg;
@@ -332,7 +332,7 @@ select {
   top: 8%;
   transform: translateX(calc(73.5%));
   font-size: 30px;
-  color: var(--text_color_darker);
+  color: var(--text_color);
 }
 
 .Header {
@@ -548,7 +548,7 @@ select {
 }
 #Switch::after {
   content: "";
-  background-color: var(--base-dark);
+  background-color: var(--base-darker);
   border-radius: 50%;
   width: 20px;
   height: 20px;
