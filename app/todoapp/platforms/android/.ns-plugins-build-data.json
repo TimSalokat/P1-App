@@ -1,0 +1,7 @@
+{
+	"@nativescript/core": {
+		"C:\\Users\\timsa\\Desktop\\Wokspace\\P1-App\\app\\todoapp\\node_modules\\@nativescript\\core\\platforms\\android\\res\\values\\ids.xml": "af407e752ae7884c6e064d1dc81008497d5ff0cc",
+		"C:\\Users\\timsa\\Desktop\\Wokspace\\P1-App\\app\\todoapp\\node_modules\\@nativescript\\core\\platforms\\android\\native-api-usage.json": "4a614afaa51061d74eba0cbe39100f47b0e2a10b",
+		"C:\\Users\\timsa\\Desktop\\Wokspace\\P1-App\\app\\todoapp\\node_modules\\@nativescript\\core\\platforms\\android\\widgets-release.aar": "9f594de46fcd0be12e76a6c7688b0046e5edc3ca"
+	}
+}

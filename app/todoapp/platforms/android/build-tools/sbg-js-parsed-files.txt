@@ -1,0 +1,3 @@
+C:\Users\timsa\Desktop\Wokspace\P1-App\app\todoapp\platforms\android\app\src\main\assets\app\bundle.js
+C:\Users\timsa\Desktop\Wokspace\P1-App\app\todoapp\platforms\android\app\src\main\assets\app\runtime.js
+C:\Users\timsa\Desktop\Wokspace\P1-App\app\todoapp\platforms\android\app\src\main\assets\app\vendor.js
