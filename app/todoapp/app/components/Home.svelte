@@ -1,8 +1,13 @@
 
 <page>
-    <actionBar title="My Todos" />
+    <actionBar title="Home" id="ActionBar"/>
 
-    <tabView>
+    <stackLayout>
+        <button text="Testo" on:tap="{ () => navigate({page: Testo}) }"/>
+        <label>Testo</label> 
+    </stackLayout>
+
+    <!-- <tabView>
         <tabViewItem title="Todo">
             <gridLayout columns="*, 120" rows="70, *">
                 <textField col="0" row="0" bind:text="{textFieldValue}" hint="New Task..." editable="true"
@@ -24,12 +29,15 @@
                 </Template>
             </listView>
         </tabViewItem>
-    </tabView>
+    </tabView> -->
 </page>
 
 <script>
     import { action } from '@nativescript/core';
-    import { Template } from 'svelte-native/components'
+    import { Template } from 'svelte-native/components';
+    
+	import Testo from './Testo.svelte';
+	import { navigate } from 'svelte-native';
 
     let todos = []
     let dones = []
@@ -83,5 +91,8 @@
 <style>
     textField {
         font-size: 20px;
+    }
+    #ActionBar {
+        bottom: 0;
     }
 </style>
