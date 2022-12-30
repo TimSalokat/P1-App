@@ -1,7 +1,0 @@
-{
-    "name": "production_build",
-    "integrations": {
-      "capacitor": {}
-    },
-    "type": "react"
-  }

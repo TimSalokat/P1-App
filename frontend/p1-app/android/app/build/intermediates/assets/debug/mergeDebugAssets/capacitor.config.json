@@ -1,8 +1,0 @@
-{
-	"appId": "io.ionic.production_build",
-	"appName": "production_build",
-	"bundledWebRuntime": false,
-	"npmClient": "npm",
-	"webDir": "build",
-	"cordova": {}
-}
